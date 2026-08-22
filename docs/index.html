@@ -6,20 +6,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="YQlbvz0Ww_e4B9By6hsh36pI4yv6UCzrecrh1Guyks0" />
   <title>Clovi — Undetectable AI Exam Helper & Coding Test Solver for Windows</title>
-  <meta name="description" content="The free, open-source AI exam helper and screen solver for Windows. Captures coding tests, exams, and homework with zero screen-share visibility. Powered by Gemini Vision.">
-  <meta name="keywords" content="ai exam helper, undetectable ai test helper, online assessment solver, coding interview assistant, leetcode ai solver, screen share invisible ai, gemini vision desktop overlay, invisible desktop assistant">
+  <meta name="description"
+    content="The free, open-source AI exam helper and screen solver for Windows. Captures coding tests, exams, and homework with zero screen-share visibility. Powered by Gemini Vision.">
+  <meta name="keywords"
+    content="ai exam helper, undetectable ai test helper, online assessment solver, coding interview assistant, leetcode ai solver, screen share invisible ai, gemini vision desktop overlay, invisible desktop assistant">
   <meta name="author" content="Omkar Hundre">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <link rel="canonical" href="https://clovi.netlify.app/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://clovi.netlify.app/">
   <meta property="og:title" content="Clovi — Undetectable AI Exam Helper & Screen Solver">
-  <meta property="og:description" content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
+  <meta property="og:description"
+    content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
   <meta property="og:site_name" content="Clovi">
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://clovi.netlify.app/">
   <meta property="twitter:title" content="Clovi — Undetectable AI Exam Helper & Screen Solver">
-  <meta property="twitter:description" content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
+  <meta property="twitter:description"
+    content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
 
   <script type="application/ld+json">
   {
@@ -36,10 +40,18 @@
   <!-- Typography: Elsie, Gloock & Lato -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&family=Gloock&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&family=Gloock&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --font-display: 'Gloock', serif;
@@ -47,7 +59,7 @@
       --font-body: 'Lato', sans-serif;
       --white: #ffffff;
       --black: #09090b;
-      --gray-50:  #f8fafc;
+      --gray-50: #f8fafc;
       --gray-100: #f1f5f9;
       --gray-200: #e2e8f0;
       --gray-300: #cbd5e1;
@@ -63,83 +75,137 @@
       --emerald-500: #10b981;
     }
 
-    html { 
-      font-family: var(--font-body); 
-      color: var(--gray-800); 
-      background: var(--white); 
+    html {
+      font-family: var(--font-body);
+      color: var(--gray-800);
+      background: var(--white);
       -webkit-font-smoothing: antialiased;
     }
 
-    body { min-height: 100vh; overflow-x: hidden; }
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
     /* ─── NAV ─────────────────────────────────────────── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 40px; height: 64px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 64px;
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(226, 232, 240, 0.7);
     }
-    .nav-logo { 
-      display: flex; align-items: center; gap: 10px; 
-      font-family: var(--font-display); 
-      font-size: 24px; 
-      font-weight: 400; 
-      color: var(--black); 
-      text-decoration: none; 
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
       letter-spacing: -0.5px;
       z-index: 2;
     }
-    .nav-logo-mark { 
-      width: 26px; height: 26px; 
-      background: var(--black); 
-      border-radius: 7px; 
-      display: flex; align-items: center; justify-content: center; 
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+
+    .nav-logo-mark {
+      width: 26px;
+      height: 26px;
+      background: var(--black);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
     }
-    .nav-logo-mark span { 
-      color: white; 
-      font-family: var(--font-body); 
-      font-size: 11px; 
-      font-weight: 900; 
+
+    .nav-logo-mark span {
+      color: white;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 900;
     }
+
     /* Mathematically Centered Nav Links */
-    .nav-links { 
+    .nav-links {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      display: flex; 
-      align-items: center; 
-      gap: 32px; 
+      display: flex;
+      align-items: center;
+      gap: 32px;
     }
-    .nav-links a { 
-      font-size: 14px; 
-      font-weight: 400; 
-      color: var(--gray-600); 
-      text-decoration: none; 
-      transition: color 0.15s; 
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--gray-600);
+      text-decoration: none;
+      transition: color 0.15s;
     }
-    .nav-links a:hover { color: var(--black); font-weight: 700; }
-    .nav-actions { display: flex; align-items: center; gap: 12px; z-index: 2; }
-    .btn-ghost { 
+
+    .nav-links a:hover {
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 2;
+    }
+
+    .btn-ghost {
       font-family: var(--font-body);
-      font-size: 13px; font-weight: 700; 
-      color: var(--gray-700); background: none; border: none; cursor: pointer; 
-      padding: 8px 16px; border-radius: 8px; transition: all 0.15s; 
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gray-700);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 16px;
+      border-radius: 8px;
+      transition: all 0.15s;
     }
-    .btn-ghost:hover { background: var(--gray-100); color: var(--black); }
-    .btn-primary { 
+
+    .btn-ghost:hover {
+      background: var(--gray-100);
+      color: var(--black);
+    }
+
+    .btn-primary {
       font-family: var(--font-body);
-      font-size: 13px; font-weight: 700; 
-      color: white; background: var(--blue-600); 
-      border: none; cursor: pointer; 
-      padding: 9px 20px; border-radius: 9999px; 
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); 
-      text-decoration: none; display: inline-flex; align-items: center; gap: 7px; 
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+      background: var(--blue-600);
+      border: none;
+      cursor: pointer;
+      padding: 9px 20px;
+      border-radius: 9999px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
       box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
     }
-    .btn-primary:hover { background: var(--blue-700); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35); }
+
+    .btn-primary:hover {
+      background: var(--blue-700);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+    }
 
     /* ─── HERO: FULL-WIDTH UNIFORM GRADIENT OVERLAY ───── */
     .hero {
@@ -154,18 +220,31 @@
       background-position: center top;
       background-repeat: no-repeat;
     }
+
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(255, 255, 255, 0.95); 
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255, 255, 255, 0.95);
       border: 1px solid rgba(191, 219, 254, 0.85);
-      border-radius: 100px; padding: 6px 16px;
-      font-size: 12px; font-weight: 700; color: var(--gray-700);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--gray-700);
       margin-bottom: 28px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
       backdrop-filter: blur(8px);
     }
-    .hero-badge-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; }
-    
+
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #22c55e;
+    }
+
     .hero h1 {
       font-family: var(--font-display);
       font-size: clamp(42px, 6.2vw, 84px);
@@ -176,43 +255,84 @@
       max-width: 860px;
       margin: 0 auto 24px;
     }
-    .hero h1 em { 
+
+    .hero h1 em {
       font-family: var(--font-display);
-      font-style: italic; 
+      font-style: italic;
       color: var(--blue-600);
       font-weight: 400;
     }
+
     .hero-sub {
       font-family: var(--font-body);
-      font-size: 18.5px; 
-      font-weight: 300; 
+      font-size: 18.5px;
+      font-weight: 300;
       line-height: 1.65;
-      color: var(--gray-600); 
-      max-width: 620px; 
+      color: var(--gray-600);
+      max-width: 620px;
       margin: 0 auto 38px;
     }
-    .hero-cta { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    .hero-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
     .cta-primary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue-600); color: white;
-      font-size: 14.5px; font-weight: 700;
-      padding: 14px 32px; border-radius: 9999px;
-      text-decoration: none; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-      border: none; cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-600);
+      color: white;
+      font-size: 14.5px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      border: none;
+      cursor: pointer;
       box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
     }
-    .cta-primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4); }
-    .cta-secondary {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.92); color: var(--gray-700);
-      font-size: 14px; font-weight: 700;
-      padding: 13px 26px; border-radius: 9999px;
-      text-decoration: none; transition: all 0.2s;
-      border: 1px solid var(--gray-200); cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+
+    .cta-primary:hover {
+      background: var(--blue-700);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4);
     }
-    .cta-secondary:hover { background: white; border-color: var(--gray-300); transform: translateY(-1px); }
-    .hero-note { margin-top: 18px; font-size: 12.5px; color: var(--gray-500); font-weight: 400; }
+
+    .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--gray-700);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 13px 26px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: 1px solid var(--gray-200);
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    }
+
+    .cta-secondary:hover {
+      background: white;
+      border-color: var(--gray-300);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      font-size: 12.5px;
+      color: var(--gray-500);
+      font-weight: 400;
+    }
 
     /* ─── HERO PRODUCT MOCKUP: EXPANDED PC DESKTOP ENVIRONMENT ─── */
     .hero-visual {
@@ -225,7 +345,7 @@
     /* Vibrant Sunset/Aurora PC Desktop Wallpaper Environment */
     .pc-desktop-wallpaper {
       position: relative;
-      background: 
+      background:
         radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255, 237, 213, 0.95), transparent),
         radial-gradient(ellipse 70% 50% at 85% 30%, rgba(251, 146, 60, 0.8), transparent),
         radial-gradient(ellipse 60% 60% at 15% 70%, rgba(244, 63, 94, 0.75), transparent),
@@ -233,7 +353,7 @@
         linear-gradient(145deg, #fb923c 0%, #f43f5e 40%, #8b5cf6 75%, #3b82f6 100%);
       border-radius: 28px;
       padding: 40px 36px 28px;
-      box-shadow: 
+      box-shadow:
         0 35px 90px -15px rgba(244, 63, 94, 0.35),
         0 0 0 1px rgba(255, 255, 255, 0.6) inset,
         0 20px 45px rgba(0, 0, 0, 0.08);
@@ -255,6 +375,7 @@
       position: relative;
       text-align: left;
     }
+
     .window-header-bar {
       height: 42px;
       background: #18181b;
@@ -267,24 +388,63 @@
       color: #71717a;
       user-select: none;
     }
-    .window-traffic-lights { display: flex; align-items: center; gap: 7px; }
-    .traffic-dot { width: 11px; height: 11px; border-radius: 50%; }
-    .dot-red { background: #ff5f56; }
-    .dot-yellow { background: #ffbd2e; }
-    .dot-green { background: #27c93f; }
-    
-    .window-address-bar {
-      display: flex; align-items: center; gap: 6px;
-      background: #27272a; padding: 4px 14px; border-radius: 6px;
-      color: #a1a1aa; font-family: monospace; font-size: 11px;
+
+    .window-traffic-lights {
+      display: flex;
+      align-items: center;
+      gap: 7px;
     }
+
+    .traffic-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+
+    .dot-red {
+      background: #ff5f56;
+    }
+
+    .dot-yellow {
+      background: #ffbd2e;
+    }
+
+    .dot-green {
+      background: #27c93f;
+    }
+
+    .window-address-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #27272a;
+      padding: 4px 14px;
+      border-radius: 6px;
+      color: #a1a1aa;
+      font-family: monospace;
+      font-size: 11px;
+    }
+
     .window-stealth-badge {
-      display: flex; align-items: center; gap: 5px;
-      color: #34d399; font-size: 11px; font-weight: 700;
-      background: rgba(16, 185, 129, 0.1); padding: 3px 8px; border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: #34d399;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(16, 185, 129, 0.1);
+      padding: 3px 8px;
+      border-radius: 4px;
       border: 1px solid rgba(16, 185, 129, 0.25);
     }
-    .window-stealth-dot { width: 6px; height: 6px; background: #34d399; border-radius: 50%; box-shadow: 0 0 6px #34d399; }
+
+    .window-stealth-dot {
+      width: 6px;
+      height: 6px;
+      background: #34d399;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #34d399;
+    }
 
     /* LeetCode Screen Container */
     .screen-content-wrap {
@@ -293,6 +453,7 @@
       background: #1a1a1a;
       overflow: hidden;
     }
+
     .screen-bg-img {
       width: 100%;
       display: block;
@@ -325,12 +486,16 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.05);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(12px);
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .capsule-icon { font-size: 15px; opacity: 0.8; }
-    
+
+    .capsule-icon {
+      font-size: 15px;
+      opacity: 0.8;
+    }
+
     .capsule-solve-btn {
       position: relative;
       background: #2563eb;
@@ -346,17 +511,26 @@
       box-shadow: 0 2px 10px rgba(37, 99, 235, 0.4);
       transition: all 0.2s;
     }
-    .capsule-bolt { font-size: 13px; }
-    
+
+    .capsule-bolt {
+      font-size: 13px;
+    }
+
     .capsule-spinner {
-      width: 12px; height: 12px;
-      border: 2px solid rgba(255,255,255,0.3);
+      width: 12px;
+      height: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
       border-top-color: #ffffff;
       border-radius: 50%;
       animation: spin 0.6s linear infinite;
       display: none;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     /* Animated Virtual Cursor Pointer Anchored to Solve Button Center */
     .virtual-cursor {
@@ -370,7 +544,7 @@
       background-repeat: no-repeat;
       pointer-events: none;
       z-index: 40;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.6));
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.6));
       transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
       opacity: 0;
       margin-top: -3px;
@@ -409,14 +583,24 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding-bottom: 8px;
     }
+
     .solution-badge {
-      display: inline-flex; align-items: center; gap: 4px;
-      background: rgba(16, 185, 129, 0.15); color: #34d399;
-      font-size: 11px; font-weight: 800; border-radius: 4px;
-      padding: 2px 8px; border: 1px solid rgba(16, 185, 129, 0.3);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      font-size: 11px;
+      font-weight: 800;
+      border-radius: 4px;
+      padding: 2px 8px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
     }
+
     .solution-meta-tag {
-      font-family: monospace; font-size: 10.5px; color: #94a3b8;
+      font-family: monospace;
+      font-size: 10.5px;
+      color: #94a3b8;
     }
 
     .solution-code-box {
@@ -430,11 +614,28 @@
       color: #e2e8f0;
       overflow-x: auto;
     }
-    .code-kw { color: #f43f5e; font-weight: 700; }
-    .code-fn { color: #38bdf8; }
-    .code-type { color: #fbbf24; }
-    .code-num { color: #a78bfa; }
-    .code-comment { color: #64748b; font-style: italic; }
+
+    .code-kw {
+      color: #f43f5e;
+      font-weight: 700;
+    }
+
+    .code-fn {
+      color: #38bdf8;
+    }
+
+    .code-type {
+      color: #fbbf24;
+    }
+
+    .code-num {
+      color: #a78bfa;
+    }
+
+    .code-comment {
+      color: #64748b;
+      font-style: italic;
+    }
 
     .solution-card-footer {
       display: flex;
@@ -443,8 +644,10 @@
       font-size: 11px;
       color: #a1a1aa;
     }
+
     .solution-time-badge {
-      color: #38bdf8; font-weight: 700;
+      color: #38bdf8;
+      font-weight: 700;
     }
 
     /* ─── REALISTIC WINDOWS 11 GLASS TASKBAR (BELOW WINDOW) ─── */
@@ -475,6 +678,7 @@
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: default;
     }
+
     .taskbar-app-icon:hover {
       background: rgba(255, 255, 255, 0.35);
       transform: translateY(-2px);
@@ -613,69 +817,90 @@
       flex-shrink: 0;
     }
 
-    .trust-item { 
-      display: flex; 
-      align-items: center; 
-      gap: 14px; 
-      font-size: 16.5px; 
-      font-weight: 700; 
-      color: var(--gray-800); 
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 16.5px;
+      font-weight: 700;
+      color: var(--gray-800);
       white-space: nowrap;
       transition: transform 0.2s ease, color 0.2s ease;
       cursor: default;
     }
+
     .trust-item:hover {
       color: var(--black);
       transform: translateY(-2px);
     }
+
     .trust-item svg {
       width: 32px;
       height: 32px;
       flex-shrink: 0;
       display: block;
-      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.06));
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.06));
     }
 
     @keyframes infinite-marquee {
       0% {
         transform: translateX(0);
       }
+
       100% {
         transform: translateX(calc(-50% - 30px));
       }
     }
 
     /* ─── SECTION BASE ────────────────────────────────── */
-    section { padding: 100px 24px; }
-    .container { max-width: 1080px; margin: 0 auto; }
-    .section-label { 
-      font-family: var(--font-body);
-      font-size: 12.5px; font-weight: 700; color: var(--blue-600); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; 
+    section {
+      padding: 100px 24px;
     }
-    .section-title { 
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--blue-600);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
       font-family: var(--font-display);
-      font-size: clamp(34px, 4.6vw, 50px); 
-      font-weight: 400; 
-      letter-spacing: -0.5px; 
-      line-height: 1.15; 
-      color: var(--black); 
+      font-size: clamp(34px, 4.6vw, 50px);
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      color: var(--black);
     }
-    .section-title em { 
-      font-style: italic; 
-      color: var(--gray-400); 
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gray-400);
     }
-    .section-sub { 
+
+    .section-sub {
       font-family: var(--font-body);
-      font-size: 16.5px; 
-      color: var(--gray-600); 
-      line-height: 1.7; 
-      max-width: 540px; 
-      margin-top: 14px; 
+      font-size: 16.5px;
+      color: var(--gray-600);
+      line-height: 1.7;
+      max-width: 540px;
+      margin-top: 14px;
       font-weight: 300;
     }
 
     /* ─── HOW IT WORKS: CLEAN NATURAL 3-STEP BENTO GRID ─── */
-    .how-section { background: var(--white); }
+    .how-section {
+      background: var(--white);
+    }
+
     .how-bento-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -723,9 +948,23 @@
       border: 1px solid var(--gray-200);
     }
 
-    .badge-blue { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
-    .badge-purple { background: #faf5ff; color: #7c3aed; border-color: #e9d5ff; }
-    .badge-emerald { background: #ecfdf5; color: #059669; border-color: #a7f3d0; }
+    .badge-blue {
+      background: #eff6ff;
+      color: #2563eb;
+      border-color: #bfdbfe;
+    }
+
+    .badge-purple {
+      background: #faf5ff;
+      color: #7c3aed;
+      border-color: #e9d5ff;
+    }
+
+    .badge-emerald {
+      background: #ecfdf5;
+      color: #059669;
+      border-color: #a7f3d0;
+    }
 
     .how-bento-card h3 {
       font-size: 18px;
@@ -766,6 +1005,7 @@
       justify-content: center;
       gap: 10px;
     }
+
     .keycap {
       background: linear-gradient(180deg, #3f3f46 0%, #27272a 100%);
       border: 1px solid #52525b;
@@ -778,27 +1018,30 @@
       color: #ffffff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     }
+
     .keycap-plus {
       color: #71717a;
       font-weight: 700;
       font-size: 15px;
     }
 
-    /* ─── MERGED FLAGSHIP DARK STEALTH & CORE ENGINE SECTION ─── */
-    .stealth-section { 
-      background: #09090b; 
-      color: white; 
-      position: relative; 
-      overflow: hidden; 
-      padding: 110px 24px; 
+    /* ─── ULTRA-CLEAN MINIMAL DARK STEALTH SECTION ─── */
+    .stealth-section {
+      background: #09090b;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 24px;
       border-top: 1px solid #1e293b;
       border-bottom: 1px solid #1e293b;
     }
-    .stealth-header { 
-      text-align: center; 
-      max-width: 760px; 
-      margin: 0 auto 60px; 
+
+    .stealth-header-clean {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 44px;
     }
+
     .stealth-pill-badge {
       display: inline-flex;
       align-items: center;
@@ -806,14 +1049,15 @@
       background: rgba(59, 130, 246, 0.12);
       border: 1px solid rgba(59, 130, 246, 0.35);
       color: #93c5fd;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      padding: 6px 16px;
+      padding: 5px 14px;
       border-radius: 9999px;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
+
     .stealth-pill-dot {
       width: 6px;
       height: 6px;
@@ -821,217 +1065,514 @@
       border-radius: 50%;
       box-shadow: 0 0 8px #38bdf8;
     }
+
     .stealth-title {
       font-family: var(--font-display);
-      font-size: clamp(34px, 4.8vw, 54px);
+      font-size: clamp(34px, 4.4vw, 52px);
       font-weight: 400;
       letter-spacing: -0.5px;
       line-height: 1.15;
       color: white;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
+
     .stealth-title em {
       font-style: italic;
       color: #93c5fd;
     }
+
     .stealth-sub {
       font-size: 16.5px;
       color: #94a3b8;
       line-height: 1.65;
       font-weight: 300;
+    }
+
+    /* ─── MINIMAL FULL-WIDTH GOOGLE MEET INVISIBILITY SHOWCASE ─── */
+    .stealth-showcase-container {
+      max-width: 1080px;
       margin: 0 auto;
-    }
-    .stealth-bento-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-bottom: 50px;
-    }
-    .stealth-bento-card {
       background: #121214;
       border: 1px solid #27272a;
       border-radius: 20px;
-      padding: 34px 30px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.75);
     }
-    .stealth-bento-card:hover {
-      transform: translateY(-4px);
-      border-color: #3f3f46;
+
+    /* Minimal Switcher Tabs */
+    .stealth-tabs-bar {
+      display: flex;
       background: #18181b;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      border-bottom: 1px solid #27272a;
+      padding: 8px;
+      gap: 8px;
     }
-    .stealth-bento-icon {
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-    .stealth-bento-card h3 {
-      font-size: 18px;
+
+    .stealth-tab-btn {
+      flex: 1;
+      padding: 11px 16px;
+      font-family: var(--font-body);
+      font-size: 13.5px;
       font-weight: 700;
-      color: white;
-      margin-bottom: 10px;
-      letter-spacing: -0.3px;
-    }
-    .stealth-bento-card p {
-      font-size: 14px;
+      border-radius: 10px;
+      background: none;
+      border: none;
       color: #94a3b8;
-      line-height: 1.65;
-      font-weight: 300;
-    }
-    .stealth-bento-card code {
-      font-family: monospace;
-      font-size: 12px;
-      background: rgba(255,255,255,0.08);
-      color: #e2e8f0;
-      padding: 2px 6px;
-      border-radius: 4px;
-    }
-    .keycap-mini {
-      font-family: monospace;
-      font-size: 11.5px;
-      background: #27272a;
-      border: 1px solid #3f3f46;
-      color: white;
-      padding: 2px 6px;
-      border-radius: 4px;
-      font-weight: 700;
-    }
-    
-    .stealth-metrics-row {
-      background: #121214;
-      border: 1px solid #27272a;
-      border-radius: 20px;
-      padding: 36px 40px;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 32px;
+      justify-content: center;
+      gap: 8px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .stealth-metric-col {
-      flex: 1;
-      text-align: center;
+
+    .stealth-tab-btn.active {
+      background: #27272a;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
     }
-    .metric-number {
-      font-family: var(--font-display);
-      font-size: clamp(38px, 4.5vw, 50px);
-      font-weight: 400;
-      letter-spacing: -1.5px;
-      color: white;
-      line-height: 1;
-      margin-bottom: 8px;
+
+    .tab-dot-green {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 6px #34d399;
     }
-    .metric-title {
-      font-size: 15px;
+
+    .tab-dot-blue {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 6px #38bdf8;
+    }
+
+    /* Screen Canvas with Full-Width LeetCode Problem Screenshot */
+    .stealth-screen-view {
+      position: relative;
+      overflow: hidden;
+      background: #1a1a1a;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .stealth-screen-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Live Floating Clovi Capsule (Pinned over LeetCode Code Area) */
+    .stealth-floating-pill {
+      position: absolute;
+      top: 36px;
+      right: 48px;
+      background: rgba(24, 24, 27, 0.96);
+      border: 1px solid rgba(59, 130, 246, 0.6);
+      border-radius: 100px;
+      padding: 7px 18px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12.5px;
       font-weight: 700;
       color: white;
-      margin-bottom: 4px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(37, 99, 235, 0.4);
+      z-index: 15;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .metric-desc {
-      font-size: 13px;
-      color: #94a3b8;
-      line-height: 1.5;
-      font-weight: 300;
+
+    /* Minimal Solution Bubble */
+    .stealth-floating-card {
+      position: absolute;
+      top: 86px;
+      right: 48px;
+      background: rgba(18, 18, 20, 0.96);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      border-radius: 12px;
+      padding: 10px 14px;
+      font-size: 11.5px;
+      font-family: monospace;
+      color: #34d399;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+      z-index: 15;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .stealth-metric-divider {
-      width: 1px;
-      height: 60px;
-      background: #27272a;
+
+    /* Minimal Invisibility Status Stamp (Visible in Screen Share Mode) */
+    .stealth-invis-stamp {
+      position: absolute;
+      top: 36px;
+      right: 48px;
+      border: 1px dashed rgba(56, 189, 248, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(6px);
+      border-radius: 100px;
+      padding: 7px 18px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #38bdf8;
+      font-family: monospace;
+      z-index: 12;
+      opacity: 0;
+      transform: scale(0.95);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Invisibility State Transitions */
+    .stealth-screen-view.screen-share-mode .stealth-floating-pill {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.92);
+      pointer-events: none;
+    }
+
+    .stealth-screen-view.screen-share-mode .stealth-floating-card {
+      opacity: 0;
+      transform: translateY(-8px) scale(0.92);
+      pointer-events: none;
+    }
+
+    .stealth-screen-view.screen-share-mode .stealth-invis-stamp {
+      opacity: 1;
+      transform: scale(1);
     }
 
     /* ─── VISUAL PROOF SECTION ────────────────────────── */
-    .proof-section { background: var(--white); }
-    .proof-tabs { display: flex; gap: 8px; margin-top: 48px; border-bottom: 1px solid var(--gray-200); }
+    .proof-section {
+      background: var(--white);
+    }
+
+    .proof-tabs {
+      display: flex;
+      gap: 8px;
+      margin-top: 48px;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
     .proof-tab {
       font-family: var(--font-body);
-      font-size: 13.5px; font-weight: 600; color: var(--gray-500);
-      padding: 12px 20px; cursor: pointer; border-bottom: 2px solid transparent;
-      transition: all 0.15s; margin-bottom: -1px; background: none; border-top: none; border-left: none; border-right: none;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--gray-500);
+      padding: 12px 20px;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+      margin-bottom: -1px;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
     }
-    .proof-tab.active { color: var(--black); border-bottom-color: var(--black); font-weight: 700; }
-    .proof-visual { margin-top: 32px; }
+
+    .proof-tab.active {
+      color: var(--black);
+      border-bottom-color: var(--black);
+      font-weight: 700;
+    }
+
+    .proof-visual {
+      margin-top: 32px;
+    }
+
     .proof-tab-panel {
-      aspect-ratio: 16/8; border-radius: 20px;
+      aspect-ratio: 16/8;
+      border-radius: 20px;
       background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
       border: 1px solid var(--gray-200);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: var(--gray-500); font-size: 13px; text-align: center; padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray-500);
+      font-size: 13px;
+      text-align: center;
+      padding: 24px;
     }
 
-    /* ─── FAQ SECTION ─────────────────────────────────── */
-    .faq-section { background: var(--gray-50); }
-    .faq-list { 
-      margin-top: 56px; max-width: 720px; display: flex; flex-direction: column; 
-      border: 1px solid var(--gray-200); border-radius: 20px; overflow: hidden; background: white; 
-      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    /* ─── FAQ SECTION (FULL CONTAINER WIDTH) ───────────── */
+    .faq-section {
+      background: var(--gray-50);
     }
-    .faq-item { border-bottom: 1px solid var(--gray-100); }
-    .faq-item:last-child { border-bottom: none; }
+
+    .faq-list {
+      margin-top: 56px;
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--gray-200);
+      border-radius: 20px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
     .faq-question {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 22px 28px; cursor: pointer; font-size: 15px; font-weight: 700; color: var(--black);
-      background: none; border: none; width: 100%; text-align: left; gap: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 32px;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--black);
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      gap: 16px;
       font-family: var(--font-body);
     }
-    .faq-question:hover { background: var(--gray-50); }
-    .faq-chevron { font-size: 20px; color: var(--gray-400); flex-shrink: 0; transition: transform 0.2s; }
-    .faq-answer { font-size: 14px; color: var(--gray-600); line-height: 1.7; padding: 0 28px 22px; display: none; font-weight: 300; }
-    .faq-item.open .faq-answer { display: block; }
-    .faq-item.open .faq-chevron { transform: rotate(45deg); color: var(--black); }
 
-    /* ─── WAITLIST SECTION ────────────────────────────── */
-    .waitlist-section {
-      background: linear-gradient(160deg, #09090b 0%, #1e1b4b 50%, #09090b 100%);
-      color: white; text-align: center;
+    .faq-question:hover {
+      background: var(--gray-50);
     }
-    .waitlist-section .section-title { color: white; }
-    .waitlist-section .section-sub { color: #94a3b8; margin: 14px auto 0; }
-    .waitlist-form { max-width: 440px; margin: 44px auto 0; }
-    .waitlist-input-row { display: flex; gap: 10px; }
-    .waitlist-input {
-      flex: 1; padding: 14px 18px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 9999px; color: white; font-size: 14px; font-family: inherit;
-      outline: none; transition: border-color 0.2s;
-    }
-    .waitlist-input::placeholder { color: rgba(255,255,255,0.4); }
-    .waitlist-input:focus { border-color: rgba(255,255,255,0.6); }
-    .waitlist-submit {
-      padding: 14px 26px; background: white; color: var(--black);
-      font-size: 13.5px; font-weight: 700; border: none; border-radius: 9999px;
-      cursor: pointer; white-space: nowrap; transition: opacity 0.2s; font-family: inherit;
-    }
-    .waitlist-submit:hover { opacity: 0.9; }
-    .waitlist-msg { margin-top: 14px; font-size: 13px; color: #6ee7b7; min-height: 18px; font-weight: 400; }
 
-    /* ─── DOWNLOAD CTA ────────────────────────────────── */
-    .download-section { background: var(--white); text-align: center; }
-    .download-card {
-      background: var(--black); border-radius: 28px;
-      padding: 72px 48px; max-width: 760px; margin: 0 auto;
-      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    .faq-chevron {
+      font-size: 22px;
+      color: var(--gray-400);
+      flex-shrink: 0;
+      transition: transform 0.2s;
     }
-    .download-card h2 { 
+
+    .faq-answer {
+      font-size: 14.5px;
+      color: var(--gray-600);
+      line-height: 1.75;
+      padding: 0 32px 24px;
+      display: none;
+      font-weight: 300;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(45deg);
+      color: var(--black);
+    }
+
+    /* ─── LIGHT THEME CLOVI PREMIUM WAITLIST & DOWNLOAD CTA ─── */
+    .premium-cta-section {
+      background: var(--gray-50);
+      padding: 60px 24px 80px;
+      text-align: center;
+      border-top: 1px solid var(--gray-200);
+    }
+
+    .premium-cta-card {
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 28px;
+      padding: 48px 48px 40px;
+      max-width: 1040px;
+      margin: 0 auto;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+
+    .premium-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #2563eb;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 14px;
+    }
+
+    .premium-pill-dot {
+      width: 6px;
+      height: 6px;
+      background: #2563eb;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #2563eb;
+    }
+
+    .premium-title {
       font-family: var(--font-display);
-      font-size: 42px; font-weight: 400; letter-spacing: -0.5px; color: white; margin-bottom: 16px; 
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      color: var(--black);
+      margin-bottom: 10px;
     }
-    .download-card p { font-size: 15.5px; color: #94a3b8; line-height: 1.6; max-width: 440px; margin: 0 auto 38px; font-weight: 300; }
-    .download-card-ctas { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+    .premium-title em {
+      font-style: italic;
+      color: var(--blue-600);
+    }
+
+    .premium-sub {
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--gray-600);
+      line-height: 1.6;
+      max-width: 740px;
+      margin: 0 auto 28px;
+      font-weight: 300;
+    }
+
+    .waitlist-form {
+      max-width: 520px;
+      margin: 0 auto 8px;
+    }
+
+    .waitlist-input-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .waitlist-input {
+      flex: 1;
+      padding: 13px 20px;
+      background: var(--gray-50);
+      border: 1.5px solid var(--gray-300);
+      border-radius: 9999px;
+      color: var(--black);
+      font-size: 14.5px;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    .waitlist-input::placeholder {
+      color: var(--gray-400);
+    }
+
+    .waitlist-input:focus {
+      background: var(--white);
+      border-color: var(--blue-600);
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+
+    .waitlist-submit {
+      padding: 13px 28px;
+      background: var(--blue-600);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      border: none;
+      border-radius: 9999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      font-family: inherit;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.28);
+    }
+
+    .waitlist-submit:hover {
+      background: var(--blue-700);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.38);
+    }
+
+    .waitlist-msg {
+      margin-top: 12px;
+      font-size: 13.5px;
+      color: #059669;
+      min-height: 18px;
+      font-weight: 600;
+    }
+
+    .premium-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 26px auto 20px;
+      max-width: 460px;
+      color: var(--gray-400);
+      font-size: 12.5px;
+      font-weight: 500;
+    }
+
+    .premium-divider::before,
+    .premium-divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid var(--gray-200);
+    }
+
+    .premium-divider span {
+      padding: 0 14px;
+    }
+
+    .download-card-ctas {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     .btn-download {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--blue-600); color: white;
-      font-size: 14.5px; font-weight: 700;
-      padding: 14px 28px; border-radius: 9999px;
-      text-decoration: none; transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--black);
+      color: white;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
     }
-    .btn-download:hover { background: var(--blue-700); transform: translateY(-1px); }
+
+    .btn-download:hover {
+      background: var(--gray-800);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+
     .btn-github {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,255,255,0.1); color: white;
-      font-size: 14px; font-weight: 700; border: 1px solid rgba(255,255,255,0.18);
-      padding: 13px 24px; border-radius: 9999px; text-decoration: none; transition: background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      color: var(--gray-700);
+      font-size: 13.5px;
+      font-weight: 700;
+      border: 1px solid var(--gray-300);
+      padding: 11px 20px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
-    .btn-github:hover { background: rgba(255,255,255,0.18); }
-    .download-meta { margin-top: 24px; font-size: 12.5px; color: #64748b; }
+
+    .btn-github:hover {
+      background: var(--gray-50);
+      border-color: var(--gray-400);
+      color: var(--black);
+    }
+
+    .download-meta {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--gray-400);
+    }
 
     /* ─── MASSIVE CLOVI WATERMARK FOOTER ──────────────── */
     .brand-watermark-wrap {
@@ -1045,6 +1586,7 @@
       pointer-events: none;
       user-select: none;
     }
+
     .brand-watermark-text {
       font-family: var(--font-display);
       font-size: clamp(80px, 22vw, 290px);
@@ -1062,16 +1604,47 @@
     footer {
       border-top: 1px solid var(--gray-100);
       padding: 44px 32px;
-      display: flex; align-items: center; justify-content: space-between;
-      max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: 20px;
       background: var(--white);
     }
-    .footer-left { font-size: 13.5px; color: var(--gray-500); }
-    .footer-left a { color: var(--gray-800); font-weight: 700; text-decoration: none; }
-    .footer-left a:hover { text-decoration: underline; }
-    .footer-links { display: flex; align-items: center; gap: 28px; }
-    .footer-links a { font-size: 13.5px; color: var(--gray-500); text-decoration: none; transition: color 0.15s; }
-    .footer-links a:hover { color: var(--black); }
+
+    .footer-left {
+      font-size: 13.5px;
+      color: var(--gray-500);
+    }
+
+    .footer-left a {
+      color: var(--gray-800);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-left a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-size: 13.5px;
+      color: var(--gray-500);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-links a:hover {
+      color: var(--black);
+    }
 
     /* ─── RESPONSIVE: FINE-TUNED PROPORTIONAL SCALING ──── */
     @media (max-width: 1024px) {
@@ -1079,71 +1652,113 @@
         --overlay-scale: 0.88;
         top: 18px;
       }
+
       .how-bento-grid {
         grid-template-columns: 1fr;
         gap: 20px;
       }
-      .stealth-bento-grid {
-        grid-template-columns: 1fr;
+
+      .stealth-floating-pill,
+      .stealth-floating-card,
+      .stealth-invis-stamp {
+        right: 20px;
       }
     }
+
     @media (max-width: 768px) {
-      nav { padding: 0 20px; }
-      .nav-links { display: none; }
-      .hero { padding-top: 100px; }
-      .proof-tabs { overflow-x: auto; }
-      .waitlist-input-row { flex-direction: column; }
-      .window-address-bar { display: none; }
+      nav {
+        padding: 0 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .proof-tabs {
+        overflow-x: auto;
+      }
+
+      .waitlist-input-row {
+        flex-direction: column;
+      }
+
+      .window-address-bar {
+        display: none;
+      }
+
       .pc-desktop-wallpaper {
         padding: 18px 12px 14px;
         border-radius: 18px;
       }
+
       .pc-taskbar {
         margin-top: 14px;
         padding: 4px 10px;
         gap: 6px;
       }
-      .taskbar-search-pill, .taskbar-tray {
+
+      .taskbar-search-pill,
+      .taskbar-tray {
         display: none;
       }
+
       .taskbar-app-icon {
         width: 30px;
         height: 30px;
       }
+
       .clovi-interactive-overlay {
         --overlay-scale: 0.70;
         top: 10px;
       }
+
       .window-header-bar {
         height: 34px;
         padding: 0 12px;
       }
-      .stealth-metrics-row {
-        flex-direction: column;
-        gap: 24px;
-        padding: 28px 20px;
+
+      .faq-question {
+        padding: 18px 20px;
+        font-size: 15px;
       }
-      .stealth-metric-divider {
-        width: 80%;
-        height: 1px;
+
+      .faq-answer {
+        padding: 0 20px 18px;
+      }
+
+      .premium-cta-card {
+        padding: 44px 20px 36px;
       }
     }
+
     @media (max-width: 540px) {
       .hero-visual {
         padding: 0 10px;
       }
+
       .hero-window-frame {
         border-radius: 14px;
       }
+
       .clovi-interactive-overlay {
         --overlay-scale: 0.52;
         top: 6px;
       }
+
       .window-stealth-badge {
         font-size: 9.5px;
         padding: 2px 6px;
       }
+
+      .stealth-floating-card {
+        display: none;
+      }
     }
+
     @media (max-width: 390px) {
       .clovi-interactive-overlay {
         --overlay-scale: 0.44;
@@ -1161,7 +1776,7 @@
       <div class="nav-logo-mark"><span>CL</span></div>
       Clovi
     </a>
-    
+
     <!-- Mathematically Dead-Centered Nav Links -->
     <div class="nav-links">
       <a href="#how-it-works">How it works</a>
@@ -1172,9 +1787,11 @@
 
     <div class="nav-actions">
       <button class="btn-ghost" onclick="scrollToWaitlist()">Join Waitlist</button>
-      <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe" class="btn-primary">
+      <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe"
+        class="btn-primary">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+          <path
+            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
         </svg>
         Get for Windows
       </a>
@@ -1189,18 +1806,22 @@
     </div>
     <h1>#1 Undetectable AI<br>for <em>Exams &amp; Coding Tests</em></h1>
     <p class="hero-sub">
-      Clovi reads any question on your screen and streams direct written answers, formulas, or code — completely undetectable on Google Meet, Zoom, and screen shares.
+      Clovi reads any question on your screen and streams direct written answers, formulas, or code — completely
+      undetectable on Google Meet, Zoom, and screen shares.
     </p>
     <div class="hero-cta">
-      <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe" class="cta-primary">
+      <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe"
+        class="cta-primary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+          <path
+            d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
         </svg>
         Get for Windows — Free
       </a>
       <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="cta-secondary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+          <path
+            d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
         </svg>
         View GitHub
       </a>
@@ -1210,7 +1831,7 @@
     <!-- ─── HERO PRODUCT MOCKUP: EXPANDED SIZE & VIBRANT PC WALLPAPER ─── -->
     <div class="hero-visual">
       <div class="pc-desktop-wallpaper">
-        
+
         <!-- Windows Application Window Frame -->
         <div class="hero-window-frame">
           <!-- Desktop Window Bar -->
@@ -1235,7 +1856,7 @@
 
             <!-- FLOATING CLOVI OVERLAY (LIVE ANIMATION) -->
             <div class="clovi-interactive-overlay">
-              
+
               <!-- Capsule Dock -->
               <div class="capsule-dock-pill" id="demoCapsuleDock">
                 <span class="capsule-icon" title="Expand Full Workspace">👻</span>
@@ -1256,16 +1877,24 @@
                   <div class="solution-badge">✓ Python3 Optimal</div>
                   <div class="solution-meta-tag">Time: O(N) · Space: O(1)</div>
                 </div>
-                
+
                 <div class="solution-code-box">
                   <div><span class="code-kw">class</span> <span class="code-type">Solution</span>:</div>
-                  <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">def</span> <span class="code-fn">reverseString</span>(self, s: <span class="code-type">List</span>[<span class="code-type">str</span>]) -&gt; <span class="code-kw">None</span>:</div>
-                  <div class="code-comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# In-place two-pointer O(1) extra memory</div>
-                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l, r = <span class="code-num">0</span>, <span class="code-fn">len</span>(s) - <span class="code-num">1</span></div>
-                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">while</span> l &lt; r:</div>
-                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s[l], s[r] = s[r], s[l]</div>
-                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l += <span class="code-num">1</span></div>
-                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r -= <span class="code-num">1</span></div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">def</span> <span
+                      class="code-fn">reverseString</span>(self, s: <span class="code-type">List</span>[<span
+                      class="code-type">str</span>]) -&gt; <span class="code-kw">None</span>:</div>
+                  <div class="code-comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# In-place two-pointer O(1)
+                    extra memory</div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l, r = <span class="code-num">0</span>, <span
+                      class="code-fn">len</span>(s) - <span class="code-num">1</span></div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">while</span> l &lt; r:
+                  </div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s[l], s[r] = s[r], s[l]
+                  </div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l += <span
+                      class="code-num">1</span></div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r -= <span
+                      class="code-num">1</span></div>
                 </div>
 
                 <div class="solution-card-footer">
@@ -1283,13 +1912,15 @@
           <!-- Windows Start Icon -->
           <div class="taskbar-app-icon" title="Windows Start Menu">
             <svg width="16" height="16" viewBox="0 0 88 88" fill="none">
-              <path fill="#0078D4" d="M0 0h41.5v41.5H0zM46.5 0H88v41.5H46.5zM0 46.5h41.5V88H0zM46.5 46.5H88V88H46.5z"/>
+              <path fill="#0078D4" d="M0 0h41.5v41.5H0zM46.5 0H88v41.5H46.5zM0 46.5h41.5V88H0zM46.5 46.5H88V88H46.5z" />
             </svg>
           </div>
 
           <!-- Windows Search Pill -->
           <div class="taskbar-search-pill">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+              <circle cx="11" cy="11" r="8" />
+            </svg>
             <span>Search</span>
           </div>
 
@@ -1298,9 +1929,15 @@
             <svg width="20" height="20" viewBox="0 0 48 48">
               <circle cx="24" cy="24" r="10" fill="#ffffff"></circle>
               <circle cx="24" cy="24" r="7" fill="#1a73e8"></circle>
-              <path fill="#ea4335" d="M24,4C14.06,4,5.82,11.28,4.24,20.8L12.5,25.5C13.23,19.98,18.11,15.7,24,15.7c4.68,0,8.68,2.77,10.51,6.8L43.8,17.8C40.05,9.66,32.65,4,24,4z"></path>
-              <path fill="#fbbc04" d="M43.8,17.8L34.51,22.5c1.17,2.57,1.17,5.43,0,8L25.2,43.5c11.05,0,20-8.95,20-20C45.2,21.5,44.7,19.6,43.8,17.8z"></path>
-              <path fill="#34a853" d="M25.2,43.5L16.94,38.8C19.06,40.85,21.4,42,24,42c0.41,0,0.81-0.03,1.2-0.08L25.2,43.5z M4.24,20.8C4.08,21.84,4,22.91,4,24c0,10.15,7.58,18.52,17.3,19.8l9.29-13.3C28.77,32.22,26.54,33,24,33c-4.97,0-9-4.03-9-9c0-1.8,0.53-3.48,1.44-4.88L4.24,20.8z"></path>
+              <path fill="#ea4335"
+                d="M24,4C14.06,4,5.82,11.28,4.24,20.8L12.5,25.5C13.23,19.98,18.11,15.7,24,15.7c4.68,0,8.68,2.77,10.51,6.8L43.8,17.8C40.05,9.66,32.65,4,24,4z">
+              </path>
+              <path fill="#fbbc04"
+                d="M43.8,17.8L34.51,22.5c1.17,2.57,1.17,5.43,0,8L25.2,43.5c11.05,0,20-8.95,20-20C45.2,21.5,44.7,19.6,43.8,17.8z">
+              </path>
+              <path fill="#34a853"
+                d="M25.2,43.5L16.94,38.8C19.06,40.85,21.4,42,24,42c0.41,0,0.81-0.03,1.2-0.08L25.2,43.5z M4.24,20.8C4.08,21.84,4,22.91,4,24c0,10.15,7.58,18.52,17.3,19.8l9.29-13.3C28.77,32.22,26.54,33,24,33c-4.97,0-9-4.03-9-9c0-1.8,0.53-3.48,1.44-4.88L4.24,20.8z">
+              </path>
             </svg>
             <div class="taskbar-active-bar"></div>
           </div>
@@ -1308,7 +1945,8 @@
           <!-- VS Code -->
           <div class="taskbar-app-icon" title="Visual Studio Code">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#007ACC">
-              <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.27a1 1 0 0 0-.02 1.434L4.85 12 .307 15.296a1 1 0 0 0 .02 1.434l1.322 1.212a.998.998 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zM18 16.54l-6.1-4.54 6.1-4.54v9.08z"/>
+              <path
+                d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.27a1 1 0 0 0-.02 1.434L4.85 12 .307 15.296a1 1 0 0 0 .02 1.434l1.322 1.212a.998.998 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zM18 16.54l-6.1-4.54 6.1-4.54v9.08z" />
             </svg>
           </div>
 
@@ -1321,8 +1959,9 @@
           <!-- Terminal -->
           <div class="taskbar-app-icon" title="Windows Terminal">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="#1e293b">
-              <rect width="22" height="18" x="1" y="3" rx="3" fill="#18181b" stroke="#52525b" stroke-width="1.2"/>
-              <path d="M5 8l4 4-4 4M12 16h6" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <rect width="22" height="18" x="1" y="3" rx="3" fill="#18181b" stroke="#52525b" stroke-width="1.2" />
+              <path d="M5 8l4 4-4 4M12 16h6" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round"
+                stroke-linejoin="round" />
             </svg>
           </div>
 
@@ -1330,7 +1969,9 @@
 
           <!-- Tray Time -->
           <div class="taskbar-tray">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4z" />
+            </svg>
             <span>9:41 PM</span>
           </div>
         </div>
@@ -1342,10 +1983,10 @@
   <!-- ─────────── INFINITE MARQUEE TRUST CAROUSEL (DENSE & SEAMLESS) ─────────── -->
   <div class="trust-carousel-section">
     <div class="trust-carousel-label">WORKS INVISIBLY ON ALL EXAM PLATFORMS &amp; SCREEN SHARES</div>
-    
+
     <div class="trust-marquee-wrapper">
       <div class="trust-marquee-track">
-        
+
         <!-- Group 1 (3 full repetitions to guarantee zero right-side blank space) -->
         <div class="trust-marquee-group">
           <!-- Google Meet -->
@@ -1358,7 +1999,9 @@
               <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
               <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
               <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
-              <path fill="#4caf50" d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z"></path>
+              <path fill="#4caf50"
+                d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z">
+              </path>
             </svg>
             Google Meet
           </div>
@@ -1376,7 +2019,9 @@
           <!-- Discord -->
           <div class="trust-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <path fill="#536dfe" d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"></path>
+              <path fill="#536dfe"
+                d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z">
+              </path>
             </svg>
             Discord
           </div>
@@ -1385,8 +2030,11 @@
           <div class="trust-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
               <path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path>
-              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path>
-              <path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
+              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z">
+              </path>
+              <path fill="#5c6bc0"
+                d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z">
+              </path>
             </svg>
             Microsoft Teams
           </div>
@@ -1394,7 +2042,8 @@
           <!-- HackerRank -->
           <div class="trust-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" fill="#2EC866">
-              <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z"/>
+              <path
+                d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z" />
             </svg>
             HackerRank
           </div>
@@ -1402,7 +2051,8 @@
           <!-- LeetCode -->
           <div class="trust-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
-              <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
+              <path
+                d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z" />
             </svg>
             LeetCode
           </div>
@@ -1417,7 +2067,9 @@
               <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
               <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
               <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
-              <path fill="#4caf50" d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z"></path>
+              <path fill="#4caf50"
+                d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z">
+              </path>
             </svg>
             Google Meet
           </div>
@@ -1435,7 +2087,9 @@
           <!-- Discord Repeat -->
           <div class="trust-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <path fill="#536dfe" d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"></path>
+              <path fill="#536dfe"
+                d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z">
+              </path>
             </svg>
             Discord
           </div>
@@ -1444,8 +2098,11 @@
           <div class="trust-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
               <path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path>
-              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path>
-              <path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
+              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z">
+              </path>
+              <path fill="#5c6bc0"
+                d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z">
+              </path>
             </svg>
             Microsoft Teams
           </div>
@@ -1453,7 +2110,8 @@
           <!-- HackerRank Repeat -->
           <div class="trust-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" fill="#2EC866">
-              <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z"/>
+              <path
+                d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z" />
             </svg>
             HackerRank
           </div>
@@ -1461,7 +2119,8 @@
           <!-- LeetCode Repeat -->
           <div class="trust-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
-              <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
+              <path
+                d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z" />
             </svg>
             LeetCode
           </div>
@@ -1476,18 +2135,20 @@
     <div class="container">
       <div class="section-label">How Clovi works</div>
       <div class="section-title">See it. Snap it. <em>Solved.</em></div>
-      <div class="section-sub">Three seamless steps between any question on your screen and an optimal, undetectable solution.</div>
+      <div class="section-sub">Three seamless steps between any question on your screen and an optimal, undetectable
+        solution.</div>
 
       <div class="how-bento-grid">
-        
+
         <!-- Step 1 Card -->
         <div class="how-bento-card">
           <div class="how-step-header">
             <div class="how-step-badge badge-blue">01</div>
             <h3>Launch &amp; Pin</h3>
-            <p>Clovi floats as a tiny compact bar at the top of your screen. It is excluded from all screen recordings and screen shares.</p>
+            <p>Clovi floats as a tiny compact bar at the top of your screen. It is excluded from all screen recordings
+              and screen shares.</p>
           </div>
-          
+
           <div class="bento-visual-box" style="align-items: center; justify-content: center;">
             <div class="capsule-dock-pill" style="position: static; margin: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
               <span class="capsule-icon">👻</span>
@@ -1505,9 +2166,10 @@
           <div class="how-step-header">
             <div class="how-step-badge badge-purple">02</div>
             <h3>Press Ctrl + Shift + S</h3>
-            <p>One global keyboard shortcut snaps the question on your screen without losing focus on your browser tab.</p>
+            <p>One global keyboard shortcut snaps the question on your screen without losing focus on your browser tab.
+            </p>
           </div>
-          
+
           <div class="bento-visual-box" style="align-items: center; justify-content: center;">
             <div class="keycaps-row">
               <kbd class="keycap">Ctrl</kbd>
@@ -1526,14 +2188,16 @@
             <h3>Get Instant Answers</h3>
             <p>Gemini Vision reads the problem and streams the optimal code or direct answer into the floating card.</p>
           </div>
-          
+
           <div class="bento-visual-box" style="justify-content: center;">
             <div class="solution-code-box" style="margin: 0; font-size: 12px; line-height: 1.6;">
               <div><span class="code-kw">def</span> <span class="code-fn">reverseString</span>(s):</div>
-              <div>&nbsp;&nbsp;l, r = <span class="code-num">0</span>, <span class="code-fn">len</span>(s) - <span class="code-num">1</span></div>
+              <div>&nbsp;&nbsp;l, r = <span class="code-num">0</span>, <span class="code-fn">len</span>(s) - <span
+                  class="code-num">1</span></div>
               <div>&nbsp;&nbsp;<span class="code-kw">while</span> l &lt; r:</div>
               <div>&nbsp;&nbsp;&nbsp;&nbsp;s[l], s[r] = s[r], s[l]</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;l += <span class="code-num">1</span>; r -= <span class="code-num">1</span></div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;l += <span class="code-num">1</span>; r -= <span class="code-num">1</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1542,81 +2206,67 @@
     </div>
   </section>
 
-  <!-- ─────────── MERGED FLAGSHIP DARK STEALTH & CORE ENGINE SECTION ─────────── -->
+  <!-- ─────────── ULTRA-CLEAN MINIMAL DARK STEALTH SECTION ─────────── -->
   <section class="stealth-section" id="stealth">
     <div class="container">
-      
-      <!-- Section Header -->
-      <div class="stealth-header">
+
+      <!-- Minimal Header -->
+      <div class="stealth-header-clean">
         <div class="stealth-pill-badge">
           <span class="stealth-pill-dot"></span>
-          100% Undetectable
+          Stealth Mode
         </div>
-        <h2 class="stealth-title">Built to be <em>completely invisible.</em></h2>
+        <h2 class="stealth-title">Invisible to <em>screen share.</em></h2>
         <p class="stealth-sub">
-          Zero browser extensions. Zero DOM injection. Excluded from screen recordings and screen shares at the Windows OS kernel level.
+          Excluded from Google Meet, Zoom, Discord, and screen recordings at the Windows OS kernel level.
         </p>
       </div>
 
-      <!-- 4 Core Stealth & Performance Bento Cards -->
-      <div class="stealth-bento-grid">
-        
-        <!-- Card 1: Screen Share Invisibility -->
-        <div class="stealth-bento-card">
-          <div class="stealth-bento-icon">🫥</div>
-          <h3>Invisible to Screen Share &amp; Recording</h3>
-          <p>Uses Windows native kernel display affinity (<code>WDA_EXCLUDEFROMCAPTURE</code>). Clovi never appears in Google Meet, Zoom, Microsoft Teams, Discord, OBS, or system screen shares.</p>
+      <!-- Minimal Full-Width Showcase -->
+      <div class="stealth-showcase-container">
+
+        <!-- Interactive Mode Switcher -->
+        <div class="stealth-tabs-bar">
+          <button class="stealth-tab-btn active" id="simTabYou" onclick="setSimMode('you')">
+            <span class="tab-dot-green"></span>
+            <span>Your Display</span>
+          </button>
+          <button class="stealth-tab-btn" id="simTabShare" onclick="setSimMode('share')">
+            <span class="tab-dot-blue"></span>
+            <span>Google Meet / Screen Share</span>
+          </button>
         </div>
 
-        <!-- Card 2: Zero Focus Loss -->
-        <div class="stealth-bento-card">
-          <div class="stealth-bento-icon">🔒</div>
-          <h3>Zero Focus Loss &amp; Tab Blurs</h3>
-          <p>Built with <code>WS_EX_NOACTIVATE</code>. Clicking, dragging, or interacting with Clovi never steals focus from your browser window — zero tab-switch alerts, blur warnings, or proctor flags.</p>
+        <!-- Full-Width Screen View -->
+        <div class="stealth-screen-view" id="simScreenCanvas">
+
+          <img src="Leetcode_sc.png" alt="LeetCode Problem Screen" class="stealth-screen-img" />
+
+          <!-- Floating Clovi Dock (Visible to you) -->
+          <div class="stealth-floating-pill" id="simFloatingClovi">
+            <span>👻</span>
+            <span style="color:#60a5fa;">⚡ Snap &amp; Solve</span>
+          </div>
+
+          <!-- Minimal Floating Solution Tag (Visible to you) -->
+          <div class="stealth-floating-card" id="simFloatingSolution">
+            <span>✓ reverseString · O(1) space</span>
+          </div>
+
+          <!-- Minimal Invisibility Status Stamp (Visible in Screen Share Mode) -->
+          <div class="stealth-invis-stamp" id="simGhostWatermark">
+            <span>🔒 Excluded from screen capture</span>
+          </div>
+
         </div>
 
-        <!-- Card 3: Runs Outside Browser -->
-        <div class="stealth-bento-card">
-          <div class="stealth-bento-icon">📡</div>
-          <h3>Invisible to Proctoring Software</h3>
-          <p>No browser extensions, no injected scripts, and no background processes attached to your exam tab. Lives 100% outside the browser as a standalone portable app.</p>
-        </div>
-
-        <!-- Card 4: 1 Hotkey & Instant AI Speed -->
-        <div class="stealth-bento-card">
-          <div class="stealth-bento-icon">⚡</div>
-          <h3>1 Hotkey · &lt;2s Streamed Answers</h3>
-          <p>Press <kbd class="keycap-mini">Ctrl</kbd>+<kbd class="keycap-mini">Shift</kbd>+<kbd class="keycap-mini">S</kbd> anywhere. Gemini 2.5 Flash reads your screen optical buffer and streams verified solutions in real-time.</p>
-        </div>
-
-      </div>
-
-      <!-- 3 Impactful Stealth Metrics -->
-      <div class="stealth-metrics-row">
-        <div class="stealth-metric-col">
-          <div class="metric-number">100%</div>
-          <div class="metric-title">Screen Share Invisibility</div>
-          <div class="metric-desc">Verified on Google Meet, Zoom, Teams, Discord &amp; OBS</div>
-        </div>
-        <div class="stealth-metric-divider"></div>
-        <div class="stealth-metric-col">
-          <div class="metric-number">0</div>
-          <div class="metric-title">Focus Loss Warnings</div>
-          <div class="metric-desc">Never triggers tab-switch or window-blur alerts</div>
-        </div>
-        <div class="stealth-metric-divider"></div>
-        <div class="stealth-metric-col">
-          <div class="metric-number">&lt;2s</div>
-          <div class="metric-title">Time to First Answer</div>
-          <div class="metric-desc">Streams code and math solutions directly on screen</div>
-        </div>
       </div>
 
     </div>
   </section>
 
   <!-- ─────────── VISUAL PROOF ─────────── -->
-  <section class="proof-section">
+  <!-- <section class="proof-section">
     <div class="container">
       <div class="section-label">See it in action</div>
       <div class="section-title">Works on every <em>platform.</em></div>
@@ -1652,9 +2302,9 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
-  <!-- ─────────── FAQ ─────────── -->
+  <!-- ─────────── FAQ (FULL CONTAINER WIDTH) ─────────── -->
   <section class="faq-section" id="faq">
     <div class="container">
       <div class="section-label">FAQ</div>
@@ -1666,87 +2316,106 @@
             Will Clovi appear on screen share or proctoring software?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">No. Clovi uses <strong>WDA_EXCLUDEFROMCAPTURE</strong> — the native Win32 API Windows uses for DRM. It is completely absent from Google Meet, Zoom, Discord, Teams, OBS, Windows Game Bar, and proctoring overlays.</div>
+          <div class="faq-answer">No. Clovi uses <strong>WDA_EXCLUDEFROMCAPTURE</strong> — the native Win32 API Windows
+            uses for DRM. It is completely absent from Google Meet, Zoom, Discord, Teams, OBS, Windows Game Bar, and
+            proctoring overlays.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Does it cause tab-switch or focus-loss warnings?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">Never. Clovi uses <strong>WS_EX_NOACTIVATE</strong> — clicking anywhere on Clovi does not steal focus from your browser. Your exam tab stays active the whole time.</div>
+          <div class="faq-answer">Never. Clovi uses <strong>WS_EX_NOACTIVATE</strong> — clicking anywhere on Clovi does
+            not steal focus from your browser. Your exam tab stays active the whole time.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Is it really free? What's the catch?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">100% free and MIT open-source. No subscription. No sign-in. You can use your free Gemini API key from Google AI Studio (takes 30 seconds, no credit card).</div>
+          <div class="faq-answer">100% free and MIT open-source. No subscription. No sign-in. You can use your free
+            Gemini API key from Google AI Studio (takes 30 seconds, no credit card).</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             What kind of questions can Clovi solve?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">Anything visible on your screen — coding problems (Python, Java, C++, SQL), multiple-choice, math/STEM formulas, essay prompts, and system design.</div>
+          <div class="faq-answer">Anything visible on your screen — coding problems (Python, Java, C++, SQL),
+            multiple-choice, math/STEM formulas, essay prompts, and system design.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Does my data go anywhere?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">Your screenshots go directly to the Gemini API from your own device. Nothing is stored on any intermediary server. The app runs as a local standalone process.</div>
+          <div class="faq-answer">Your screenshots go directly to the Gemini API from your own device. Nothing is stored
+            on any intermediary server. The app runs as a local standalone process.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Will it work on macOS or Linux?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">Currently Windows 10/11 only. macOS and Linux builds are on our immediate roadmap. Join the waitlist to get notified the day they drop.</div>
+          <div class="faq-answer">Currently Windows 10/11 only. macOS and Linux builds are on our immediate roadmap.
+            Join the waitlist to get notified the day they drop.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─────────── WAITLIST ─────────── -->
-  <section class="waitlist-section" id="waitlist">
+  <!-- ─────────── LIGHT THEME CLOVI PREMIUM WAITLIST & DOWNLOAD CTA ─────────── -->
+  <section class="premium-cta-section" id="waitlist">
     <div class="container">
-      <div class="section-label" style="color:#93c5fd;">Early Access</div>
-      <div class="section-title">Join the Clovi waitlist.</div>
-      <p class="section-sub" style="margin:14px auto 0; text-align:center;">Be first to know when macOS, Linux, and earphone voice-whisper mode launch. Zero spam, ever.</p>
+      <div class="premium-cta-card">
 
-      <div class="waitlist-form">
-        <form id="waitlistForm" onsubmit="handleWaitlist(event)">
-          <div class="waitlist-input-row">
-            <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="Enter your email address..." required>
-            <button type="submit" class="waitlist-submit" id="waitlistBtn">Join</button>
-          </div>
-        </form>
-        <div class="waitlist-msg" id="waitlistMsg"></div>
-      </div>
-    </div>
-  </section>
+        <div class="premium-pill-badge">
+          <span class="premium-pill-dot"></span>
+          Early Access
+        </div>
+        <h2 class="premium-title">Join the waitlist for <em>Clovi Premium.</em></h2>
+        <p class="premium-sub">
+          Get notified when real-time earphone voice whispering, macOS &amp; Linux support, and ultra-low latency
+          reasoning models drop.
+        </p>
 
-  <!-- ─────────── DOWNLOAD CTA ─────────── -->
-  <section class="download-section">
-    <div class="container">
-      <div class="download-card">
-        <h2>Get Clovi for Windows</h2>
-        <p>Self-contained portable executable. No installer, no telemetry, no registration. Just download and run.</p>
+        <!-- Waitlist Form -->
+        <div class="waitlist-form">
+          <form id="waitlistForm" onsubmit="handleWaitlist(event)">
+            <div class="waitlist-input-row">
+              <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="Enter your email address..."
+                required>
+              <button type="submit" class="waitlist-submit" id="waitlistBtn">Join Waitlist</button>
+            </div>
+          </form>
+          <div class="waitlist-msg" id="waitlistMsg"></div>
+        </div>
+
+        <!-- Clean Divider -->
+        <div class="premium-divider">
+          <span>or get the free open-source release today</span>
+        </div>
+
+        <!-- Download Buttons -->
         <div class="download-card-ctas">
-          <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe" class="btn-download">
+          <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe"
+            class="btn-download">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
+              <path
+                d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
             </svg>
             Download Free (.exe)
           </a>
           <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="btn-github">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
+              <path
+                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
             </svg>
             Star on GitHub
           </a>
         </div>
-        <div class="download-meta">Windows 10 &amp; 11 · Portable .exe · MIT Open Source</div>
+        <div class="download-meta">Windows 10 &amp; 11 · Portable .exe · MIT License</div>
+
       </div>
     </div>
   </section>
@@ -1792,13 +2461,11 @@
       setTimeout(() => document.getElementById('waitlistEmail').focus(), 400);
     }
 
-    // ─── Supabase Waitlist Submit ─────────────────────────────
-    const SUPABASE_URL = 'https://lagpjyktjgekgoxwmvkr.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhZ3BqeWt0amdla2dveHdtdmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODczOTc0NDUsImV4cCI6MjEwMjk3MzQ0NX0.3eY8tEYW2K4py52kfXiP_jPAJAu7gRRxPHX5H9nu7TU';
-
+    // ─── Clovi Premium Waitlist Submit (Secure Serverless Function) ─
     async function handleWaitlist(e) {
       e.preventDefault();
-      const email = document.getElementById('waitlistEmail').value.trim();
+      const emailInput = document.getElementById('waitlistEmail');
+      const email = emailInput.value.trim();
       const btn = document.getElementById('waitlistBtn');
       const msg = document.getElementById('waitlistMsg');
 
@@ -1806,37 +2473,38 @@
 
       btn.disabled = true;
       btn.textContent = '...';
+      msg.textContent = '';
 
       try {
-        const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+        const res = await fetch('/.netlify/functions/waitlist', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json',
-            'apikey': SUPABASE_KEY,
-            'Authorization': `Bearer ${SUPABASE_KEY}`,
-            'Prefer': 'return=minimal'
+            'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ email, use_case: 'Landing Page Waitlist', operating_system: 'Windows' })
+          body: JSON.stringify({ email })
         });
 
+        const data = await res.json().catch(() => ({}));
+
         if (!res.ok) {
-          const err = await res.json().catch(() => ({}));
-          throw new Error(err.message || 'Failed to join');
+          throw new Error(data.error || 'Unable to join waitlist. Please try again.');
         }
 
-        document.getElementById('waitlistEmail').value = '';
+        emailInput.value = '';
         btn.textContent = '✓ Done';
         btn.style.background = '#22c55e';
-        msg.textContent = `🎉 You're on the list! We'll email ${email} when new features drop.`;
+        msg.textContent = `🎉 You're on the list! We'll email ${email} when Clovi Premium drops.`;
+        msg.style.color = '#059669';
       } catch (err) {
         btn.disabled = false;
-        btn.textContent = 'Join';
+        btn.textContent = 'Join Waitlist';
+        btn.style.background = '';
         msg.textContent = err.message || 'Error, please try again.';
-        msg.style.color = '#f87171';
+        msg.style.color = '#ef4444';
       }
     }
 
-    // ─── Automated Looping Demo Animation ──────────────────────
+    // ─── Automated Looping Hero Animation ──────────────────────
     function runLiveDemoAnimation() {
       const cursor = document.getElementById('demoVirtualCursor');
       const solveBtn = document.getElementById('demoSolveBtn');
@@ -1904,8 +2572,42 @@
       setInterval(step4_Loop, 7500);
     }
 
-    window.addEventListener('DOMContentLoaded', runLiveDemoAnimation);
+    // ─── Live Invisibility Demonstration Simulator ─────────────
+    let currentSimMode = 'you';
+    let simAutoInterval = null;
+
+    function setSimMode(mode) {
+      currentSimMode = mode;
+      const canvas = document.getElementById('simScreenCanvas');
+      const tabYou = document.getElementById('simTabYou');
+      const tabShare = document.getElementById('simTabShare');
+
+      if (!canvas || !tabYou || !tabShare) return;
+
+      if (mode === 'share') {
+        canvas.classList.add('screen-share-mode');
+        tabYou.classList.remove('active');
+        tabShare.classList.add('active');
+      } else {
+        canvas.classList.remove('screen-share-mode');
+        tabShare.classList.remove('active');
+        tabYou.classList.add('active');
+      }
+    }
+
+    function initSimAnimationLoop() {
+      simAutoInterval = setInterval(() => {
+        const nextMode = currentSimMode === 'you' ? 'share' : 'you';
+        setSimMode(nextMode);
+      }, 4000);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      runLiveDemoAnimation();
+      initSimAnimationLoop();
+    });
   </script>
 
 </body>
+
 </html>
