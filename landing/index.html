@@ -1,53 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YO-Assistant — The Ultimate Floating AI Stealth Capsule for Windows</title>
-  <meta name="description" content="A minimal, distraction-free floating desktop assistant powered by Google Gemini Vision. 100% screen-share invisible with zero background app interruption.">
+  <title>YO — Minimal Floating AI Assistant for Windows</title>
+  <meta name="description" content="A compact floating desktop assistant powered by Google Gemini Vision. Screen-share invisible with zero background application disruption.">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
       theme: {
         extend: {
           colors: {
             brand: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              400: '#60a5fa',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              900: '#1e3a8a',
+              DEFAULT: '#2563eb',
+              hover: '#1d4ed8',
+              subtle: '#eff6ff',
+              border: '#bfdbfe'
             },
-            dark: {
-              bg: '#070a13',
-              card: 'rgba(15, 23, 42, 0.75)',
-              border: 'rgba(255, 255, 255, 0.08)',
-              dock: 'rgba(255, 255, 255, 0.06)'
+            surface: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              300: '#cbd5e1',
+              800: '#1e293b',
+              900: '#0f172a'
             }
           },
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace']
-          },
-          animation: {
-            'glow-pulse': 'glowPulse 4s ease-in-out infinite alternate',
-            'float': 'float 5s ease-in-out infinite',
-            'spin-slow': 'spin 12s linear infinite'
-          },
-          keyframes: {
-            glowPulse: {
-              '0%': { opacity: '0.3', transform: 'scale(0.95)' },
-              '100%': { opacity: '0.7', transform: 'scale(1.05)' }
-            },
-            float: {
-              '0%, 100%': { transform: 'translateY(0px)' },
-              '50%': { transform: 'translateY(-10px)' }
-            }
+            sans: ['"Plus Jakarta Sans"', 'Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'Consolas', 'monospace']
           }
         }
       }
@@ -57,619 +40,470 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-  
-  <!-- GSAP & ScrollTrigger -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  
-  <!-- Canvas Confetti -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
   <style>
     body {
-      background-color: #070a13;
-      color: #f1f5f9;
-      overflow-x: hidden;
+      background-color: #ffffff;
+      color: #0f172a;
       font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-font-smoothing: antialiased;
     }
-    .glass-panel {
-      background: rgba(15, 23, 42, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.09);
+    .technical-grid {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
     }
-    .glass-card {
-      background: radial-gradient(130% 100% at 50% 0%, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.65) 100%);
+    .capsule-dock-demo {
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.25s ease;
-    }
-    .glass-card:hover {
-      border-color: rgba(59, 130, 246, 0.4);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(59, 130, 246, 0.15);
-    }
-    .text-gradient {
-      background: linear-gradient(135deg, #ffffff 30%, #93c5fd 70%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .text-gradient-cyan {
-      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .grid-background {
-      background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-      background-size: 32px 32px;
-    }
-    /* Simulated Capsule Styles */
-    .sim-dock {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    }
-    .dark .sim-dock {
-      background: rgba(30, 41, 59, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
     }
   </style>
 </head>
-<body class="selection:bg-brand-500 selection:text-white relative">
+<body class="min-h-screen flex flex-col selection:bg-blue-100 selection:text-blue-900">
 
-  <!-- Ambient Glow Effects -->
-  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-brand-600/20 blur-[130px] rounded-full pointer-events-none -z-10 animate-glow-pulse"></div>
-  <div class="fixed top-1/3 right-10 w-[450px] h-[300px] bg-cyan-600/15 blur-[120px] rounded-full pointer-events-none -z-10"></div>
-  <div class="fixed bottom-10 left-10 w-[500px] h-[300px] bg-indigo-600/15 blur-[140px] rounded-full pointer-events-none -z-10"></div>
-
-  <!-- Navigation Bar -->
-  <header class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[94%] max-w-6xl">
-    <nav class="glass-panel rounded-full px-5 py-3 flex items-center justify-between shadow-2xl">
+  <!-- Top Navigation Bar -->
+  <header class="w-full border-b border-surface-200 bg-white/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="w-full max-w-[1400px] mx-auto px-6 sm:px-10 h-16 flex items-center justify-between">
+      
+      <!-- Brand -->
       <div class="flex items-center gap-3">
-        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-600 to-cyan-400 flex items-center justify-center font-bold text-white shadow-lg shadow-brand-500/30 text-sm">
-          ⚡
-        </div>
-        <span class="font-bold text-lg tracking-tight text-white flex items-center gap-1.5">
-          YO<span class="text-xs px-2 py-0.5 rounded-full bg-brand-500/20 text-brand-400 font-mono font-normal border border-brand-500/30">Assistant</span>
+        <a href="#" class="flex items-center gap-2 text-slate-900 font-bold tracking-tight text-lg">
+          <span class="w-7 h-7 rounded-lg bg-slate-900 text-white flex items-center justify-center text-xs font-mono font-bold">YO</span>
+          <span>Assistant</span>
+        </a>
+        <span class="hidden sm:inline-block text-[11px] font-mono text-slate-500 bg-surface-100 px-2.5 py-0.5 rounded border border-surface-200">
+          Windows Desktop
         </span>
       </div>
 
-      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-slate-300">
-        <a href="#features" class="hover:text-white transition">Features</a>
-        <a href="#interactive-demo" class="hover:text-white transition">Interactive Capsule</a>
-        <a href="#screen-invisibility" class="hover:text-white transition">Invisibility Tech</a>
-        <a href="#shortcuts" class="hover:text-white transition">Hotkeys</a>
-        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="hover:text-white transition flex items-center gap-1.5 text-slate-400 hover:text-white">
-          <i data-lucide="github" class="w-4 h-4"></i> GitHub
+      <!-- Links -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-600">
+        <a href="#overview" class="hover:text-slate-950 transition">Overview</a>
+        <a href="#demo" class="hover:text-slate-950 transition">Capsule Demo</a>
+        <a href="#invisibility" class="hover:text-slate-950 transition">Screen Invisibility</a>
+        <a href="#shortcuts" class="hover:text-slate-950 transition">Shortcuts</a>
+        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="hover:text-slate-950 transition flex items-center gap-1">
+          <i data-lucide="github" class="w-3.5 h-3.5"></i> GitHub
         </a>
-      </div>
+      </nav>
 
+      <!-- Action -->
       <div class="flex items-center gap-3">
-        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" id="btnStarNav" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 border border-slate-700 transition">
-          <i data-lucide="star" class="w-3.5 h-3.5 text-yellow-400 fill-yellow-400"></i>
-          <span>Star Repo</span>
-          <span class="bg-slate-900/80 px-1.5 py-0.2 rounded-full text-[10px] text-slate-400" id="starCountNav">★</span>
+        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-surface-100 hover:bg-surface-200 border border-surface-200 transition">
+          <i data-lucide="star" class="w-3.5 h-3.5 text-amber-500 fill-amber-400"></i> Star
         </a>
-        <a href="#download" class="px-4 py-2 rounded-full bg-gradient-to-r from-brand-600 to-blue-500 hover:from-brand-500 hover:to-blue-400 text-white text-xs font-semibold shadow-lg shadow-brand-600/30 transition transform active:scale-95 flex items-center gap-1.5">
+        <a href="#download" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition flex items-center gap-1.5 shadow-sm">
           <i data-lucide="download" class="w-3.5 h-3.5"></i> Download .exe
         </a>
       </div>
-    </nav>
+    </div>
   </header>
 
   <!-- Hero Section -->
-  <section class="pt-36 pb-20 px-6 max-w-6xl mx-auto text-center relative grid-background">
-    <!-- Release Pill -->
-    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-panel text-xs font-medium text-brand-300 border border-brand-500/30 mb-8 animate-float shadow-inner">
-      <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-      <span>YO-Assistant v1.0.0 is Live & Open Source</span>
-      <i data-lucide="arrow-right" class="w-3 h-3 text-brand-400"></i>
-    </div>
+  <section id="overview" class="w-full technical-grid border-b border-surface-200 py-20 sm:py-28 px-6 sm:px-10">
+    <div class="w-full max-w-[1400px] mx-auto">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Left Hero Copy -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-blue-50 border border-blue-200 text-brand text-xs font-semibold font-mono mb-6">
+            <span>Win32 Native Overlay</span>
+            <span>•</span>
+            <span>Gemini Vision</span>
+          </div>
 
-    <!-- Title & Subtitle -->
-    <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-6 leading-[1.12]">
-      The Ultra-Compact <br class="hidden sm:inline">
-      <span class="text-gradient">AI Stealth Capsule</span> for Windows
-    </h1>
-    <p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-400 mb-10 leading-relaxed font-normal">
-      An unobtrusive floating desktop capsule powered by Google Gemini Vision. 
-      Instantly snap, solve, and stream answers right above your active workflow without stealing focus or appearing in screen shares.
-    </p>
+          <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-950 tracking-tight leading-[1.08] mb-6">
+            The invisible floating <br class="hidden sm:inline">
+            AI capsule for Windows.
+          </h1>
 
-    <!-- CTAs -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-      <button onclick="triggerDownload()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-brand-600 via-blue-600 to-cyan-500 hover:from-brand-500 hover:to-cyan-400 text-white font-semibold text-sm shadow-xl shadow-brand-600/35 transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5">
-        <i data-lucide="download" class="w-4 h-4"></i> Download Portable .exe
-        <span class="text-[11px] bg-white/20 px-2 py-0.5 rounded-md font-mono">v1.0.0</span>
-      </button>
+          <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mb-8 font-normal">
+            A minimal 210px desktop pill that solves problems directly from your screen. Captures and analyzes coding questions, math, and text with zero focus loss in Chrome or IDEs, and 0% visibility on screen shares.
+          </p>
 
-      <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="w-full sm:w-auto px-7 py-4 rounded-2xl glass-panel hover:bg-slate-800/60 text-slate-200 font-medium text-sm border border-slate-700 transition flex items-center justify-center gap-2">
-        <i data-lucide="github" class="w-4 h-4"></i> View Source Code
-      </a>
-    </div>
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/latest/download/Yo-Assistant-Portable.exe" class="px-6 py-3.5 rounded-lg bg-brand hover:bg-brand-hover text-white text-sm font-semibold transition flex items-center justify-center gap-2 shadow-md">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span>Download Yo-Assistant-Portable.exe</span>
+            </a>
+            <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="px-5 py-3.5 rounded-lg bg-white hover:bg-surface-50 text-slate-800 text-sm font-semibold border border-surface-300 transition flex items-center justify-center gap-2">
+              <i data-lucide="github" class="w-4 h-4"></i>
+              <span>View Repository</span>
+            </a>
+          </div>
 
-    <!-- Quick Stats -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto text-left">
-      <div class="glass-card rounded-2xl p-4">
-        <div class="text-2xl font-bold text-white mb-1">0%</div>
-        <div class="text-xs text-slate-400">Screen Share Visibility (Zero Black Boxes)</div>
+          <div class="mt-8 flex items-center gap-6 text-xs text-slate-500 font-mono">
+            <span>Portable Standalone</span>
+            <span>•</span>
+            <span>Windows 10 / 11</span>
+            <span>•</span>
+            <span>Local API Key Storage</span>
+          </div>
+        </div>
+
+        <!-- Right Quick Card Preview -->
+        <div class="lg:col-span-5 bg-white border border-surface-200 rounded-2xl p-6 shadow-xl relative">
+          <div class="text-xs font-mono font-semibold text-slate-400 uppercase tracking-wider mb-4 flex items-center justify-between">
+            <span>Desktop Capsule Preview</span>
+            <span class="text-emerald-600 flex items-center gap-1 font-bold">● Active Floating</span>
+          </div>
+
+          <!-- Mini Capsule Representation -->
+          <div class="bg-surface-50 border border-surface-200 rounded-xl p-5 mb-4">
+            <div class="flex items-center justify-between mb-3 text-xs text-slate-500 font-mono">
+              <span>Stealth Mode Dock (210px)</span>
+              <span>100% Non-Blocking</span>
+            </div>
+            
+            <div class="capsule-dock-demo rounded-full px-3 py-1.5 flex items-center justify-between gap-2 max-w-[260px] mx-auto">
+              <span class="text-slate-400 font-mono text-xs cursor-grab">⋮⋮</span>
+              <div class="flex items-center gap-1.5">
+                <span class="w-7 h-7 rounded-full bg-blue-50 border border-blue-200 text-brand flex items-center justify-center text-xs font-bold" title="Snap & Solve">⚡</span>
+                <span class="w-7 h-7 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center text-xs" title="Snap Screen">📸</span>
+                <span class="w-7 h-7 rounded-full bg-white border border-slate-200 text-slate-700 flex items-center justify-center text-xs" title="Custom Prompt">💬</span>
+                <span class="w-7 h-7 rounded-full bg-purple-50 border border-purple-200 text-purple-700 flex items-center justify-center text-xs" title="Expand Full Window">👻</span>
+              </div>
+            </div>
+          </div>
+
+          <ul class="space-y-2 text-xs text-slate-600 font-medium">
+            <li class="flex items-center gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i>
+              <span>Direct written answers without chat fluff.</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i>
+              <span>Chrome & Antigravity retain active foreground focus.</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600 flex-shrink-0"></i>
+              <span>Zero black box artifacts on Google Meet / Zoom.</span>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="glass-card rounded-2xl p-4">
-        <div class="text-2xl font-bold text-white mb-1">&lt; 35ms</div>
-        <div class="text-xs text-slate-400">Instant Screen Capture Latency</div>
-      </div>
-      <div class="glass-card rounded-2xl p-4">
-        <div class="text-2xl font-bold text-white mb-1">210 px</div>
-        <div class="text-xs text-slate-400">Ultra-Compact Floating Dock Size</div>
-      </div>
-      <div class="glass-card rounded-2xl p-4">
-        <div class="text-2xl font-bold text-white mb-1">100%</div>
-        <div class="text-xs text-slate-400">Background Focus Retained</div>
-      </div>
+
     </div>
   </section>
 
-  <!-- Interactive Capsule Playground Section -->
-  <section id="interactive-demo" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="text-center mb-12">
-      <div class="text-xs font-semibold text-brand-400 uppercase tracking-wider mb-2 font-mono">Live Interactive Demo</div>
-      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Try the Capsule Simulator</h2>
-      <p class="text-slate-400 text-sm max-w-xl mx-auto">Click the action buttons below to test how the floating stealth capsule solves problems, queues screenshots, and pops micro answers in real-time.</p>
-    </div>
-
-    <div class="relative w-full h-[460px] rounded-3xl glass-panel border border-slate-800 overflow-hidden shadow-2xl flex flex-col justify-between p-6 bg-gradient-to-b from-slate-950 to-slate-900">
+  <!-- Interactive Capsule Simulator -->
+  <section id="demo" class="w-full py-20 px-6 sm:px-10 border-b border-surface-200 bg-surface-50">
+    <div class="w-full max-w-[1400px] mx-auto">
       
-      <!-- Mock Workspace Background (VSCode & Chrome mock) -->
-      <div class="absolute inset-0 opacity-20 pointer-events-none p-6 font-mono text-xs text-slate-400">
-        <div class="text-cyan-400 font-bold mb-2">// Active Workspace: Visual Studio Code & Chrome Browser</div>
-        <div>def solve_two_sum(nums, target):</div>
-        <div class="pl-4">lookup = {}</div>
-        <div class="pl-4">for i, n in enumerate(nums):</div>
-        <div class="pl-8">diff = target - n</div>
-        <div class="pl-8">if diff in lookup: return [lookup[diff], i]</div>
-        <div class="pl-8">lookup[n] = i</div>
-        <div class="mt-4 text-emerald-400"># Background Application remains 100% active & focused</div>
+      <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <span class="text-xs font-mono font-bold text-brand uppercase tracking-wider">Functional Simulator</span>
+          <h2 class="text-3xl font-extrabold text-slate-950 mt-1">Test the Capsule Actions</h2>
+        </div>
+        <p class="text-xs text-slate-500 font-mono max-w-md">
+          Click the interactive buttons below to test how the capsule executes screen captures, queues snapshots, and displays answers in a pop-up micro bubble.
+        </p>
       </div>
 
-      <!-- Controls Guidance Bar -->
-      <div class="flex items-center justify-between z-10 text-xs text-slate-400 font-mono border-b border-slate-800 pb-3">
-        <span class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Virtual Desktop Active
-        </span>
-        <span class="text-slate-500">Interactive Simulation: Click any capsule button below</span>
-      </div>
-
-      <!-- Floating Capsule Simulator (Draggable Center Stage) -->
-      <div class="relative z-20 mx-auto flex flex-col items-end gap-2 w-[340px] transition-all" id="simCapsuleWrapper">
+      <!-- Desktop Mock Stage -->
+      <div class="w-full bg-white border border-surface-200 rounded-2xl p-8 shadow-sm relative min-h-[380px] flex flex-col justify-between overflow-hidden">
         
-        <!-- Simulated Micro Solution Bubble (Above Dock) -->
-        <div id="simBubble" class="w-full bg-slate-900/90 border border-brand-500/40 rounded-xl p-3.5 shadow-2xl backdrop-blur-xl transition-all duration-300 hidden text-xs">
-          <div class="flex items-center justify-between border-b border-slate-800 pb-2 mb-2">
-            <span class="text-brand-400 font-semibold flex items-center gap-1.5">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i> Direct Solution
-            </span>
-            <button onclick="simCopyAnswer()" id="btnSimCopy" class="text-slate-400 hover:text-white px-2 py-0.5 rounded bg-slate-800 text-[10px] flex items-center gap-1">
-              <i data-lucide="copy" class="w-3 h-3"></i> Copy
+        <!-- Mock Background Workspace -->
+        <div class="font-mono text-xs text-slate-400 select-none opacity-40">
+          <p class="text-slate-600 font-semibold mb-2"># Active Application: Visual Studio Code / Google Chrome</p>
+          <p>def two_sum(nums: list[int], target: int) -&gt; list[int]:</p>
+          <p class="pl-4">seen = {}</p>
+          <p class="pl-4">for index, value in enumerate(nums):</p>
+          <p class="pl-8">remaining = target - value</p>
+          <p class="pl-8">if remaining in seen: return [seen[remaining], index]</p>
+          <p class="pl-8">seen[value] = index</p>
+        </div>
+
+        <!-- Interactive Capsule Component -->
+        <div class="my-auto mx-auto w-full max-w-[360px] flex flex-col items-end gap-2 z-10 transition-all">
+          
+          <!-- Micro Solution Pop-up Bubble -->
+          <div id="demoBubble" class="w-full bg-white border border-blue-300 rounded-xl p-3 shadow-lg hidden">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-1.5 mb-2">
+              <span class="text-xs font-bold text-brand flex items-center gap-1">✨ Direct Solution</span>
+              <button onclick="demoCopy()" id="demoCopyBtn" class="text-[10px] font-mono font-semibold px-2 py-0.5 rounded bg-surface-100 hover:bg-surface-200 text-slate-700">
+                📋 Copy
+              </button>
+            </div>
+            <div class="text-xs font-mono text-slate-800 leading-relaxed" id="demoBubbleBody">
+              <span class="text-emerald-600 font-bold">Answer: O(n) Hash Map approach</span>
+              <pre class="bg-surface-100 p-2 rounded text-[11px] text-slate-900 mt-1">return [seen[target - value], index]</pre>
+            </div>
+          </div>
+
+          <!-- Capsule Dock -->
+          <div class="capsule-dock-demo rounded-full px-3 py-1.5 flex items-center gap-2">
+            <span class="text-slate-400 font-mono text-xs cursor-grab select-none">⋮⋮</span>
+            
+            <button onclick="demoSolve()" class="w-7 h-7 rounded-full bg-blue-50 hover:bg-blue-100 border border-blue-200 text-brand flex items-center justify-center text-xs font-bold transition active:scale-95" title="Snap & Solve">
+              <span id="demoSolveIcon">⚡</span>
+              <span id="demoSolveSpinner" class="w-3.5 h-3.5 border-2 border-brand border-t-transparent rounded-full animate-spin hidden"></span>
+            </button>
+
+            <button onclick="demoSnap()" class="relative w-7 h-7 rounded-full bg-white hover:bg-surface-100 border border-slate-200 text-slate-700 flex items-center justify-center text-xs transition active:scale-95" title="Snap Screen">
+              <span>📸</span>
+              <span id="demoSnapBadge" class="absolute -top-1 -right-1 bg-red-600 text-white text-[9px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center hidden">0</span>
+            </button>
+
+            <button onclick="demoTogglePrompt()" class="w-7 h-7 rounded-full bg-white hover:bg-surface-100 border border-slate-200 text-slate-700 flex items-center justify-center text-xs transition active:scale-95" title="Prompt">
+              💬
+            </button>
+
+            <button onclick="demoExpand()" class="w-7 h-7 rounded-full bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 flex items-center justify-center text-xs transition active:scale-95" title="Full Window">
+              👻
             </button>
           </div>
-          <div class="text-slate-200 font-mono leading-relaxed" id="simBubbleText">
-            <div class="text-emerald-400 font-semibold mb-1">Answer: O(n) Time Complexity</div>
-            <pre class="bg-slate-950/80 p-2 rounded text-[11px] text-cyan-300 overflow-x-auto">return [lookup[target - num], i]</pre>
+
+          <!-- Slide-down Input Bar -->
+          <div id="demoInputBar" class="w-full bg-white border border-slate-300 rounded-xl p-2 shadow-md flex items-center gap-2 hidden">
+            <input type="text" id="demoInputVal" placeholder="Type prompt (e.g. solve in C++)..." class="flex-1 bg-transparent text-xs text-slate-900 outline-none font-mono px-2">
+            <button onclick="demoSendPrompt()" class="bg-brand text-white px-2.5 py-1 rounded text-xs font-semibold">➤</button>
           </div>
         </div>
 
-        <!-- Simulated Capsule Dock -->
-        <div class="sim-dock rounded-full px-3 py-1.5 flex items-center gap-2 shadow-2xl border border-white/20">
-          <div class="text-slate-400 cursor-grab px-1 text-xs select-none" title="Drag Handle">⋮⋮</div>
-          
-          <!-- Snap & Solve -->
-          <button onclick="simSnapAndSolve()" class="w-8 h-8 rounded-full bg-brand-500/20 hover:bg-brand-500/40 border border-brand-500/40 flex items-center justify-center text-brand-300 transition transform active:scale-95 text-xs font-bold" title="⚡ Snap & Solve">
-            <span id="simSolveIcon">⚡</span>
-            <span id="simSolveSpinner" class="w-3.5 h-3.5 border-2 border-brand-500 border-t-transparent rounded-full animate-spin hidden"></span>
-          </button>
-
-          <!-- Snap Screen (Multi-attach) -->
-          <button onclick="simSnapScreen()" class="relative w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-200 transition transform active:scale-95 text-xs" title="📸 Multi-Snap">
-            <span>📸</span>
-            <span id="simSnapBadge" class="absolute -top-1 -right-1 bg-red-500 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-slate-900 hidden">0</span>
-          </button>
-
-          <!-- Custom Prompt -->
-          <button onclick="simTogglePrompt()" class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-200 transition transform active:scale-95 text-xs" title="💬 Custom Prompt">
-            💬
-          </button>
-
-          <!-- Expand -->
-          <button onclick="simExpand()" class="w-8 h-8 rounded-full bg-indigo-500/20 hover:bg-indigo-500/40 border border-indigo-500/40 flex items-center justify-center text-indigo-300 transition transform active:scale-95 text-xs" title="👻 Full Mode">
-            👻
-          </button>
+        <!-- Simulator Live Log -->
+        <div class="flex items-center justify-between text-xs text-slate-500 font-mono border-t border-slate-100 pt-3">
+          <span id="demoStatus">Status: Ready. Click ⚡ to Solve or 📸 to add screenshots.</span>
+          <button onclick="demoReset()" class="text-brand hover:underline">Reset Demo</button>
         </div>
 
-        <!-- Simulated Input Bar (Below Dock) -->
-        <div id="simInputBar" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl p-2 shadow-2xl backdrop-blur-xl flex items-center gap-2 hidden">
-          <input type="text" id="simInputVal" placeholder="Type prompt (e.g. solve in Python)..." class="bg-transparent border-none text-xs text-white outline-none flex-1 font-mono px-2">
-          <button onclick="simSendPrompt()" class="bg-brand-600 hover:bg-brand-500 text-white px-3 py-1 rounded-lg text-xs font-semibold">➤</button>
-        </div>
-      </div>
-
-      <!-- Simulator Interactive Footnote -->
-      <div class="flex items-center justify-between text-xs text-slate-500 z-10 font-mono">
-        <span id="simStatus">Status: Ready. Click ⚡ to Solve instantly or 📸 to queue screenshots.</span>
-        <button onclick="resetSim()" class="hover:text-slate-300 underline">Reset Demo</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Full-Width Feature Deep Dive Section -->
-  <section id="features" class="py-24 px-6 max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <div class="text-xs font-semibold text-brand-400 uppercase tracking-wider mb-2 font-mono">Engineered For Focus</div>
-      <h2 class="text-3xl sm:text-5xl font-bold text-white mb-4">Core Capabilities</h2>
-      <p class="text-slate-400 text-sm max-w-xl mx-auto">Every feature is designed from the ground up to solve complex coding, math, and screen problems without breaking your train of thought.</p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-      
-      <!-- Feature 1 -->
-      <div class="glass-card rounded-3xl p-7 flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-brand-500/10 border border-brand-500/30 flex items-center justify-center text-brand-400 mb-5">
-            <i data-lucide="zap" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-2">1-Click Snap & Solve</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Captures your desktop instantly and feeds it to Google Gemini Flash. Receives clean, runnable code or exact mathematical values streamed directly to your screen.
-          </p>
-        </div>
-        <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800 text-[11px] font-mono text-slate-300 flex items-center justify-between">
-          <span>Action: Single click</span>
-          <span class="text-brand-400 font-semibold">⚡ Direct Answer</span>
-        </div>
-      </div>
-
-      <!-- Feature 2 -->
-      <div class="glass-card rounded-3xl p-7 flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-5">
-            <i data-lucide="eye-off" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-2">100% Screen Share Invisible</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Employs direct Win32 `WDA_EXCLUDEFROMCAPTURE` API calls. Completely invisible in Google Meet, Discord, Zoom, and Teams screen sharing with zero black box shadows.
-          </p>
-        </div>
-        <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800 text-[11px] font-mono text-slate-300 flex items-center justify-between">
-          <span>Display Affinity: 0x11</span>
-          <span class="text-cyan-400 font-semibold">🛡️ Zero Black Box</span>
-        </div>
-      </div>
-
-      <!-- Feature 3 -->
-      <div class="glass-card rounded-3xl p-7 flex flex-col justify-between">
-        <div>
-          <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 mb-5">
-            <i data-lucide="focus" class="w-6 h-6"></i>
-          </div>
-          <h3 class="text-xl font-bold text-white mb-2">Zero Focus Interruption</h3>
-          <p class="text-slate-400 text-xs leading-relaxed mb-4">
-            Built with active foreground HWND tracking. Clicking, dragging, or snapping with Yo immediately retains active keyboard and window focus in Chrome or VS Code.
-          </p>
-        </div>
-        <div class="bg-slate-950/60 rounded-xl p-3 border border-slate-800 text-[11px] font-mono text-slate-300 flex items-center justify-between">
-          <span>Focus Hand-off</span>
-          <span class="text-indigo-400 font-semibold">🎯 100% Kept</span>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      
-      <!-- Feature 4 -->
-      <div class="glass-card rounded-3xl p-7">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
-            <i data-lucide="layers" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-white">Multi-Screenshot Queue (Up to 5)</h3>
-            <p class="text-xs text-slate-400">Snap multiple diagrams or problem sub-sections before submitting.</p>
-          </div>
-        </div>
-        <p class="text-slate-400 text-xs leading-relaxed mb-4">
-          Take up to 5 consecutive screenshots with a live counter badge. Gemini processes all attachments multimodally in a single request.
-        </p>
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-1 rounded-md bg-slate-800 text-[10px] font-mono text-slate-300">📸 1 / 5</span>
-          <span class="px-2.5 py-1 rounded-md bg-slate-800 text-[10px] font-mono text-slate-300">📸 2 / 5</span>
-          <span class="px-2.5 py-1 rounded-md bg-brand-500/20 text-brand-300 text-[10px] font-mono border border-brand-500/30">Auto Multi-modal</span>
-        </div>
-      </div>
-
-      <!-- Feature 5 -->
-      <div class="glass-card rounded-3xl p-7">
-        <div class="flex items-center gap-4 mb-4">
-          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-            <i data-lucide="key" class="w-5 h-5"></i>
-          </div>
-          <div>
-            <h3 class="text-lg font-bold text-white">Zero Hardcoded Keys & Private</h3>
-            <p class="text-xs text-slate-400">Your personal Gemini API key stays on your local machine.</p>
-          </div>
-        </div>
-        <p class="text-slate-400 text-xs leading-relaxed mb-4">
-          No external tracking, no backend database exfiltration, and no license servers. Your API key is stored locally in your encrypted OS `%APPDATA%`.
-        </p>
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-1 rounded-md bg-slate-800 text-[10px] font-mono text-slate-300">100% Local Storage</span>
-          <span class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-[10px] font-mono border border-emerald-500/30">Open Source MIT</span>
-        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Screen Invisibility Showcase Section -->
-  <section id="screen-invisibility" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="glass-panel rounded-3xl p-8 sm:p-12 border border-slate-800 relative overflow-hidden">
+  <!-- Invisibility Engine & Architecture -->
+  <section id="invisibility" class="w-full py-20 px-6 sm:px-10 border-b border-surface-200 bg-white">
+    <div class="w-full max-w-[1400px] mx-auto">
       
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <div class="text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-2 font-mono">Proprietary Overlay Architecture</div>
-          <h2 class="text-3xl sm:text-4xl font-bold text-white mb-5">
-            How YO-Assistant Stays <br>
-            <span class="text-gradient-cyan">Completely Invisible</span>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left Description -->
+        <div class="lg:col-span-5">
+          <span class="text-xs font-mono font-bold text-brand uppercase tracking-wider">Invisibility Architecture</span>
+          <h2 class="text-3xl font-extrabold text-slate-950 mt-1 mb-4">
+            How screen exclusion works without black boxes.
           </h2>
-          <p class="text-slate-300 text-sm leading-relaxed mb-6">
-            Standard screen capture tools use legacy protection that produces a conspicuous black box during video streams. 
-            YO-Assistant bypasses this by configuring native Windows Desktop Window Manager (DWM) display affinities:
+          <p class="text-sm text-slate-600 leading-relaxed mb-6 font-normal">
+            Standard screen capture blockers call Chromium's built-in <code class="bg-surface-100 px-1 py-0.5 rounded text-slate-900 font-mono text-xs">setContentProtection(true)</code>, which triggers Windows legacy <code class="bg-surface-100 px-1 py-0.5 rounded text-slate-900 font-mono text-xs">WDA_MONITOR</code>. This replaces the window with a noticeable black box in video streams.
           </p>
+          <p class="text-sm text-slate-600 leading-relaxed font-normal">
+            YO-Assistant replaces that mechanism entirely with direct Win32 API calls, enforcing <code class="bg-surface-100 px-1 py-0.5 rounded text-slate-900 font-mono text-xs">WDA_EXCLUDEFROMCAPTURE (0x11)</code> across all native HWND surfaces so the screen sharing stream sees directly through the window.
+          </p>
+        </div>
 
-          <div class="space-y-3 font-mono text-xs">
-            <div class="flex items-start gap-3 bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-              <span class="text-emerald-400 font-bold">✓</span>
-              <div>
-                <strong class="text-white">WDA_EXCLUDEFROMCAPTURE (0x11):</strong>
-                <span class="text-slate-400 block mt-0.5">DWM renders the underlying desktop and apps directly without black boxes.</span>
+        <!-- Right Architecture Comparison Table -->
+        <div class="lg:col-span-7 bg-surface-50 border border-surface-200 rounded-2xl p-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 font-mono text-xs">
+            
+            <!-- Traditional Method -->
+            <div class="bg-white border border-red-200 rounded-xl p-5">
+              <div class="text-red-600 font-bold mb-2 flex items-center gap-1.5">
+                <span>✕</span>
+                <span>Traditional Tools</span>
               </div>
+              <ul class="space-y-2 text-slate-600">
+                <li>• Sets <code class="text-slate-800">WDA_MONITOR (0x01)</code></li>
+                <li>• Creates a solid black box on screen share</li>
+                <li>• DWM drop shadow renders outline on drag</li>
+                <li>• Steals active focus on mouse click</li>
+              </ul>
             </div>
-            <div class="flex items-start gap-3 bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-              <span class="text-emerald-400 font-bold">✓</span>
-              <div>
-                <strong class="text-white">Child HWND Recursion:</strong>
-                <span class="text-slate-400 block mt-0.5">EnumChildWindows propagates capture exclusion to all Chromium renderer surfaces.</span>
+
+            <!-- YO-Assistant Architecture -->
+            <div class="bg-white border border-emerald-200 rounded-xl p-5">
+              <div class="text-emerald-600 font-bold mb-2 flex items-center gap-1.5">
+                <span>✓</span>
+                <span>YO-Assistant Architecture</span>
               </div>
+              <ul class="space-y-2 text-slate-600">
+                <li>• Enforces <code class="text-slate-800">WDA_EXCLUDEFROMCAPTURE (0x11)</code></li>
+                <li>• Underlying desktop paints 100% cleanly</li>
+                <li>• Zero OS window frame shadow</li>
+                <li>• Continuous foreground HWND focus return</li>
+              </ul>
             </div>
-            <div class="flex items-start gap-3 bg-slate-900/80 p-3 rounded-xl border border-slate-800">
-              <span class="text-emerald-400 font-bold">✓</span>
-              <div>
-                <strong class="text-white">Pure CSS Shadows:</strong>
-                <span class="text-slate-400 block mt-0.5">Disables OS drop shadows (`hasShadow: false`) to eliminate drag outlines.</span>
-              </div>
-            </div>
+
+          </div>
+
+          <div class="mt-4 p-4 rounded-xl bg-white border border-surface-200 text-xs font-mono text-slate-600">
+            <span class="font-bold text-slate-900 block mb-1">Win32 API Chain:</span>
+            <code>SetWindowDisplayAffinity(hwnd, 0x00000011) &rarr; EnumChildWindows(hwnd, applyAffinity) &rarr; SetWindowPos(HWND_TOPMOST, SWP_NOACTIVATE)</code>
           </div>
         </div>
 
-        <!-- Visual Comparison Graphic -->
-        <div class="space-y-4 font-mono text-xs">
-          <!-- Traditional Tool -->
-          <div class="bg-red-950/20 border border-red-500/30 rounded-2xl p-4">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-red-400 font-bold">❌ Other Tools / setContentProtection(true)</span>
-              <span class="text-[10px] text-red-400/80 bg-red-900/40 px-2 py-0.5 rounded">Black Box Artifact</span>
-            </div>
-            <div class="h-20 bg-black rounded-lg border border-red-500/40 flex items-center justify-center text-red-400/70 text-[11px]">
-              [Solid Black Box visible on Google Meet / Zoom]
-            </div>
-          </div>
-
-          <!-- YO Assistant -->
-          <div class="bg-emerald-950/20 border border-emerald-500/30 rounded-2xl p-4">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-emerald-400 font-bold">✅ YO-Assistant (Native Win32 0x11)</span>
-              <span class="text-[10px] text-emerald-400/80 bg-emerald-900/40 px-2 py-0.5 rounded">100% Invisible</span>
-            </div>
-            <div class="h-20 bg-slate-900/60 rounded-lg border border-emerald-500/40 flex items-center justify-center text-emerald-300 text-[11px] p-2 text-center">
-              Screen shares see directly through to your Chrome & code behind the capsule!
-            </div>
-          </div>
-        </div>
       </div>
 
     </div>
   </section>
 
-  <!-- Global Shortcuts Matrix Section -->
-  <section id="shortcuts" class="py-20 px-6 max-w-6xl mx-auto">
-    <div class="text-center mb-12">
-      <div class="text-xs font-semibold text-brand-400 uppercase tracking-wider mb-2 font-mono">Lightning Fast Workflows</div>
-      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">Global Shortcuts Reference</h2>
-      <p class="text-slate-400 text-sm max-w-lg mx-auto">Work seamlessly anywhere on Windows with global system-wide key combinations.</p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="glass-card rounded-2xl p-5 text-center">
-        <div class="font-mono text-sm font-bold text-brand-300 mb-2 bg-slate-900/80 py-2 rounded-lg border border-slate-800">
-          Ctrl + Shift + S
-        </div>
-        <div class="font-semibold text-white text-xs mb-1">Instant Snap & Solve</div>
-        <div class="text-[11px] text-slate-400">Snaps full screen & streams direct answer</div>
-      </div>
-
-      <div class="glass-card rounded-2xl p-5 text-center">
-        <div class="font-mono text-sm font-bold text-brand-300 mb-2 bg-slate-900/80 py-2 rounded-lg border border-slate-800">
-          Ctrl + Alt + S
-        </div>
-        <div class="font-semibold text-white text-xs mb-1">Snap & Queue</div>
-        <div class="text-[11px] text-slate-400">Captures screenshot into multi-queue (1-5)</div>
-      </div>
-
-      <div class="glass-card rounded-2xl p-5 text-center">
-        <div class="font-mono text-sm font-bold text-brand-300 mb-2 bg-slate-900/80 py-2 rounded-lg border border-slate-800">
-          Ctrl + Shift + Space
-        </div>
-        <div class="font-semibold text-white text-xs mb-1">Toggle Visibility</div>
-        <div class="text-[11px] text-slate-400">Quick show / hide the floating overlay</div>
-      </div>
-
-      <div class="glass-card rounded-2xl p-5 text-center">
-        <div class="font-mono text-sm font-bold text-brand-300 mb-2 bg-slate-900/80 py-2 rounded-lg border border-slate-800">
-          Ctrl + Shift + G
-        </div>
-        <div class="font-semibold text-white text-xs mb-1">Stealth Capsule</div>
-        <div class="text-[11px] text-slate-400">Toggle between capsule & full window</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Download & GitHub Section -->
-  <section id="download" class="py-24 px-6 max-w-5xl mx-auto text-center">
-    <div class="glass-panel rounded-3xl p-10 sm:p-16 border border-brand-500/30 relative overflow-hidden shadow-2xl">
-      <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-brand-600 to-cyan-400 flex items-center justify-center font-bold text-white shadow-xl shadow-brand-500/30 text-2xl mx-auto mb-6">
-        ⚡
-      </div>
-
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-4 tracking-tight">
-        Ready to Experience <br>
-        <span class="text-gradient">Zero-Distraction AI?</span>
-      </h2>
+  <!-- Global Shortcuts Reference -->
+  <section id="shortcuts" class="w-full py-20 px-6 sm:px-10 border-b border-surface-200 bg-surface-50">
+    <div class="w-full max-w-[1400px] mx-auto">
       
-      <p class="text-slate-300 text-sm max-w-lg mx-auto mb-8 leading-relaxed font-normal">
-        Download the standalone portable Windows executable. No installation, zero dependencies, and instant stealth productivity.
+      <div class="mb-10">
+        <span class="text-xs font-mono font-bold text-brand uppercase tracking-wider">Keyboard Productivity</span>
+        <h2 class="text-3xl font-extrabold text-slate-950 mt-1">Global System Shortcuts</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="bg-white border border-surface-200 rounded-xl p-5">
+          <div class="font-mono text-xs font-bold text-brand bg-blue-50 px-2.5 py-1 rounded inline-block mb-3 border border-blue-200">
+            Ctrl + Shift + S
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 mb-1">Instant Snap &amp; Solve</h3>
+          <p class="text-xs text-slate-500 font-normal">Snaps the primary monitor and streams direct solution into capsule bubble.</p>
+        </div>
+
+        <div class="bg-white border border-surface-200 rounded-xl p-5">
+          <div class="font-mono text-xs font-bold text-brand bg-blue-50 px-2.5 py-1 rounded inline-block mb-3 border border-blue-200">
+            Ctrl + Alt + S
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 mb-1">Snap &amp; Queue</h3>
+          <p class="text-xs text-slate-500 font-normal">Captures screenshot into queue (up to 5) without triggering immediate generation.</p>
+        </div>
+
+        <div class="bg-white border border-surface-200 rounded-xl p-5">
+          <div class="font-mono text-xs font-bold text-brand bg-blue-50 px-2.5 py-1 rounded inline-block mb-3 border border-blue-200">
+            Ctrl + Shift + Space
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 mb-1">Toggle Visibility</h3>
+          <p class="text-xs text-slate-500 font-normal">Instantly hides or displays the floating assistant window.</p>
+        </div>
+
+        <div class="bg-white border border-surface-200 rounded-xl p-5">
+          <div class="font-mono text-xs font-bold text-brand bg-blue-50 px-2.5 py-1 rounded inline-block mb-3 border border-blue-200">
+            Ctrl + Shift + G
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 mb-1">Stealth Capsule Toggle</h3>
+          <p class="text-xs text-slate-500 font-normal">Switches between the minimal 210px capsule and the full chat workspace.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Download & Open Source Section -->
+  <section id="download" class="w-full py-20 sm:py-28 px-6 sm:px-10 bg-white">
+    <div class="w-full max-w-[1000px] mx-auto text-center">
+      
+      <div class="w-12 h-12 rounded-xl bg-slate-900 text-white flex items-center justify-center font-mono font-bold text-lg mx-auto mb-6">
+        YO
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-slate-950 tracking-tight mb-4">
+        Download YO-Assistant
+      </h2>
+
+      <p class="text-slate-600 text-sm max-w-xl mx-auto mb-8 font-normal">
+        Single portable executable for 64-bit Windows. No installation required. Runs directly as a background tray service with local API key configuration.
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-        <button onclick="triggerDownload()" class="w-full sm:w-auto px-10 py-4 rounded-2xl bg-gradient-to-r from-brand-600 to-cyan-500 hover:from-brand-500 hover:to-cyan-400 text-white font-bold text-sm shadow-2xl shadow-brand-600/40 transition transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center gap-2.5">
-          <i data-lucide="download" class="w-4 h-4"></i> Download Yo-Assistant-Portable.exe
-        </button>
-
-        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-2xl glass-panel hover:bg-slate-800 text-white text-sm font-semibold border border-slate-700 transition flex items-center justify-center gap-2">
-          <i data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i> Star on GitHub
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+        <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/latest/download/Yo-Assistant-Portable.exe" class="w-full sm:w-auto px-8 py-4 rounded-lg bg-brand hover:bg-brand-hover text-white text-sm font-semibold transition flex items-center justify-center gap-2 shadow-md">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span>Download Portable Executable (.exe)</span>
+        </a>
+        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="w-full sm:w-auto px-6 py-4 rounded-lg bg-surface-100 hover:bg-surface-200 text-slate-800 text-sm font-semibold border border-surface-200 transition flex items-center justify-center gap-2">
+          <i data-lucide="github" class="w-4 h-4"></i>
+          <span>View on GitHub</span>
         </a>
       </div>
 
-      <div class="text-xs text-slate-400 font-mono flex items-center justify-center gap-4 flex-wrap">
-        <span>📦 Version: 1.0.0</span>
+      <div class="text-xs font-mono text-slate-500 flex items-center justify-center gap-4 flex-wrap">
+        <span>Executable: Yo-Assistant-Portable.exe</span>
         <span>•</span>
-        <span>💻 Windows 10 & 11 (x64)</span>
+        <span>Target: Windows 10 &amp; 11 (x64)</span>
         <span>•</span>
-        <span>🛡️ Portable Executable (~76 MB)</span>
+        <span>License: MIT Open Source</span>
       </div>
+
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="py-12 px-6 border-t border-slate-800 text-center text-xs text-slate-500 font-mono">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+  <footer class="w-full border-t border-surface-200 bg-surface-50 py-8 px-6 sm:px-10 text-xs font-mono text-slate-500">
+    <div class="w-full max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        © 2026 <strong class="text-slate-300">YO-Assistant</strong>. Open-source under MIT License.
+        © 2026 <strong class="text-slate-800">YO-Assistant</strong>. Licensed under MIT.
       </div>
-      <div class="flex items-center gap-5 text-slate-400">
-        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="hover:text-white transition flex items-center gap-1">
-          <i data-lucide="github" class="w-3.5 h-3.5"></i> GitHub Repo
-        </a>
-        <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases" target="_blank" class="hover:text-white transition">Releases</a>
-        <a href="LICENSE" target="_blank" class="hover:text-white transition">MIT License</a>
+      <div class="flex items-center gap-6">
+        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="hover:text-slate-900 transition">GitHub Repo</a>
+        <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases" target="_blank" class="hover:text-slate-900 transition">Releases</a>
+        <a href="LICENSE" target="_blank" class="hover:text-slate-900 transition">License</a>
       </div>
     </div>
   </footer>
 
-  <!-- Scripts for Interactive Demo & GitHub API -->
+  <!-- Simulator Scripts -->
   <script>
-    // Initialize Lucide Icons
     lucide.createIcons();
 
-    // Fetch GitHub Stars count
-    async function fetchStars() {
-      try {
-        const res = await fetch('https://api.github.com/repos/Omkar-Hundre/YO-Assistant');
-        if (res.ok) {
-          const data = await res.json();
-          const count = data.stargazers_count || 0;
-          const starEl = document.getElementById('starCountNav');
-          if (starEl) starEl.innerText = `${count} ★`;
-        }
-      } catch (e) {}
-    }
-    fetchStars();
+    let snapCount = 0;
 
-    // Download trigger with confetti
-    function triggerDownload() {
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 }
-      });
-      // Direct link to download the portable exe
-      window.location.href = 'https://github.com/Omkar-Hundre/YO-Assistant/releases/latest/download/Yo-Assistant-Portable.exe';
-    }
+    function demoSolve() {
+      const icon = document.getElementById('demoSolveIcon');
+      const spinner = document.getElementById('demoSolveSpinner');
+      const bubble = document.getElementById('demoBubble');
+      const status = document.getElementById('demoStatus');
 
-    // Interactive Capsule Simulator Logic
-    let simSnapCount = 0;
-
-    function simSnapAndSolve() {
-      const icon = document.getElementById('simSolveIcon');
-      const spinner = document.getElementById('simSolveSpinner');
-      const bubble = document.getElementById('simBubble');
-      const status = document.getElementById('simStatus');
-      
       icon.classList.add('hidden');
       spinner.classList.remove('hidden');
       bubble.classList.add('hidden');
-      status.innerText = 'Status: Snapping screen & solving with Gemini Vision...';
+      status.innerText = 'Status: Capturing screen and streaming Gemini answer...';
 
       setTimeout(() => {
         spinner.classList.add('hidden');
         icon.classList.remove('hidden');
         bubble.classList.remove('hidden');
-        status.innerText = 'Status: Solution received in micro pop-up bubble!';
-      }, 1100);
+        status.innerText = 'Status: Direct solution streamed into micro pop-up bubble.';
+      }, 900);
     }
 
-    function simSnapScreen() {
-      const badge = document.getElementById('simSnapBadge');
-      const status = document.getElementById('simStatus');
-      simSnapCount = Math.min(5, simSnapCount + 1);
-      badge.innerText = simSnapCount;
+    function demoSnap() {
+      const badge = document.getElementById('demoSnapBadge');
+      const status = document.getElementById('demoStatus');
+      snapCount = Math.min(5, snapCount + 1);
+      badge.innerText = snapCount;
       badge.classList.remove('hidden');
-      status.innerText = `Status: Captured ${simSnapCount}/5 screenshots in multi-queue.`;
+      status.innerText = `Status: Captured ${snapCount}/5 screenshots in memory.`;
     }
 
-    function simTogglePrompt() {
-      const bar = document.getElementById('simInputBar');
+    function demoTogglePrompt() {
+      const bar = document.getElementById('demoInputBar');
       bar.classList.toggle('hidden');
     }
 
-    function simSendPrompt() {
-      const val = document.getElementById('simInputVal').value;
-      const status = document.getElementById('simStatus');
-      simSnapAndSolve();
-      status.innerText = `Status: Sent custom prompt: "${val || 'Direct solution'}"`;
+    function demoSendPrompt() {
+      const val = document.getElementById('demoInputVal').value;
+      demoSolve();
     }
 
-    function simCopyAnswer() {
-      const btn = document.getElementById('btnSimCopy');
-      btn.innerText = '✅ Copied!';
-      setTimeout(() => { btn.innerHTML = '<i data-lucide="copy" class="w-3 h-3"></i> Copy'; lucide.createIcons(); }, 1200);
+    function demoCopy() {
+      const btn = document.getElementById('demoCopyBtn');
+      btn.innerText = '✅ Copied';
+      setTimeout(() => { btn.innerText = '📋 Copy'; }, 1500);
     }
 
-    function simExpand() {
-      const status = document.getElementById('simStatus');
-      status.innerText = 'Status: Expands to full 440x620 window when 👻 is clicked.';
-      alert('In real app: Expands smoothly to the full Gemini Chat window! (Double-click capsule or press Ctrl+Shift+G)');
+    function demoExpand() {
+      alert('Expands smoothly to full window view in the desktop application.');
     }
 
-    function resetSim() {
-      simSnapCount = 0;
-      document.getElementById('simSnapBadge').classList.add('hidden');
-      document.getElementById('simBubble').classList.add('hidden');
-      document.getElementById('simInputBar').classList.add('hidden');
-      document.getElementById('simStatus').innerText = 'Status: Ready.';
+    function demoReset() {
+      snapCount = 0;
+      document.getElementById('demoSnapBadge').classList.add('hidden');
+      document.getElementById('demoBubble').classList.add('hidden');
+      document.getElementById('demoInputBar').classList.add('hidden');
+      document.getElementById('demoStatus').innerText = 'Status: Ready.';
     }
   </script>
 </body>
