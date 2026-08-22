@@ -1759,10 +1759,116 @@
       }
     }
 
-    @media (max-width: 390px) {
-      .clovi-interactive-overlay {
-        --overlay-scale: 0.44;
-        top: 4px;
+    /* ─── ULTRA-CLEAN SVG BRAND PRELOADER ───────────── */
+    .clovi-preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s ease;
+      pointer-events: all;
+    }
+
+    .clovi-preloader.loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .preloader-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preloader-logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .preloader-svg {
+      display: block;
+      overflow: visible;
+      filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.04));
+    }
+
+    .preloader-text-stroke {
+      fill: transparent;
+      stroke: #09090b;
+      stroke-width: 1.2px;
+      stroke-dasharray: 450;
+      stroke-dashoffset: 450;
+      animation: cloviDrawStroke 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+    }
+
+    #cloviSweepRect {
+      animation: cloviFillUp 1.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      animation-delay: 0.35s;
+    }
+
+    @keyframes cloviDrawStroke {
+      0% {
+        stroke-dashoffset: 450;
+        opacity: 0.15;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      100% {
+        stroke-dashoffset: 0;
+        opacity: 1;
+      }
+    }
+
+    @keyframes cloviFillUp {
+      0% {
+        y: 70px;
+        height: 0px;
+      }
+
+      100% {
+        y: 0px;
+        height: 70px;
+      }
+    }
+
+    .preloader-progress-track {
+      width: 130px;
+      height: 2px;
+      background: #f1f5f9;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .preloader-progress-bar {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #09090b 0%, #2563eb 100%);
+      border-radius: 999px;
+      transform: translateX(-100%);
+      animation: cloviProgressFill 1.3s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+      animation-delay: 0.1s;
+    }
+
+    @keyframes cloviProgressFill {
+      0% {
+        transform: translateX(-100%);
+      }
+
+      50% {
+        transform: translateX(-35%);
+      }
+
+      100% {
+        transform: translateX(0%);
       }
     }
   </style>
@@ -1770,10 +1876,46 @@
 
 <body>
 
+  <!-- ─── BRAND PRELOADER ANIMATION ─── -->
+  <div id="preloader" class="clovi-preloader" aria-hidden="true">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <svg class="preloader-svg" viewBox="0 0 240 70" width="240" height="70" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="cloviFillGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#09090b" />
+              <stop offset="70%" stop-color="#09090b" />
+              <stop offset="100%" stop-color="#2563eb" />
+            </linearGradient>
+            <clipPath id="cloviFillClip">
+              <rect id="cloviSweepRect" x="0" y="70" width="240" height="70" />
+            </clipPath>
+          </defs>
+
+          <!-- Outlined Text with Animated Stroke Drawing -->
+          <text x="120" y="52" text-anchor="middle" class="preloader-text-stroke" font-family="'Gloock', serif"
+            font-size="54" letter-spacing="-1">
+            Clovi
+          </text>
+
+          <!-- Liquid / Gradient Fill Sweep -->
+          <g clip-path="url(#cloviFillClip)">
+            <text x="120" y="52" text-anchor="middle" class="preloader-text-fill" fill="url(#cloviFillGrad)"
+              font-family="'Gloock', serif" font-size="54" letter-spacing="-1">
+              Clovi
+            </text>
+          </g>
+        </svg>
+        <div class="preloader-progress-track">
+          <div class="preloader-progress-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ─────────── NAV ─────────── -->
   <nav>
     <a href="/" class="nav-logo">
-      <div class="nav-logo-mark"><span>CL</span></div>
       Clovi
     </a>
 
@@ -3407,6 +3549,29 @@
         setSimMode(nextMode);
       }, 4000);
     }
+
+    // ─── Brand Preloader Dismissal ────────────────────────────
+    function dismissPreloader() {
+      const preloader = document.getElementById('preloader');
+      if (preloader && !preloader.classList.contains('loaded')) {
+        preloader.classList.add('loaded');
+        setTimeout(() => {
+          preloader.style.display = 'none';
+        }, 550);
+      }
+    }
+
+    const preloaderStartTime = Date.now();
+    const minPreloaderDuration = 1400; // Allow the liquid SVG fill animation to play smoothly
+
+    window.addEventListener('load', () => {
+      const elapsed = Date.now() - preloaderStartTime;
+      const remaining = Math.max(0, minPreloaderDuration - elapsed);
+      setTimeout(dismissPreloader, remaining);
+    });
+
+    // Fallback safe dismiss
+    setTimeout(dismissPreloader, 2800);
 
     window.addEventListener('DOMContentLoaded', () => {
       runLiveDemoAnimation();
