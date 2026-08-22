@@ -1,14 +1,14 @@
 {
   "productHunt": {
-    "name": "YO Assistant",
+    "name": "Clovi",
     "tagline": "Undetectable floating AI exam helper & coding test solver for Windows",
-    "description": "An ultra-compact 210px floating desktop capsule for Windows powered by Gemini Vision. Solves coding assessments, math, and technical tests with zero screen-share visibility and zero background focus loss.",
-    "website": "https://yo-assistant.netlify.app",
+    "description": "An ultra-compact 210px floating desktop stealth dock for Windows powered by Gemini Vision. Solves coding assessments, math, and technical tests with zero screen-share visibility and zero background focus loss.",
+    "website": "https://clovi.netlify.app",
     "category": "Developer Tools / Artificial Intelligence / Productivity",
     "pricing": "Free / Open Source"
   },
   "alternativeTo": {
-    "name": "YO Assistant",
+    "name": "Clovi",
     "license": "Open Source (MIT)",
     "platforms": "Windows 10, Windows 11",
     "alternativeFor": "Chegg, Quizlet, ChatGPT Desktop, Screen Solvers",

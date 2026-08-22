@@ -15,7 +15,7 @@ const path = require('path');
 
 const SITE_URL = 'https://clovi.netlify.app';
 const SITEMAP_URL = `${SITE_URL}/sitemap.xml`;
-const REPO_URL = 'https://github.com/Omkar-Hundre/YO-Assistant';
+const REPO_URL = 'https://github.com/Omkar-Hundre/Clovi';
 
 console.log('='.repeat(60));
 console.log('🚀 Clovi Automated SEO & Indexing Engine');
