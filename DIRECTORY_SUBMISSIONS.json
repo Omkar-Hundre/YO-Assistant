@@ -1,0 +1,57 @@
+{
+  "productHunt": {
+    "name": "YO Assistant",
+    "tagline": "Undetectable floating AI exam helper & coding test solver for Windows",
+    "description": "An ultra-compact 210px floating desktop capsule for Windows powered by Gemini Vision. Solves coding assessments, math, and technical tests with zero screen-share visibility and zero background focus loss.",
+    "website": "https://yo-assistant.netlify.app",
+    "category": "Developer Tools / Artificial Intelligence / Productivity",
+    "pricing": "Free / Open Source"
+  },
+  "alternativeTo": {
+    "name": "YO Assistant",
+    "license": "Open Source (MIT)",
+    "platforms": "Windows 10, Windows 11",
+    "alternativeFor": "Chegg, Quizlet, ChatGPT Desktop, Screen Solvers",
+    "tags": [
+      "ai-exam-helper",
+      "screen-solver",
+      "gemini-vision",
+      "desktop-overlay",
+      "open-source"
+    ]
+  },
+  "directoryList": [
+    {
+      "name": "Toolify.ai",
+      "submitUrl": "https://www.toolify.ai/submit"
+    },
+    {
+      "name": "Futurepedia",
+      "submitUrl": "https://www.futurepedia.io/submit-tool"
+    },
+    {
+      "name": "TopAI.tools",
+      "submitUrl": "https://topai.tools/submit"
+    },
+    {
+      "name": "DevHunt",
+      "submitUrl": "https://devhunt.org/"
+    },
+    {
+      "name": "AlternativeTo",
+      "submitUrl": "https://alternativeto.net/software/submit/"
+    },
+    {
+      "name": "Product Hunt",
+      "submitUrl": "https://www.producthunt.com/posts/new"
+    },
+    {
+      "name": "Uneed.best",
+      "submitUrl": "https://www.uneed.best/submit-a-tool"
+    },
+    {
+      "name": "OpenSourceAlternative.to",
+      "submitUrl": "https://www.opensourcealternative.to/submit"
+    }
+  ]
+}
