@@ -214,25 +214,50 @@
     .cta-secondary:hover { background: white; border-color: var(--gray-300); transform: translateY(-1px); }
     .hero-note { margin-top: 18px; font-size: 12.5px; color: var(--gray-500); font-weight: 400; }
 
-    /* ─── HERO PRODUCT MOCKUP: FULL PROPORTIONAL SCALE ─── */
+    /* ─── HERO PRODUCT MOCKUP: EXPANDED PC DESKTOP ENVIRONMENT ─── */
     .hero-visual {
       margin: 64px auto 0;
-      max-width: 1160px;
+      max-width: 1240px;
       padding: 0 20px;
       position: relative;
     }
+
+    /* Vibrant Sunset/Aurora PC Desktop Wallpaper Environment */
+    .pc-desktop-wallpaper {
+      position: relative;
+      background: 
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255, 237, 213, 0.95), transparent),
+        radial-gradient(ellipse 70% 50% at 85% 30%, rgba(251, 146, 60, 0.8), transparent),
+        radial-gradient(ellipse 60% 60% at 15% 70%, rgba(244, 63, 94, 0.75), transparent),
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(99, 102, 241, 0.85), transparent),
+        linear-gradient(145deg, #fb923c 0%, #f43f5e 40%, #8b5cf6 75%, #3b82f6 100%);
+      border-radius: 28px;
+      padding: 40px 36px 28px;
+      box-shadow: 
+        0 35px 90px -15px rgba(244, 63, 94, 0.35),
+        0 0 0 1px rgba(255, 255, 255, 0.6) inset,
+        0 20px 45px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Windows Application Window Frame */
     .hero-window-frame {
+      width: 100%;
       background: #18181b;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 20px;
-      box-shadow: 0 25px 70px -15px rgba(15, 23, 42, 0.2), 0 0 0 1px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 16px;
+      box-shadow: 0 25px 65px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(0, 0, 0, 0.2);
       overflow: hidden;
       position: relative;
       text-align: left;
     }
     .window-header-bar {
-      height: 40px;
-      background: #121214;
+      height: 42px;
+      background: #18181b;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
@@ -420,6 +445,104 @@
     }
     .solution-time-badge {
       color: #38bdf8; font-weight: 700;
+    }
+
+    /* ─── REALISTIC WINDOWS 11 GLASS TASKBAR (BELOW WINDOW) ─── */
+    .pc-taskbar {
+      margin-top: 24px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 20px;
+      padding: 6px 14px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+      user-select: none;
+    }
+
+    .taskbar-app-icon {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: default;
+    }
+    .taskbar-app-icon:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .taskbar-app-icon.active {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .taskbar-active-bar {
+      position: absolute;
+      bottom: 2px;
+      width: 14px;
+      height: 3px;
+      background: #2563eb;
+      border-radius: 9999px;
+    }
+
+    .taskbar-clovi-logo {
+      width: 22px;
+      height: 22px;
+      background: #09090b;
+      color: white;
+      font-family: var(--font-body);
+      font-size: 10px;
+      font-weight: 900;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .taskbar-stealth-dot {
+      position: absolute;
+      bottom: 2px;
+      width: 5px;
+      height: 5px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    .taskbar-search-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 5px 12px;
+      border-radius: 12px;
+      font-size: 11.5px;
+      color: rgba(0, 0, 0, 0.7);
+      font-weight: 600;
+    }
+
+    .taskbar-divider {
+      width: 1px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.35);
+    }
+
+    .taskbar-tray {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: rgba(0, 0, 0, 0.75);
+      padding-left: 4px;
     }
 
     /* ─── TRUST BAR ───────────────────────────────────── */
@@ -674,6 +797,22 @@
       .proof-tabs { overflow-x: auto; }
       .waitlist-input-row { flex-direction: column; }
       .window-address-bar { display: none; }
+      .pc-desktop-wallpaper {
+        padding: 18px 12px 14px;
+        border-radius: 18px;
+      }
+      .pc-taskbar {
+        margin-top: 14px;
+        padding: 4px 10px;
+        gap: 6px;
+      }
+      .taskbar-search-pill, .taskbar-tray {
+        display: none;
+      }
+      .taskbar-app-icon {
+        width: 30px;
+        height: 30px;
+      }
       .clovi-interactive-overlay {
         --overlay-scale: 0.70;
         top: 10px;
@@ -762,72 +901,134 @@
     </div>
     <p class="hero-note">Windows 10 &amp; 11 · Portable .exe · No install needed</p>
 
-    <!-- ─── HERO PRODUCT MOCKUP: EXPANDED SIZE & LIVE ANIMATED CLOVI ─── -->
+    <!-- ─── HERO PRODUCT MOCKUP: EXPANDED SIZE & VIBRANT PC WALLPAPER ─── -->
     <div class="hero-visual">
-      <div class="hero-window-frame">
-        <!-- Desktop Window Bar -->
-        <div class="window-header-bar">
-          <div class="window-traffic-lights">
-            <div class="traffic-dot dot-red"></div>
-            <div class="traffic-dot dot-yellow"></div>
-            <div class="traffic-dot dot-green"></div>
-          </div>
-          <div class="window-address-bar">
-            <span>🔒 leetcode.com/problems/reverse-string</span>
-          </div>
-          <div class="window-stealth-badge">
-            <div class="window-stealth-dot"></div>
-            <span>Screen Share Invisible (0x11 WDA)</span>
-          </div>
-        </div>
-
-        <!-- LeetCode Screen with Animated Clovi Overlay -->
-        <div class="screen-content-wrap">
-          <img src="Leetcode_sc.png" alt="LeetCode Reverse String Question Screen" class="screen-bg-img" />
-
-          <!-- FLOATING CLOVI OVERLAY (LIVE ANIMATION) -->
-          <div class="clovi-interactive-overlay">
-            
-            <!-- Capsule Dock -->
-            <div class="capsule-dock-pill" id="demoCapsuleDock">
-              <span class="capsule-icon" title="Expand Full Workspace">👻</span>
-              <div class="capsule-solve-btn" id="demoSolveBtn">
-                <span class="capsule-bolt" id="demoSolveBolt">⚡</span>
-                <span id="demoSolveText">Snap &amp; Solve</span>
-                <div class="capsule-spinner" id="demoSpinner"></div>
-                <!-- Virtual Animated Cursor Anchored Directly to Button -->
-                <div class="virtual-cursor" id="demoVirtualCursor"></div>
-              </div>
-              <span class="capsule-icon" title="Capture Snapshot">📸</span>
-              <span class="capsule-icon" title="Settings">⚙️</span>
+      <div class="pc-desktop-wallpaper">
+        
+        <!-- Windows Application Window Frame -->
+        <div class="hero-window-frame">
+          <!-- Desktop Window Bar -->
+          <div class="window-header-bar">
+            <div class="window-traffic-lights">
+              <div class="traffic-dot dot-red"></div>
+              <div class="traffic-dot dot-yellow"></div>
+              <div class="traffic-dot dot-green"></div>
             </div>
+            <div class="window-address-bar">
+              <span>🔒 leetcode.com/problems/reverse-string</span>
+            </div>
+            <div class="window-stealth-badge">
+              <div class="window-stealth-dot"></div>
+              <span>Screen Share Invisible (0x11 WDA)</span>
+            </div>
+          </div>
 
-            <!-- Streaming Solution Card Dropdown -->
-            <div class="capsule-solution-card" id="demoSolutionCard">
-              <div class="solution-card-header">
-                <div class="solution-badge">✓ Python3 Optimal</div>
-                <div class="solution-meta-tag">Time: O(N) · Space: O(1)</div>
-              </div>
+          <!-- LeetCode Screen with Animated Clovi Overlay -->
+          <div class="screen-content-wrap">
+            <img src="Leetcode_sc.png" alt="LeetCode Reverse String Question Screen" class="screen-bg-img" />
+
+            <!-- FLOATING CLOVI OVERLAY (LIVE ANIMATION) -->
+            <div class="clovi-interactive-overlay">
               
-              <div class="solution-code-box">
-                <div><span class="code-kw">class</span> <span class="code-type">Solution</span>:</div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">def</span> <span class="code-fn">reverseString</span>(self, s: <span class="code-type">List</span>[<span class="code-type">str</span>]) -&gt; <span class="code-kw">None</span>:</div>
-                <div class="code-comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# In-place two-pointer O(1) extra memory</div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l, r = <span class="code-num">0</span>, <span class="code-fn">len</span>(s) - <span class="code-num">1</span></div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">while</span> l &lt; r:</div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s[l], s[r] = s[r], s[l]</div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l += <span class="code-num">1</span></div>
-                <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r -= <span class="code-num">1</span></div>
+              <!-- Capsule Dock -->
+              <div class="capsule-dock-pill" id="demoCapsuleDock">
+                <span class="capsule-icon" title="Expand Full Workspace">👻</span>
+                <div class="capsule-solve-btn" id="demoSolveBtn">
+                  <span class="capsule-bolt" id="demoSolveBolt">⚡</span>
+                  <span id="demoSolveText">Snap &amp; Solve</span>
+                  <div class="capsule-spinner" id="demoSpinner"></div>
+                  <!-- Virtual Animated Cursor Anchored Directly to Button -->
+                  <div class="virtual-cursor" id="demoVirtualCursor"></div>
+                </div>
+                <span class="capsule-icon" title="Capture Snapshot">📸</span>
+                <span class="capsule-icon" title="Settings">⚙️</span>
               </div>
 
-              <div class="solution-card-footer">
-                <span class="solution-time-badge">⚡ 1.1s Streamed</span>
-                <span>Press <strong style="color:#ffffff;">Ctrl+Shift+S</strong> to solve anytime</span>
+              <!-- Streaming Solution Card Dropdown -->
+              <div class="capsule-solution-card" id="demoSolutionCard">
+                <div class="solution-card-header">
+                  <div class="solution-badge">✓ Python3 Optimal</div>
+                  <div class="solution-meta-tag">Time: O(N) · Space: O(1)</div>
+                </div>
+                
+                <div class="solution-code-box">
+                  <div><span class="code-kw">class</span> <span class="code-type">Solution</span>:</div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">def</span> <span class="code-fn">reverseString</span>(self, s: <span class="code-type">List</span>[<span class="code-type">str</span>]) -&gt; <span class="code-kw">None</span>:</div>
+                  <div class="code-comment">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# In-place two-pointer O(1) extra memory</div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l, r = <span class="code-num">0</span>, <span class="code-fn">len</span>(s) - <span class="code-num">1</span></div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-kw">while</span> l &lt; r:</div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s[l], s[r] = s[r], s[l]</div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;l += <span class="code-num">1</span></div>
+                  <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;r -= <span class="code-num">1</span></div>
+                </div>
+
+                <div class="solution-card-footer">
+                  <span class="solution-time-badge">⚡ 1.1s Streamed</span>
+                  <span>Press <strong style="color:#ffffff;">Ctrl+Shift+S</strong> to solve anytime</span>
+                </div>
               </div>
+
             </div>
-
           </div>
         </div>
+
+        <!-- Sleek Windows 11 Glass Taskbar (At bottom of PC wallpaper) -->
+        <div class="pc-taskbar">
+          <!-- Windows Start Icon -->
+          <div class="taskbar-app-icon" title="Windows Start Menu">
+            <svg width="16" height="16" viewBox="0 0 88 88" fill="none">
+              <path fill="#0078D4" d="M0 0h41.5v41.5H0zM46.5 0H88v41.5H46.5zM0 46.5h41.5V88H0zM46.5 46.5H88V88H46.5z"/>
+            </svg>
+          </div>
+
+          <!-- Windows Search Pill -->
+          <div class="taskbar-search-pill">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+            <span>Search</span>
+          </div>
+
+          <!-- Active Chrome Browser -->
+          <div class="taskbar-app-icon active" title="Browser — LeetCode (Active)">
+            <svg width="20" height="20" viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="10" fill="#ffffff"></circle>
+              <circle cx="24" cy="24" r="7" fill="#1a73e8"></circle>
+              <path fill="#ea4335" d="M24,4C14.06,4,5.82,11.28,4.24,20.8L12.5,25.5C13.23,19.98,18.11,15.7,24,15.7c4.68,0,8.68,2.77,10.51,6.8L43.8,17.8C40.05,9.66,32.65,4,24,4z"></path>
+              <path fill="#fbbc04" d="M43.8,17.8L34.51,22.5c1.17,2.57,1.17,5.43,0,8L25.2,43.5c11.05,0,20-8.95,20-20C45.2,21.5,44.7,19.6,43.8,17.8z"></path>
+              <path fill="#34a853" d="M25.2,43.5L16.94,38.8C19.06,40.85,21.4,42,24,42c0.41,0,0.81-0.03,1.2-0.08L25.2,43.5z M4.24,20.8C4.08,21.84,4,22.91,4,24c0,10.15,7.58,18.52,17.3,19.8l9.29-13.3C28.77,32.22,26.54,33,24,33c-4.97,0-9-4.03-9-9c0-1.8,0.53-3.48,1.44-4.88L4.24,20.8z"></path>
+            </svg>
+            <div class="taskbar-active-bar"></div>
+          </div>
+
+          <!-- VS Code -->
+          <div class="taskbar-app-icon" title="Visual Studio Code">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#007ACC">
+              <path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.27a1 1 0 0 0-.02 1.434L4.85 12 .307 15.296a1 1 0 0 0 .02 1.434l1.322 1.212a.998.998 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zM18 16.54l-6.1-4.54 6.1-4.54v9.08z"/>
+            </svg>
+          </div>
+
+          <!-- Clovi Running Stealth Icon -->
+          <div class="taskbar-app-icon" title="Clovi (Stealth Active on Top)">
+            <div class="taskbar-clovi-logo">CL</div>
+            <div class="taskbar-stealth-dot"></div>
+          </div>
+
+          <!-- Terminal -->
+          <div class="taskbar-app-icon" title="Windows Terminal">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#1e293b">
+              <rect width="22" height="18" x="1" y="3" rx="3" fill="#18181b" stroke="#52525b" stroke-width="1.2"/>
+              <path d="M5 8l4 4-4 4M12 16h6" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+
+          <div class="taskbar-divider"></div>
+
+          <!-- Tray Time -->
+          <div class="taskbar-tray">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4z"/></svg>
+            <span>9:41 PM</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
