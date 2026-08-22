@@ -43,11 +43,12 @@ export class GeminiService {
       'gemini-flash-latest'
     ];
 
-    const systemInstruction = 'You are a high-speed direct answer engine. ' +
-      'When an image/screenshot with questions is provided: ' +
-      '1. Immediately output the DIRECT WRITTEN ANSWER first (e.g. "7.2 km/hr", "O(N log N)", specific value or code snippet). ' +
-      '2. Do NOT output long intros, conversational filler, or unnecessary boilerplate. Give the written answer directly. ' +
-      '3. Format any code or mathematical expressions cleanly.';
+    const systemInstruction = 'You are an expert AI problem solver and coding assistant. ' +
+      'When an image/screenshot with questions or problems is provided: ' +
+      '1. Immediately provide the direct, complete written answer or optimal code solution first. ' +
+      '2. Never truncate, omit, or leave placeholder comments in code solutions. Provide full, working implementations. ' +
+      '3. For multiple-choice or math problems, state the final answer clearly followed by concise verification. ' +
+      '4. Format all code cleanly in markdown code fences.';
 
     let lastError: any = null;
 
@@ -58,7 +59,7 @@ export class GeminiService {
           systemInstruction,
           generationConfig: {
             temperature: 0.1,
-            maxOutputTokens: 1024
+            maxOutputTokens: 8192
           }
         });
 

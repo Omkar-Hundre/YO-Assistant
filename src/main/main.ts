@@ -416,11 +416,11 @@ function createTray() {
         }
       },
       {
-        label: '👻 Stealth Capsule (Ctrl+Shift+G)',
+        label: '👻 Stealth Mode (Ctrl+Shift+G)',
         click: () => {
           if (mainWindow && !mainWindow.isDestroyed()) {
             if (!mainWindow.isVisible()) mainWindow.showInactive();
-            mainWindow.webContents.send('overlay:toggle-ghost');
+            mainWindow.webContents.send('overlay:toggle-ghost-mode');
           }
         }
       },

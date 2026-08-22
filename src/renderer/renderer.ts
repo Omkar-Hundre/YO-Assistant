@@ -211,9 +211,28 @@ function setupEventListeners() {
       e.stopPropagation();
       if (stealthResponseContent) {
         navigator.clipboard.writeText(stealthResponseContent.innerText);
-        btnStealthCopyInline.innerText = '✅';
-        setTimeout(() => { btnStealthCopyInline.innerText = '📋'; }, 1500);
+        btnStealthCopyInline.innerText = '✅ Copied!';
+        setTimeout(() => { btnStealthCopyInline.innerText = '📋 Copy'; }, 1500);
       }
+    });
+  }
+
+  // Expand button inside stealth response bubble (switches seamlessly to full window)
+  const btnStealthExpandInline = document.getElementById('btnStealthExpandInline') as HTMLButtonElement;
+  if (btnStealthExpandInline) {
+    btnStealthExpandInline.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleGhostMode(false);
+    });
+  }
+
+  // Close button inside stealth response bubble
+  const btnStealthCloseInline = document.getElementById('btnStealthCloseInline') as HTMLButtonElement;
+  if (btnStealthCloseInline) {
+    btnStealthCloseInline.addEventListener('click', (e) => {
+      e.stopPropagation();
+      stealthResponseBubble.style.display = 'none';
+      adjustStealthBounds();
     });
   }
 
@@ -335,6 +354,21 @@ function setupEventListeners() {
     });
   });
 
+  // Welcome shortcut cards interactive triggers
+  const cardSnapSolve = document.getElementById('cardSnapSolve');
+  if (cardSnapSolve) {
+    cardSnapSolve.addEventListener('click', () => {
+      snapAndAutoSolve();
+    });
+  }
+
+  const cardStealthMode = document.getElementById('cardStealthMode');
+  if (cardStealthMode) {
+    cardStealthMode.addEventListener('click', () => {
+      toggleGhostMode(true);
+    });
+  }
+
   // Global paste handler (Ctrl+V)
   window.addEventListener('paste', async (e: ClipboardEvent) => {
     const items = e.clipboardData?.items;
@@ -409,6 +443,8 @@ function setupIpcListeners() {
   // Streaming chunks
   window.electronAPI.onStreamChunk((chunk: string) => {
     currentStreamingText += chunk;
+
+    // 1. Update stealth micro-bubble if in ghost mode
     if (isGhostMode) {
       if (stealthSolveSpinner) stealthSolveSpinner.style.display = 'none';
       if (stealthSolveIcon) stealthSolveIcon.style.display = 'inline-block';
@@ -420,7 +456,10 @@ function setupIpcListeners() {
         renderMarkdownInto(stealthResponseContent, currentStreamingText, true);
         stealthResponseContent.scrollTop = stealthResponseContent.scrollHeight;
       }
-    } else if (currentStreamingBubble) {
+    }
+
+    // 2. Always update the main window chat bubble in parallel
+    if (currentStreamingBubble) {
       renderMarkdownInto(currentStreamingBubble, currentStreamingText, true);
       scrollToBottom();
     }
@@ -428,6 +467,7 @@ function setupIpcListeners() {
 
   // Streaming done
   window.electronAPI.onStreamDone((fullText: string) => {
+    // 1. Finalize stealth micro-bubble
     if (isGhostMode) {
       if (stealthSolveSpinner) stealthSolveSpinner.style.display = 'none';
       if (stealthSolveIcon) stealthSolveIcon.style.display = 'inline-block';
@@ -437,20 +477,22 @@ function setupIpcListeners() {
       }
       if (stealthResponseContent) {
         renderMarkdownInto(stealthResponseContent, fullText, false);
+        stealthResponseContent.scrollTop = 0; // Scroll to top so user can read solution from start
       }
-      chatHistory.push({
-        role: 'model',
-        text: fullText
-      });
-      finalizeGeneration();
-    } else if (currentStreamingBubble) {
-      renderMarkdownInto(currentStreamingBubble, fullText, false);
-      chatHistory.push({
-        role: 'model',
-        text: fullText
-      });
-      finalizeGeneration();
     }
+
+    // 2. Finalize main window chat bubble
+    if (currentStreamingBubble) {
+      renderMarkdownInto(currentStreamingBubble, fullText, false);
+      scrollToBottom();
+    }
+
+    // 3. Save to chat history
+    chatHistory.push({
+      role: 'model',
+      text: fullText
+    });
+    finalizeGeneration();
   });
 
   // Stream error
@@ -465,11 +507,12 @@ function setupIpcListeners() {
       if (stealthResponseContent) {
         stealthResponseContent.innerHTML = `<span style="color: #ef4444;">⚠️ Error: ${escapeHtml(err)}</span>`;
       }
-      finalizeGeneration();
-    } else if (currentStreamingBubble) {
-      currentStreamingBubble.innerHTML = `<span style="color: #ef4444;">⚠️ Error: ${escapeHtml(err)}</span>`;
-      finalizeGeneration();
     }
+    if (currentStreamingBubble) {
+      currentStreamingBubble.innerHTML = `<span style="color: #ef4444;">⚠️ Error: ${escapeHtml(err)}</span>`;
+      scrollToBottom();
+    }
+    finalizeGeneration();
   });
 
   // Global Snap shortcut handler
@@ -486,21 +529,15 @@ function setupIpcListeners() {
   // Global Snap & Auto-Solve shortcut handler
   window.electronAPI.onGlobalSolve((screenshot: any) => {
     if (screenshot && screenshot.dataUrl) {
+      clearAllAttachments();
+      addAttachment({
+        base64: screenshot.base64,
+        mimeType: screenshot.mimeType,
+        dataUrl: screenshot.dataUrl
+      });
       if (isGhostMode) {
-        clearAllAttachments();
-        addAttachment({
-          base64: screenshot.base64,
-          mimeType: screenshot.mimeType,
-          dataUrl: screenshot.dataUrl
-        });
         sendStealthPrompt(DEFAULT_SOLVE_PROMPT);
       } else {
-        clearAllAttachments();
-        addAttachment({
-          base64: screenshot.base64,
-          mimeType: screenshot.mimeType,
-          dataUrl: screenshot.dataUrl
-        });
         promptInput.value = DEFAULT_SOLVE_PROMPT;
         handleSend();
       }
@@ -513,22 +550,37 @@ function setupIpcListeners() {
   });
 }
 
-function toggleGhostMode(forced?: boolean) {
-  isGhostMode = typeof forced === 'boolean' ? forced : !isGhostMode;
+async function toggleGhostMode(forced?: boolean) {
+  const targetMode = typeof forced === 'boolean' ? forced : !isGhostMode;
+  if (targetMode === isGhostMode && typeof forced !== 'undefined') return;
+  isGhostMode = targetMode;
+
+  overlayContainer.classList.add('mode-transitioning');
+
   if (isGhostMode) {
-    overlayContainer.classList.add('ghost-active');
-    if (stealthContainer) stealthContainer.style.display = 'flex';
     if (stealthResponseBubble) stealthResponseBubble.style.display = 'none';
     if (stealthInputBar) stealthInputBar.style.display = 'none';
-    window.electronAPI.setGhostMode(true);
+    
+    await window.electronAPI.setGhostMode(true);
+    
+    overlayContainer.classList.add('ghost-active');
+    if (stealthContainer) stealthContainer.style.display = 'flex';
     updateStealthBadge();
   } else {
+    await window.electronAPI.setGhostMode(false);
+    
     overlayContainer.classList.remove('ghost-active');
     if (stealthContainer) stealthContainer.style.display = 'none';
     if (stealthResponseBubble) stealthResponseBubble.style.display = 'none';
     if (stealthInputBar) stealthInputBar.style.display = 'none';
-    window.electronAPI.setGhostMode(false);
+    scrollToBottom();
   }
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      overlayContainer.classList.remove('mode-transitioning');
+    }, 60);
+  });
 }
 
 function updateStealthBadge() {
@@ -554,11 +606,11 @@ function adjustStealthBounds() {
   const hasInput = stealthInputBar && stealthInputBar.style.display !== 'none';
 
   if (hasBubble) {
-    window.electronAPI.resizeStealth(230, hasInput ? 180 : 130, true);
+    window.electronAPI.resizeStealth(380, hasInput ? 310 : 250, true);
   } else if (hasInput) {
-    window.electronAPI.resizeStealth(240, 88);
+    window.electronAPI.resizeStealth(260, 92, true);
   } else {
-    window.electronAPI.resizeStealth(210, 48);
+    window.electronAPI.resizeStealth(210, 48, true);
   }
 }
 
@@ -601,8 +653,15 @@ async function sendStealthPrompt(customPrompt?: string) {
   if (stealthInputText) stealthInputText.value = '';
   clearAllAttachments();
 
-  isGenerating = true;
+  // Seamlessly sync to main window chatContainer
+  if (welcomeBox) welcomeBox.style.display = 'none';
+  const displayLabel = promptText || (currentImgs.length > 0 ? `📸 Snap (${currentImgs.length}) & Solve` : '');
+  appendUserMessage(displayLabel, currentImgs.map(i => i.dataUrl));
+
+  const bubble = appendGeminiPlaceholder();
+  currentStreamingBubble = bubble;
   currentStreamingText = '';
+  isGenerating = true;
 
   try {
     const imagesPayload = currentImgs.map(i => ({ base64: i.base64, mimeType: i.mimeType }));
@@ -626,6 +685,9 @@ async function sendStealthPrompt(customPrompt?: string) {
     }
     if (stealthResponseContent) {
       stealthResponseContent.innerHTML = `<span style="color: #ef4444;">⚠️ Error: ${escapeHtml(err.message)}</span>`;
+    }
+    if (currentStreamingBubble) {
+      currentStreamingBubble.innerHTML = `<span style="color: #ef4444;">⚠️ Error: ${escapeHtml(err.message)}</span>`;
     }
     finalizeGeneration();
   }
