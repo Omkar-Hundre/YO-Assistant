@@ -545,10 +545,10 @@
       padding-left: 4px;
     }
 
-    /* ─── INFINITE SEAMLESS MARQUEE TRUST CAROUSEL ─────── */
+    /* ─── INFINITE SEAMLESS MARQUEE TRUST CAROUSEL (DENSE & ENLARGED) ─── */
     .trust-carousel-section {
       width: 100%;
-      padding: 44px 0;
+      padding: 46px 0;
       border-top: 1px solid var(--gray-100);
       border-bottom: 1px solid var(--gray-100);
       background: var(--white);
@@ -563,7 +563,7 @@
       color: var(--gray-400);
       text-transform: uppercase;
       letter-spacing: 2px;
-      margin-bottom: 26px;
+      margin-bottom: 28px;
     }
 
     .trust-marquee-wrapper {
@@ -579,7 +579,7 @@
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 160px;
+      width: 180px;
       z-index: 2;
       pointer-events: none;
     }
@@ -597,9 +597,9 @@
     .trust-marquee-track {
       display: flex;
       align-items: center;
-      gap: 56px;
+      gap: 60px;
       width: max-content;
-      animation: infinite-marquee 28s linear infinite;
+      animation: infinite-marquee 32s linear infinite;
     }
 
     .trust-marquee-track:hover {
@@ -609,15 +609,15 @@
     .trust-marquee-group {
       display: flex;
       align-items: center;
-      gap: 56px;
+      gap: 60px;
       flex-shrink: 0;
     }
 
     .trust-item { 
       display: flex; 
       align-items: center; 
-      gap: 12px; 
-      font-size: 15.5px; 
+      gap: 14px; 
+      font-size: 16.5px; 
       font-weight: 700; 
       color: var(--gray-800); 
       white-space: nowrap;
@@ -629,8 +629,8 @@
       transform: translateY(-2px);
     }
     .trust-item svg {
-      width: 26px;
-      height: 26px;
+      width: 32px;
+      height: 32px;
       flex-shrink: 0;
       display: block;
       filter: drop-shadow(0 1px 3px rgba(0,0,0,0.06));
@@ -641,7 +641,7 @@
         transform: translateX(0);
       }
       100% {
-        transform: translateX(calc(-50% - 28px));
+        transform: translateX(calc(-50% - 30px));
       }
     }
 
@@ -674,7 +674,7 @@
       font-weight: 300;
     }
 
-    /* ─── HOW IT WORKS: 3-STEP FLAGSHIP BENTO GRID ─────── */
+    /* ─── HOW IT WORKS: CLEAN NATURAL 3-STEP BENTO GRID ─── */
     .how-section { background: var(--white); }
     .how-bento-grid {
       display: grid;
@@ -687,7 +687,7 @@
       background: var(--white);
       border: 1px solid var(--gray-200);
       border-radius: 24px;
-      padding: 32px 28px;
+      padding: 32px 26px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -745,142 +745,43 @@
     /* Bento Visual Previews */
     .bento-visual-box {
       margin-top: 24px;
-      background: #0f172a;
-      border: 1px solid #1e293b;
+      background: #18181b;
+      border: 1px solid #27272a;
       border-radius: 16px;
-      padding: 20px 18px;
+      padding: 24px 20px;
       color: white;
       text-align: left;
       position: relative;
       overflow: hidden;
-      min-height: 180px;
+      min-height: 160px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
-    /* Visual 1: Pinned Capsule Preview */
-    .visual-capsule-preview {
-      background: rgba(30, 41, 59, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 100px;
-      padding: 8px 16px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 14px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-    }
-    .visual-capsule-left {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #34d399;
-    }
-    .visual-stealth-tag {
-      font-size: 11px;
-      font-family: monospace;
-      color: #94a3b8;
-      background: rgba(255,255,255,0.06);
-      padding: 3px 8px;
-      border-radius: 6px;
-    }
-    .visual-status-pill {
-      font-size: 11.5px;
-      color: #cbd5e1;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(15, 23, 42, 0.6);
-      padding: 8px 12px;
-      border-radius: 8px;
-      border: 1px dashed rgba(255,255,255,0.12);
-    }
-
-    /* Visual 2: 3D Keycaps & Scanning Laser */
+    /* Visual 2: 3D Tactile Keycaps */
     .keycaps-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 16px;
+      gap: 10px;
     }
     .keycap {
-      background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
-      border: 1px solid #475569;
-      border-bottom: 3px solid #0f172a;
+      background: linear-gradient(180deg, #3f3f46 0%, #27272a 100%);
+      border: 1px solid #52525b;
+      border-bottom: 3px solid #09090b;
       border-radius: 8px;
-      padding: 7px 12px;
+      padding: 8px 14px;
       font-family: monospace;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
       color: #ffffff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
     }
     .keycap-plus {
-      color: #64748b;
+      color: #71717a;
       font-weight: 700;
-      font-size: 14px;
-    }
-    .scanning-laser-box {
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(59, 130, 246, 0.4);
-      border-radius: 8px;
-      padding: 8px 12px;
-      position: relative;
-      overflow: hidden;
-      font-family: monospace;
-      font-size: 11px;
-      color: #38bdf8;
-    }
-    .scanning-laser-line {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
-      box-shadow: 0 0 8px #38bdf8;
-      animation: scanSweep 2s ease-in-out infinite alternate;
-    }
-    @keyframes scanSweep {
-      0% { transform: translateY(0); opacity: 0.3; }
-      50% { opacity: 1; }
-      100% { transform: translateY(32px); opacity: 0.3; }
-    }
-
-    /* Visual 3: Live Code Solution Card */
-    .stream-speed-badge {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-    .stream-tag-green {
-      font-size: 10.5px;
-      font-weight: 800;
-      color: #34d399;
-      background: rgba(16, 185, 129, 0.15);
-      padding: 2px 8px;
-      border-radius: 4px;
-      border: 1px solid rgba(16, 185, 129, 0.3);
-    }
-    .stream-time-tag {
-      font-size: 10.5px;
-      color: #38bdf8;
-      font-family: monospace;
-    }
-    .mini-code-stream {
-      background: #020617;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 8px;
-      padding: 10px 12px;
-      font-family: monospace;
-      font-size: 11px;
-      line-height: 1.5;
-      color: #e2e8f0;
+      font-size: 15px;
     }
 
     /* ─── STEALTH SECTION ─────────────────────────────── */
@@ -1299,14 +1200,14 @@
     </div>
   </section>
 
-  <!-- ─────────── INFINITE MARQUEE TRUST CAROUSEL ─────────── -->
+  <!-- ─────────── INFINITE MARQUEE TRUST CAROUSEL (DENSE & SEAMLESS) ─────────── -->
   <div class="trust-carousel-section">
     <div class="trust-carousel-label">WORKS INVISIBLY ON ALL EXAM PLATFORMS &amp; SCREEN SHARES</div>
     
     <div class="trust-marquee-wrapper">
       <div class="trust-marquee-track">
         
-        <!-- Group 1 -->
+        <!-- Group 1 (3 full repetitions to guarantee zero right-side blank space) -->
         <div class="trust-marquee-group">
           <!-- Google Meet -->
           <div class="trust-item">
@@ -1360,6 +1261,65 @@
           </div>
 
           <!-- LeetCode -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
+              <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
+            </svg>
+            LeetCode
+          </div>
+
+          <!-- Google Meet Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <rect width="16" height="16" x="12" y="16" fill="#fff" transform="rotate(-90 20 24)"></rect>
+              <polygon fill="#1e88e5" points="3,17 3,31 8,32 13,31 13,17 8,16"></polygon>
+              <path fill="#4caf50" d="M37,24v14c0,1.657-1.343,3-3,3H13l-1-5l1-5h14v-7l5-1L37,24z"></path>
+              <path fill="#fbc02d" d="M37,10v14H27v-7H13l-1-5l1-5h21C35.657,7,37,8.343,37,10z"></path>
+              <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
+              <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
+              <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
+              <path fill="#4caf50" d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z"></path>
+            </svg>
+            Google Meet
+          </div>
+
+          <!-- Zoom Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="20" fill="#2196f3"></circle>
+              <path fill="#fff" d="M29,31H14c-1.657,0-3-1.343-3-3V17h15c1.657,0,3,1.343,3,3V31z"></path>
+              <polygon fill="#fff" points="37,31 31,27 31,21 37,17"></polygon>
+            </svg>
+            Zoom
+          </div>
+
+          <!-- Discord Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#536dfe" d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"></path>
+            </svg>
+            Discord
+          </div>
+
+          <!-- Microsoft Teams Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path>
+              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path>
+              <path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
+            </svg>
+            Microsoft Teams
+          </div>
+
+          <!-- HackerRank Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" fill="#2EC866">
+              <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z"/>
+            </svg>
+            HackerRank
+          </div>
+
+          <!-- LeetCode Repeat -->
           <div class="trust-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
               <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
@@ -1428,13 +1388,72 @@
             </svg>
             LeetCode
           </div>
+
+          <!-- Google Meet Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <rect width="16" height="16" x="12" y="16" fill="#fff" transform="rotate(-90 20 24)"></rect>
+              <polygon fill="#1e88e5" points="3,17 3,31 8,32 13,31 13,17 8,16"></polygon>
+              <path fill="#4caf50" d="M37,24v14c0,1.657-1.343,3-3,3H13l-1-5l1-5h14v-7l5-1L37,24z"></path>
+              <path fill="#fbc02d" d="M37,10v14H27v-7H13l-1-5l1-5h21C35.657,7,37,8.343,37,10z"></path>
+              <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
+              <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
+              <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
+              <path fill="#4caf50" d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z"></path>
+            </svg>
+            Google Meet
+          </div>
+
+          <!-- Zoom Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="20" fill="#2196f3"></circle>
+              <path fill="#fff" d="M29,31H14c-1.657,0-3-1.343-3-3V17h15c1.657,0,3,1.343,3,3V31z"></path>
+              <polygon fill="#fff" points="37,31 31,27 31,21 37,17"></polygon>
+            </svg>
+            Zoom
+          </div>
+
+          <!-- Discord Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#536dfe" d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"></path>
+            </svg>
+            Discord
+          </div>
+
+          <!-- Microsoft Teams Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path>
+              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path>
+              <path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
+            </svg>
+            Microsoft Teams
+          </div>
+
+          <!-- HackerRank Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" fill="#2EC866">
+              <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z"/>
+            </svg>
+            HackerRank
+          </div>
+
+          <!-- LeetCode Repeat -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
+              <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
+            </svg>
+            LeetCode
+          </div>
         </div>
 
       </div>
     </div>
   </div>
 
-  <!-- ─────────── HOW IT WORKS (3-STEP FLAGSHIP BENTO) ─────────── -->
+  <!-- ─────────── HOW IT WORKS (CLEAN NATURAL 3-STEP BENTO) ─────────── -->
   <section class="how-section" id="how-it-works">
     <div class="container">
       <div class="section-label">How Clovi works</div>
@@ -1447,21 +1466,18 @@
         <div class="how-bento-card">
           <div class="how-step-header">
             <div class="how-step-badge badge-blue">01</div>
-            <h3>Invisible Floating Dock</h3>
-            <p>Clovi starts as an ultra-compact 210px glass capsule pinned at the top of your screen. It is excluded from all screen recordings at the OS kernel level.</p>
+            <h3>Launch &amp; Pin</h3>
+            <p>Clovi floats as a tiny compact bar at the top of your screen. It is excluded from all screen recordings and screen shares.</p>
           </div>
           
-          <div class="bento-visual-box">
-            <div class="visual-capsule-preview">
-              <div class="visual-capsule-left">
-                <span>👻</span>
-                <span>Clovi Dock</span>
+          <div class="bento-visual-box" style="align-items: center; justify-content: center;">
+            <div class="capsule-dock-pill" style="position: static; margin: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+              <span class="capsule-icon">👻</span>
+              <div class="capsule-solve-btn" style="cursor: default;">
+                <span class="capsule-bolt">⚡</span>
+                <span>Snap &amp; Solve</span>
               </div>
-              <div class="visual-stealth-tag">0x11 WDA</div>
-            </div>
-            <div class="visual-status-pill">
-              <span style="color:#34d399;">●</span>
-              <span>WS_EX_NOACTIVATE: Focus Locked</span>
+              <span class="capsule-icon">⚙️</span>
             </div>
           </div>
         </div>
@@ -1470,21 +1486,17 @@
         <div class="how-bento-card">
           <div class="how-step-header">
             <div class="how-step-badge badge-purple">02</div>
-            <h3>Snap with Global Hotkey</h3>
-            <p>One global keystroke captures whatever question, formula, or code is on screen without touching your mouse or clicking away from your exam.</p>
+            <h3>Press Ctrl + Shift + S</h3>
+            <p>One global keyboard shortcut snaps the question on your screen without losing focus on your browser tab.</p>
           </div>
           
-          <div class="bento-visual-box">
+          <div class="bento-visual-box" style="align-items: center; justify-content: center;">
             <div class="keycaps-row">
               <kbd class="keycap">Ctrl</kbd>
               <span class="keycap-plus">+</span>
               <kbd class="keycap">Shift</kbd>
               <span class="keycap-plus">+</span>
               <kbd class="keycap">S</kbd>
-            </div>
-            <div class="scanning-laser-box">
-              <div class="scanning-laser-line"></div>
-              <span>⚡ Optical OCR Reading Screen...</span>
             </div>
           </div>
         </div>
@@ -1493,19 +1505,17 @@
         <div class="how-bento-card">
           <div class="how-step-header">
             <div class="how-step-badge badge-emerald">03</div>
-            <h3>Instant Streamed Solution</h3>
-            <p>Gemini 2.5 Flash streams verified runnable code, step-by-step calculus proofs, or multiple-choice selections straight into your stealth bubble.</p>
+            <h3>Get Instant Answers</h3>
+            <p>Gemini Vision reads the problem and streams the optimal code or direct answer into the floating card.</p>
           </div>
           
-          <div class="bento-visual-box">
-            <div class="stream-speed-badge">
-              <span class="stream-tag-green">✓ Python 3 Optimal</span>
-              <span class="stream-time-tag">⚡ 1.1s Streamed</span>
-            </div>
-            <div class="mini-code-stream">
-              <div><span style="color:#f43f5e; font-weight:700;">while</span> l &lt; r:</div>
-              <div>&nbsp;&nbsp;s[l], s[r] = s[r], s[l]</div>
-              <div>&nbsp;&nbsp;l += <span style="color:#a78bfa;">1</span>; r -= <span style="color:#a78bfa;">1</span></div>
+          <div class="bento-visual-box" style="justify-content: center;">
+            <div class="solution-code-box" style="margin: 0; font-size: 12px; line-height: 1.6;">
+              <div><span class="code-kw">def</span> <span class="code-fn">reverseString</span>(s):</div>
+              <div>&nbsp;&nbsp;l, r = <span class="code-num">0</span>, <span class="code-fn">len</span>(s) - <span class="code-num">1</span></div>
+              <div>&nbsp;&nbsp;<span class="code-kw">while</span> l &lt; r:</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;s[l], s[r] = s[r], s[l]</div>
+              <div>&nbsp;&nbsp;&nbsp;&nbsp;l += <span class="code-num">1</span>; r -= <span class="code-num">1</span></div>
             </div>
           </div>
         </div>
