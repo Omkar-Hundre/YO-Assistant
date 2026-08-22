@@ -896,9 +896,11 @@
       font-weight: 300;
     }
 
-    /* ─── HOW IT WORKS: CLEAN NATURAL 3-STEP BENTO GRID ─── */
+    /* ─── HOW IT WORKS: LUXURY 3-STEP WORKFLOW SHOWCASE ─── */
     .how-section {
       background: var(--white);
+      padding: 110px 24px 120px;
+      position: relative;
     }
 
     .how-bento-grid {
@@ -911,118 +913,283 @@
     .how-bento-card {
       background: var(--white);
       border: 1px solid var(--gray-200);
-      border-radius: 24px;
-      padding: 32px 26px;
+      border-radius: 26px;
+      padding: 36px 30px 32px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
       overflow: hidden;
     }
 
+    .how-bento-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 160px;
+      pointer-events: none;
+      border-radius: 26px 26px 0 0;
+      opacity: 0.8;
+      transition: opacity 0.3s ease;
+    }
+
+    .how-bento-card.card-blue::before {
+      background: radial-gradient(ellipse at 50% -20%, rgba(37, 99, 235, 0.09), transparent 70%);
+    }
+
+    .how-bento-card.card-purple::before {
+      background: radial-gradient(ellipse at 50% -20%, rgba(124, 58, 237, 0.09), transparent 70%);
+    }
+
+    .how-bento-card.card-emerald::before {
+      background: radial-gradient(ellipse at 50% -20%, rgba(16, 185, 129, 0.09), transparent 70%);
+    }
+
     .how-bento-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+      transform: translateY(-6px);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.08);
       border-color: var(--gray-300);
     }
 
     .how-step-header {
-      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
     }
 
-    .how-step-badge {
+    .how-step-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .how-step-tag {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 100px;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      width: 38px;
-      height: 38px;
-      border-radius: 12px;
-      background: var(--gray-100);
-      color: var(--black);
-      font-family: var(--font-body);
-      font-size: 14px;
-      font-weight: 900;
-      margin-bottom: 18px;
-      border: 1px solid var(--gray-200);
+      gap: 6px;
     }
 
-    .badge-blue {
+    .tag-blue {
       background: #eff6ff;
       color: #2563eb;
-      border-color: #bfdbfe;
+      border: 1px solid #bfdbfe;
     }
 
-    .badge-purple {
+    .tag-purple {
       background: #faf5ff;
       color: #7c3aed;
-      border-color: #e9d5ff;
+      border: 1px solid #e9d5ff;
     }
 
-    .badge-emerald {
+    .tag-emerald {
       background: #ecfdf5;
       color: #059669;
-      border-color: #a7f3d0;
+      border: 1px solid #a7f3d0;
+    }
+
+    .how-step-num {
+      font-family: var(--font-display);
+      font-size: 26px;
+      color: var(--gray-300);
+      font-weight: 400;
+      line-height: 1;
     }
 
     .how-bento-card h3 {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       color: var(--black);
       margin-bottom: 10px;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.4px;
+      line-height: 1.25;
     }
 
     .how-bento-card p {
-      font-size: 14px;
+      font-size: 14.5px;
       color: var(--gray-600);
       line-height: 1.65;
       font-weight: 300;
     }
 
-    /* Bento Visual Previews */
-    .bento-visual-box {
-      margin-top: 24px;
-      background: #18181b;
+    /* ─── Bento Visual Canvas (Step Illustrations) ─── */
+    .bento-visual-canvas {
+      margin-top: 28px;
+      background: #09090b;
       border: 1px solid #27272a;
-      border-radius: 16px;
-      padding: 24px 20px;
+      border-radius: 18px;
+      padding: 22px 18px;
       color: white;
       text-align: left;
       position: relative;
       overflow: hidden;
-      min-height: 160px;
+      min-height: 180px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.15);
     }
 
-    /* Visual 2: 3D Tactile Keycaps */
+    /* Visual 1: Pin & Dock Simulation */
+    .step-dock-preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .step-mini-window-bar {
+      width: 100%;
+      background: #18181b;
+      border: 1px solid #27272a;
+      border-radius: 8px;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10.5px;
+      color: #71717a;
+    }
+
+    .step-mini-dots {
+      display: flex;
+      gap: 5px;
+    }
+
+    .step-mini-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #3f3f46;
+    }
+
+    .step-mini-pill-dock {
+      background: rgba(30, 30, 34, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 100px;
+      padding: 7px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(37, 99, 235, 0.2);
+    }
+
+    .step-mini-status {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: #34d399;
+      font-weight: 700;
+    }
+
+    .step-mini-status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #34d399;
+      box-shadow: 0 0 6px #34d399;
+    }
+
+    /* Visual 2: 3D Backlit Keycaps with Scan Light */
+    .step-keycaps-container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
     .keycaps-row {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
+      position: relative;
+      z-index: 2;
     }
 
     .keycap {
-      background: linear-gradient(180deg, #3f3f46 0%, #27272a 100%);
+      background: linear-gradient(180deg, #3f3f46 0%, #222226 100%);
       border: 1px solid #52525b;
-      border-bottom: 3px solid #09090b;
-      border-radius: 8px;
-      padding: 8px 14px;
+      border-bottom: 4px solid #101012;
+      border-radius: 9px;
+      padding: 10px 14px;
       font-family: monospace;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
       color: #ffffff;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.6), 0 0 12px rgba(124, 58, 237, 0.25);
+      transition: all 0.2s;
     }
 
     .keycap-plus {
       color: #71717a;
       font-weight: 700;
-      font-size: 15px;
+      font-size: 14px;
+    }
+
+    .step-scan-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #c084fc;
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-family: monospace;
+    }
+
+    /* Visual 3: Live Solution Output Preview */
+    .step-solution-preview {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .step-solution-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 8px;
+    }
+
+    .step-solution-badge {
+      color: #34d399;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .step-solution-speed {
+      color: #38bdf8;
+      font-family: monospace;
+      font-size: 10.5px;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    .step-code-lines {
+      font-family: monospace;
+      font-size: 12px;
+      line-height: 1.65;
+      color: #cbd5e1;
     }
 
     /* ─── ULTRA-CLEAN MINIMAL DARK STEALTH SECTION ─── */
@@ -3078,73 +3245,106 @@
     </div>
   </div>
 
-  <!-- ─────────── HOW IT WORKS (CLEAN NATURAL 3-STEP BENTO) ─────────── -->
+  <!-- ─────────── HOW IT WORKS (LUXURY 3-STEP WORKFLOW) ─────────── -->
   <section class="how-section" id="how-it-works">
     <div class="container">
       <div class="section-label">How Clovi works</div>
       <div class="section-title">See it. Snap it. <em>Solved.</em></div>
-      <div class="section-sub">Three seamless steps between any question on your screen and an optimal, undetectable
-        solution.</div>
+      <div class="section-sub">Three seamless steps between any coding problem or exam question and an undetectable,
+        optimal solution.</div>
 
       <div class="how-bento-grid">
 
         <!-- Step 1 Card -->
-        <div class="how-bento-card">
+        <div class="how-bento-card card-blue">
           <div class="how-step-header">
-            <div class="how-step-badge badge-blue">01</div>
-            <h3>Launch &amp; Pin</h3>
-            <p>Clovi floats as a tiny compact bar at the top of your screen. It is excluded from all screen recordings
-              and screen shares.</p>
+            <div class="how-step-badge-row">
+              <span class="how-step-num">01</span>
+            </div>
+            <h3>Launch &amp; Pin Anywhere</h3>
+            <p>Clovi floats as a featherweight capsule docked at any screen corner. Excluded from all video calls and
+              screen recordings by default.</p>
           </div>
 
-          <div class="bento-visual-box" style="align-items: center; justify-content: center;">
-            <div class="capsule-dock-pill" style="position: static; margin: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
-              <span class="capsule-icon">👻</span>
-              <div class="capsule-solve-btn" style="cursor: default;">
-                <span class="capsule-bolt">⚡</span>
-                <span>Snap &amp; Solve</span>
+          <div class="bento-visual-canvas">
+            <div class="step-dock-preview">
+              <div class="step-mini-window-bar">
+                <div class="step-mini-dots">
+                  <div class="step-mini-dot"></div>
+                  <div class="step-mini-dot"></div>
+                  <div class="step-mini-dot"></div>
+                </div>
+                <span>leetcode.com/problems/reverse-string</span>
+                <span>🔒</span>
               </div>
-              <span class="capsule-icon">⚙️</span>
+              <div class="step-mini-pill-dock">
+                <span>👻</span>
+                <span style="font-weight:700; font-size:12.5px; color:#60a5fa;">⚡ Snap &amp; Solve</span>
+                <div class="step-mini-status">
+                  <span class="step-mini-status-dot"></span>
+                  <span>WDA Hidden</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Step 2 Card -->
-        <div class="how-bento-card">
+        <div class="how-bento-card card-purple">
           <div class="how-step-header">
-            <div class="how-step-badge badge-purple">02</div>
-            <h3>Press Ctrl + Shift + S</h3>
-            <p>One global keyboard shortcut snaps the question on your screen without losing focus on your browser tab.
-            </p>
+            <div class="how-step-badge-row">
+              <span class="how-step-num">02</span>
+            </div>
+            <h3>1 Global Hotkey</h3>
+            <p>Press <code
+                style="font-family:monospace; background:rgba(124,58,237,0.1); color:#7c3aed; padding:2px 6px; border-radius:4px; font-weight:700;">Ctrl+Shift+S</code>
+              to instantly capture your optical buffer with zero tab-switch or window-blur alerts.</p>
           </div>
 
-          <div class="bento-visual-box" style="align-items: center; justify-content: center;">
-            <div class="keycaps-row">
-              <kbd class="keycap">Ctrl</kbd>
-              <span class="keycap-plus">+</span>
-              <kbd class="keycap">Shift</kbd>
-              <span class="keycap-plus">+</span>
-              <kbd class="keycap">S</kbd>
+          <div class="bento-visual-canvas">
+            <div class="step-keycaps-container">
+              <div class="keycaps-row">
+                <kbd class="keycap">Ctrl</kbd>
+                <span class="keycap-plus">+</span>
+                <kbd class="keycap">Shift</kbd>
+                <span class="keycap-plus">+</span>
+                <kbd class="keycap">S</kbd>
+              </div>
+              <div class="step-scan-badge">
+                <span>⚡ Optical Screen Buffer · &lt;80ms</span>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- Step 3 Card -->
-        <div class="how-bento-card">
+        <div class="how-bento-card card-emerald">
           <div class="how-step-header">
-            <div class="how-step-badge badge-emerald">03</div>
-            <h3>Get Instant Answers</h3>
-            <p>Gemini Vision reads the problem and streams the optimal code or direct answer into the floating card.</p>
+            <div class="how-step-badge-row">
+              <span class="how-step-num">03</span>
+            </div>
+            <h3>Streamed Direct Solutions</h3>
+            <p>Gemini Vision analyzes the problem logic, generating verified code, formulas, and exact multiple-choice
+              answers in under 2 seconds.</p>
           </div>
 
-          <div class="bento-visual-box" style="justify-content: center;">
-            <div class="solution-code-box" style="margin: 0; font-size: 12px; line-height: 1.6;">
-              <div><span class="code-kw">def</span> <span class="code-fn">reverseString</span>(s):</div>
-              <div>&nbsp;&nbsp;l, r = <span class="code-num">0</span>, <span class="code-fn">len</span>(s) - <span
-                  class="code-num">1</span></div>
-              <div>&nbsp;&nbsp;<span class="code-kw">while</span> l &lt; r:</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;s[l], s[r] = s[r], s[l]</div>
-              <div>&nbsp;&nbsp;&nbsp;&nbsp;l += <span class="code-num">1</span>; r -= <span class="code-num">1</span>
+          <div class="bento-visual-canvas">
+            <div class="step-solution-preview">
+              <div class="step-solution-header">
+                <div class="step-solution-badge">
+                  <span>✓</span>
+                  <span>Python 3 Optimal</span>
+                </div>
+                <div class="step-solution-speed">⏱️ 1.4s streamed</div>
+              </div>
+              <div class="step-code-lines">
+                <div><span class="code-kw">def</span> <span class="code-fn">reverseString</span>(s):</div>
+                <div>&nbsp;&nbsp;l, r = <span class="code-num">0</span>, <span class="code-fn">len</span>(s) - <span
+                    class="code-num">1</span></div>
+                <div>&nbsp;&nbsp;<span class="code-kw">while</span> l &lt; r:</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;s[l], s[r] = s[r], s[l]</div>
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;l += <span class="code-num">1</span>; r -= <span class="code-num">1</span>
+                </div>
               </div>
             </div>
           </div>
