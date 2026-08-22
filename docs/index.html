@@ -33,29 +33,41 @@
   }
   </script>
 
+  <!-- Typography: Elsie, Gloock & Lato -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Elsie:wght@400;900&family=Gloock&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
+      --font-display: 'Gloock', serif;
+      --font-accent: 'Elsie', serif;
+      --font-body: 'Lato', sans-serif;
       --white: #ffffff;
-      --black: #0a0a0a;
-      --gray-50:  #f9fafb;
-      --gray-100: #f3f4f6;
-      --gray-200: #e5e7eb;
-      --gray-400: #9ca3af;
-      --gray-600: #4b5563;
-      --gray-700: #374151;
-      --gray-900: #111827;
+      --black: #09090b;
+      --gray-50:  #f8fafc;
+      --gray-100: #f1f5f9;
+      --gray-200: #e2e8f0;
+      --gray-300: #cbd5e1;
+      --gray-400: #94a3b8;
+      --gray-500: #64748b;
+      --gray-600: #475569;
+      --gray-700: #334155;
+      --gray-800: #1e293b;
+      --gray-900: #0f172a;
       --blue-500: #3b82f6;
       --blue-600: #2563eb;
-      --purple-500: #8b5cf6;
+      --blue-700: #1d4ed8;
     }
 
-    html { font-family: 'Inter', sans-serif; color: var(--gray-900); background: var(--white); }
+    html { 
+      font-family: var(--font-body); 
+      color: var(--gray-800); 
+      background: var(--white); 
+      -webkit-font-smoothing: antialiased;
+    }
 
     body { min-height: 100vh; overflow-x: hidden; }
 
@@ -63,274 +75,403 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 32px; height: 60px;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 0 40px; height: 64px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.7);
     }
-    .nav-logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; color: var(--black); text-decoration: none; }
-    .nav-logo-mark { width: 26px; height: 26px; background: var(--black); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
-    .nav-logo-mark span { color: white; font-size: 11px; font-weight: 800; letter-spacing: -0.5px; }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { font-size: 13px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color 0.15s; }
+    .nav-logo { 
+      display: flex; align-items: center; gap: 10px; 
+      font-family: var(--font-display); 
+      font-size: 22px; 
+      font-weight: 400; 
+      color: var(--black); 
+      text-decoration: none; 
+      letter-spacing: -0.5px;
+    }
+    .nav-logo-mark { 
+      width: 28px; height: 28px; 
+      background: var(--black); 
+      border-radius: 8px; 
+      display: flex; align-items: center; justify-content: center; 
+      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+    }
+    .nav-logo-mark span { 
+      color: white; 
+      font-family: var(--font-body); 
+      font-size: 11px; 
+      font-weight: 900; 
+      letter-spacing: -0.5px; 
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { 
+      font-size: 13.5px; 
+      font-weight: 400; 
+      color: var(--gray-600); 
+      text-decoration: none; 
+      transition: color 0.15s; 
+    }
     .nav-links a:hover { color: var(--black); }
-    .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .btn-ghost { font-size: 13px; font-weight: 500; color: var(--gray-700); background: none; border: none; cursor: pointer; padding: 7px 14px; border-radius: 8px; transition: background 0.15s; }
-    .btn-ghost:hover { background: var(--gray-100); }
-    .btn-primary { font-size: 13px; font-weight: 600; color: white; background: var(--black); border: none; cursor: pointer; padding: 8px 18px; border-radius: 8px; transition: opacity 0.15s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-    .btn-primary:hover { opacity: 0.82; }
+    .nav-actions { display: flex; align-items: center; gap: 12px; }
+    .btn-ghost { 
+      font-family: var(--font-body);
+      font-size: 13px; font-weight: 600; 
+      color: var(--gray-700); background: none; border: none; cursor: pointer; 
+      padding: 8px 16px; border-radius: 8px; transition: all 0.15s; 
+    }
+    .btn-ghost:hover { background: var(--gray-100); color: var(--black); }
+    .btn-primary { 
+      font-family: var(--font-body);
+      font-size: 13px; font-weight: 700; 
+      color: white; background: var(--blue-600); 
+      border: none; cursor: pointer; 
+      padding: 9px 20px; border-radius: 9999px; 
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); 
+      text-decoration: none; display: inline-flex; align-items: center; gap: 7px; 
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+    }
+    .btn-primary:hover { background: var(--blue-700); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35); }
 
     /* ─── HERO ────────────────────────────────────────── */
     .hero {
       padding-top: 140px;
-      padding-bottom: 80px;
+      padding-bottom: 90px;
       text-align: center;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 60%);
+      background: linear-gradient(180deg, #dbeafe 0%, #e0f2fe 30%, #f8fafc 70%, #ffffff 100%);
     }
-    .hero::before {
-      content: '';
-      position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
-      width: 900px; height: 500px;
-      background: radial-gradient(ellipse at center, rgba(99,102,241,0.12) 0%, rgba(59,130,246,0.07) 40%, transparent 70%);
+    .hero-glow {
+      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 1000px; height: 500px;
+      background: radial-gradient(ellipse at 50% 20%, rgba(59, 130, 246, 0.22) 0%, rgba(147, 197, 253, 0.12) 45%, transparent 75%);
       pointer-events: none;
     }
     .hero-badge {
-      display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.9); border: 1px solid rgba(0,0,0,0.1);
-      border-radius: 100px; padding: 5px 14px;
-      font-size: 12px; font-weight: 500; color: var(--gray-700);
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255, 255, 255, 0.95); 
+      border: 1px solid rgba(191, 219, 254, 0.8);
+      border-radius: 100px; padding: 6px 16px;
+      font-size: 12px; font-weight: 700; color: var(--gray-700);
       margin-bottom: 28px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.03);
       backdrop-filter: blur(8px);
     }
-    .hero-badge-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; }
+    .hero-badge-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 8px #22c55e; }
+    
     .hero h1 {
-      font-size: clamp(40px, 6vw, 72px);
-      font-weight: 800;
+      font-family: var(--font-display);
+      font-size: clamp(42px, 6.2vw, 82px);
+      font-weight: 400;
       line-height: 1.08;
-      letter-spacing: -2px;
+      letter-spacing: -1.5px;
       color: var(--black);
-      max-width: 780px;
-      margin: 0 auto 20px;
+      max-width: 840px;
+      margin: 0 auto 24px;
     }
-    .hero h1 em { font-style: normal; color: var(--blue-600); }
+    .hero h1 em { 
+      font-family: var(--font-display);
+      font-style: italic; 
+      color: var(--blue-600);
+      font-weight: 400;
+    }
     .hero-sub {
-      font-size: 17px; font-weight: 400; line-height: 1.6;
-      color: var(--gray-600); max-width: 520px; margin: 0 auto 40px;
+      font-family: var(--font-body);
+      font-size: 18px; 
+      font-weight: 300; 
+      line-height: 1.65;
+      color: var(--gray-600); 
+      max-width: 600px; 
+      margin: 0 auto 38px;
     }
-    .hero-cta { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .hero-cta { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
     .cta-primary {
       display: inline-flex; align-items: center; gap: 8px;
-      background: var(--black); color: white;
-      font-size: 14px; font-weight: 600;
-      padding: 13px 26px; border-radius: 10px;
-      text-decoration: none; transition: opacity 0.2s;
+      background: var(--blue-600); color: white;
+      font-size: 14.5px; font-weight: 700;
+      padding: 14px 30px; border-radius: 9999px;
+      text-decoration: none; transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       border: none; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
     }
-    .cta-primary:hover { opacity: 0.8; }
+    .cta-primary:hover { background: var(--blue-700); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4); }
     .cta-secondary {
       display: inline-flex; align-items: center; gap: 8px;
-      background: white; color: var(--gray-700);
-      font-size: 14px; font-weight: 500;
-      padding: 12px 24px; border-radius: 10px;
-      text-decoration: none; transition: background 0.2s;
+      background: rgba(255,255,255,0.9); color: var(--gray-700);
+      font-size: 14px; font-weight: 700;
+      padding: 13px 26px; border-radius: 9999px;
+      text-decoration: none; transition: all 0.2s;
       border: 1px solid var(--gray-200); cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
-    .cta-secondary:hover { background: var(--gray-50); }
-    .hero-note { margin-top: 16px; font-size: 12px; color: var(--gray-400); font-weight: 400; }
+    .cta-secondary:hover { background: white; border-color: var(--gray-300); transform: translateY(-1px); }
+    .hero-note { margin-top: 18px; font-size: 12.5px; color: var(--gray-500); font-weight: 400; }
 
-    /* ─── HERO IMAGE PLACEHOLDER ──────────────────────── */
+    /* ─── HERO VISUAL / UI MOCKUP ─────────────────────── */
     .hero-visual {
-      margin: 60px auto 0;
-      max-width: 900px;
+      margin: 64px auto 0;
+      max-width: 980px;
       padding: 0 24px;
+      position: relative;
+    }
+    .hero-card-container {
+      background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 24px;
+      padding: 16px;
+      box-shadow: 0 20px 60px -15px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(0,0,0,0.03);
+      position: relative;
     }
     .placeholder-image {
       width: 100%; aspect-ratio: 16/9;
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-      border: 1px solid var(--gray-200);
-      border-radius: 16px;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
       color: var(--gray-400); font-size: 13px; text-align: center;
-      box-shadow: 0 4px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.06);
-      padding: 24px;
+      padding: 32px;
       position: relative; overflow: hidden;
     }
     .placeholder-image::after {
       content: '';
       position: absolute; inset: 0;
-      background: linear-gradient(180deg, transparent 60%, rgba(255,255,255,0.7) 100%);
+      background: radial-gradient(circle at 50% 30%, rgba(59, 130, 246, 0.15), transparent 70%);
+      pointer-events: none;
     }
-    .placeholder-icon { font-size: 32px; opacity: 0.4; }
-    .placeholder-label { font-weight: 600; color: var(--gray-500); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-    .placeholder-desc { font-size: 11px; color: var(--gray-400); max-width: 280px; line-height: 1.5; }
+    .placeholder-icon { font-size: 38px; opacity: 0.8; }
+    .placeholder-label { 
+      font-family: var(--font-body);
+      font-weight: 700; color: #f8fafc; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; 
+    }
+    .placeholder-desc { 
+      font-family: var(--font-body);
+      font-size: 12px; color: #94a3b8; max-width: 380px; line-height: 1.6; font-weight: 300;
+    }
 
     /* ─── TRUST BAR ───────────────────────────────────── */
     .trust-bar {
-      padding: 32px 24px;
+      padding: 38px 24px;
       border-top: 1px solid var(--gray-100);
       border-bottom: 1px solid var(--gray-100);
       display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap;
+      background: var(--white);
     }
-    .trust-bar-label { font-size: 11px; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
-    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--gray-700); }
-    .trust-item svg { opacity: 0.5; }
+    .trust-bar-label { 
+      font-size: 12px; color: var(--gray-400); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; 
+    }
+    .trust-item { 
+      display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 700; color: var(--gray-700); 
+    }
 
     /* ─── SECTION BASE ────────────────────────────────── */
-    section { padding: 96px 24px; }
-    .container { max-width: 960px; margin: 0 auto; }
-    .section-label { font-size: 12px; font-weight: 600; color: var(--blue-600); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px; }
-    .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; color: var(--black); }
-    .section-title em { font-style: normal; color: var(--gray-400); }
-    .section-sub { font-size: 16px; color: var(--gray-600); line-height: 1.7; max-width: 480px; margin-top: 14px; }
+    section { padding: 100px 24px; }
+    .container { max-width: 1020px; margin: 0 auto; }
+    .section-label { 
+      font-family: var(--font-body);
+      font-size: 12.5px; font-weight: 700; color: var(--blue-600); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; 
+    }
+    .section-title { 
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4.5vw, 48px); 
+      font-weight: 400; 
+      letter-spacing: -0.5px; 
+      line-height: 1.15; 
+      color: var(--black); 
+    }
+    .section-title em { 
+      font-style: italic; 
+      color: var(--gray-400); 
+    }
+    .section-sub { 
+      font-family: var(--font-body);
+      font-size: 16.5px; 
+      color: var(--gray-600); 
+      line-height: 1.7; 
+      max-width: 520px; 
+      margin-top: 14px; 
+      font-weight: 300;
+    }
 
     /* ─── HOW IT WORKS ────────────────────────────────── */
     .how-section { background: var(--white); }
-    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 64px; }
+    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 64px; }
     .how-steps { display: flex; flex-direction: column; gap: 36px; }
     .how-step { display: flex; gap: 20px; }
     .how-step-num {
-      width: 32px; height: 32px; flex-shrink: 0;
-      background: var(--gray-100); border-radius: 50%;
+      width: 36px; height: 36px; flex-shrink: 0;
+      background: var(--blue-50); border: 1px solid var(--blue-200); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700; color: var(--gray-700);
+      font-size: 13px; font-weight: 900; color: var(--blue-700);
     }
-    .how-step-content h3 { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
-    .how-step-content p { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
-    .how-visual .placeholder-image { aspect-ratio: 4/3; border-radius: 14px; }
+    .how-step-content h3 { font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+    .how-step-content p { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; font-weight: 300; }
+    .how-visual .placeholder-image { aspect-ratio: 4/3; border-radius: 18px; }
 
     /* ─── STEALTH SECTION ─────────────────────────────── */
     .stealth-section { background: var(--gray-50); }
-    .stealth-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+    .stealth-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 56px; }
     .stealth-card {
       background: white; border: 1px solid var(--gray-200);
-      border-radius: 16px; padding: 28px 24px;
-      transition: box-shadow 0.2s;
+      border-radius: 20px; padding: 32px 26px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .stealth-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
-    .stealth-card-icon { font-size: 24px; margin-bottom: 16px; }
-    .stealth-card h3 { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
-    .stealth-card p { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+    .stealth-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.06); border-color: var(--gray-300); }
+    .stealth-card-icon { font-size: 26px; margin-bottom: 18px; }
+    .stealth-card h3 { font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .stealth-card p { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; font-weight: 300; }
 
     /* ─── DEMO SECTION ────────────────────────────────── */
     .demo-section { background: var(--black); color: white; }
-    .demo-section .section-label { color: #818cf8; }
+    .demo-section .section-label { color: #93c5fd; }
     .demo-section .section-title { color: white; }
-    .demo-section .section-title em { color: #818cf8; }
-    .demo-section .section-sub { color: #9ca3af; }
-    .demo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 64px; }
+    .demo-section .section-title em { color: #93c5fd; }
+    .demo-section .section-sub { color: var(--gray-400); }
+    .demo-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; margin-top: 64px; }
     .demo-visual .placeholder-image {
       background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-      border-color: #1e293b;
-      color: #64748b;
+      border-color: #334155;
     }
-    .demo-stats { display: flex; flex-direction: column; gap: 40px; }
-    .demo-stat-num { font-size: 48px; font-weight: 800; letter-spacing: -2px; color: white; line-height: 1; }
-    .demo-stat-label { font-size: 14px; font-weight: 700; color: white; margin-top: 6px; margin-bottom: 6px; }
-    .demo-stat-desc { font-size: 13px; color: #6b7280; line-height: 1.6; }
-    .demo-divider { height: 1px; background: #1f2937; }
+    .demo-stats { display: flex; flex-direction: column; gap: 36px; }
+    .demo-stat-num { font-family: var(--font-display); font-size: 52px; font-weight: 400; letter-spacing: -1.5px; color: white; line-height: 1; }
+    .demo-stat-label { font-size: 15px; font-weight: 700; color: white; margin-top: 8px; margin-bottom: 6px; }
+    .demo-stat-desc { font-size: 13.5px; color: #94a3b8; line-height: 1.6; font-weight: 300; }
+    .demo-divider { height: 1px; background: #1e293b; }
 
     /* ─── VISUAL PROOF SECTION ────────────────────────── */
     .proof-section { background: var(--white); }
-    .proof-tabs { display: flex; gap: 8px; margin-top: 48px; border-bottom: 1px solid var(--gray-200); padding-bottom: 0; }
+    .proof-tabs { display: flex; gap: 8px; margin-top: 48px; border-bottom: 1px solid var(--gray-200); }
     .proof-tab {
-      font-size: 13px; font-weight: 500; color: var(--gray-500);
-      padding: 10px 18px; cursor: pointer; border-bottom: 2px solid transparent;
-      transition: color 0.15s; margin-bottom: -1px; background: none; border-top: none; border-left: none; border-right: none;
+      font-family: var(--font-body);
+      font-size: 13.5px; font-weight: 600; color: var(--gray-500);
+      padding: 12px 20px; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: all 0.15s; margin-bottom: -1px; background: none; border-top: none; border-left: none; border-right: none;
     }
-    .proof-tab.active { color: var(--black); border-bottom-color: var(--black); font-weight: 600; }
+    .proof-tab.active { color: var(--black); border-bottom-color: var(--black); font-weight: 700; }
     .proof-visual { margin-top: 32px; }
-    .proof-visual .placeholder-image { aspect-ratio: 16/7; border-radius: 16px; }
+    .proof-visual .placeholder-image { aspect-ratio: 16/8; border-radius: 20px; }
 
     /* ─── FAQ SECTION ─────────────────────────────────── */
     .faq-section { background: var(--gray-50); }
-    .faq-list { margin-top: 56px; max-width: 680px; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--gray-200); border-radius: 16px; overflow: hidden; background: white; }
+    .faq-list { 
+      margin-top: 56px; max-width: 720px; display: flex; flex-direction: column; 
+      border: 1px solid var(--gray-200); border-radius: 20px; overflow: hidden; background: white; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
     .faq-item { border-bottom: 1px solid var(--gray-100); }
     .faq-item:last-child { border-bottom: none; }
     .faq-question {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 24px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--black);
+      padding: 22px 28px; cursor: pointer; font-size: 15px; font-weight: 700; color: var(--black);
       background: none; border: none; width: 100%; text-align: left; gap: 16px;
+      font-family: var(--font-body);
     }
     .faq-question:hover { background: var(--gray-50); }
-    .faq-chevron { font-size: 18px; color: var(--gray-400); flex-shrink: 0; transition: transform 0.2s; }
-    .faq-answer { font-size: 13px; color: var(--gray-600); line-height: 1.7; padding: 0 24px 20px; display: none; }
+    .faq-chevron { font-size: 20px; color: var(--gray-400); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-answer { font-size: 14px; color: var(--gray-600); line-height: 1.7; padding: 0 28px 22px; display: none; font-weight: 300; }
     .faq-item.open .faq-answer { display: block; }
-    .faq-item.open .faq-chevron { transform: rotate(45deg); }
+    .faq-item.open .faq-chevron { transform: rotate(45deg); color: var(--black); }
 
     /* ─── WAITLIST SECTION ────────────────────────────── */
     .waitlist-section {
-      background: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      background: linear-gradient(160deg, #09090b 0%, #1e1b4b 50%, #09090b 100%);
       color: white; text-align: center;
     }
-    .waitlist-section .section-title { color: white; letter-spacing: -1.5px; }
-    .waitlist-section .section-sub { color: #9ca3af; margin: 14px auto 0; }
-    .waitlist-form { max-width: 420px; margin: 44px auto 0; }
-    .waitlist-input-row { display: flex; gap: 8px; }
+    .waitlist-section .section-title { color: white; }
+    .waitlist-section .section-sub { color: #94a3b8; margin: 14px auto 0; }
+    .waitlist-form { max-width: 440px; margin: 44px auto 0; }
+    .waitlist-input-row { display: flex; gap: 10px; }
     .waitlist-input {
-      flex: 1; padding: 13px 16px;
-      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px; color: white; font-size: 14px; font-family: inherit;
+      flex: 1; padding: 14px 18px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 9999px; color: white; font-size: 14px; font-family: inherit;
       outline: none; transition: border-color 0.2s;
     }
-    .waitlist-input::placeholder { color: rgba(255,255,255,0.35); }
-    .waitlist-input:focus { border-color: rgba(255,255,255,0.4); }
+    .waitlist-input::placeholder { color: rgba(255,255,255,0.4); }
+    .waitlist-input:focus { border-color: rgba(255,255,255,0.6); }
     .waitlist-submit {
-      padding: 13px 24px; background: white; color: var(--black);
-      font-size: 13px; font-weight: 700; border: none; border-radius: 10px;
+      padding: 14px 26px; background: white; color: var(--black);
+      font-size: 13.5px; font-weight: 700; border: none; border-radius: 9999px;
       cursor: pointer; white-space: nowrap; transition: opacity 0.2s; font-family: inherit;
     }
-    .waitlist-submit:hover { opacity: 0.85; }
-    .waitlist-msg { margin-top: 12px; font-size: 12px; color: #6ee7b7; min-height: 16px; }
+    .waitlist-submit:hover { opacity: 0.9; }
+    .waitlist-msg { margin-top: 14px; font-size: 13px; color: #6ee7b7; min-height: 18px; font-weight: 400; }
 
     /* ─── DOWNLOAD CTA ────────────────────────────────── */
     .download-section { background: var(--white); text-align: center; }
     .download-card {
-      background: var(--black); border-radius: 20px;
-      padding: 64px 40px; max-width: 700px; margin: 0 auto;
+      background: var(--black); border-radius: 28px;
+      padding: 72px 48px; max-width: 760px; margin: 0 auto;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.12);
     }
-    .download-card h2 { font-size: 36px; font-weight: 800; letter-spacing: -1.5px; color: white; margin-bottom: 14px; }
-    .download-card p { font-size: 15px; color: #9ca3af; line-height: 1.6; max-width: 400px; margin: 0 auto 36px; }
-    .download-card-ctas { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .download-card h2 { 
+      font-family: var(--font-display);
+      font-size: 42px; font-weight: 400; letter-spacing: -0.5px; color: white; margin-bottom: 16px; 
+    }
+    .download-card p { font-size: 15.5px; color: #94a3b8; line-height: 1.6; max-width: 440px; margin: 0 auto 38px; font-weight: 300; }
+    .download-card-ctas { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
     .btn-download {
       display: inline-flex; align-items: center; gap: 8px;
-      background: white; color: var(--black);
-      font-size: 14px; font-weight: 700;
-      padding: 13px 26px; border-radius: 10px;
-      text-decoration: none; transition: opacity 0.2s;
+      background: var(--blue-600); color: white;
+      font-size: 14.5px; font-weight: 700;
+      padding: 14px 28px; border-radius: 9999px;
+      text-decoration: none; transition: all 0.2s;
     }
-    .btn-download:hover { opacity: 0.85; }
+    .btn-download:hover { background: var(--blue-700); transform: translateY(-1px); }
     .btn-github {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(255,255,255,0.1); color: white;
-      font-size: 13px; font-weight: 500; border: 1px solid rgba(255,255,255,0.15);
-      padding: 12px 22px; border-radius: 10px; text-decoration: none; transition: background 0.2s;
+      font-size: 14px; font-weight: 700; border: 1px solid rgba(255,255,255,0.18);
+      padding: 13px 24px; border-radius: 9999px; text-decoration: none; transition: background 0.2s;
     }
     .btn-github:hover { background: rgba(255,255,255,0.18); }
-    .download-meta { margin-top: 20px; font-size: 12px; color: #4b5563; }
+    .download-meta { margin-top: 24px; font-size: 12.5px; color: #64748b; }
+
+    /* ─── MASSIVE CLOVI WATERMARK FOOTER ──────────────── */
+    .brand-watermark-wrap {
+      width: 100%;
+      overflow: hidden;
+      text-align: center;
+      padding-top: 40px;
+      padding-bottom: 0px;
+      background: var(--white);
+      position: relative;
+      pointer-events: none;
+      user-select: none;
+    }
+    .brand-watermark-text {
+      font-family: var(--font-display);
+      font-size: clamp(80px, 22vw, 290px);
+      font-weight: 400;
+      line-height: 0.78;
+      letter-spacing: -0.05em;
+      margin-bottom: -15px;
+      display: block;
+      background: linear-gradient(180deg, #09090b 0%, #334155 40%, rgba(226, 232, 240, 0.4) 80%, rgba(255, 255, 255, 0) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
     /* ─── FOOTER ──────────────────────────────────────── */
     footer {
       border-top: 1px solid var(--gray-100);
-      padding: 40px 24px;
+      padding: 44px 32px;
       display: flex; align-items: center; justify-content: space-between;
       max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 20px;
+      background: var(--white);
     }
-    .footer-left { font-size: 13px; color: var(--gray-500); }
-    .footer-left a { color: var(--gray-700); font-weight: 600; text-decoration: none; }
+    .footer-left { font-size: 13.5px; color: var(--gray-500); }
+    .footer-left a { color: var(--gray-800); font-weight: 700; text-decoration: none; }
     .footer-left a:hover { text-decoration: underline; }
-    .footer-links { display: flex; align-items: center; gap: 24px; }
-    .footer-links a { font-size: 13px; color: var(--gray-500); text-decoration: none; transition: color 0.15s; }
+    .footer-links { display: flex; align-items: center; gap: 28px; }
+    .footer-links a { font-size: 13.5px; color: var(--gray-500); text-decoration: none; transition: color 0.15s; }
     .footer-links a:hover { color: var(--black); }
 
     /* ─── RESPONSIVE ──────────────────────────────────── */
     @media (max-width: 768px) {
-      nav { padding: 0 16px; }
+      nav { padding: 0 20px; }
       .nav-links { display: none; }
       .how-grid, .stealth-grid, .demo-layout { grid-template-columns: 1fr; }
-      .stealth-grid { grid-template-columns: 1fr; }
-      .hero { padding-top: 100px; }
+      .hero { padding-top: 110px; }
       .proof-tabs { overflow-x: auto; }
       .waitlist-input-row { flex-direction: column; }
     }
@@ -362,13 +503,14 @@
 
   <!-- ─────────── HERO ─────────── -->
   <section class="hero">
+    <div class="hero-glow"></div>
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
       Free &amp; Open Source · MIT License
     </div>
     <h1>#1 Undetectable AI<br>for <em>Exams &amp; Coding Tests</em></h1>
     <p class="hero-sub">
-      Clovi reads any question on your screen and streams the direct answer, code, or solution — invisibly. No screen-share detection, no tab switch, no trace.
+      Clovi reads any question on your screen and streams direct written answers, formulas, or code — completely undetectable on Google Meet, Zoom, and screen shares.
     </p>
     <div class="hero-cta">
       <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe" class="cta-primary">
@@ -380,15 +522,17 @@
         View GitHub
       </a>
     </div>
-    <p class="hero-note">Windows 10 & 11 · Portable .exe · No install needed</p>
+    <p class="hero-note">Windows 10 &amp; 11 · Portable .exe · No install needed</p>
 
-    <!-- HERO VISUAL — replace src with actual product screenshot -->
+    <!-- HERO VISUAL / UI MOCKUP PLACEHOLDER -->
     <div class="hero-visual">
-      <div class="placeholder-image">
-        <div class="placeholder-icon">🖥️</div>
-        <div class="placeholder-label">Hero Screenshot</div>
-        <div class="placeholder-desc">
-          Place a full-width screenshot here showing Clovi's floating capsule dock on top of a LeetCode / coding exam page, with the AI answer streaming in the bubble.
+      <div class="hero-card-container">
+        <div class="placeholder-image">
+          <div class="placeholder-icon">🖥️</div>
+          <div class="placeholder-label">Hero Product Mockup</div>
+          <div class="placeholder-desc">
+            Place high-resolution product screenshot here: The Clovi stealth capsule docked on top of an active LeetCode / Proctor exam screen with real-time AI solution streaming.
+          </div>
         </div>
       </div>
     </div>
@@ -432,31 +576,30 @@
             <div class="how-step-num">1</div>
             <div class="how-step-content">
               <h3>Launch Clovi (always on top)</h3>
-              <p>Clovi starts as an ultra-compact 210px capsule pinned at the top of your screen. It's invisible to all screen capture software.</p>
+              <p>Clovi starts as an ultra-compact 210px capsule pinned at the top of your screen. It is excluded from all screen captures at the OS kernel level.</p>
             </div>
           </div>
           <div class="how-step">
             <div class="how-step-num">2</div>
             <div class="how-step-content">
               <h3>Press Ctrl+Shift+S to snap</h3>
-              <p>One global hotkey captures whatever question, code, or diagram is currently on screen — without ever losing focus on your exam browser.</p>
+              <p>One global hotkey captures whatever question, code, or diagram is on screen — without ever losing focus on your exam browser.</p>
             </div>
           </div>
           <div class="how-step">
             <div class="how-step-num">3</div>
             <div class="how-step-content">
               <h3>Get the direct answer streamed instantly</h3>
-              <p>Gemini Vision reads the problem and streams the direct answer, runnable code, or solution steps straight into the floating bubble above your screen.</p>
+              <p>Gemini Vision reads the problem and streams the direct answer, runnable code, or step-by-step math straight into the floating bubble above your screen.</p>
             </div>
           </div>
         </div>
 
-        <!-- REPLACE with: screenshot of the compact capsule showing OCR + solve bubble on a coding question -->
         <div class="how-visual">
           <div class="placeholder-image">
             <div class="placeholder-icon">⚡</div>
-            <div class="placeholder-label">Snap & Solve Demo</div>
-            <div class="placeholder-desc">Screenshot showing the compact Clovi capsule at the top of screen, with a LeetCode question visible behind it and the AI answer streaming in the floating bubble.</div>
+            <div class="placeholder-label">Snap &amp; Solve Demo</div>
+            <div class="placeholder-desc">Screenshot showing the compact Clovi capsule at the top of the screen, with a question in the background and the AI answer streaming in the floating bubble.</div>
           </div>
         </div>
       </div>
@@ -468,23 +611,23 @@
     <div class="container">
       <div class="section-label">Undetectable in every way</div>
       <div class="section-title">Built to be <em>invisible.</em></div>
-      <div class="section-sub">Using the same Win32 API that Windows itself uses to exclude windows from screen capture.</div>
+      <div class="section-sub">Using native Win32 Display Affinity APIs that completely exclude the window from screen capturing software.</div>
 
       <div class="stealth-grid">
         <div class="stealth-card">
           <div class="stealth-card-icon">🫥</div>
           <h3>Invisible to screen share</h3>
-          <p>Uses Windows <code style="font-size:11px; background:#f3f4f6; padding:2px 5px; border-radius:4px;">WDA_EXCLUDEFROMCAPTURE</code> — Clovi never appears in Google Meet, Zoom, Teams, or any recording software.</p>
+          <p>Uses Windows <code style="font-size:11px; background:#f1f5f9; padding:2px 6px; border-radius:4px; font-weight:700;">WDA_EXCLUDEFROMCAPTURE</code> — Clovi never appears in Google Meet, Zoom, Teams, or OBS recordings.</p>
         </div>
         <div class="stealth-card">
           <div class="stealth-card-icon">🔒</div>
           <h3>Zero focus loss</h3>
-          <p>Clovi uses <code style="font-size:11px; background:#f3f4f6; padding:2px 5px; border-radius:4px;">WS_EX_NOACTIVATE</code> so clicking on it never blurs your exam browser — no tab switch events, no focus-loss warnings.</p>
+          <p>Clovi uses <code style="font-size:11px; background:#f1f5f9; padding:2px 6px; border-radius:4px; font-weight:700;">WS_EX_NOACTIVATE</code> so clicking on it never blurs your exam browser — no tab switch events, no focus-loss warnings.</p>
         </div>
         <div class="stealth-card">
           <div class="stealth-card-icon">📡</div>
           <h3>Invisible to proctors</h3>
-          <p>No DOM injection, no browser extension, no background process attached to your exam tab. It lives completely outside the browser at the OS level.</p>
+          <p>No DOM injection, no browser extension, no background process attached to your exam tab. It lives completely outside the browser.</p>
         </div>
         <div class="stealth-card">
           <div class="stealth-card-icon">🎯</div>
@@ -494,7 +637,7 @@
         <div class="stealth-card">
           <div class="stealth-card-icon">🌑</div>
           <h3>No telemetry</h3>
-          <p>No sign-in, no analytics, no data sent anywhere. 100% local Electron app. Your API key and snapshots never leave your machine.</p>
+          <p>No sign-in, no analytics, no data sent to third parties. 100% local Electron app. Your API key and snapshots stay private on your machine.</p>
         </div>
         <div class="stealth-card">
           <div class="stealth-card-icon">💾</div>
@@ -509,16 +652,15 @@
   <section class="demo-section" id="demo">
     <div class="container">
       <div class="section-label">Real-time AI Vision</div>
-      <div class="section-title" style="color:white;">One snap. <em>Instant answer.</em></div>
-      <div class="section-sub" style="color:#9ca3af;">Gemini 2.5 Flash reads your screen and writes the solution before you could even type the problem.</div>
+      <div class="section-title">One snap. <em>Instant answer.</em></div>
+      <div class="section-sub">Gemini 2.5 Flash reads your screen and writes the solution before you could even type the problem.</div>
 
       <div class="demo-layout">
-        <!-- REPLACE with: side-by-side "before/after" — left: screen with question, right: Clovi bubble with answer -->
         <div class="demo-visual">
           <div class="placeholder-image">
-            <div class="placeholder-icon" style="color:#818cf8;">🧠</div>
-            <div class="placeholder-label" style="color:#475569;">AI Answer Demo</div>
-            <div class="placeholder-desc" style="color:#475569;">Before/after demo showing a math/code question on screen and the Clovi floating bubble with the AI-generated answer streaming in real time.</div>
+            <div class="placeholder-icon" style="color:#93c5fd;">🧠</div>
+            <div class="placeholder-label" style="color:#cbd5e1;">AI Answer Demo</div>
+            <div class="placeholder-desc" style="color:#94a3b8;">Before/after demo showing a question on screen and the Clovi floating bubble streaming the answer in real time.</div>
           </div>
         </div>
 
@@ -532,7 +674,7 @@
           <div>
             <div class="demo-stat-num">&lt;2s</div>
             <div class="demo-stat-label">Time to first answer token</div>
-            <div class="demo-stat-desc">Gemini 2.5 Flash starts streaming the solution within under 2 seconds of the snap — code, math, or essay answers.</div>
+            <div class="demo-stat-desc">Gemini 2.5 Flash starts streaming the solution within under 2 seconds of the snap — code, math, or written answers.</div>
           </div>
           <div class="demo-divider"></div>
           <div>
@@ -563,12 +705,12 @@
         <div id="tab-leetcode" class="placeholder-image">
           <div class="placeholder-icon">💻</div>
           <div class="placeholder-label">LeetCode Screenshot</div>
-          <div class="placeholder-desc">Screenshot: Clovi capsule at the top of screen while LeetCode has a two-sum or DP problem open. The floating bubble shows the accepted Python/C++ solution.</div>
+          <div class="placeholder-desc">Screenshot: Clovi capsule at the top of screen while LeetCode has a problem open. The floating bubble shows the accepted solution code.</div>
         </div>
         <div id="tab-hackerrank" class="placeholder-image" style="display:none;">
           <div class="placeholder-icon">🟢</div>
           <div class="placeholder-label">HackerRank Screenshot</div>
-          <div class="placeholder-desc">Screenshot: Clovi solving a HackerRank problem. Show the code editor and Clovi's streamed solution side by side.</div>
+          <div class="placeholder-desc">Screenshot: Clovi solving a HackerRank problem with the code editor and Clovi's streamed solution side by side.</div>
         </div>
         <div id="tab-exam" class="placeholder-image" style="display:none;">
           <div class="placeholder-icon">📝</div>
@@ -578,7 +720,7 @@
         <div id="tab-math" class="placeholder-image" style="display:none;">
           <div class="placeholder-icon">📐</div>
           <div class="placeholder-label">Math / STEM Screenshot</div>
-          <div class="placeholder-desc">Screenshot: Clovi solving a calculus, statistics, or physics problem. Show the formula or diagram snapped and the step-by-step solution streamed.</div>
+          <div class="placeholder-desc">Screenshot: Clovi solving a calculus, statistics, or physics problem. Show the formula snapped and the step-by-step solution streamed.</div>
         </div>
       </div>
     </div>
@@ -596,7 +738,7 @@
             Will Clovi appear on screen share or proctoring software?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">No. Clovi uses <strong>WDA_EXCLUDEFROMCAPTURE</strong> — the same native Win32 API Windows uses for DRM. It is completely absent from Google Meet, Zoom, Discord, Teams, OBS, Windows Game Bar, and all proctoring overlays tested.</div>
+          <div class="faq-answer">No. Clovi uses <strong>WDA_EXCLUDEFROMCAPTURE</strong> — the native Win32 API Windows uses for DRM. It is completely absent from Google Meet, Zoom, Discord, Teams, OBS, Windows Game Bar, and proctoring overlays.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
@@ -610,28 +752,28 @@
             Is it really free? What's the catch?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">100% free and MIT open-source. No subscription. No sign-in. You do need a free Gemini API key from Google AI Studio (takes 30 seconds, no credit card). After that, usage is free up to Gemini's generous free tier.</div>
+          <div class="faq-answer">100% free and MIT open-source. No subscription. No sign-in. You can use your free Gemini API key from Google AI Studio (takes 30 seconds, no credit card).</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             What kind of questions can Clovi solve?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">Anything visible on your screen — coding problems (Python, Java, C++, SQL), multiple-choice, math/STEM, essay prompts, data science, system design, and more. If Gemini Vision can read and understand it, Clovi can solve it.</div>
+          <div class="faq-answer">Anything visible on your screen — coding problems (Python, Java, C++, SQL), multiple-choice, math/STEM formulas, essay prompts, and system design.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Does my data go anywhere?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">Your screenshots go from your machine to the Gemini API directly (same as using Google AI Studio). Nothing is stored on any Clovi server — there is no Clovi server. The app is a local Electron process.</div>
+          <div class="faq-answer">Your screenshots go directly to the Gemini API from your own device. Nothing is stored on any intermediary server. The app runs as a local standalone process.</div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             Will it work on macOS or Linux?
             <span class="faq-chevron">+</span>
           </button>
-          <div class="faq-answer">Currently Windows 10/11 only — the Win32 capture-exclusion API is what makes it genuinely undetectable. macOS and Linux builds are on the roadmap. Join the waitlist to be notified.</div>
+          <div class="faq-answer">Currently Windows 10/11 only. macOS and Linux builds are on our immediate roadmap. Join the waitlist to get notified the day they drop.</div>
         </div>
       </div>
     </div>
@@ -640,14 +782,14 @@
   <!-- ─────────── WAITLIST ─────────── -->
   <section class="waitlist-section" id="waitlist">
     <div class="container">
-      <div class="section-label" style="color:#818cf8;">Early Access</div>
+      <div class="section-label" style="color:#93c5fd;">Early Access</div>
       <div class="section-title">Join the Clovi waitlist.</div>
-      <p class="section-sub" style="margin:14px auto 0; text-align:center;">Be first to know when macOS, Linux, and voice-whisper mode launch. No spam, ever.</p>
+      <p class="section-sub" style="margin:14px auto 0; text-align:center;">Be first to know when macOS, Linux, and earphone voice-whisper mode launch. Zero spam, ever.</p>
 
       <div class="waitlist-form">
         <form id="waitlistForm" onsubmit="handleWaitlist(event)">
           <div class="waitlist-input-row">
-            <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="your@email.com" required>
+            <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="Enter your email address..." required>
             <button type="submit" class="waitlist-submit" id="waitlistBtn">Join</button>
           </div>
         </form>
@@ -672,10 +814,15 @@
             Star on GitHub
           </a>
         </div>
-        <div class="download-meta">Windows 10 & 11 · Portable .exe · MIT Open Source</div>
+        <div class="download-meta">Windows 10 &amp; 11 · Portable .exe · MIT Open Source</div>
       </div>
     </div>
   </section>
+
+  <!-- ─────────── MASSIVE CLOVI WATERMARK FOOTER ─────────── -->
+  <div class="brand-watermark-wrap">
+    <span class="brand-watermark-text">Clovi</span>
+  </div>
 
   <!-- ─────────── FOOTER ─────────── -->
   <footer>
