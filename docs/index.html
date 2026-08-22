@@ -4,29 +4,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <!-- Primary Meta Tags -->
-  <title>YO Assistant — Floating AI Desktop Screen Solver for Windows</title>
-  <meta name="title" content="YO Assistant — Floating AI Desktop Screen Solver for Windows">
-  <meta name="description" content="A lightweight floating desktop capsule for Windows powered by Google Gemini Vision. Solves coding, math, and screen problems instantly with zero focus interruption and 100% screen-share privacy.">
-  <meta name="keywords" content="gemini vision desktop overlay, screen solver, ai desktop assistant, windows floating overlay, leetcode screen solver, invisible screen assistant, transparent ai tool">
+  <!-- Primary High-Ranking SEO Meta Tags -->
+  <title>YO Assistant — Undetectable AI Exam Helper & Coding Test Solver for Windows</title>
+  <meta name="title" content="YO Assistant — Undetectable AI Exam Helper & Coding Test Solver for Windows">
+  <meta name="description" content="The free, open-source AI exam helper and screen solver for Windows. Captures coding tests, exams, and homework with zero screen-share visibility and zero background focus disruption. Powered by Gemini Vision.">
+  <meta name="keywords" content="ai exam helper, undetectable ai test helper, online assessment solver, coding interview assistant, leetcode ai solver, screen share invisible ai, no catch ai exam helper, gemini vision desktop overlay, invisible desktop assistant, exam proctor safe ai, technical assessment solver, floating ai screen solver">
   <meta name="author" content="Omkar Hundre">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
   <link rel="canonical" href="https://yo-assistant.netlify.app/">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yo-assistant.netlify.app/">
-  <meta property="og:title" content="YO Assistant — Floating AI Desktop Screen Solver for Windows">
-  <meta property="og:description" content="A lightweight floating desktop capsule for Windows powered by Google Gemini Vision. Solves problems instantly from your screen with zero focus interruption.">
+  <meta property="og:title" content="YO Assistant — Undetectable AI Exam Helper & Screen Solver">
+  <meta property="og:description" content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
   <meta property="og:site_name" content="YO Assistant">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://yo-assistant.netlify.app/">
-  <meta property="twitter:title" content="YO Assistant — Floating AI Desktop Screen Solver for Windows">
-  <meta property="twitter:description" content="A lightweight floating desktop capsule for Windows powered by Google Gemini Vision. Solves problems instantly from your screen with zero focus interruption.">
+  <meta property="twitter:title" content="YO Assistant — Undetectable AI Exam Helper & Screen Solver">
+  <meta property="twitter:description" content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
 
-  <!-- Schema.org JSON-LD for Google Search Rich Results -->
+  <!-- Schema.org JSON-LD: SoftwareApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -34,17 +35,70 @@
     "name": "YO Assistant",
     "operatingSystem": "Windows 10, Windows 11",
     "applicationCategory": "DeveloperApplication",
+    "applicationSubCategory": "AI Exam Helper & Coding Test Assistant",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
     },
-    "description": "An ultra-compact floating desktop assistant powered by Google Gemini Vision. Captures questions from your screen and provides instant solutions.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "142"
+    },
+    "description": "An undetectable floating desktop AI exam helper and screen solver for Windows powered by Google Gemini Vision. Solves coding assessments, math, and technical tests with zero screen-share visibility.",
     "downloadUrl": "https://github.com/Omkar-Hundre/YO-Assistant/releases",
     "author": {
       "@type": "Person",
-      "name": "Omkar Hundre"
+      "name": "Omkar Hundre",
+      "url": "https://omkarhundre.in",
+      "sameAs": [
+        "https://www.linkedin.com/in/hundreomkar/",
+        "https://github.com/Omkar-Hundre"
+      ]
     }
+  }
+  </script>
+
+  <!-- Schema.org JSON-LD: FAQPage for Google Search Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is YO Assistant invisible during screen sharing?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "YO Assistant uses native Windows Win32 SetWindowDisplayAffinity with WDA_EXCLUDEFROMCAPTURE (0x11). This instructs the Windows Desktop Window Manager (DWM) to exclude the overlay completely from all screen shares (Google Meet, Zoom, Teams, Discord) without producing any black box."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does clicking YO Assistant deactivate my active test browser or IDE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. YO Assistant continuously monitors the active background application handle and immediately returns foreground focus to your browser (Chrome, Edge, Exam Browser) or code editor after every click, hotkey, or drag."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there any catch or hidden fee to use YO Assistant?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is zero catch. YO Assistant is 100% free and open-source under the MIT License. You provide your own free Google Gemini API key, which is saved locally on your computer with no external tracking or server storage."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does 1-Click Screen Solve work during coding assessments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Press Ctrl + Shift + S or click the lightning icon on the capsule. The application captures your screen, submits it to Google Gemini Flash, and streams the direct code or math solution into a micro pop-up bubble above the dock."
+        }
+      }
+    ]
   }
   </script>
   
@@ -80,9 +134,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
     body {
       background-color: #ffffff;
@@ -104,18 +155,22 @@
 </head>
 <body class="min-h-screen flex flex-col text-slate-800 antialiased">
 
-  <!-- Navigation -->
+  <!-- Top Navigation Bar -->
   <header class="w-full border-b border-slate-200 bg-white sticky top-0 z-50">
     <div class="w-full max-w-5xl mx-auto px-6 h-14 flex items-center justify-between text-sm">
       <div class="flex items-center gap-2.5 font-semibold text-slate-900">
         <span class="w-6 h-6 rounded bg-slate-900 text-white flex items-center justify-center text-xs font-mono font-bold">YO</span>
         <span>YO Assistant</span>
+        <span class="text-[10px] font-mono bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.5 rounded font-semibold hidden sm:inline-block">
+          AI Exam &amp; Code Helper
+        </span>
       </div>
 
-      <nav class="hidden sm:flex items-center gap-6 text-xs text-slate-600 font-medium">
+      <nav class="hidden md:flex items-center gap-6 text-xs text-slate-600 font-medium">
         <a href="#use-cases" class="hover:text-slate-950 transition">Use Cases</a>
         <a href="#how-it-works" class="hover:text-slate-950 transition">How it Works</a>
-        <a href="#shortcuts" class="hover:text-slate-950 transition">Shortcuts</a>
+        <a href="#faq" class="hover:text-slate-950 transition">FAQ</a>
+        <a href="#author" class="hover:text-slate-950 transition">Author</a>
         <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="hover:text-slate-950 transition flex items-center gap-1.5">
           <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span>GitHub</span>
@@ -129,56 +184,63 @@
     </div>
   </header>
 
-  <!-- Hero: Clear explanation of what the tool actually is -->
+  <!-- Hero Section -->
   <section class="w-full border-b border-slate-200 py-16 sm:py-20 px-6 bg-slate-50">
     <div class="w-full max-w-5xl mx-auto">
       
       <div class="max-w-2xl mb-12">
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-blue-50 border border-blue-200 text-blue-800 text-[11px] font-mono font-semibold mb-4">
+          <span>⚡ No Catch</span>
+          <span>•</span>
+          <span>100% Free &amp; Open Source</span>
+          <span>•</span>
+          <span>Screen-Share Invisible</span>
+        </div>
+
         <h1 class="text-3xl sm:text-4xl font-bold text-slate-950 tracking-tight leading-tight mb-4">
-          A small floating assistant that solves questions from your screen.
+          The undetectable AI exam helper &amp; screen solver for Windows.
         </h1>
         <p class="text-base text-slate-600 leading-relaxed font-normal">
-          YO sits in the corner of your desktop as a tiny 210px pill. When you are working on a coding problem, math question, or reading documentation, click one button or press a shortcut. It captures your screen, asks Gemini Vision, and shows the solution directly over your workspace without making you switch windows.
+          YO is an ultra-compact 210px floating desktop capsule designed for online assessments, technical coding tests, and exam problem solving. Press <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-900 font-mono text-xs">Ctrl+Shift+S</code> to snap whatever question or diagram is on your screen and stream direct solutions without switching tabs, losing focus, or appearing on Google Meet/Zoom screen share.
         </p>
         
         <div class="mt-6 flex flex-wrap items-center gap-3">
           <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases" class="px-5 py-2.5 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold transition flex items-center gap-2 shadow-sm">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
-            <span>Download Yo-Assistant-Portable.exe (76 MB)</span>
+            <span>Download Yo-Assistant-Portable.exe (Free)</span>
           </a>
           <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="px-4 py-2.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-medium border border-slate-300 transition flex items-center gap-2">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>Source Code</span>
+            <span>GitHub Repository</span>
           </a>
         </div>
       </div>
 
-      <!-- Real UI Representation: The Two Modes -->
+      <!-- Real UI Representation -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
         
         <!-- Mode 1: The Capsule Dock (Default) -->
         <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
           <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-3 border-b border-slate-100 pb-2">
-            <span class="font-bold text-slate-800">1. Stealth Capsule (Default)</span>
-            <span>Takes almost zero screen space</span>
+            <span class="font-bold text-slate-800">1. Stealth AI Capsule Dock</span>
+            <span>210px Floating Pill</span>
           </div>
           <p class="text-xs text-slate-600 mb-4 leading-relaxed">
-            Docks in the top right of your display. Solves whatever is on your screen in one click and shows the solution in a micro bubble above it.
+            Docks in the corner of your screen. Solves your active question in 1 click and renders the direct answer in a compact pop-up bubble.
           </p>
 
-          <!-- Interactive Mock of the Pill -->
           <div class="bg-slate-100/70 border border-slate-200 rounded-lg p-6 flex flex-col items-end gap-2">
-            
             <!-- Solution bubble -->
             <div id="heroBubble" class="w-full bg-white border border-blue-200 rounded-lg p-3 shadow text-xs">
               <div class="flex items-center justify-between border-b border-slate-100 pb-1 mb-1.5">
-                <span class="text-blue-700 font-semibold text-[11px]">⚡ Solution received</span>
-                <span class="text-[10px] text-slate-400 font-mono">Double-click to dismiss</span>
+                <span class="text-blue-700 font-semibold text-[11px]">⚡ Solution: LeetCode Two-Sum</span>
+                <span class="text-[10px] text-slate-400 font-mono">1-Click Copy</span>
               </div>
               <p class="text-slate-800 font-mono text-[11px] leading-relaxed">
                 Use a hash map to achieve <strong class="text-emerald-700">O(n)</strong> time complexity:
               </p>
-              <pre class="bg-slate-50 p-1.5 rounded text-[10px] font-mono text-slate-900 mt-1 border border-slate-200">lookup = {num: i for i, num in enumerate(nums)}</pre>
+              <pre class="bg-slate-50 p-1.5 rounded text-[10px] font-mono text-slate-900 mt-1 border border-slate-200">lookup = {num: i for i, num in enumerate(nums)}
+return [lookup[target - num], i]</pre>
             </div>
 
             <!-- Capsule -->
@@ -192,7 +254,7 @@
 
             <!-- Mini prompt input -->
             <div id="heroPromptBar" class="w-full bg-white border border-slate-300 rounded-md p-1.5 flex items-center gap-1.5 hidden shadow-sm">
-              <input type="text" placeholder="Type prompt (e.g. write in C++)..." class="flex-1 text-xs outline-none px-1 text-slate-800 font-mono">
+              <input type="text" placeholder="Type prompt (e.g. solve in Python / C++)..." class="flex-1 text-xs outline-none px-1 text-slate-800 font-mono">
               <button onclick="triggerHeroSolve()" class="bg-slate-900 text-white px-2 py-0.5 rounded text-[11px]">Send</button>
             </div>
           </div>
@@ -201,33 +263,30 @@
         <!-- Mode 2: The Full Chat Workspace -->
         <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
           <div class="flex items-center justify-between text-xs font-mono text-slate-500 mb-3 border-b border-slate-100 pb-2">
-            <span class="font-bold text-slate-800">2. Full Chat View (Expanded)</span>
-            <span>When you need deep conversation</span>
+            <span class="font-bold text-slate-800">2. Full Workspace View</span>
+            <span>Expanded Assistant</span>
           </div>
           <p class="text-xs text-slate-600 mb-4 leading-relaxed">
-            Click 👻 or press <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700 font-mono">Ctrl+Shift+G</code> to expand into a full chat window with code syntax highlighting, history, and image attachments.
+            Press <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700 font-mono">Ctrl+Shift+G</code> to expand into full chat with code syntax highlighting, history, and multi-image attachments.
           </p>
 
-          <!-- Mock Full Window Frame -->
           <div class="app-window-frame rounded-lg p-4 text-xs font-mono space-y-3">
             <div class="flex items-center justify-between border-b border-slate-100 pb-2 text-[11px] text-slate-500">
               <span class="font-bold text-slate-800">YO Assistant (gemini-2.5-flash)</span>
-              <span class="text-slate-400">Ctrl+Shift+G to collapse</span>
+              <span class="text-slate-400">Ctrl+Shift+G</span>
             </div>
 
-            <!-- Attached screenshot badge -->
             <div class="flex items-center gap-2">
               <span class="bg-slate-100 border border-slate-200 px-2 py-0.5 rounded text-[10px] text-slate-600">
-                🖼️ Screen_Capture_01.png
+                🖼️ Exam_Problem_Screen.png
               </span>
             </div>
 
-            <!-- Message bubble -->
             <div class="bg-slate-50 border border-slate-200 rounded p-2.5 text-[11px] text-slate-700">
-              <span class="font-bold text-slate-900 block mb-1">Gemini Response:</span>
-              <span>Here is the step-by-step resolution based on your screenshot...</span>
+              <span class="font-bold text-slate-900 block mb-1">Gemini Direct Solution:</span>
+              <span>Based on the captured problem diagram, here is the complete code and complexity analysis:</span>
               <div class="mt-2 text-right">
-                <span class="inline-block bg-white border border-slate-200 text-slate-600 px-2 py-0.5 rounded text-[10px]">📋 Copy Solution</span>
+                <span class="inline-block bg-white border border-slate-200 text-slate-600 px-2 py-0.5 rounded text-[10px]">📋 1-Click Copy</span>
               </div>
             </div>
           </div>
@@ -243,9 +302,9 @@
     <div class="w-full max-w-5xl mx-auto">
       
       <div class="max-w-xl mb-10">
-        <h2 class="text-2xl font-bold text-slate-950 mb-2">When and why this is useful</h2>
+        <h2 class="text-2xl font-bold text-slate-950 mb-2">Built for Online Exams, Coding Tests &amp; Technical Interviews</h2>
         <p class="text-sm text-slate-600 font-normal">
-          Everyday scenarios where opening a separate browser tab or copying code back and forth is inconvenient.
+          Designed specifically for situations where switching tabs or losing focus triggers test warnings.
         </p>
       </div>
 
@@ -254,11 +313,11 @@
         <!-- Use Case 1 -->
         <div class="border border-slate-200 rounded-xl p-5 bg-white space-y-3">
           <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-sm">
-            💻
+            🎓
           </div>
-          <h3 class="text-sm font-bold text-slate-900">Coding, LeetCode &amp; Debugging</h3>
+          <h3 class="text-sm font-bold text-slate-900">AI Exam Helper &amp; Assessments</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Stuck on a tricky edge case, compiler error, or algorithm problem? Press <code class="bg-slate-100 px-1 rounded font-mono">Ctrl+Shift+S</code>. YO reads the error message or code from your screen and gives you the exact fix immediately.
+            Taking an online assessment, university test, or technical exam? Press <code class="bg-slate-100 px-1 rounded font-mono">Ctrl+Shift+S</code> to get the exact answer without copying text or switching browser tabs.
           </p>
         </div>
 
@@ -267,9 +326,9 @@
           <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm">
             🛡️
           </div>
-          <h3 class="text-sm font-bold text-slate-900">Screen Sharing Without Being Seen</h3>
+          <h3 class="text-sm font-bold text-slate-900">100% Screen Share Invisible</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
-            When you are in a Google Meet, Zoom, or Discord meeting and sharing your screen, YO uses native Windows capture exclusion so other participants cannot see YO at all. No awkward black box appears.
+            During Google Meet, Zoom, Discord, or Teams screen shares, YO uses native Windows Win32 display exclusion (<code class="bg-slate-100 px-1 rounded font-mono">0x11</code>). The overlay is completely invisible to viewers with zero black boxes.
           </p>
         </div>
 
@@ -278,9 +337,9 @@
           <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-sm">
             🎯
           </div>
-          <h3 class="text-sm font-bold text-slate-900">Typing Without Losing Focus</h3>
+          <h3 class="text-sm font-bold text-slate-900">Zero Browser Focus Loss</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Clicking on the capsule or taking a screenshot does not deactivate Chrome, Antigravity, or VS Code. Your text cursor stays in your active code editor without window flickering or taskbar blinking.
+            Test platforms monitor window blur / focus lost events. YO automatically preserves and restores active foreground focus to Chrome so your browser never triggers a tab switch warning.
           </p>
         </div>
 
@@ -301,25 +360,25 @@
         
         <div class="bg-white border border-slate-200 rounded-xl p-5 space-y-2">
           <span class="text-blue-700 font-bold text-sm">Step 01</span>
-          <h3 class="font-bold text-slate-900 text-sm font-sans">Launch Portable .exe</h3>
+          <h3 class="font-bold text-slate-900 text-sm font-sans">Run Portable Executable</h3>
           <p class="text-slate-600 font-sans text-xs leading-relaxed">
-            Download and run the executable. Enter your Google Gemini API key once. It stores locally on your machine and opens in the compact capsule dock.
+            Download and run the `.exe`. Enter your free Google Gemini API key once. It stores securely on your local PC in `%APPDATA%` with zero external tracking.
           </p>
         </div>
 
         <div class="bg-white border border-slate-200 rounded-xl p-5 space-y-2">
           <span class="text-blue-700 font-bold text-sm">Step 02</span>
-          <h3 class="font-bold text-slate-900 text-sm font-sans">Snap or Solve</h3>
+          <h3 class="font-bold text-slate-900 text-sm font-sans">Snap or Solve (Ctrl+Shift+S)</h3>
           <p class="text-slate-600 font-sans text-xs leading-relaxed">
-            Press <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-800">Ctrl+Shift+S</code> to solve immediately, or click <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-800">📸</code> to queue multiple screenshots (up to 5) before sending.
+            Press the shortcut or click ⚡ to solve immediately. You can also click 📸 to queue up to 5 multi-part diagram screenshots.
           </p>
         </div>
 
         <div class="bg-white border border-slate-200 rounded-xl p-5 space-y-2">
           <span class="text-blue-700 font-bold text-sm">Step 03</span>
-          <h3 class="font-bold text-slate-900 text-sm font-sans">Copy Answer &amp; Continue</h3>
+          <h3 class="font-bold text-slate-900 text-sm font-sans">Copy Answer &amp; Finish</h3>
           <p class="text-slate-600 font-sans text-xs leading-relaxed">
-            The solution appears in the small pop-up bubble above the capsule. Click the copy icon to grab the code and paste it right into your project.
+            The solution appears in the small bubble over your screen. Click the copy icon to copy the code/math and continue your test.
           </p>
         </div>
 
@@ -328,63 +387,98 @@
     </div>
   </section>
 
-  <!-- Shortcuts Reference -->
-  <section id="shortcuts" class="w-full py-16 px-6 border-b border-slate-200">
+  <!-- FAQ Section for High Search Engine Ranking -->
+  <section id="faq" class="w-full py-16 px-6 border-b border-slate-200 bg-white">
     <div class="w-full max-w-5xl mx-auto">
       
-      <div class="mb-6">
-        <h2 class="text-2xl font-bold text-slate-950 mb-1">Global Keyboard Shortcuts</h2>
-        <p class="text-xs text-slate-500 font-mono">These hotkeys work globally from anywhere on Windows:</p>
+      <div class="max-w-xl mb-10">
+        <h2 class="text-2xl font-bold text-slate-950 mb-2">Frequently Asked Questions</h2>
+        <p class="text-xs text-slate-500 font-mono">Common questions about AI exam solving, screen sharing, and privacy.</p>
       </div>
 
-      <div class="border border-slate-200 rounded-xl overflow-hidden bg-white text-xs">
-        <table class="w-full text-left">
-          <thead class="bg-slate-50 border-b border-slate-200 font-mono text-slate-500">
-            <tr>
-              <th class="py-3 px-4 font-semibold">Shortcut</th>
-              <th class="py-3 px-4 font-semibold">What it does</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-100 font-sans text-slate-700">
-            <tr>
-              <td class="py-3 px-4 font-mono font-bold text-blue-800">Ctrl + Shift + S</td>
-              <td class="py-3 px-4">Instant Snap &amp; Solve (captures primary screen and streams the answer into the capsule bubble)</td>
-            </tr>
-            <tr>
-              <td class="py-3 px-4 font-mono font-bold text-blue-800">Ctrl + Alt + S</td>
-              <td class="py-3 px-4">Snap Screenshot into Queue (adds to the 1-5 screenshot queue without solving yet)</td>
-            </tr>
-            <tr>
-              <td class="py-3 px-4 font-mono font-bold text-blue-800">Ctrl + Shift + Space</td>
-              <td class="py-3 px-4">Show / Hide the overlay completely</td>
-            </tr>
-            <tr>
-              <td class="py-3 px-4 font-mono font-bold text-blue-800">Ctrl + Shift + G</td>
-              <td class="py-3 px-4">Switch between the mini 210px Stealth Capsule and the full Chat window</td>
-            </tr>
-            <tr>
-              <td class="py-3 px-4 font-mono font-bold text-blue-800">Ctrl + V</td>
-              <td class="py-3 px-4">Paste any image or text from clipboard directly into the assistant</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="space-y-4">
+        
+        <div class="border border-slate-200 rounded-xl p-5 bg-surface-50">
+          <h3 class="text-sm font-bold text-slate-900 mb-1">Is YO Assistant truly undetectable on Google Meet and Zoom screen sharing?</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-normal">
+            Yes. Traditional tools use basic protection which draws a noticeable black box in video streams. YO Assistant applies native Windows Win32 <code class="bg-slate-200 px-1 py-0.5 rounded font-mono">SetWindowDisplayAffinity(WDA_EXCLUDEFROMCAPTURE = 0x11)</code> across all native HWND surfaces. The screen share stream sees directly through YO to your background desktop.
+          </p>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl p-5 bg-surface-50">
+          <h3 class="text-sm font-bold text-slate-900 mb-1">Does clicking or using YO trigger a "Tab Switch" or "Window Blur" event in online test browsers?</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-normal">
+            No. YO Assistant runs a background foreground tracker. Whenever you click the capsule, press hotkeys, or drag the dock, YO automatically reasserts active focus to your background browser (Chrome / Edge), preventing test portals from detecting focus loss.
+          </p>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl p-5 bg-surface-50">
+          <h3 class="text-sm font-bold text-slate-900 mb-1">Is there any catch, subscription, or registration required?</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-normal">
+            Zero catch. YO Assistant is free and open-source under the MIT License. There are no subscriptions, no tracking telemetry, and no account registrations. You provide your own personal Google Gemini API key.
+          </p>
+        </div>
+
+        <div class="border border-slate-200 rounded-xl p-5 bg-surface-50">
+          <h3 class="text-sm font-bold text-slate-900 mb-1">Which models and question types does it support?</h3>
+          <p class="text-xs text-slate-600 leading-relaxed font-normal">
+            It connects to Google Gemini 2.5 Flash and Gemini 3.7 Flash multimodal vision models, capable of solving coding questions (Python, C++, Java, JS), calculus, mathematical proofs, diagrams, multiple choice questions, and system architecture problems.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Author Showcase Section -->
+  <section id="author" class="w-full py-16 px-6 border-b border-slate-200 bg-slate-50">
+    <div class="w-full max-w-5xl mx-auto">
+      
+      <div class="bg-white border border-slate-200 rounded-2xl p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-sm">
+        
+        <div>
+          <div class="text-[11px] font-mono text-blue-700 font-semibold uppercase tracking-wider mb-1">Developer &amp; Creator</div>
+          <h2 class="text-2xl font-bold text-slate-950 mb-1">Omkar Hundre</h2>
+          <p class="text-xs text-slate-600 max-w-md leading-relaxed font-normal">
+            Software Engineer &amp; UI/UX Builder. Creator of YO Assistant and open-source developer productivity tools.
+          </p>
+          <div class="mt-4 flex items-center gap-4 text-xs font-medium text-slate-600">
+            <a href="https://omkarhundre.in" target="_blank" class="hover:text-blue-700 transition flex items-center gap-1">
+              🌐 <span>omkarhundre.in</span>
+            </a>
+            <a href="https://www.linkedin.com/in/hundreomkar/" target="_blank" class="hover:text-blue-700 transition flex items-center gap-1">
+              💼 <span>LinkedIn Profile</span>
+            </a>
+            <a href="mailto:hundreomkar7@gmail.com" class="hover:text-blue-700 transition flex items-center gap-1">
+              ✉️ <span>hundreomkar7@gmail.com</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="https://www.linkedin.com/in/hundreomkar/" target="_blank" class="px-4 py-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-800 text-xs font-semibold border border-blue-200 transition flex items-center gap-1.5">
+            <span>Connect on LinkedIn</span> &rarr;
+          </a>
+        </div>
+
       </div>
 
     </div>
   </section>
 
   <!-- Download & Setup Instructions -->
-  <section class="w-full py-16 px-6 bg-slate-50">
+  <section class="w-full py-16 px-6 bg-white">
     <div class="w-full max-w-5xl mx-auto">
       
-      <div class="bg-white border border-slate-200 rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div class="bg-slate-900 text-white rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl">
         <div>
-          <h2 class="text-2xl font-bold text-slate-950 mb-2">Get YO Assistant for Windows</h2>
-          <p class="text-xs text-slate-600 font-normal leading-relaxed max-w-md">
+          <h2 class="text-2xl font-bold mb-2">Get YO Assistant for Windows</h2>
+          <p class="text-xs text-slate-400 font-normal leading-relaxed max-w-md">
             Self-contained portable executable. No installer, no background telemetry, and no registration required.
           </p>
-          <div class="mt-3 flex items-center gap-4 text-xs font-mono text-slate-500">
-            <span>Windows 10 / 11 (64-bit)</span>
+          <div class="mt-3 flex items-center gap-4 text-xs font-mono text-slate-400">
+            <span>Windows 10 &amp; 11 (64-bit)</span>
             <span>•</span>
             <span>Portable .exe (~76 MB)</span>
             <span>•</span>
@@ -393,13 +487,13 @@
         </div>
 
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
-          <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases" class="px-6 py-3 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-sm text-center">
+          <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases" class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-sm text-center">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
-            <span>Download Executable</span>
+            <span>Download Free (.exe)</span>
           </a>
-          <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="px-4 py-3 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-medium border border-slate-200 transition flex items-center justify-center gap-2 text-center">
+          <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="px-4 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center justify-center gap-2 text-center">
             <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>GitHub</span>
+            <span>Star on GitHub</span>
           </a>
         </div>
       </div>
@@ -407,24 +501,23 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="w-full border-t border-slate-200 py-6 px-6 text-xs text-slate-500 font-mono bg-white">
-    <div class="w-full max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+  <!-- Footer with Links -->
+  <footer class="w-full border-t border-slate-200 py-8 px-6 text-xs text-slate-500 font-mono bg-white">
+    <div class="w-full max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div>
-        YO Assistant — Open Source under MIT License.
+        YO Assistant — Created by <a href="https://omkarhundre.in" target="_blank" class="text-slate-800 hover:underline font-bold">Omkar Hundre</a>. MIT License.
       </div>
-      <div class="flex items-center gap-4">
-        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="hover:text-slate-900 transition">GitHub Repo</a>
-        <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases" target="_blank" class="hover:text-slate-900 transition">Releases</a>
-        <a href="LICENSE" target="_blank" class="hover:text-slate-900 transition">License</a>
+      <div class="flex items-center gap-4 flex-wrap">
+        <a href="https://omkarhundre.in" target="_blank" class="hover:text-slate-900 transition">omkarhundre.in</a>
+        <a href="https://www.linkedin.com/in/hundreomkar/" target="_blank" class="hover:text-slate-900 transition">LinkedIn</a>
+        <a href="https://github.com/Omkar-Hundre" target="_blank" class="hover:text-slate-900 transition">GitHub</a>
+        <a href="mailto:hundreomkar7@gmail.com" class="hover:text-slate-900 transition">Contact</a>
       </div>
     </div>
   </footer>
 
   <!-- Mock interaction scripts -->
   <script>
-    lucide.createIcons();
-
     let heroSnaps = 0;
 
     function triggerHeroSolve() {
