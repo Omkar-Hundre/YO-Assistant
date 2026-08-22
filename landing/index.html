@@ -5,34 +5,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="YQlbvz0Ww_e4B9By6hsh36pI4yv6UCzrecrh1Guyks0" />
-  <!-- Primary High-Ranking SEO Meta Tags -->
   <title>Clovi — Undetectable AI Exam Helper & Coding Test Solver for Windows</title>
-  <meta name="title" content="Clovi — Undetectable AI Exam Helper & Coding Test Solver for Windows">
-  <meta name="description"
-    content="The free, open-source AI exam helper and screen solver for Windows. Captures coding tests, exams, and homework with zero screen-share visibility and zero background focus disruption. Powered by Gemini Vision.">
-  <meta name="keywords"
-    content="ai exam helper, undetectable ai test helper, online assessment solver, coding interview assistant, leetcode ai solver, screen share invisible ai, no catch ai exam helper, gemini vision desktop overlay, invisible desktop assistant, exam proctor safe ai, technical assessment solver, floating ai screen solver">
+  <meta name="description" content="The free, open-source AI exam helper and screen solver for Windows. Captures coding tests, exams, and homework with zero screen-share visibility. Powered by Gemini Vision.">
+  <meta name="keywords" content="ai exam helper, undetectable ai test helper, online assessment solver, coding interview assistant, leetcode ai solver, screen share invisible ai, gemini vision desktop overlay, invisible desktop assistant">
   <meta name="author" content="Omkar Hundre">
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-  <meta name="googlebot" content="index, follow">
   <link rel="canonical" href="https://clovi.netlify.app/">
-
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://clovi.netlify.app/">
   <meta property="og:title" content="Clovi — Undetectable AI Exam Helper & Screen Solver">
-  <meta property="og:description"
-    content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
+  <meta property="og:description" content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
   <meta property="og:site_name" content="Clovi">
-
-  <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://clovi.netlify.app/">
   <meta property="twitter:title" content="Clovi — Undetectable AI Exam Helper & Screen Solver">
-  <meta property="twitter:description"
-    content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
+  <meta property="twitter:description" content="Free open-source AI desktop assistant that solves coding tests and exams directly from your screen with 100% screen-share invisibility.">
 
-  <!-- Schema.org JSON-LD: SoftwareApplication -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,711 +28,735 @@
     "name": "Clovi",
     "operatingSystem": "Windows 10, Windows 11",
     "applicationCategory": "DeveloperApplication",
-    "applicationSubCategory": "AI Exam Helper & Coding Test Assistant",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "ratingCount": "142"
-    },
-    "description": "An undetectable floating desktop AI exam helper and screen solver for Windows powered by Google Gemini Vision. Solves coding assessments, math, and technical tests with zero screen-share visibility.",
-    "downloadUrl": "https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe",
-    "author": {
-      "@type": "Person",
-      "name": "Omkar Hundre",
-      "url": "https://omkarhundre.in",
-      "sameAs": [
-        "https://www.linkedin.com/in/hundreomkar/",
-        "https://github.com/Omkar-Hundre"
-      ]
-    }
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "url": "https://clovi.netlify.app/"
   }
   </script>
 
-  <!-- Schema.org JSON-LD: FAQPage for Google Search Rich Snippets -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How is Clovi invisible during screen sharing?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Clovi uses native Windows Win32 SetWindowDisplayAffinity with WDA_EXCLUDEFROMCAPTURE (0x11). This instructs the Windows Desktop Window Manager (DWM) to exclude the overlay completely from all screen shares (Google Meet, Zoom, Teams, Discord) without producing any black box."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does clicking Clovi deactivate my active test browser or IDE?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Clovi continuously monitors the active background application handle and immediately returns foreground focus to your browser (Chrome, Edge, Exam Browser) or code editor after every click, hotkey, or drag."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is there any catch or hidden fee to use Clovi?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "There is zero catch. Clovi is 100% free and open-source under the MIT License. You provide your own free Google Gemini API key, which is saved locally on your computer with no external tracking or server storage."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does 1-Click Screen Solve work during coding assessments?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Press Ctrl + Shift + S or click the lightning icon on the capsule. The application captures your screen, submits it to Google Gemini Flash, and streams the direct code or math solution into a micro pop-up bubble above the dock."
-        }
-      }
-    ]
-  }
-  </script>
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            accent: '#1e40af',
-            surface: {
-              50: '#f8fafc',
-              100: '#f1f5f9',
-              200: '#e2e8f0',
-              300: '#cbd5e1',
-              700: '#334155',
-              800: '#1e293b',
-              900: '#0f172a'
-            }
-          },
-          fontFamily: {
-            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'Consolas', 'monospace']
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      background-color: #ffffff;
-      color: #0f172a;
-      font-family: 'Inter', sans-serif;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --black: #0a0a0a;
+      --gray-50:  #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-400: #9ca3af;
+      --gray-600: #4b5563;
+      --gray-700: #374151;
+      --gray-900: #111827;
+      --blue-500: #3b82f6;
+      --blue-600: #2563eb;
+      --purple-500: #8b5cf6;
     }
 
-    .capsule-pill {
-      background: rgba(255, 255, 255, 0.94);
+    html { font-family: 'Inter', sans-serif; color: var(--gray-900); background: var(--white); }
+
+    body { min-height: 100vh; overflow-x: hidden; }
+
+    /* ─── NAV ─────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 60px;
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(12px);
-      border: 1px solid #cbd5e1;
-      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
+    .nav-logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 15px; color: var(--black); text-decoration: none; }
+    .nav-logo-mark { width: 26px; height: 26px; background: var(--black); border-radius: 7px; display: flex; align-items: center; justify-content: center; }
+    .nav-logo-mark span { color: white; font-size: 11px; font-weight: 800; letter-spacing: -0.5px; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 13px; font-weight: 500; color: var(--gray-600); text-decoration: none; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .btn-ghost { font-size: 13px; font-weight: 500; color: var(--gray-700); background: none; border: none; cursor: pointer; padding: 7px 14px; border-radius: 8px; transition: background 0.15s; }
+    .btn-ghost:hover { background: var(--gray-100); }
+    .btn-primary { font-size: 13px; font-weight: 600; color: white; background: var(--black); border: none; cursor: pointer; padding: 8px 18px; border-radius: 8px; transition: opacity 0.15s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+    .btn-primary:hover { opacity: 0.82; }
 
-    .app-window-frame {
-      background: #ffffff;
-      border: 1px solid #cbd5e1;
-      box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.1);
+    /* ─── HERO ────────────────────────────────────────── */
+    .hero {
+      padding-top: 140px;
+      padding-bottom: 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #f0f4ff 0%, #ffffff 60%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 500px;
+      background: radial-gradient(ellipse at center, rgba(99,102,241,0.12) 0%, rgba(59,130,246,0.07) 40%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.9); border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 100px; padding: 5px 14px;
+      font-size: 12px; font-weight: 500; color: var(--gray-700);
+      margin-bottom: 28px;
+      backdrop-filter: blur(8px);
+    }
+    .hero-badge-dot { width: 7px; height: 7px; background: #22c55e; border-radius: 50%; }
+    .hero h1 {
+      font-size: clamp(40px, 6vw, 72px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -2px;
+      color: var(--black);
+      max-width: 780px;
+      margin: 0 auto 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--blue-600); }
+    .hero-sub {
+      font-size: 17px; font-weight: 400; line-height: 1.6;
+      color: var(--gray-600); max-width: 520px; margin: 0 auto 40px;
+    }
+    .hero-cta { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .cta-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--black); color: white;
+      font-size: 14px; font-weight: 600;
+      padding: 13px 26px; border-radius: 10px;
+      text-decoration: none; transition: opacity 0.2s;
+      border: none; cursor: pointer;
+    }
+    .cta-primary:hover { opacity: 0.8; }
+    .cta-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: white; color: var(--gray-700);
+      font-size: 14px; font-weight: 500;
+      padding: 12px 24px; border-radius: 10px;
+      text-decoration: none; transition: background 0.2s;
+      border: 1px solid var(--gray-200); cursor: pointer;
+    }
+    .cta-secondary:hover { background: var(--gray-50); }
+    .hero-note { margin-top: 16px; font-size: 12px; color: var(--gray-400); font-weight: 400; }
+
+    /* ─── HERO IMAGE PLACEHOLDER ──────────────────────── */
+    .hero-visual {
+      margin: 60px auto 0;
+      max-width: 900px;
+      padding: 0 24px;
+    }
+    .placeholder-image {
+      width: 100%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+      border: 1px solid var(--gray-200);
+      border-radius: 16px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+      color: var(--gray-400); font-size: 13px; text-align: center;
+      box-shadow: 0 4px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.06);
+      padding: 24px;
+      position: relative; overflow: hidden;
+    }
+    .placeholder-image::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 60%, rgba(255,255,255,0.7) 100%);
+    }
+    .placeholder-icon { font-size: 32px; opacity: 0.4; }
+    .placeholder-label { font-weight: 600; color: var(--gray-500); font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .placeholder-desc { font-size: 11px; color: var(--gray-400); max-width: 280px; line-height: 1.5; }
+
+    /* ─── TRUST BAR ───────────────────────────────────── */
+    .trust-bar {
+      padding: 32px 24px;
+      border-top: 1px solid var(--gray-100);
+      border-bottom: 1px solid var(--gray-100);
+      display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap;
+    }
+    .trust-bar-label { font-size: 11px; color: var(--gray-400); font-weight: 500; text-transform: uppercase; letter-spacing: 1px; white-space: nowrap; }
+    .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--gray-700); }
+    .trust-item svg { opacity: 0.5; }
+
+    /* ─── SECTION BASE ────────────────────────────────── */
+    section { padding: 96px 24px; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-label { font-size: 12px; font-weight: 600; color: var(--blue-600); letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 12px; }
+    .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; color: var(--black); }
+    .section-title em { font-style: normal; color: var(--gray-400); }
+    .section-sub { font-size: 16px; color: var(--gray-600); line-height: 1.7; max-width: 480px; margin-top: 14px; }
+
+    /* ─── HOW IT WORKS ────────────────────────────────── */
+    .how-section { background: var(--white); }
+    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; margin-top: 64px; }
+    .how-steps { display: flex; flex-direction: column; gap: 36px; }
+    .how-step { display: flex; gap: 20px; }
+    .how-step-num {
+      width: 32px; height: 32px; flex-shrink: 0;
+      background: var(--gray-100); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--gray-700);
+    }
+    .how-step-content h3 { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+    .how-step-content p { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+    .how-visual .placeholder-image { aspect-ratio: 4/3; border-radius: 14px; }
+
+    /* ─── STEALTH SECTION ─────────────────────────────── */
+    .stealth-section { background: var(--gray-50); }
+    .stealth-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; }
+    .stealth-card {
+      background: white; border: 1px solid var(--gray-200);
+      border-radius: 16px; padding: 28px 24px;
+      transition: box-shadow 0.2s;
+    }
+    .stealth-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); }
+    .stealth-card-icon { font-size: 24px; margin-bottom: 16px; }
+    .stealth-card h3 { font-size: 15px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .stealth-card p { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+
+    /* ─── DEMO SECTION ────────────────────────────────── */
+    .demo-section { background: var(--black); color: white; }
+    .demo-section .section-label { color: #818cf8; }
+    .demo-section .section-title { color: white; }
+    .demo-section .section-title em { color: #818cf8; }
+    .demo-section .section-sub { color: #9ca3af; }
+    .demo-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 64px; }
+    .demo-visual .placeholder-image {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border-color: #1e293b;
+      color: #64748b;
+    }
+    .demo-stats { display: flex; flex-direction: column; gap: 40px; }
+    .demo-stat-num { font-size: 48px; font-weight: 800; letter-spacing: -2px; color: white; line-height: 1; }
+    .demo-stat-label { font-size: 14px; font-weight: 700; color: white; margin-top: 6px; margin-bottom: 6px; }
+    .demo-stat-desc { font-size: 13px; color: #6b7280; line-height: 1.6; }
+    .demo-divider { height: 1px; background: #1f2937; }
+
+    /* ─── VISUAL PROOF SECTION ────────────────────────── */
+    .proof-section { background: var(--white); }
+    .proof-tabs { display: flex; gap: 8px; margin-top: 48px; border-bottom: 1px solid var(--gray-200); padding-bottom: 0; }
+    .proof-tab {
+      font-size: 13px; font-weight: 500; color: var(--gray-500);
+      padding: 10px 18px; cursor: pointer; border-bottom: 2px solid transparent;
+      transition: color 0.15s; margin-bottom: -1px; background: none; border-top: none; border-left: none; border-right: none;
+    }
+    .proof-tab.active { color: var(--black); border-bottom-color: var(--black); font-weight: 600; }
+    .proof-visual { margin-top: 32px; }
+    .proof-visual .placeholder-image { aspect-ratio: 16/7; border-radius: 16px; }
+
+    /* ─── FAQ SECTION ─────────────────────────────────── */
+    .faq-section { background: var(--gray-50); }
+    .faq-list { margin-top: 56px; max-width: 680px; display: flex; flex-direction: column; gap: 0; border: 1px solid var(--gray-200); border-radius: 16px; overflow: hidden; background: white; }
+    .faq-item { border-bottom: 1px solid var(--gray-100); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; cursor: pointer; font-size: 14px; font-weight: 600; color: var(--black);
+      background: none; border: none; width: 100%; text-align: left; gap: 16px;
+    }
+    .faq-question:hover { background: var(--gray-50); }
+    .faq-chevron { font-size: 18px; color: var(--gray-400); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-answer { font-size: 13px; color: var(--gray-600); line-height: 1.7; padding: 0 24px 20px; display: none; }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-chevron { transform: rotate(45deg); }
+
+    /* ─── WAITLIST SECTION ────────────────────────────── */
+    .waitlist-section {
+      background: linear-gradient(160deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+      color: white; text-align: center;
+    }
+    .waitlist-section .section-title { color: white; letter-spacing: -1.5px; }
+    .waitlist-section .section-sub { color: #9ca3af; margin: 14px auto 0; }
+    .waitlist-form { max-width: 420px; margin: 44px auto 0; }
+    .waitlist-input-row { display: flex; gap: 8px; }
+    .waitlist-input {
+      flex: 1; padding: 13px 16px;
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px; color: white; font-size: 14px; font-family: inherit;
+      outline: none; transition: border-color 0.2s;
+    }
+    .waitlist-input::placeholder { color: rgba(255,255,255,0.35); }
+    .waitlist-input:focus { border-color: rgba(255,255,255,0.4); }
+    .waitlist-submit {
+      padding: 13px 24px; background: white; color: var(--black);
+      font-size: 13px; font-weight: 700; border: none; border-radius: 10px;
+      cursor: pointer; white-space: nowrap; transition: opacity 0.2s; font-family: inherit;
+    }
+    .waitlist-submit:hover { opacity: 0.85; }
+    .waitlist-msg { margin-top: 12px; font-size: 12px; color: #6ee7b7; min-height: 16px; }
+
+    /* ─── DOWNLOAD CTA ────────────────────────────────── */
+    .download-section { background: var(--white); text-align: center; }
+    .download-card {
+      background: var(--black); border-radius: 20px;
+      padding: 64px 40px; max-width: 700px; margin: 0 auto;
+    }
+    .download-card h2 { font-size: 36px; font-weight: 800; letter-spacing: -1.5px; color: white; margin-bottom: 14px; }
+    .download-card p { font-size: 15px; color: #9ca3af; line-height: 1.6; max-width: 400px; margin: 0 auto 36px; }
+    .download-card-ctas { display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; }
+    .btn-download {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: white; color: var(--black);
+      font-size: 14px; font-weight: 700;
+      padding: 13px 26px; border-radius: 10px;
+      text-decoration: none; transition: opacity 0.2s;
+    }
+    .btn-download:hover { opacity: 0.85; }
+    .btn-github {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1); color: white;
+      font-size: 13px; font-weight: 500; border: 1px solid rgba(255,255,255,0.15);
+      padding: 12px 22px; border-radius: 10px; text-decoration: none; transition: background 0.2s;
+    }
+    .btn-github:hover { background: rgba(255,255,255,0.18); }
+    .download-meta { margin-top: 20px; font-size: 12px; color: #4b5563; }
+
+    /* ─── FOOTER ──────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--gray-100);
+      padding: 40px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1100px; margin: 0 auto; flex-wrap: wrap; gap: 20px;
+    }
+    .footer-left { font-size: 13px; color: var(--gray-500); }
+    .footer-left a { color: var(--gray-700); font-weight: 600; text-decoration: none; }
+    .footer-left a:hover { text-decoration: underline; }
+    .footer-links { display: flex; align-items: center; gap: 24px; }
+    .footer-links a { font-size: 13px; color: var(--gray-500); text-decoration: none; transition: color 0.15s; }
+    .footer-links a:hover { color: var(--black); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .nav-links { display: none; }
+      .how-grid, .stealth-grid, .demo-layout { grid-template-columns: 1fr; }
+      .stealth-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 100px; }
+      .proof-tabs { overflow-x: auto; }
+      .waitlist-input-row { flex-direction: column; }
     }
   </style>
 </head>
 
-<body class="min-h-screen flex flex-col text-slate-800 antialiased">
+<body>
 
-  <!-- Top Navigation Bar -->
-  <header class="w-full border-b border-slate-200 bg-white sticky top-0 z-50">
-    <div class="w-full max-w-5xl mx-auto px-6 h-14 flex items-center justify-between text-sm">
-      <div class="flex items-center gap-2.5 font-semibold text-slate-900">
-        <span
-          class="w-6 h-6 rounded bg-slate-900 text-white flex items-center justify-center text-xs font-mono font-bold">CL</span>
-        <span>Clovi</span>
-        <span
-          class="text-[10px] font-mono bg-emerald-50 text-emerald-700 border border-emerald-200 px-1.5 py-0.5 rounded font-semibold hidden sm:inline-block">
-          AI Exam &amp; Code Helper
-        </span>
-      </div>
+  <!-- ─────────── NAV ─────────── -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="nav-logo-mark"><span>CL</span></div>
+      Clovi
+    </a>
+    <div class="nav-links">
+      <a href="#how-it-works">How it works</a>
+      <a href="#stealth">Stealth Mode</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank">GitHub</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-ghost" onclick="scrollToWaitlist()">Join Waitlist</button>
+      <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe" class="btn-primary">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+        Get for Windows
+      </a>
+    </div>
+  </nav>
 
-      <nav class="hidden md:flex items-center gap-6 text-xs text-slate-600 font-medium">
-        <a href="#use-cases" class="hover:text-slate-950 transition">Use Cases</a>
-        <a href="#how-it-works" class="hover:text-slate-950 transition">How it Works</a>
-        <a href="#faq" class="hover:text-slate-950 transition">FAQ</a>
-        <a href="#author" class="hover:text-slate-950 transition">Author</a>
-        <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank"
-          class="hover:text-slate-950 transition flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-          </svg>
-          <span>GitHub</span>
-        </a>
-      </nav>
+  <!-- ─────────── HERO ─────────── -->
+  <section class="hero">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Free &amp; Open Source · MIT License
+    </div>
+    <h1>#1 Undetectable AI<br>for <em>Exams &amp; Coding Tests</em></h1>
+    <p class="hero-sub">
+      Clovi reads any question on your screen and streams the direct answer, code, or solution — invisibly. No screen-share detection, no tab switch, no trace.
+    </p>
+    <div class="hero-cta">
+      <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe" class="cta-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+        Get for Windows — Free
+      </a>
+      <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="cta-secondary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View GitHub
+      </a>
+    </div>
+    <p class="hero-note">Windows 10 & 11 · Portable .exe · No install needed</p>
 
-      <div class="flex items-center gap-2.5">
-        <button onclick="scrollToWaitlist()"
-          class="px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 border border-blue-200 text-xs font-semibold transition flex items-center gap-1.5">
-          <span>✨ Join Waitlist</span>
-        </button>
-
-        <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe"
-          class="px-3.5 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium transition flex items-center gap-1.5">
-          <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-          </svg>
-          <span>Download (.exe)</span>
-        </a>
+    <!-- HERO VISUAL — replace src with actual product screenshot -->
+    <div class="hero-visual">
+      <div class="placeholder-image">
+        <div class="placeholder-icon">🖥️</div>
+        <div class="placeholder-label">Hero Screenshot</div>
+        <div class="placeholder-desc">
+          Place a full-width screenshot here showing Clovi's floating capsule dock on top of a LeetCode / coding exam page, with the AI answer streaming in the bubble.
+        </div>
       </div>
     </div>
-  </header>
+  </section>
 
-  <!-- Hero Section -->
-  <section class="w-full border-b border-slate-200 py-16 sm:py-20 px-6 bg-slate-50">
-    <div class="w-full max-w-5xl mx-auto">
+  <!-- ─────────── TRUST BAR ─────────── -->
+  <div class="trust-bar">
+    <span class="trust-bar-label">Works invisibly on</span>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#00A884"><circle cx="12" cy="12" r="12"/></svg>
+      Google Meet
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#2D8CFF"><circle cx="12" cy="12" r="12"/></svg>
+      Zoom
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#5865F2"><circle cx="12" cy="12" r="12"/></svg>
+      Discord
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#6264A7"><circle cx="12" cy="12" r="12"/></svg>
+      Microsoft Teams
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#FC4C02"><circle cx="12" cy="12" r="12"/></svg>
+      HackerRank
+    </div>
+  </div>
 
-      <div class="max-w-2xl mb-12">
-        <div
-          class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-blue-50 border border-blue-200 text-blue-800 text-[11px] font-mono font-semibold mb-4">
-          <span>⚡ No Catch</span>
-          <span>•</span>
-          <span>100% Free &amp; Open Source</span>
-          <span>•</span>
-          <span>Screen-Share Invisible</span>
+  <!-- ─────────── HOW IT WORKS ─────────── -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-label">How Clovi works</div>
+      <div class="section-title">See it. Snap it. <em>Solved.</em></div>
+      <div class="section-sub">Three keystrokes between you and the answer. No switching tabs, no typing, no wasted time.</div>
+
+      <div class="how-grid">
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-step-num">1</div>
+            <div class="how-step-content">
+              <h3>Launch Clovi (always on top)</h3>
+              <p>Clovi starts as an ultra-compact 210px capsule pinned at the top of your screen. It's invisible to all screen capture software.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">2</div>
+            <div class="how-step-content">
+              <h3>Press Ctrl+Shift+S to snap</h3>
+              <p>One global hotkey captures whatever question, code, or diagram is currently on screen — without ever losing focus on your exam browser.</p>
+            </div>
+          </div>
+          <div class="how-step">
+            <div class="how-step-num">3</div>
+            <div class="how-step-content">
+              <h3>Get the direct answer streamed instantly</h3>
+              <p>Gemini Vision reads the problem and streams the direct answer, runnable code, or solution steps straight into the floating bubble above your screen.</p>
+            </div>
+          </div>
         </div>
 
-        <h1 class="text-3xl sm:text-4xl font-bold text-slate-950 tracking-tight leading-tight mb-4">
-          The undetectable AI exam helper &amp; screen solver for Windows.
-        </h1>
-        <p class="text-base text-slate-600 leading-relaxed font-normal">
-          Clovi is an ultra-compact 210px floating desktop capsule designed for online assessments, technical coding
-          tests,
-          and exam problem solving. Press <code
-            class="bg-slate-200 px-1 py-0.5 rounded text-slate-900 font-mono text-xs">Ctrl+Shift+S</code> to snap
-          whatever question or diagram is on your screen and stream direct solutions without switching tabs, losing
-          focus, or appearing on Google Meet/Zoom screen share.
-        </p>
+        <!-- REPLACE with: screenshot of the compact capsule showing OCR + solve bubble on a coding question -->
+        <div class="how-visual">
+          <div class="placeholder-image">
+            <div class="placeholder-icon">⚡</div>
+            <div class="placeholder-label">Snap & Solve Demo</div>
+            <div class="placeholder-desc">Screenshot showing the compact Clovi capsule at the top of screen, with a LeetCode question visible behind it and the AI answer streaming in the floating bubble.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div class="mt-6 flex flex-wrap items-center gap-3">
-          <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe"
-            class="px-5 py-2.5 rounded-lg bg-blue-700 hover:bg-blue-800 text-white text-xs font-semibold transition flex items-center gap-2 shadow-sm">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path
-                d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-            </svg>
-            <span>Download Clovi-Portable.exe (Free)</span>
-          </a>
-          <button onclick="scrollToWaitlist()"
-            class="px-4 py-2.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-semibold border border-blue-200 transition flex items-center gap-1.5 shadow-sm">
-            <span>✨ Join Early Access Waitlist</span>
+  <!-- ─────────── STEALTH MODE ─────────── -->
+  <section class="stealth-section" id="stealth">
+    <div class="container">
+      <div class="section-label">Undetectable in every way</div>
+      <div class="section-title">Built to be <em>invisible.</em></div>
+      <div class="section-sub">Using the same Win32 API that Windows itself uses to exclude windows from screen capture.</div>
+
+      <div class="stealth-grid">
+        <div class="stealth-card">
+          <div class="stealth-card-icon">🫥</div>
+          <h3>Invisible to screen share</h3>
+          <p>Uses Windows <code style="font-size:11px; background:#f3f4f6; padding:2px 5px; border-radius:4px;">WDA_EXCLUDEFROMCAPTURE</code> — Clovi never appears in Google Meet, Zoom, Teams, or any recording software.</p>
+        </div>
+        <div class="stealth-card">
+          <div class="stealth-card-icon">🔒</div>
+          <h3>Zero focus loss</h3>
+          <p>Clovi uses <code style="font-size:11px; background:#f3f4f6; padding:2px 5px; border-radius:4px;">WS_EX_NOACTIVATE</code> so clicking on it never blurs your exam browser — no tab switch events, no focus-loss warnings.</p>
+        </div>
+        <div class="stealth-card">
+          <div class="stealth-card-icon">📡</div>
+          <h3>Invisible to proctors</h3>
+          <p>No DOM injection, no browser extension, no background process attached to your exam tab. It lives completely outside the browser at the OS level.</p>
+        </div>
+        <div class="stealth-card">
+          <div class="stealth-card-icon">🎯</div>
+          <h3>Follows your eyes</h3>
+          <p>Drag the capsule anywhere on screen. Position it at the exact corner that's most comfortable for quick glances without moving your head.</p>
+        </div>
+        <div class="stealth-card">
+          <div class="stealth-card-icon">🌑</div>
+          <h3>No telemetry</h3>
+          <p>No sign-in, no analytics, no data sent anywhere. 100% local Electron app. Your API key and snapshots never leave your machine.</p>
+        </div>
+        <div class="stealth-card">
+          <div class="stealth-card-icon">💾</div>
+          <h3>Portable — no installer</h3>
+          <p>Single .exe file. Drop it anywhere, run it, done. Nothing written to Windows Registry. Works on any Windows 10/11 machine.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── DEMO / STATS ─────────── -->
+  <section class="demo-section" id="demo">
+    <div class="container">
+      <div class="section-label">Real-time AI Vision</div>
+      <div class="section-title" style="color:white;">One snap. <em>Instant answer.</em></div>
+      <div class="section-sub" style="color:#9ca3af;">Gemini 2.5 Flash reads your screen and writes the solution before you could even type the problem.</div>
+
+      <div class="demo-layout">
+        <!-- REPLACE with: side-by-side "before/after" — left: screen with question, right: Clovi bubble with answer -->
+        <div class="demo-visual">
+          <div class="placeholder-image">
+            <div class="placeholder-icon" style="color:#818cf8;">🧠</div>
+            <div class="placeholder-label" style="color:#475569;">AI Answer Demo</div>
+            <div class="placeholder-desc" style="color:#475569;">Before/after demo showing a math/code question on screen and the Clovi floating bubble with the AI-generated answer streaming in real time.</div>
+          </div>
+        </div>
+
+        <div class="demo-stats">
+          <div>
+            <div class="demo-stat-num">1</div>
+            <div class="demo-stat-label">Keyboard shortcut to solve</div>
+            <div class="demo-stat-desc">Ctrl+Shift+S snaps, reads, and starts streaming the answer — all before you can open a new tab.</div>
+          </div>
+          <div class="demo-divider"></div>
+          <div>
+            <div class="demo-stat-num">&lt;2s</div>
+            <div class="demo-stat-label">Time to first answer token</div>
+            <div class="demo-stat-desc">Gemini 2.5 Flash starts streaming the solution within under 2 seconds of the snap — code, math, or essay answers.</div>
+          </div>
+          <div class="demo-divider"></div>
+          <div>
+            <div class="demo-stat-num">100%</div>
+            <div class="demo-stat-label">Invisible on screen share</div>
+            <div class="demo-stat-desc">Verified on Google Meet, Zoom, Discord, OBS, and Windows Game Bar recordings.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── VISUAL PROOF ─────────── -->
+  <section class="proof-section">
+    <div class="container">
+      <div class="section-label">See it in action</div>
+      <div class="section-title">Works on every <em>platform.</em></div>
+      <div class="section-sub">LeetCode, HackerRank, university portals, Google Forms, Moodle, Proctorio exams — if it's on your screen, Clovi solves it.</div>
+
+      <div class="proof-tabs">
+        <button class="proof-tab active" onclick="switchTab(this, 'tab-leetcode')">LeetCode</button>
+        <button class="proof-tab" onclick="switchTab(this, 'tab-hackerrank')">HackerRank</button>
+        <button class="proof-tab" onclick="switchTab(this, 'tab-exam')">University Exam</button>
+        <button class="proof-tab" onclick="switchTab(this, 'tab-math')">Math / STEM</button>
+      </div>
+
+      <div class="proof-visual">
+        <div id="tab-leetcode" class="placeholder-image">
+          <div class="placeholder-icon">💻</div>
+          <div class="placeholder-label">LeetCode Screenshot</div>
+          <div class="placeholder-desc">Screenshot: Clovi capsule at the top of screen while LeetCode has a two-sum or DP problem open. The floating bubble shows the accepted Python/C++ solution.</div>
+        </div>
+        <div id="tab-hackerrank" class="placeholder-image" style="display:none;">
+          <div class="placeholder-icon">🟢</div>
+          <div class="placeholder-label">HackerRank Screenshot</div>
+          <div class="placeholder-desc">Screenshot: Clovi solving a HackerRank problem. Show the code editor and Clovi's streamed solution side by side.</div>
+        </div>
+        <div id="tab-exam" class="placeholder-image" style="display:none;">
+          <div class="placeholder-icon">📝</div>
+          <div class="placeholder-label">University Portal Screenshot</div>
+          <div class="placeholder-desc">Screenshot: Clovi on top of a Moodle / Google Forms exam question, with the AI answer and explanation streamed in the bubble.</div>
+        </div>
+        <div id="tab-math" class="placeholder-image" style="display:none;">
+          <div class="placeholder-icon">📐</div>
+          <div class="placeholder-label">Math / STEM Screenshot</div>
+          <div class="placeholder-desc">Screenshot: Clovi solving a calculus, statistics, or physics problem. Show the formula or diagram snapped and the step-by-step solution streamed.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─────────── FAQ ─────────── -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-label">FAQ</div>
+      <div class="section-title">Frequently asked <em>questions.</em></div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Will Clovi appear on screen share or proctoring software?
+            <span class="faq-chevron">+</span>
           </button>
-          <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank"
-            class="px-4 py-2.5 rounded-lg bg-white hover:bg-slate-100 text-slate-700 text-xs font-medium border border-slate-300 transition flex items-center gap-2">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-            </svg>
-            <span>GitHub Repository</span>
-          </a>
+          <div class="faq-answer">No. Clovi uses <strong>WDA_EXCLUDEFROMCAPTURE</strong> — the same native Win32 API Windows uses for DRM. It is completely absent from Google Meet, Zoom, Discord, Teams, OBS, Windows Game Bar, and all proctoring overlays tested.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Does it cause tab-switch or focus-loss warnings?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">Never. Clovi uses <strong>WS_EX_NOACTIVATE</strong> — clicking anywhere on Clovi does not steal focus from your browser. Your exam tab stays active the whole time.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is it really free? What's the catch?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">100% free and MIT open-source. No subscription. No sign-in. You do need a free Gemini API key from Google AI Studio (takes 30 seconds, no credit card). After that, usage is free up to Gemini's generous free tier.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What kind of questions can Clovi solve?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">Anything visible on your screen — coding problems (Python, Java, C++, SQL), multiple-choice, math/STEM, essay prompts, data science, system design, and more. If Gemini Vision can read and understand it, Clovi can solve it.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Does my data go anywhere?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">Your screenshots go from your machine to the Gemini API directly (same as using Google AI Studio). Nothing is stored on any Clovi server — there is no Clovi server. The app is a local Electron process.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Will it work on macOS or Linux?
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">Currently Windows 10/11 only — the Win32 capture-exclusion API is what makes it genuinely undetectable. macOS and Linux builds are on the roadmap. Join the waitlist to be notified.</div>
         </div>
       </div>
-
-      <!-- Real UI Representation -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-
-        <!-- Mode 1: The Capsule Dock (Default) -->
-        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-          <div
-            class="flex items-center justify-between text-xs font-mono text-slate-500 mb-3 border-b border-slate-100 pb-2">
-            <span class="font-bold text-slate-800">1. Stealth AI Capsule Dock</span>
-            <span>210px Floating Pill</span>
-          </div>
-          <p class="text-xs text-slate-600 mb-4 leading-relaxed">
-            Docks in the corner of your screen. Solves your active question in 1 click and renders the direct answer in
-            a compact pop-up bubble.
-          </p>
-
-          <div class="bg-slate-100/70 border border-slate-200 rounded-lg p-6 flex flex-col items-end gap-2">
-            <!-- Solution bubble -->
-            <div id="heroBubble" class="w-full bg-white border border-blue-200 rounded-lg p-3 shadow text-xs">
-              <div class="flex items-center justify-between border-b border-slate-100 pb-1 mb-1.5">
-                <span class="text-blue-700 font-semibold text-[11px]">⚡ Solution: LeetCode Two-Sum</span>
-                <span class="text-[10px] text-slate-400 font-mono">1-Click Copy</span>
-              </div>
-              <p class="text-slate-800 font-mono text-[11px] leading-relaxed">
-                Use a hash map to achieve <strong class="text-emerald-700">O(n)</strong> time complexity:
-              </p>
-              <pre class="bg-slate-50 p-1.5 rounded text-[10px] font-mono text-slate-900 mt-1 border border-slate-200">lookup = {num: i for i, num in enumerate(nums)}
-return [lookup[target - num], i]</pre>
-            </div>
-
-            <!-- Capsule -->
-            <div class="capsule-pill rounded-full px-3 py-1.5 flex items-center gap-2">
-              <span class="text-slate-400 font-mono text-xs select-none">⋮⋮</span>
-              <button onclick="triggerHeroSolve()"
-                class="w-7 h-7 rounded-full bg-blue-50 hover:bg-blue-100 text-blue-700 flex items-center justify-center text-xs font-bold transition"
-                title="1-Click Snap & Solve">⚡</button>
-              <button onclick="triggerHeroSnap()"
-                class="w-7 h-7 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-700 flex items-center justify-center text-xs transition"
-                title="Snap Screenshot">📸</button>
-              <button onclick="triggerHeroPrompt()"
-                class="w-7 h-7 rounded-full bg-slate-50 hover:bg-slate-100 text-slate-700 flex items-center justify-center text-xs transition"
-                title="Quick Prompt Bar">💬</button>
-              <button onclick="triggerHeroExpand()"
-                class="w-7 h-7 rounded-full bg-purple-50 hover:bg-purple-100 text-purple-700 flex items-center justify-center text-xs transition"
-                title="Expand Full Chat">👻</button>
-            </div>
-
-            <!-- Mini prompt input -->
-            <div id="heroPromptBar"
-              class="w-full bg-white border border-slate-300 rounded-md p-1.5 flex items-center gap-1.5 hidden shadow-sm">
-              <input type="text" placeholder="Type prompt (e.g. solve in Python / C++)..."
-                class="flex-1 text-xs outline-none px-1 text-slate-800 font-mono">
-              <button onclick="triggerHeroSolve()"
-                class="bg-slate-900 text-white px-2 py-0.5 rounded text-[11px]">Send</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Mode 2: The Full Chat Workspace -->
-        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
-          <div
-            class="flex items-center justify-between text-xs font-mono text-slate-500 mb-3 border-b border-slate-100 pb-2">
-            <span class="font-bold text-slate-800">2. Full Workspace View</span>
-            <span>Expanded Assistant</span>
-          </div>
-          <p class="text-xs text-slate-600 mb-4 leading-relaxed">
-            Press <code class="bg-slate-100 px-1 py-0.5 rounded text-slate-700 font-mono">Ctrl+Shift+G</code> to expand
-            into full chat with code syntax highlighting, history, and multi-image attachments.
-          </p>
-
-          <div class="app-window-frame rounded-lg p-4 text-xs font-mono space-y-3">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-2 text-[11px] text-slate-500">
-              <span class="font-bold text-slate-800">Clovi (gemini-2.5-flash)</span>
-              <span class="text-slate-400">Ctrl+Shift+G</span>
-            </div>
-
-            <div class="flex items-center gap-2">
-              <span class="bg-slate-100 border border-slate-200 px-2 py-0.5 rounded text-[10px] text-slate-600">
-                🖼️ Exam_Problem_Screen.png
-              </span>
-            </div>
-
-            <div class="bg-slate-50 border border-slate-200 rounded p-2.5 text-[11px] text-slate-700">
-              <span class="font-bold text-slate-900 block mb-1">Gemini Direct Solution:</span>
-              <span>Based on the captured problem diagram, here is the complete code and complexity analysis:</span>
-              <div class="mt-2 text-right">
-                <span
-                  class="inline-block bg-white border border-slate-200 text-slate-600 px-2 py-0.5 rounded text-[10px]">📋
-                  1-Click Copy</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
   </section>
 
-  <!-- Real Practical Use Cases -->
-  <section id="use-cases" class="w-full py-16 px-6 border-b border-slate-200">
-    <div class="w-full max-w-5xl mx-auto">
+  <!-- ─────────── WAITLIST ─────────── -->
+  <section class="waitlist-section" id="waitlist">
+    <div class="container">
+      <div class="section-label" style="color:#818cf8;">Early Access</div>
+      <div class="section-title">Join the Clovi waitlist.</div>
+      <p class="section-sub" style="margin:14px auto 0; text-align:center;">Be first to know when macOS, Linux, and voice-whisper mode launch. No spam, ever.</p>
 
-      <div class="max-w-xl mb-10">
-        <h2 class="text-2xl font-bold text-slate-950 mb-2">Built for Online Exams, Coding Tests &amp; Technical
-          Interviews</h2>
-        <p class="text-sm text-slate-600 font-normal">
-          Designed specifically for situations where switching tabs or losing focus triggers test warnings.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
-
-        <!-- Use Case 1 -->
-        <div class="border border-slate-200 rounded-xl p-5 bg-white space-y-3">
-          <div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-700 flex items-center justify-center font-bold text-sm">
-            🎓
+      <div class="waitlist-form">
+        <form id="waitlistForm" onsubmit="handleWaitlist(event)">
+          <div class="waitlist-input-row">
+            <input type="email" id="waitlistEmail" class="waitlist-input" placeholder="your@email.com" required>
+            <button type="submit" class="waitlist-submit" id="waitlistBtn">Join</button>
           </div>
-          <h3 class="text-sm font-bold text-slate-900">AI Exam Helper &amp; Assessments</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Taking an online assessment, university test, or technical exam? Press <code
-              class="bg-slate-100 px-1 rounded font-mono">Ctrl+Shift+S</code> to get the exact answer without copying
-            text or switching browser tabs.
-          </p>
-        </div>
-
-        <!-- Use Case 2 -->
-        <div class="border border-slate-200 rounded-xl p-5 bg-white space-y-3">
-          <div
-            class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm">
-            🛡️
-          </div>
-          <h3 class="text-sm font-bold text-slate-900">100% Screen Share Invisible</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            During Google Meet, Zoom, Discord, or Teams screen shares, YO uses native Windows Win32 display exclusion
-            (<code class="bg-slate-100 px-1 rounded font-mono">0x11</code>). The overlay is completely invisible to
-            viewers with zero black boxes.
-          </p>
-        </div>
-
-        <!-- Use Case 3 -->
-        <div class="border border-slate-200 rounded-xl p-5 bg-white space-y-3">
-          <div class="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-sm">
-            🎯
-          </div>
-          <h3 class="text-sm font-bold text-slate-900">Zero Browser Focus Loss</h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            Test platforms monitor window blur / focus lost events. YO automatically preserves and restores active
-            foreground focus to Chrome so your browser never triggers a tab switch warning.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- How It Works: Simple & Clear -->
-  <section id="how-it-works" class="w-full py-16 px-6 border-b border-slate-200 bg-slate-50">
-    <div class="w-full max-w-5xl mx-auto">
-
-      <div class="max-w-xl mb-8">
-        <h2 class="text-2xl font-bold text-slate-950 mb-2">How it works in 3 steps</h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono text-xs">
-
-        <div class="bg-white border border-slate-200 rounded-xl p-5 space-y-2">
-          <span class="text-blue-700 font-bold text-sm">Step 01</span>
-          <h3 class="font-bold text-slate-900 text-sm font-sans">Run Portable Executable</h3>
-          <p class="text-slate-600 font-sans text-xs leading-relaxed">
-            Download and run the `.exe`. Enter your free Google Gemini API key once. It stores securely on your local PC
-            in `%APPDATA%` with zero external tracking.
-          </p>
-        </div>
-
-        <div class="bg-white border border-slate-200 rounded-xl p-5 space-y-2">
-          <span class="text-blue-700 font-bold text-sm">Step 02</span>
-          <h3 class="font-bold text-slate-900 text-sm font-sans">Snap or Solve (Ctrl+Shift+S)</h3>
-          <p class="text-slate-600 font-sans text-xs leading-relaxed">
-            Press the shortcut or click ⚡ to solve immediately. You can also click 📸 to queue up to 5 multi-part
-            diagram screenshots.
-          </p>
-        </div>
-
-        <div class="bg-white border border-slate-200 rounded-xl p-5 space-y-2">
-          <span class="text-blue-700 font-bold text-sm">Step 03</span>
-          <h3 class="font-bold text-slate-900 text-sm font-sans">Copy Answer &amp; Finish</h3>
-          <p class="text-slate-600 font-sans text-xs leading-relaxed">
-            The solution appears in the small bubble over your screen. Click the copy icon to copy the code/math and
-            continue your test.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- FAQ Section for High Search Engine Ranking -->
-  <section id="faq" class="w-full py-16 px-6 border-b border-slate-200 bg-white">
-    <div class="w-full max-w-5xl mx-auto">
-
-      <div class="max-w-xl mb-10">
-        <h2 class="text-2xl font-bold text-slate-950 mb-2">Frequently Asked Questions</h2>
-        <p class="text-xs text-slate-500 font-mono">Common questions about AI exam solving, screen sharing, and privacy.
-        </p>
-      </div>
-
-      <div class="space-y-4">
-
-        <div class="border border-slate-200 rounded-xl p-5 bg-surface-50">
-          <h3 class="text-sm font-bold text-slate-900 mb-1">Is Clovi truly undetectable on Google Meet and Zoom
-            screen sharing?</h3>
-          <p class="text-xs text-slate-600 leading-relaxed font-normal">
-            Yes. Traditional tools use basic protection which draws a noticeable black box in video streams. YO
-            Assistant applies native Windows Win32 <code
-              class="bg-slate-200 px-1 py-0.5 rounded font-mono">SetWindowDisplayAffinity(WDA_EXCLUDEFROMCAPTURE = 0x11)</code>
-            across all native HWND surfaces. The screen share stream sees directly through YO to your background
-            desktop.
-          </p>
-        </div>
-
-        <div class="border border-slate-200 rounded-xl p-5 bg-surface-50">
-          <h3 class="text-sm font-bold text-slate-900 mb-1">Does clicking or using YO trigger a "Tab Switch" or "Window
-            Blur" event in online test browsers?</h3>
-          <p class="text-xs text-slate-600 leading-relaxed font-normal">
-            No. Clovi runs a background foreground tracker. Whenever you click the capsule, press hotkeys, or
-            drag the dock, YO automatically reasserts active focus to your background browser (Chrome / Edge),
-            preventing test portals from detecting focus loss.
-          </p>
-        </div>
-
-        <div class="border border-slate-200 rounded-xl p-5 bg-surface-50">
-          <h3 class="text-sm font-bold text-slate-900 mb-1">Is there any catch, subscription, or registration required?
-          </h3>
-          <p class="text-xs text-slate-600 leading-relaxed font-normal">
-            Zero catch. Clovi is free and open-source under the MIT License. There are no subscriptions, no
-            tracking telemetry, and no account registrations. You provide your own personal Google Gemini API key.
-          </p>
-        </div>
-
-        <div class="border border-slate-200 rounded-xl p-5 bg-surface-50">
-          <h3 class="text-sm font-bold text-slate-900 mb-1">Which models and question types does it support?</h3>
-          <p class="text-xs text-slate-600 leading-relaxed font-normal">
-            It connects to Google Gemini 2.5 Flash and Gemini 3.7 Flash multimodal vision models, capable of solving
-            coding questions (Python, C++, Java, JS), calculus, mathematical proofs, diagrams, multiple choice
-            questions, and system architecture problems.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Author Showcase Section -->
-  <section id="author" class="w-full py-16 px-6 border-b border-slate-200 bg-slate-50">
-    <div class="w-full max-w-5xl mx-auto">
-
-      <div
-        class="bg-white border border-slate-200 rounded-2xl p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-sm">
-
-        <div>
-          <div class="text-[11px] font-mono text-blue-700 font-semibold uppercase tracking-wider mb-1">Developer &amp;
-            Creator</div>
-          <h2 class="text-2xl font-bold text-slate-950 mb-1">Omkar Hundre</h2>
-          <p class="text-xs text-slate-600 max-w-md leading-relaxed font-normal">
-            Software Engineer &amp; UI/UX Builder. Creator of Clovi and open-source developer productivity tools.
-          </p>
-          <div class="mt-4 flex items-center gap-4 text-xs font-medium text-slate-600">
-            <a href="https://omkarhundre.in" target="_blank"
-              class="hover:text-blue-700 transition flex items-center gap-1">
-              🌐 <span>omkarhundre.in</span>
-            </a>
-            <a href="https://www.linkedin.com/in/hundreomkar/" target="_blank"
-              class="hover:text-blue-700 transition flex items-center gap-1">
-              💼 <span>LinkedIn Profile</span>
-            </a>
-            <a href="mailto:hundreomkar7@gmail.com" class="hover:text-blue-700 transition flex items-center gap-1">
-              ✉️ <span>hundreomkar7@gmail.com</span>
-            </a>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-3">
-          <a href="https://www.linkedin.com/in/hundreomkar/" target="_blank"
-            class="px-4 py-2 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-800 text-xs font-semibold border border-blue-200 transition flex items-center gap-1.5">
-            <span>Connect on LinkedIn</span> &rarr;
-          </a>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Dedicated Waitlist Section -->
-  <section id="waitlist" class="w-full py-16 px-6 border-b border-slate-200 bg-white">
-    <div class="w-full max-w-5xl mx-auto">
-      <div class="bg-gradient-to-br from-blue-50/70 via-slate-50 to-slate-100 border border-blue-100 rounded-3xl p-8 sm:p-12 shadow-sm text-center">
-        
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100/80 text-blue-800 text-xs font-semibold mb-4">
-          <span>✨ Early Access</span>
-          <span>•</span>
-          <span>Be the First to Know</span>
-        </div>
-
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-950 mb-3 tracking-tight">
-          Join the Clovi Waitlist
-        </h2>
-        
-        <p class="text-xs sm:text-sm text-slate-600 max-w-md mx-auto mb-8 leading-relaxed">
-          Get notified first when macOS, Linux, mobile companion, and next-gen stealth features go live. Zero spam, ever.
-        </p>
-
-        <!-- Waitlist Form -->
-        <form id="waitlistSectionForm" onsubmit="handleWaitlistSectionSubmit(event)" class="max-w-md mx-auto">
-          <div class="flex flex-col sm:flex-row items-center gap-2.5">
-            <input 
-              type="email" 
-              id="waitlistSectionEmail" 
-              required 
-              placeholder="Enter your email address..."
-              class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-100 outline-none text-xs text-slate-900 bg-white shadow-inner font-mono">
-            <button 
-              type="submit" 
-              id="btnWaitlistSectionSubmit"
-              class="w-full sm:w-auto px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold transition whitespace-nowrap shadow-sm flex items-center justify-center gap-2">
-              <span>Join Waitlist</span> &rarr;
-            </button>
-          </div>
-          
-          <div id="waitlistSectionMsg" class="mt-3 text-xs font-medium hidden"></div>
         </form>
-
+        <div class="waitlist-msg" id="waitlistMsg"></div>
       </div>
     </div>
   </section>
 
-  <!-- Download & Setup Instructions -->
-  <section class="w-full py-16 px-6 bg-slate-50">
-    <div class="w-full max-w-5xl mx-auto">
-
-      <div
-        class="bg-slate-900 text-white rounded-2xl p-8 sm:p-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 shadow-xl">
-        <div>
-          <h2 class="text-2xl font-bold mb-2">Get Clovi for Windows</h2>
-          <p class="text-xs text-slate-400 font-normal leading-relaxed max-w-md">
-            Self-contained portable executable. No installer, no background telemetry, and no registration required.
-          </p>
-          <div class="mt-3 flex items-center gap-4 text-xs font-mono text-slate-400">
-            <span>Windows 10 &amp; 11 (64-bit)</span>
-            <span>•</span>
-            <span>Portable .exe (~76 MB)</span>
-            <span>•</span>
-            <span>MIT Open Source</span>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
-          <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe"
-            class="px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold transition flex items-center justify-center gap-2 shadow-sm text-center">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path
-                d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z" />
-            </svg>
-            <span>Download Free (.exe)</span>
+  <!-- ─────────── DOWNLOAD CTA ─────────── -->
+  <section class="download-section">
+    <div class="container">
+      <div class="download-card">
+        <h2>Get Clovi for Windows</h2>
+        <p>Self-contained portable executable. No installer, no telemetry, no registration. Just download and run.</p>
+        <div class="download-card-ctas">
+          <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/download/v1.0.0/Yo-Assistant-Portable.exe" class="btn-download">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+            Download Free (.exe)
           </a>
-          <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank"
-            class="px-4 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-medium border border-slate-700 transition flex items-center justify-center gap-2 text-center">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path
-                d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z" />
-            </svg>
-            <span>Star on GitHub</span>
+          <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank" class="btn-github">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            Star on GitHub
           </a>
         </div>
+        <div class="download-meta">Windows 10 & 11 · Portable .exe · MIT Open Source</div>
       </div>
-
     </div>
   </section>
 
-  <!-- Footer with Links -->
-  <footer class="w-full border-t border-slate-200 py-8 px-6 text-xs text-slate-500 font-mono bg-white">
-    <div class="w-full max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        Clovi — Created by <a href="https://omkarhundre.in" target="_blank"
-          class="text-slate-800 hover:underline font-bold">Omkar Hundre</a>. MIT License.
-      </div>
-      <div class="flex items-center gap-4 flex-wrap">
-        <a href="https://omkarhundre.in" target="_blank" class="hover:text-slate-900 transition">omkarhundre.in</a>
-        <a href="https://www.linkedin.com/in/hundreomkar/" target="_blank"
-          class="hover:text-slate-900 transition">LinkedIn</a>
-        <a href="https://github.com/Omkar-Hundre" target="_blank" class="hover:text-slate-900 transition">GitHub</a>
-        <a href="mailto:hundreomkar7@gmail.com" class="hover:text-slate-900 transition">Contact</a>
-      </div>
+  <!-- ─────────── FOOTER ─────────── -->
+  <footer>
+    <div class="footer-left">
+      Clovi — Built by <a href="https://omkarhundre.in" target="_blank">Omkar Hundre</a>. MIT License.
+    </div>
+    <div class="footer-links">
+      <a href="https://github.com/Omkar-Hundre/YO-Assistant" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/hundreomkar/" target="_blank">LinkedIn</a>
+      <a href="mailto:hundreomkar7@gmail.com">Contact</a>
+      <a href="https://omkarhundre.in" target="_blank">Portfolio</a>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    let heroSnaps = 0;
-
-    function triggerHeroSolve() {
-      const bubble = document.getElementById('heroBubble');
-      bubble.classList.remove('hidden');
+    // ─── FAQ Toggle ───────────────────────────────────────────
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
     }
 
-    function triggerHeroSnap() {
-      heroSnaps++;
-      alert(`Snapped screen (${heroSnaps}/5 attached in memory). Click ⚡ to solve.`);
+    // ─── Proof Tabs ───────────────────────────────────────────
+    function switchTab(btn, targetId) {
+      document.querySelectorAll('.proof-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.proof-visual [id]').forEach(el => el.style.display = 'none');
+      btn.classList.add('active');
+      document.getElementById(targetId).style.display = 'flex';
     }
 
-    function triggerHeroPrompt() {
-      const bar = document.getElementById('heroPromptBar');
-      bar.classList.toggle('hidden');
-    }
-
-    function triggerHeroExpand() {
-      alert('In the actual desktop app, clicking 👻 or pressing Ctrl+Shift+G expands to the full chat view on the right!');
-    }
-
+    // ─── Scroll to Waitlist ───────────────────────────────────
     function scrollToWaitlist() {
-      const sec = document.getElementById('waitlist');
-      if (sec) {
-        sec.scrollIntoView({ behavior: 'smooth' });
-        const inp = document.getElementById('waitlistSectionEmail');
-        if (inp) setTimeout(() => inp.focus(), 400);
-      }
+      document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
+      setTimeout(() => document.getElementById('waitlistEmail').focus(), 400);
     }
 
-    // Supabase Waitlist Submission Handler
+    // ─── Waitlist Submit ──────────────────────────────────────
     const SUPABASE_URL = 'https://lagpjyktjgekgoxwmvkr.supabase.co';
-    const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhZ3BqeWt0amdla2dveHdtdmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODczOTc0NDUsImV4cCI6MjEwMjk3MzQ0NX0.3eY8tEYW2K4py52kfXiP_jPAJAu7gRRxPHX5H9nu7TU';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxhZ3BqeWt0amdla2dveHdtdmtyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODczOTc0NDUsImV4cCI6MjEwMjk3MzQ0NX0.3eY8tEYW2K4py52kfXiP_jPAJAu7gRRxPHX5H9nu7TU';
 
-    async function handleWaitlistSectionSubmit(e) {
+    async function handleWaitlist(e) {
       e.preventDefault();
-      const input = document.getElementById('waitlistSectionEmail');
-      const btn = document.getElementById('btnWaitlistSectionSubmit');
-      const msg = document.getElementById('waitlistSectionMsg');
-      
-      const email = input.value.trim();
+      const email = document.getElementById('waitlistEmail').value.trim();
+      const btn = document.getElementById('waitlistBtn');
+      const msg = document.getElementById('waitlistMsg');
+
       if (!email) return;
 
       btn.disabled = true;
-      btn.innerHTML = `<span>Joining...</span>`;
-      msg.className = 'mt-3 text-xs font-medium text-slate-500';
-      msg.innerText = '';
-      msg.classList.remove('hidden');
+      btn.textContent = '...';
 
       try {
         const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'apikey': SUPABASE_ANON_KEY,
-            'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+            'apikey': SUPABASE_KEY,
+            'Authorization': `Bearer ${SUPABASE_KEY}`,
             'Prefer': 'return=minimal'
           },
-          body: JSON.stringify({
-            email: email,
-            use_case: 'Landing Page Quick Waitlist',
-            operating_system: 'Windows'
-          })
+          body: JSON.stringify({ email, use_case: 'Landing Page Waitlist', operating_system: 'Windows' })
         });
 
         if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(errData.message || 'Failed to join waitlist');
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err.message || 'Failed to join');
         }
 
-        input.value = '';
-        btn.innerHTML = `<span>✓ Joined</span>`;
-        btn.className = 'w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-600 text-white text-xs font-semibold transition whitespace-nowrap shadow-sm flex items-center justify-center gap-2';
-        msg.className = 'mt-3 text-xs font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg p-2.5 inline-block';
-        msg.innerText = `🎉 You're on the early access list! We'll notify ${email} soon.`;
+        document.getElementById('waitlistEmail').value = '';
+        btn.textContent = '✓ Done';
+        btn.style.background = '#22c55e';
+        msg.textContent = `🎉 You're on the list! We'll email ${email} when new features drop.`;
       } catch (err) {
         btn.disabled = false;
-        btn.innerHTML = `<span>Join Waitlist</span> &rarr;`;
-        msg.className = 'mt-3 text-xs font-semibold text-red-600 bg-red-50 border border-red-200 rounded-lg p-2 inline-block';
-        msg.innerText = err.message || 'Could not join. Please try again.';
+        btn.textContent = 'Join';
+        msg.textContent = err.message || 'Error, please try again.';
+        msg.style.color = '#f87171';
       }
     }
   </script>
-</body>
 
+</body>
 </html>
