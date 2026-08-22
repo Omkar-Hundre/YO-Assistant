@@ -784,31 +784,159 @@
       font-size: 15px;
     }
 
-    /* ─── STEALTH SECTION ─────────────────────────────── */
-    .stealth-section { background: var(--gray-50); }
-    .stealth-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 56px; }
-    .stealth-card {
-      background: white; border: 1px solid var(--gray-200);
-      border-radius: 20px; padding: 32px 26px;
-      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    /* ─── MERGED FLAGSHIP DARK STEALTH & CORE ENGINE SECTION ─── */
+    .stealth-section { 
+      background: #09090b; 
+      color: white; 
+      position: relative; 
+      overflow: hidden; 
+      padding: 110px 24px; 
+      border-top: 1px solid #1e293b;
+      border-bottom: 1px solid #1e293b;
     }
-    .stealth-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.06); border-color: var(--gray-300); }
-    .stealth-card-icon { font-size: 26px; margin-bottom: 18px; }
-    .stealth-card h3 { font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
-    .stealth-card p { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; font-weight: 300; }
-
-    /* ─── DEMO SECTION ────────────────────────────────── */
-    .demo-section { background: var(--black); color: white; }
-    .demo-section .section-label { color: #93c5fd; }
-    .demo-section .section-title { color: white; }
-    .demo-section .section-title em { color: #93c5fd; }
-    .demo-section .section-sub { color: var(--gray-400); }
-    .demo-layout { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; margin-top: 64px; }
-    .demo-stats { display: flex; flex-direction: column; gap: 36px; }
-    .demo-stat-num { font-family: var(--font-display); font-size: 52px; font-weight: 400; letter-spacing: -1.5px; color: white; line-height: 1; }
-    .demo-stat-label { font-size: 15px; font-weight: 700; color: white; margin-top: 8px; margin-bottom: 6px; }
-    .demo-stat-desc { font-size: 13.5px; color: #94a3b8; line-height: 1.6; font-weight: 300; }
-    .demo-divider { height: 1px; background: #1e293b; }
+    .stealth-header { 
+      text-align: center; 
+      max-width: 760px; 
+      margin: 0 auto 60px; 
+    }
+    .stealth-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(59, 130, 246, 0.12);
+      border: 1px solid rgba(59, 130, 246, 0.35);
+      color: #93c5fd;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      margin-bottom: 20px;
+    }
+    .stealth-pill-dot {
+      width: 6px;
+      height: 6px;
+      background: #38bdf8;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+    .stealth-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.8vw, 54px);
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      line-height: 1.15;
+      color: white;
+      margin-bottom: 16px;
+    }
+    .stealth-title em {
+      font-style: italic;
+      color: #93c5fd;
+    }
+    .stealth-sub {
+      font-size: 16.5px;
+      color: #94a3b8;
+      line-height: 1.65;
+      font-weight: 300;
+      margin: 0 auto;
+    }
+    .stealth-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 50px;
+    }
+    .stealth-bento-card {
+      background: #121214;
+      border: 1px solid #27272a;
+      border-radius: 20px;
+      padding: 34px 30px;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+    .stealth-bento-card:hover {
+      transform: translateY(-4px);
+      border-color: #3f3f46;
+      background: #18181b;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+    .stealth-bento-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+    .stealth-bento-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .stealth-bento-card p {
+      font-size: 14px;
+      color: #94a3b8;
+      line-height: 1.65;
+      font-weight: 300;
+    }
+    .stealth-bento-card code {
+      font-family: monospace;
+      font-size: 12px;
+      background: rgba(255,255,255,0.08);
+      color: #e2e8f0;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .keycap-mini {
+      font-family: monospace;
+      font-size: 11.5px;
+      background: #27272a;
+      border: 1px solid #3f3f46;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    
+    .stealth-metrics-row {
+      background: #121214;
+      border: 1px solid #27272a;
+      border-radius: 20px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+    .stealth-metric-col {
+      flex: 1;
+      text-align: center;
+    }
+    .metric-number {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 4.5vw, 50px);
+      font-weight: 400;
+      letter-spacing: -1.5px;
+      color: white;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .metric-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 4px;
+    }
+    .metric-desc {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.5;
+      font-weight: 300;
+    }
+    .stealth-metric-divider {
+      width: 1px;
+      height: 60px;
+      background: #27272a;
+    }
 
     /* ─── VISUAL PROOF SECTION ────────────────────────── */
     .proof-section { background: var(--white); }
@@ -955,11 +1083,13 @@
         grid-template-columns: 1fr;
         gap: 20px;
       }
+      .stealth-bento-grid {
+        grid-template-columns: 1fr;
+      }
     }
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
-      .stealth-grid, .demo-layout { grid-template-columns: 1fr; }
       .hero { padding-top: 100px; }
       .proof-tabs { overflow-x: auto; }
       .waitlist-input-row { flex-direction: column; }
@@ -987,6 +1117,15 @@
       .window-header-bar {
         height: 34px;
         padding: 0 12px;
+      }
+      .stealth-metrics-row {
+        flex-direction: column;
+        gap: 24px;
+        padding: 28px 20px;
+      }
+      .stealth-metric-divider {
+        width: 80%;
+        height: 1px;
       }
     }
     @media (max-width: 540px) {
@@ -1328,127 +1467,6 @@
           </div>
         </div>
 
-        <!-- Group 2 (Identical Duplicate for Seamless Infinite Loop) -->
-        <div class="trust-marquee-group" aria-hidden="true">
-          <!-- Google Meet -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <rect width="16" height="16" x="12" y="16" fill="#fff" transform="rotate(-90 20 24)"></rect>
-              <polygon fill="#1e88e5" points="3,17 3,31 8,32 13,31 13,17 8,16"></polygon>
-              <path fill="#4caf50" d="M37,24v14c0,1.657-1.343,3-3,3H13l-1-5l1-5h14v-7l5-1L37,24z"></path>
-              <path fill="#fbc02d" d="M37,10v14H27v-7H13l-1-5l1-5h21C35.657,7,37,8.343,37,10z"></path>
-              <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
-              <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
-              <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
-              <path fill="#4caf50" d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z"></path>
-            </svg>
-            Google Meet
-          </div>
-
-          <!-- Zoom -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <circle cx="24" cy="24" r="20" fill="#2196f3"></circle>
-              <path fill="#fff" d="M29,31H14c-1.657,0-3-1.343-3-3V17h15c1.657,0,3,1.343,3,3V31z"></path>
-              <polygon fill="#fff" points="37,31 31,27 31,21 37,17"></polygon>
-            </svg>
-            Zoom
-          </div>
-
-          <!-- Discord -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <path fill="#536dfe" d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"></path>
-            </svg>
-            Discord
-          </div>
-
-          <!-- Microsoft Teams -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path>
-              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path>
-              <path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
-            </svg>
-            Microsoft Teams
-          </div>
-
-          <!-- HackerRank -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" fill="#2EC866">
-              <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z"/>
-            </svg>
-            HackerRank
-          </div>
-
-          <!-- LeetCode -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
-              <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
-            </svg>
-            LeetCode
-          </div>
-
-          <!-- Google Meet Repeat -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <rect width="16" height="16" x="12" y="16" fill="#fff" transform="rotate(-90 20 24)"></rect>
-              <polygon fill="#1e88e5" points="3,17 3,31 8,32 13,31 13,17 8,16"></polygon>
-              <path fill="#4caf50" d="M37,24v14c0,1.657-1.343,3-3,3H13l-1-5l1-5h14v-7l5-1L37,24z"></path>
-              <path fill="#fbc02d" d="M37,10v14H27v-7H13l-1-5l1-5h21C35.657,7,37,8.343,37,10z"></path>
-              <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
-              <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
-              <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
-              <path fill="#4caf50" d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z"></path>
-            </svg>
-            Google Meet
-          </div>
-
-          <!-- Zoom Repeat -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <circle cx="24" cy="24" r="20" fill="#2196f3"></circle>
-              <path fill="#fff" d="M29,31H14c-1.657,0-3-1.343-3-3V17h15c1.657,0,3,1.343,3,3V31z"></path>
-              <polygon fill="#fff" points="37,31 31,27 31,21 37,17"></polygon>
-            </svg>
-            Zoom
-          </div>
-
-          <!-- Discord Repeat -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <path fill="#536dfe" d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"></path>
-            </svg>
-            Discord
-          </div>
-
-          <!-- Microsoft Teams Repeat -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-              <path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path>
-              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path>
-              <path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
-            </svg>
-            Microsoft Teams
-          </div>
-
-          <!-- HackerRank Repeat -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" fill="#2EC866">
-              <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z"/>
-            </svg>
-            HackerRank
-          </div>
-
-          <!-- LeetCode Repeat -->
-          <div class="trust-item">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
-              <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
-            </svg>
-            LeetCode
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -1524,82 +1542,76 @@
     </div>
   </section>
 
-  <!-- ─────────── STEALTH MODE ─────────── -->
+  <!-- ─────────── MERGED FLAGSHIP DARK STEALTH & CORE ENGINE SECTION ─────────── -->
   <section class="stealth-section" id="stealth">
     <div class="container">
-      <div class="section-label">Undetectable in every way</div>
-      <div class="section-title">Built to be <em>invisible.</em></div>
-      <div class="section-sub">Using native Win32 Display Affinity APIs that completely exclude the window from screen capturing software.</div>
+      
+      <!-- Section Header -->
+      <div class="stealth-header">
+        <div class="stealth-pill-badge">
+          <span class="stealth-pill-dot"></span>
+          100% Undetectable
+        </div>
+        <h2 class="stealth-title">Built to be <em>completely invisible.</em></h2>
+        <p class="stealth-sub">
+          Zero browser extensions. Zero DOM injection. Excluded from screen recordings and screen shares at the Windows OS kernel level.
+        </p>
+      </div>
 
-      <div class="stealth-grid">
-        <div class="stealth-card">
-          <div class="stealth-card-icon">🫥</div>
-          <h3>Invisible to screen share</h3>
-          <p>Uses Windows <code style="font-size:11px; background:#f1f5f9; padding:2px 6px; border-radius:4px; font-weight:700;">WDA_EXCLUDEFROMCAPTURE</code> — Clovi never appears in Google Meet, Zoom, Teams, or OBS recordings.</p>
+      <!-- 4 Core Stealth & Performance Bento Cards -->
+      <div class="stealth-bento-grid">
+        
+        <!-- Card 1: Screen Share Invisibility -->
+        <div class="stealth-bento-card">
+          <div class="stealth-bento-icon">🫥</div>
+          <h3>Invisible to Screen Share &amp; Recording</h3>
+          <p>Uses Windows native kernel display affinity (<code>WDA_EXCLUDEFROMCAPTURE</code>). Clovi never appears in Google Meet, Zoom, Microsoft Teams, Discord, OBS, or system screen shares.</p>
         </div>
-        <div class="stealth-card">
-          <div class="stealth-card-icon">🔒</div>
-          <h3>Zero focus loss</h3>
-          <p>Clovi uses <code style="font-size:11px; background:#f1f5f9; padding:2px 6px; border-radius:4px; font-weight:700;">WS_EX_NOACTIVATE</code> so clicking on it never blurs your exam browser — no tab switch events, no focus-loss warnings.</p>
+
+        <!-- Card 2: Zero Focus Loss -->
+        <div class="stealth-bento-card">
+          <div class="stealth-bento-icon">🔒</div>
+          <h3>Zero Focus Loss &amp; Tab Blurs</h3>
+          <p>Built with <code>WS_EX_NOACTIVATE</code>. Clicking, dragging, or interacting with Clovi never steals focus from your browser window — zero tab-switch alerts, blur warnings, or proctor flags.</p>
         </div>
-        <div class="stealth-card">
-          <div class="stealth-card-icon">📡</div>
-          <h3>Invisible to proctors</h3>
-          <p>No DOM injection, no browser extension, no background process attached to your exam tab. It lives completely outside the browser.</p>
+
+        <!-- Card 3: Runs Outside Browser -->
+        <div class="stealth-bento-card">
+          <div class="stealth-bento-icon">📡</div>
+          <h3>Invisible to Proctoring Software</h3>
+          <p>No browser extensions, no injected scripts, and no background processes attached to your exam tab. Lives 100% outside the browser as a standalone portable app.</p>
         </div>
-        <div class="stealth-card">
-          <div class="stealth-card-icon">🎯</div>
-          <h3>Follows your eyes</h3>
-          <p>Drag the capsule anywhere on screen. Position it at the exact corner that's most comfortable for quick glances without moving your head.</p>
+
+        <!-- Card 4: 1 Hotkey & Instant AI Speed -->
+        <div class="stealth-bento-card">
+          <div class="stealth-bento-icon">⚡</div>
+          <h3>1 Hotkey · &lt;2s Streamed Answers</h3>
+          <p>Press <kbd class="keycap-mini">Ctrl</kbd>+<kbd class="keycap-mini">Shift</kbd>+<kbd class="keycap-mini">S</kbd> anywhere. Gemini 2.5 Flash reads your screen optical buffer and streams verified solutions in real-time.</p>
         </div>
-        <div class="stealth-card">
-          <div class="stealth-card-icon">🌑</div>
-          <h3>No telemetry</h3>
-          <p>No sign-in, no analytics, no data sent to third parties. 100% local Electron app. Your API key and snapshots stay private on your machine.</p>
+
+      </div>
+
+      <!-- 3 Impactful Stealth Metrics -->
+      <div class="stealth-metrics-row">
+        <div class="stealth-metric-col">
+          <div class="metric-number">100%</div>
+          <div class="metric-title">Screen Share Invisibility</div>
+          <div class="metric-desc">Verified on Google Meet, Zoom, Teams, Discord &amp; OBS</div>
         </div>
-        <div class="stealth-card">
-          <div class="stealth-card-icon">💾</div>
-          <h3>Portable — no installer</h3>
-          <p>Single .exe file. Drop it anywhere, run it, done. Nothing written to Windows Registry. Works on any Windows 10/11 machine.</p>
+        <div class="stealth-metric-divider"></div>
+        <div class="stealth-metric-col">
+          <div class="metric-number">0</div>
+          <div class="metric-title">Focus Loss Warnings</div>
+          <div class="metric-desc">Never triggers tab-switch or window-blur alerts</div>
+        </div>
+        <div class="stealth-metric-divider"></div>
+        <div class="stealth-metric-col">
+          <div class="metric-number">&lt;2s</div>
+          <div class="metric-title">Time to First Answer</div>
+          <div class="metric-desc">Streams code and math solutions directly on screen</div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ─────────── DEMO / STATS ─────────── -->
-  <section class="demo-section" id="demo">
-    <div class="container">
-      <div class="section-label">Real-time AI Vision</div>
-      <div class="section-title">One snap. <em>Instant answer.</em></div>
-      <div class="section-sub">Gemini 2.5 Flash reads your screen and writes the solution before you could even type the problem.</div>
-
-      <div class="demo-layout">
-        <div style="background:#18181b; border:1px solid #27272a; border-radius:18px; padding:28px; text-align:center;">
-          <div style="font-size:42px; margin-bottom:12px;">🧠</div>
-          <h3 style="color:#ffffff; font-size:18px; font-weight:700; margin-bottom:8px;">Zero Key Configuration</h3>
-          <p style="color:#a1a1aa; font-size:13.5px; line-height:1.6;">Plug in your free Google AI Studio key or use Gemini Vision out-of-the-box for instant token streaming.</p>
-        </div>
-
-        <div class="demo-stats">
-          <div>
-            <div class="demo-stat-num">1</div>
-            <div class="demo-stat-label">Keyboard shortcut to solve</div>
-            <div class="demo-stat-desc">Ctrl+Shift+S snaps, reads, and starts streaming the answer — all before you can open a new tab.</div>
-          </div>
-          <div class="demo-divider"></div>
-          <div>
-            <div class="demo-stat-num">&lt;2s</div>
-            <div class="demo-stat-label">Time to first answer token</div>
-            <div class="demo-stat-desc">Gemini 2.5 Flash starts streaming the solution within under 2 seconds of the snap — code, math, or written answers.</div>
-          </div>
-          <div class="demo-divider"></div>
-          <div>
-            <div class="demo-stat-num">100%</div>
-            <div class="demo-stat-label">Invisible on screen share</div>
-            <div class="demo-stat-desc">Verified on Google Meet, Zoom, Discord, OBS, and Windows Game Bar recordings.</div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
