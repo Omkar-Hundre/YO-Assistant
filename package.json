@@ -1,7 +1,7 @@
 {
-  "name": "yo-assistant",
+  "name": "clovi",
   "version": "1.0.0",
-  "description": "Windows Floating Overlay Assistant with Gemini Vision & Stealth Mode",
+  "description": "Clovi — Windows Floating Overlay Assistant with Gemini Vision & Stealth Mode",
   "main": "dist/main/main.js",
   "scripts": {
     "build:main": "tsc -p tsconfig.main.json",
@@ -15,8 +15,8 @@
     "seo": "node scripts/seo-automation.js"
   },
   "build": {
-    "appId": "com.yo.assistant",
-    "productName": "Yo",
+    "appId": "com.clovi.assistant",
+    "productName": "Clovi",
     "directories": {
       "output": "release"
     },
@@ -39,7 +39,7 @@
       "allowToChangeInstallationDirectory": false
     },
     "portable": {
-      "artifactName": "Yo-Assistant-Portable.exe"
+      "artifactName": "Clovi-Portable.exe"
     },
     "asar": true,
     "asarUnpack": [

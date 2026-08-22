@@ -1,8 +1,4 @@
-# ⚡ YO-Assistant — The Ultimate Floating AI Stealth Capsule
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Omkar-Hundre/YO-Assistant/main/landing/assets/capsule_preview.png" alt="YO-Assistant Preview" width="600" style="border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);" onerror="this.style.display='none'"/>
-</p>
+# ⚡ Clovi — Floating AI Stealth Capsule for Windows
 
 <p align="center">
   <strong>An ultra-compact, distraction-free floating desktop assistant powered by Google Gemini Vision.</strong><br>
@@ -10,6 +6,7 @@
 </p>
 
 <p align="center">
+  <a href="https://clovi.netlify.app"><img src="https://img.shields.io/badge/Website-clovi.netlify.app-blue?style=for-the-badge" alt="Website"/></a>
   <a href="https://github.com/Omkar-Hundre/YO-Assistant/releases/latest"><img src="https://img.shields.io/badge/Download-Portable_v1.0.0-blue?style=for-the-badge&logo=windows" alt="Download Portable Exe"/></a>
   <a href="https://github.com/Omkar-Hundre/YO-Assistant/stargazers"><img src="https://img.shields.io/github/stars/Omkar-Hundre/YO-Assistant?style=for-the-badge&color=yellow" alt="GitHub Stars"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License"/></a>

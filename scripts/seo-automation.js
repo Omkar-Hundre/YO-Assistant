@@ -13,12 +13,12 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const SITE_URL = 'https://yo-assistant.netlify.app';
+const SITE_URL = 'https://clovi.netlify.app';
 const SITEMAP_URL = `${SITE_URL}/sitemap.xml`;
 const REPO_URL = 'https://github.com/Omkar-Hundre/YO-Assistant';
 
 console.log('='.repeat(60));
-console.log('🚀 YO-Assistant Automated SEO & Indexing Engine');
+console.log('🚀 Clovi Automated SEO & Indexing Engine');
 console.log('='.repeat(60));
 
 // 1. Helper function for HTTP requests

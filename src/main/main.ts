@@ -391,7 +391,7 @@ function createTray() {
     const trayIcon = nativeImage.createFromBuffer(Buffer.from(iconBase64, 'base64'));
 
     tray = new Tray(trayIcon);
-    tray.setToolTip('Yo Assistant (Stealth Background Service)');
+    tray.setToolTip('Clovi (Stealth Assistant)');
 
     const contextMenu = Menu.buildFromTemplate([
       {
@@ -426,7 +426,7 @@ function createTray() {
       },
       { type: 'separator' },
       {
-        label: 'Quit Yo',
+        label: 'Quit Clovi',
         click: () => {
           app.quit();
         }
