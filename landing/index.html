@@ -545,42 +545,116 @@
       padding-left: 4px;
     }
 
-    /* ─── TRUST BAR ───────────────────────────────────── */
-    .trust-bar {
-      padding: 38px 24px;
+    /* ─── INFINITE SEAMLESS MARQUEE TRUST CAROUSEL ─────── */
+    .trust-carousel-section {
+      width: 100%;
+      padding: 44px 0;
       border-top: 1px solid var(--gray-100);
       border-bottom: 1px solid var(--gray-100);
-      display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;
       background: var(--white);
+      position: relative;
+      overflow: hidden;
     }
-    .trust-bar-label { 
-      font-size: 12px; color: var(--gray-400); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; white-space: nowrap; 
+
+    .trust-carousel-label {
+      text-align: center;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 26px;
     }
+
+    .trust-marquee-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .trust-marquee-wrapper::before,
+    .trust-marquee-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 160px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .trust-marquee-wrapper::before {
+      left: 0;
+      background: linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .trust-marquee-wrapper::after {
+      right: 0;
+      background: linear-gradient(to left, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .trust-marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      width: max-content;
+      animation: infinite-marquee 28s linear infinite;
+    }
+
+    .trust-marquee-track:hover {
+      animation-play-state: paused;
+    }
+
+    .trust-marquee-group {
+      display: flex;
+      align-items: center;
+      gap: 56px;
+      flex-shrink: 0;
+    }
+
     .trust-item { 
-      display: flex; align-items: center; gap: 9px; font-size: 13.5px; font-weight: 700; color: var(--gray-700); 
-      transition: all 0.2s ease;
+      display: flex; 
+      align-items: center; 
+      gap: 12px; 
+      font-size: 15.5px; 
+      font-weight: 700; 
+      color: var(--gray-800); 
+      white-space: nowrap;
+      transition: transform 0.2s ease, color 0.2s ease;
+      cursor: default;
     }
     .trust-item:hover {
       color: var(--black);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
     }
     .trust-item svg {
-      width: 20px;
-      height: 20px;
+      width: 26px;
+      height: 26px;
       flex-shrink: 0;
       display: block;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.06));
+    }
+
+    @keyframes infinite-marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(calc(-50% - 28px));
+      }
     }
 
     /* ─── SECTION BASE ────────────────────────────────── */
     section { padding: 100px 24px; }
-    .container { max-width: 1020px; margin: 0 auto; }
+    .container { max-width: 1080px; margin: 0 auto; }
     .section-label { 
       font-family: var(--font-body);
       font-size: 12.5px; font-weight: 700; color: var(--blue-600); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; 
     }
     .section-title { 
       font-family: var(--font-display);
-      font-size: clamp(32px, 4.5vw, 48px); 
+      font-size: clamp(34px, 4.6vw, 50px); 
       font-weight: 400; 
       letter-spacing: -0.5px; 
       line-height: 1.15; 
@@ -595,30 +669,218 @@
       font-size: 16.5px; 
       color: var(--gray-600); 
       line-height: 1.7; 
-      max-width: 520px; 
+      max-width: 540px; 
       margin-top: 14px; 
       font-weight: 300;
     }
 
-    /* ─── HOW IT WORKS ────────────────────────────────── */
+    /* ─── HOW IT WORKS: 3-STEP FLAGSHIP BENTO GRID ─────── */
     .how-section { background: var(--white); }
-    .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; margin-top: 64px; }
-    .how-steps { display: flex; flex-direction: column; gap: 36px; }
-    .how-step { display: flex; gap: 20px; }
-    .how-step-num {
-      width: 36px; height: 36px; flex-shrink: 0;
-      background: var(--blue-50); border: 1px solid var(--blue-200); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; font-weight: 900; color: var(--blue-700);
+    .how-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      margin-top: 64px;
     }
-    .how-step-content h3 { font-size: 16px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
-    .how-step-content p { font-size: 13.5px; color: var(--gray-600); line-height: 1.6; font-weight: 300; }
-    .how-visual-placeholder {
-      aspect-ratio: 4/3; border-radius: 18px;
-      background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+
+    .how-bento-card {
+      background: var(--white);
       border: 1px solid var(--gray-200);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      color: var(--gray-500); font-size: 13px; text-align: center; padding: 24px;
+      border-radius: 24px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .how-bento-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+      border-color: var(--gray-300);
+    }
+
+    .how-step-header {
+      margin-bottom: 24px;
+    }
+
+    .how-step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--gray-100);
+      color: var(--black);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 900;
+      margin-bottom: 18px;
+      border: 1px solid var(--gray-200);
+    }
+
+    .badge-blue { background: #eff6ff; color: #2563eb; border-color: #bfdbfe; }
+    .badge-purple { background: #faf5ff; color: #7c3aed; border-color: #e9d5ff; }
+    .badge-emerald { background: #ecfdf5; color: #059669; border-color: #a7f3d0; }
+
+    .how-bento-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+
+    .how-bento-card p {
+      font-size: 14px;
+      color: var(--gray-600);
+      line-height: 1.65;
+      font-weight: 300;
+    }
+
+    /* Bento Visual Previews */
+    .bento-visual-box {
+      margin-top: 24px;
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 16px;
+      padding: 20px 18px;
+      color: white;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* Visual 1: Pinned Capsule Preview */
+    .visual-capsule-preview {
+      background: rgba(30, 41, 59, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 100px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+    }
+    .visual-capsule-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #34d399;
+    }
+    .visual-stealth-tag {
+      font-size: 11px;
+      font-family: monospace;
+      color: #94a3b8;
+      background: rgba(255,255,255,0.06);
+      padding: 3px 8px;
+      border-radius: 6px;
+    }
+    .visual-status-pill {
+      font-size: 11.5px;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px dashed rgba(255,255,255,0.12);
+    }
+
+    /* Visual 2: 3D Keycaps & Scanning Laser */
+    .keycaps-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .keycap {
+      background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+      border: 1px solid #475569;
+      border-bottom: 3px solid #0f172a;
+      border-radius: 8px;
+      padding: 7px 12px;
+      font-family: monospace;
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+    .keycap-plus {
+      color: #64748b;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .scanning-laser-box {
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 8px;
+      padding: 8px 12px;
+      position: relative;
+      overflow: hidden;
+      font-family: monospace;
+      font-size: 11px;
+      color: #38bdf8;
+    }
+    .scanning-laser-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #38bdf8, transparent);
+      box-shadow: 0 0 8px #38bdf8;
+      animation: scanSweep 2s ease-in-out infinite alternate;
+    }
+    @keyframes scanSweep {
+      0% { transform: translateY(0); opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { transform: translateY(32px); opacity: 0.3; }
+    }
+
+    /* Visual 3: Live Code Solution Card */
+    .stream-speed-badge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .stream-tag-green {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .stream-time-tag {
+      font-size: 10.5px;
+      color: #38bdf8;
+      font-family: monospace;
+    }
+    .mini-code-stream {
+      background: #020617;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-family: monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      color: #e2e8f0;
     }
 
     /* ─── STEALTH SECTION ─────────────────────────────── */
@@ -788,11 +1050,15 @@
         --overlay-scale: 0.88;
         top: 18px;
       }
+      .how-bento-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
     }
     @media (max-width: 768px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
-      .how-grid, .stealth-grid, .demo-layout { grid-template-columns: 1fr; }
+      .stealth-grid, .demo-layout { grid-template-columns: 1fr; }
       .hero { padding-top: 100px; }
       .proof-tabs { overflow-x: auto; }
       .waitlist-input-row { flex-direction: column; }
@@ -1033,107 +1299,217 @@
     </div>
   </section>
 
-  <!-- ─────────── TRUST BAR ─────────── -->
-  <div class="trust-bar">
-    <span class="trust-bar-label">Works invisibly on</span>
+  <!-- ─────────── INFINITE MARQUEE TRUST CAROUSEL ─────────── -->
+  <div class="trust-carousel-section">
+    <div class="trust-carousel-label">WORKS INVISIBLY ON ALL EXAM PLATFORMS &amp; SCREEN SHARES</div>
     
-    <!-- Google Meet -->
-    <div class="trust-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-        <rect width="16" height="16" x="12" y="16" fill="#fff" transform="rotate(-90 20 24)"></rect>
-        <polygon fill="#1e88e5" points="3,17 3,31 8,32 13,31 13,17 8,16"></polygon>
-        <path fill="#4caf50" d="M37,24v14c0,1.657-1.343,3-3,3H13l-1-5l1-5h14v-7l5-1L37,24z"></path>
-        <path fill="#fbc02d" d="M37,10v14H27v-7H13l-1-5l1-5h21C35.657,7,37,8.343,37,10z"></path>
-        <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
-        <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
-        <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
-        <path fill="#4caf50" d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z"></path>
-      </svg>
-      Google Meet
-    </div>
+    <div class="trust-marquee-wrapper">
+      <div class="trust-marquee-track">
+        
+        <!-- Group 1 -->
+        <div class="trust-marquee-group">
+          <!-- Google Meet -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <rect width="16" height="16" x="12" y="16" fill="#fff" transform="rotate(-90 20 24)"></rect>
+              <polygon fill="#1e88e5" points="3,17 3,31 8,32 13,31 13,17 8,16"></polygon>
+              <path fill="#4caf50" d="M37,24v14c0,1.657-1.343,3-3,3H13l-1-5l1-5h14v-7l5-1L37,24z"></path>
+              <path fill="#fbc02d" d="M37,10v14H27v-7H13l-1-5l1-5h21C35.657,7,37,8.343,37,10z"></path>
+              <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
+              <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
+              <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
+              <path fill="#4caf50" d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z"></path>
+            </svg>
+            Google Meet
+          </div>
 
-    <!-- Zoom -->
-    <div class="trust-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-        <circle cx="24" cy="24" r="20" fill="#2196f3"></circle>
-        <path fill="#fff" d="M29,31H14c-1.657,0-3-1.343-3-3V17h15c1.657,0,3,1.343,3,3V31z"></path>
-        <polygon fill="#fff" points="37,31 31,27 31,21 37,17"></polygon>
-      </svg>
-      Zoom
-    </div>
+          <!-- Zoom -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="20" fill="#2196f3"></circle>
+              <path fill="#fff" d="M29,31H14c-1.657,0-3-1.343-3-3V17h15c1.657,0,3,1.343,3,3V31z"></path>
+              <polygon fill="#fff" points="37,31 31,27 31,21 37,17"></polygon>
+            </svg>
+            Zoom
+          </div>
 
-    <!-- Discord -->
-    <div class="trust-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-        <path fill="#536dfe" d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"></path>
-      </svg>
-      Discord
-    </div>
+          <!-- Discord -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#536dfe" d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"></path>
+            </svg>
+            Discord
+          </div>
 
-    <!-- Microsoft Teams -->
-    <div class="trust-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-        <path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path>
-        <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path>
-        <path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
-      </svg>
-      Microsoft Teams
-    </div>
+          <!-- Microsoft Teams -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path>
+              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path>
+              <path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
+            </svg>
+            Microsoft Teams
+          </div>
 
-    <!-- HackerRank -->
-    <div class="trust-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" fill="#2EC866">
-        <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z"/>
-      </svg>
-      HackerRank
-    </div>
+          <!-- HackerRank -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" fill="#2EC866">
+              <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z"/>
+            </svg>
+            HackerRank
+          </div>
 
-    <!-- LeetCode -->
-    <div class="trust-item">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
-        <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
-      </svg>
-      LeetCode
+          <!-- LeetCode -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
+              <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
+            </svg>
+            LeetCode
+          </div>
+        </div>
+
+        <!-- Group 2 (Identical Duplicate for Seamless Infinite Loop) -->
+        <div class="trust-marquee-group" aria-hidden="true">
+          <!-- Google Meet -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <rect width="16" height="16" x="12" y="16" fill="#fff" transform="rotate(-90 20 24)"></rect>
+              <polygon fill="#1e88e5" points="3,17 3,31 8,32 13,31 13,17 8,16"></polygon>
+              <path fill="#4caf50" d="M37,24v14c0,1.657-1.343,3-3,3H13l-1-5l1-5h14v-7l5-1L37,24z"></path>
+              <path fill="#fbc02d" d="M37,10v14H27v-7H13l-1-5l1-5h21C35.657,7,37,8.343,37,10z"></path>
+              <path fill="#1565c0" d="M13,31v10H6c-1.657,0-3-1.343-3-3v-7H13z"></path>
+              <polygon fill="#e53935" points="13,7 13,17 3,17"></polygon>
+              <polygon fill="#2e7d32" points="38,24 37,32.45 27,24 37,15.55"></polygon>
+              <path fill="#4caf50" d="M46,10.11v27.78c0,0.84-0.98,1.31-1.63,0.78L37,32.45v-16.9l7.37-6.22C45.02,8.8,46,9.27,46,10.11z"></path>
+            </svg>
+            Google Meet
+          </div>
+
+          <!-- Zoom -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <circle cx="24" cy="24" r="20" fill="#2196f3"></circle>
+              <path fill="#fff" d="M29,31H14c-1.657,0-3-1.343-3-3V17h15c1.657,0,3,1.343,3,3V31z"></path>
+              <polygon fill="#fff" points="37,31 31,27 31,21 37,17"></polygon>
+            </svg>
+            Zoom
+          </div>
+
+          <!-- Discord -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#536dfe" d="M39.248,10.177c-2.804-1.287-5.812-2.235-8.956-2.778c-0.057-0.01-0.114,0.016-0.144,0.068 c-0.387,0.688-0.815,1.585-1.115,2.291c-3.382-0.506-6.747-0.506-10.059,0c-0.3-0.721-0.744-1.603-1.133-2.291 c-0.03-0.051-0.087-0.077-0.144-0.068c-3.143,0.541-6.15,1.489-8.956,2.778c-0.024,0.01-0.045,0.028-0.059,0.051 c-5.704,8.522-7.267,16.835-6.5,25.044c0.003,0.04,0.026,0.079,0.057,0.103c3.763,2.764,7.409,4.442,10.987,5.554 c0.057,0.017,0.118-0.003,0.154-0.051c0.846-1.156,1.601-2.374,2.248-3.656c0.038-0.075,0.002-0.164-0.076-0.194 c-1.197-0.454-2.336-1.007-3.432-1.636c-0.087-0.051-0.094-0.175-0.014-0.234c0.231-0.173,0.461-0.353,0.682-0.534 c0.04-0.033,0.095-0.04,0.142-0.019c7.201,3.288,14.997,3.288,22.113,0c0.047-0.023,0.102-0.016,0.144,0.017 c0.22,0.182,0.451,0.363,0.683,0.536c0.08,0.059,0.075,0.183-0.012,0.234c-1.096,0.641-2.236,1.182-3.434,1.634 c-0.078,0.03-0.113,0.12-0.075,0.196c0.661,1.28,1.415,2.498,2.246,3.654c0.035,0.049,0.097,0.07,0.154,0.052 c3.595-1.112,7.241-2.79,11.004-5.554c0.033-0.024,0.054-0.061,0.057-0.101c0.917-9.491-1.537-17.735-6.505-25.044 C39.293,10.205,39.272,10.187,39.248,10.177z M16.703,30.273c-2.168,0-3.954-1.99-3.954-4.435s1.752-4.435,3.954-4.435 c2.22,0,3.989,2.008,3.954,4.435C20.658,28.282,18.906,30.273,16.703,30.273z M31.324,30.273c-2.168,0-3.954-1.99-3.954-4.435 s1.752-4.435,3.954-4.435c2.22,0,3.989,2.008,3.954,4.435C35.278,28.282,33.544,30.273,31.324,30.273z"></path>
+            </svg>
+            Discord
+          </div>
+
+          <!-- Microsoft Teams -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <path fill="#5c6bc0" d="M41.5 13A3.5 3.5 0 1 0 41.5 20 3.5 3.5 0 1 0 41.5 13zM4 40l23 4V4L4 8V40z"></path>
+              <path fill="#fff" d="M21 16.27L21 19 17.01 19.18 16.99 31.04 14.01 30.95 14.01 19.29 10 19.45 10 16.94z"></path>
+              <path fill="#5c6bc0" d="M36 14c0 2.21-1.79 4-4 4-1.2 0-2.27-.53-3-1.36v-5.28c.73-.83 1.8-1.36 3-1.36C34.21 10 36 11.79 36 14zM38 23v11c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H45v-8H38zM29 20v17c0 0 1.567 0 3.5 0 1.762 0 3.205-1.306 3.45-3H36V20H29z"></path>
+            </svg>
+            Microsoft Teams
+          </div>
+
+          <!-- HackerRank -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" fill="#2EC866">
+              <path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V6.908h.701c.141 0 .254-.115.254-.258 0-.094-.049-.176-.123-.221L9.223 4.92c-.049-.063-.141-.109-.226-.109-.084 0-.16.045-.207.107L7.11 6.43c-.072.045-.12.126-.12.218 0 .143.113.258.255.258h.704l.008 10.035c0 .145.111.258.254.258h1.492c.142 0 .259-.115.259-.256v-4.004h4.073v4.152h-.699c-.143 0-.256.115-.256.258 0 .092.048.174.119.219l1.579 1.51c.044.061.141.109.225.109.085 0 .159-.045.208-.109l1.679-1.51c.072-.045.12-.127.12-.219 0-.143-.115-.258-.255-.258h-.704l-.007-10.034c0-.145-.114-.26-.255-.26h-1.494v.002z"/>
+            </svg>
+            HackerRank
+          </div>
+
+          <!-- LeetCode -->
+          <div class="trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="#FFA116">
+              <path d="M331.4 73.3C342.5 61.5 361.1 60.8 373 71.9C384.9 83 385.5 101.7 374.4 113.5L331.4 159.5C352.9 162.8 373.5 171.3 390.5 185.1L465.1 245.4C477.7 255.6 479.7 274.2 469.5 286.8C459.3 299.4 440.8 301.4 428.1 291.2L353.5 230.9C327.3 209.8 281.6 212.7 259 236.8L177 325C155.5 348 157.9 385 182.6 409.2L273.8 498.6C298.7 522.6 339.4 522.6 363.9 498.2L415 447.2C426.5 435.7 445.1 435.7 456.6 447.3C468.1 458.9 468 477.5 456.5 489L405.4 540C358.3 587.1 281.4 587.7 233.5 541.6L141.5 451.4C94.6 405.3 90 331.9 134 284.7L331.4 73.3zM507.7 337.2C523.9 337.2 537.1 350.4 537.1 366.7C537.1 383 523.9 396.2 507.7 396.2L290.8 396.2C274.6 396.2 261.4 383 261.4 366.7C261.4 350.4 274.6 337.2 290.8 337.2L507.7 337.2z"/>
+            </svg>
+            LeetCode
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
-  <!-- ─────────── HOW IT WORKS ─────────── -->
+  <!-- ─────────── HOW IT WORKS (3-STEP FLAGSHIP BENTO) ─────────── -->
   <section class="how-section" id="how-it-works">
     <div class="container">
       <div class="section-label">How Clovi works</div>
       <div class="section-title">See it. Snap it. <em>Solved.</em></div>
-      <div class="section-sub">Three keystrokes between you and the answer. No switching tabs, no typing, no wasted time.</div>
+      <div class="section-sub">Three seamless steps between any question on your screen and an optimal, undetectable solution.</div>
 
-      <div class="how-grid">
-        <div class="how-steps">
-          <div class="how-step">
-            <div class="how-step-num">1</div>
-            <div class="how-step-content">
-              <h3>Launch Clovi (always on top)</h3>
-              <p>Clovi starts as an ultra-compact 210px capsule pinned at the top of your screen. It is excluded from all screen captures at the OS kernel level.</p>
-            </div>
+      <div class="how-bento-grid">
+        
+        <!-- Step 1 Card -->
+        <div class="how-bento-card">
+          <div class="how-step-header">
+            <div class="how-step-badge badge-blue">01</div>
+            <h3>Invisible Floating Dock</h3>
+            <p>Clovi starts as an ultra-compact 210px glass capsule pinned at the top of your screen. It is excluded from all screen recordings at the OS kernel level.</p>
           </div>
-          <div class="how-step">
-            <div class="how-step-num">2</div>
-            <div class="how-step-content">
-              <h3>Press Ctrl+Shift+S to snap</h3>
-              <p>One global hotkey captures whatever question, code, or diagram is on screen — without ever losing focus on your exam browser.</p>
+          
+          <div class="bento-visual-box">
+            <div class="visual-capsule-preview">
+              <div class="visual-capsule-left">
+                <span>👻</span>
+                <span>Clovi Dock</span>
+              </div>
+              <div class="visual-stealth-tag">0x11 WDA</div>
             </div>
-          </div>
-          <div class="how-step">
-            <div class="how-step-num">3</div>
-            <div class="how-step-content">
-              <h3>Get the direct answer streamed instantly</h3>
-              <p>Gemini Vision reads the problem and streams the direct answer, runnable code, or step-by-step math straight into the floating bubble above your screen.</p>
+            <div class="visual-status-pill">
+              <span style="color:#34d399;">●</span>
+              <span>WS_EX_NOACTIVATE: Focus Locked</span>
             </div>
           </div>
         </div>
 
-        <div class="how-visual-placeholder">
-          <div style="font-size: 36px; margin-bottom: 8px;">⚡</div>
-          <strong style="color: var(--gray-800); margin-bottom: 4px;">Snap &amp; Solve in Action</strong>
-          <span style="color: var(--gray-500); font-size: 12px; max-width: 280px;">Press Ctrl+Shift+S anywhere to stream solutions directly into the stealth bubble.</span>
+        <!-- Step 2 Card -->
+        <div class="how-bento-card">
+          <div class="how-step-header">
+            <div class="how-step-badge badge-purple">02</div>
+            <h3>Snap with Global Hotkey</h3>
+            <p>One global keystroke captures whatever question, formula, or code is on screen without touching your mouse or clicking away from your exam.</p>
+          </div>
+          
+          <div class="bento-visual-box">
+            <div class="keycaps-row">
+              <kbd class="keycap">Ctrl</kbd>
+              <span class="keycap-plus">+</span>
+              <kbd class="keycap">Shift</kbd>
+              <span class="keycap-plus">+</span>
+              <kbd class="keycap">S</kbd>
+            </div>
+            <div class="scanning-laser-box">
+              <div class="scanning-laser-line"></div>
+              <span>⚡ Optical OCR Reading Screen...</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Step 3 Card -->
+        <div class="how-bento-card">
+          <div class="how-step-header">
+            <div class="how-step-badge badge-emerald">03</div>
+            <h3>Instant Streamed Solution</h3>
+            <p>Gemini 2.5 Flash streams verified runnable code, step-by-step calculus proofs, or multiple-choice selections straight into your stealth bubble.</p>
+          </div>
+          
+          <div class="bento-visual-box">
+            <div class="stream-speed-badge">
+              <span class="stream-tag-green">✓ Python 3 Optimal</span>
+              <span class="stream-time-tag">⚡ 1.1s Streamed</span>
+            </div>
+            <div class="mini-code-stream">
+              <div><span style="color:#f43f5e; font-weight:700;">while</span> l &lt; r:</div>
+              <div>&nbsp;&nbsp;s[l], s[r] = s[r], s[l]</div>
+              <div>&nbsp;&nbsp;l += <span style="color:#a78bfa;">1</span>; r -= <span style="color:#a78bfa;">1</span></div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
