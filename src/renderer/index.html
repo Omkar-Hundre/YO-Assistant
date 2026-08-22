@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gemini Floating Assistant</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="overlay-container ghost-active" id="overlayContainer">
+    <!-- Stealth Mode Floating Suite -->
+    <div class="stealth-container" id="stealthContainer">
+      <!-- Floating Micro Solution Bubble (Above Dock) -->
+      <div class="stealth-response-bubble" id="stealthResponseBubble" style="display: none;">
+        <div class="stealth-bubble-topbar">
+          <button class="stealth-copy-btn" id="btnStealthCopyInline" title="Copy response">📋</button>
+        </div>
+        <div class="stealth-response-content" id="stealthResponseContent"></div>
+      </div>
+
+      <!-- Compact Horizontal Capsule Dock -->
+      <div class="stealth-dock" id="stealthDock">
+        <div class="stealth-drag-handle" id="stealthDragHandle" title="Drag to move">⋮⋮</div>
+        
+        <button class="stealth-btn highlight-solve" id="btnStealthSolve" title="⚡ Snap Screen & Solve">
+          <span class="stealth-btn-icon" id="stealthSolveIcon">⚡</span>
+          <span class="stealth-spinner" id="stealthSolveSpinner" style="display: none;"></span>
+        </button>
+
+        <button class="stealth-btn" id="btnStealthSnap" title="📸 Capture Screen (Multi-attach)">
+          <span class="stealth-btn-icon">📸</span>
+          <span class="stealth-badge" id="stealthSnapBadge" style="display: none;">0</span>
+        </button>
+
+        <button class="stealth-btn" id="btnStealthPrompt" title="💬 Quick Custom Prompt / Send">
+          <span class="stealth-btn-icon">💬</span>
+        </button>
+
+        <button class="stealth-btn btn-expand" id="btnStealthExpand" title="👻 Expand to Full Window (Ctrl+Shift+G)">
+          <span class="stealth-btn-icon">👻</span>
+        </button>
+      </div>
+
+      <!-- Mini Floating Slide-down Input Bar (Below Dock) -->
+      <div class="stealth-input-bar" id="stealthInputBar" style="display: none;">
+        <textarea
+          id="stealthInputText"
+          placeholder="Prompt (optional, default: direct answer/code)..."
+          rows="1"
+        ></textarea>
+        <button class="stealth-send-btn" id="btnStealthSend" title="Send Request (Enter)">
+          ➤
+        </button>
+      </div>
+    </div>
+
+    <!-- Legacy / Fallback Ghost Bubble -->
+    <div class="ghost-bubble" id="ghostBubble" style="display: none;"></div>
+
+    <!-- Frameless Draggable Header -->
+    <header class="titlebar" id="titlebar">
+      <div class="brand">
+        <div class="sparkle-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 0L14.8 8.6L24 12L14.8 15.4L12 24L9.2 15.4L0 12L9.2 8.6L12 0Z"/>
+          </svg>
+        </div>
+        <span class="title-text">Gemini Assistant</span>
+      </div>
+
+      <div class="window-controls no-drag">
+        <button class="icon-btn" id="btnSettings" title="Settings & Shortcuts">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/>
+            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+          </svg>
+        </button>
+        <button class="icon-btn" id="btnMinimize" title="Minimize">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+          </svg>
+        </button>
+        <button class="icon-btn btn-close" id="btnClose" title="Close">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <!-- Quick Action Bar -->
+    <div class="quick-toolbar">
+      <button class="toolbar-btn highlight" id="btnSnapScreen" title="Capture screen & attach (Ctrl+Alt+S)">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+          <circle cx="12" cy="13" r="4"/>
+        </svg>
+        <span>Snap Screen</span>
+      </button>
+
+      <button class="toolbar-btn" id="btnAutoSolve" title="Instantly Snap & Ask Gemini (Ctrl+Shift+S)">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+          <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+        <span>Snap & Solve</span>
+      </button>
+
+      <button class="toolbar-btn btn-stealth prominent" id="btnStealthToolbar" title="Stealth / Transparent Mode (Ctrl+Shift+G)">
+        <span class="stealth-icon">👻</span>
+        <span class="stealth-text">Stealth Mode</span>
+      </button>
+
+      <button class="toolbar-btn" id="btnPasteClipboard" title="Paste Image/Text from Clipboard (Ctrl+V)">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/>
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+        </svg>
+        <span>Paste</span>
+      </button>
+
+      <button class="toolbar-btn" id="btnClearChat" title="Clear Chat History">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Chat Messages Stream Container -->
+    <main class="chat-container" id="chatContainer">
+      <!-- Welcome Empty State -->
+      <div class="welcome-box" id="welcomeBox">
+        <div class="gemini-badge-glow">✨</div>
+        <h2>Gemini AI Floating Hub</h2>
+        <p>Snap your screen, paste questions, or ask anything with instant multimodal vision.</p>
+        
+        <div class="suggested-chips">
+          <button class="chip" data-prompt="Analyze what is on the screen and give the exact answer or solution.">
+            📸 Analyze Screen Question
+          </button>
+          <button class="chip" data-prompt="Summarize the core points concisely.">
+            📝 Concise Summary
+          </button>
+          <button class="chip" data-prompt="Solve step-by-step with explanation and final answer.">
+            💡 Step-by-Step Solve
+          </button>
+        </div>
+
+        <div class="hotkey-tip">
+          <span>Global Snap Hotkey: <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd></span>
+          <span>Toggle Overlay: <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Space</kbd></span>
+        </div>
+      </div>
+    </main>
+
+    <!-- Attached Images Multi-Thumbnail Preview -->
+    <div class="attachment-preview" id="attachmentPreview" style="display: none;">
+      <div class="attachment-header">
+        <span class="attachment-label" id="attachmentLabel">📸 Attached Screenshots (0/5)</span>
+        <button class="btn-clear-attachments" id="btnClearAllAttachments" title="Clear all attachments">Clear all</button>
+      </div>
+      <div class="thumb-list" id="thumbList"></div>
+    </div>
+
+    <!-- Chat Input Area -->
+    <footer class="input-container">
+      <div class="input-box">
+        <textarea
+          id="promptInput"
+          placeholder="Ask Gemini or paste screenshot (Ctrl+V)..."
+          rows="1"
+        ></textarea>
+        <button class="send-btn" id="btnSend" title="Send (Enter)">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Settings Modal Drawer -->
+    <div class="settings-modal" id="settingsModal" style="display: none;">
+      <div class="modal-backdrop" id="modalBackdrop"></div>
+      <div class="modal-card">
+        <div class="modal-header">
+          <h3>Settings & Preferences</h3>
+          <button class="icon-btn" id="btnCloseSettings">✕</button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="inputApiKey">Gemini API Key</label>
+            <input type="password" id="inputApiKey" placeholder="Enter Gemini API key...">
+            <small>Stored securely in local app storage.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="selectModel">AI Model</label>
+            <select id="selectModel">
+              <option value="gemini-2.5-flash" selected>Gemini 2.5 Flash (Ultra Fast & Multimodal)</option>
+              <option value="gemini-3.7-flash">Gemini 3.7 Flash (High Performance)</option>
+              <option value="gemini-2.5-pro">Gemini 2.5 Pro (Advanced Reasoning)</option>
+              <option value="gemini-flash-latest">Gemini Flash Latest</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Overlay Opacity: <span id="opacityVal">96%</span></label>
+            <input type="range" id="rangeOpacity" min="30" max="100" value="96">
+          </div>
+
+          <div class="toggles-grid">
+            <label class="toggle-row">
+              <span>Always On Top (Stay above apps)</span>
+              <input type="checkbox" id="chkAlwaysOnTop" checked>
+            </label>
+
+            <label class="toggle-row">
+              <span>Privacy Mode (Exclude from Screen Capture)</span>
+              <input type="checkbox" id="chkPrivacyMode" checked>
+            </label>
+          </div>
+
+          <div class="shortcuts-list">
+            <h4>Global Shortcuts</h4>
+            <div class="shortcut-item">
+              <span>Toggle Overlay</span>
+              <kbd>Ctrl + Shift + Space</kbd>
+            </div>
+            <div class="shortcut-item">
+              <span>Snap Screen & Queue</span>
+              <kbd>Ctrl + Alt + S</kbd>
+            </div>
+            <div class="shortcut-item">
+              <span>Paste Clipboard Image/Text</span>
+              <kbd>Ctrl + V</kbd>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-primary" id="btnSaveSettings">Save & Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../../dist/renderer/renderer.js"></script>
+</body>
+</html>

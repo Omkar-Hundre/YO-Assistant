@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Production builds & packages
+dist/
+release/
+build/
+*.exe
+*.zip
+*.7z
+
+# Environment & local user data
+.env
+*.log
+overlay_config.json
+
+# IDE & Editor files
+.vscode/
+.idea/
+.gemini/
+.system_generated/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store

@@ -1,0 +1,66 @@
+{
+  "name": "yo-assistant",
+  "version": "1.0.0",
+  "description": "Windows Floating Overlay Assistant with Gemini Vision & Stealth Mode",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "tsc -p tsconfig.renderer.json",
+    "build": "npm run build:main && npm run build:renderer",
+    "start": "npm run build && electron .",
+    "dev": "npm run build && electron .",
+    "dist": "npm run build && electron-builder --win",
+    "dist:portable": "npm run build && electron-builder --win portable",
+    "dist:dir": "npm run build && electron-builder --win --dir"
+  },
+  "build": {
+    "appId": "com.yo.assistant",
+    "productName": "Yo",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "src/renderer/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ],
+      "requestedExecutionLevel": "asInvoker"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": false
+    },
+    "portable": {
+      "artifactName": "Yo-Assistant-Portable.exe"
+    },
+    "asar": true,
+    "asarUnpack": [
+      "**/node_modules/koffi/**"
+    ]
+  },
+  "keywords": [
+    "electron",
+    "gemini",
+    "floating-overlay",
+    "screen-capture"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.24.0",
+    "koffi": "^2.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.4",
+    "electron": "^34.2.0",
+    "electron-builder": "^26.15.3",
+    "typescript": "^5.7.3"
+  }
+}
