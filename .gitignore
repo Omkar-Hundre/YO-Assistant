@@ -22,7 +22,6 @@ overlay_config.json
 *.swp
 *.swo
 
-# OS files
-Thumbs.db
-Desktop.ini
-.DS_Store
+# Separate editions
+clovi-lens-edition/
+
