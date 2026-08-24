@@ -86,7 +86,7 @@ body {
   display: flex !important;
   flex-direction: column !important;
   align-items: flex-end !important;
-  justify-content: flex-end !important;
+  justify-content: flex-start !important;
   padding: 4px !important;
   margin: 0 !important;
   overflow: visible !important;
@@ -104,10 +104,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
+  gap: 6px;
   width: 100%;
   height: 100%;
-  justify-content: flex-end;
+  justify-content: flex-start;
   pointer-events: none;
 }
 
@@ -122,7 +122,7 @@ body {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  box-shadow: none;
   pointer-events: auto !important;
   -webkit-app-region: no-drag;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
@@ -131,7 +131,7 @@ body {
 .stealth-dock:hover {
   background: rgba(9, 9, 11, 0.98);
   border-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55);
+  box-shadow: none;
 }
 
 .stealth-drag-handle {
@@ -185,12 +185,12 @@ body {
   background: #ffffff;
   color: #09090b;
   border-color: #ffffff;
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.3);
+  box-shadow: none;
 }
 
 .stealth-btn.highlight-solve:hover {
   background: #f4f4f5;
-  box-shadow: 0 0 18px rgba(255, 255, 255, 0.45);
+  box-shadow: none;
 }
 
 .stealth-spinner {
@@ -242,7 +242,7 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -361,22 +361,74 @@ body {
   font-family: var(--font-mono);
 }
 
-/* ─── STEALTH QUICK INPUT BAR ─── */
+/* ─── STEALTH QUICK INPUT BAR WITH DIRECTIVE CHIPS ─── */
 .stealth-input-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  padding: 6px 8px;
+  border-radius: 14px;
+  background: rgba(9, 9, 11, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: none;
+  pointer-events: auto !important;
+  -webkit-app-region: no-drag !important;
+  animation: bubblePop 0.12s ease;
+}
+
+.stealth-directive-chips {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.stealth-directive-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.stealth-chip-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e4e4e7;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 7px;
+  border-radius: 100px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+  line-height: 1;
+}
+
+.stealth-chip-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.stealth-chip-btn.chip-clipboard {
+  background: rgba(59, 130, 246, 0.18);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #93c5fd;
+}
+
+.stealth-chip-btn.chip-clipboard:hover {
+  background: rgba(59, 130, 246, 0.3);
+  border-color: rgba(59, 130, 246, 0.6);
+  color: #ffffff;
+}
+
+.stealth-input-row {
   display: flex;
   align-items: center;
   gap: 6px;
   width: 100%;
-  padding: 5px 8px;
-  border-radius: 12px;
-  background: rgba(9, 9, 11, 0.94);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
-  pointer-events: auto !important;
-  -webkit-app-region: no-drag !important;
-  animation: bubblePop 0.12s ease;
 }
 
 .stealth-input-bar textarea {
@@ -478,14 +530,16 @@ body {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   border-radius: var(--radius-sm);
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.15s ease;
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .icon-btn:hover {
@@ -501,55 +555,82 @@ body {
 /* ─── QUICK ACTION TOOLBAR ─── */
 .quick-toolbar {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 6px;
   padding: 8px 12px;
   background: #fafafa;
   border-bottom: 1px solid var(--border-color);
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 
 .toolbar-btn {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 10px;
   background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.09);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   color: var(--text-main);
   font-size: 11.5px;
   font-weight: 600;
-  padding: 5px 10px;
-  border-radius: var(--radius-sm);
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.15s ease;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  line-height: 1;
+  box-sizing: border-box;
+  white-space: nowrap;
+  flex: 1 1 auto;
+  min-width: max-content;
+}
+
+.toolbar-btn svg,
+.toolbar-btn .btn-bolt,
+.toolbar-btn .stealth-icon {
+  width: 14px;
+  height: 14px;
+  font-size: 13px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .toolbar-btn:hover {
   background: #f4f4f5;
-  border-color: rgba(0, 0, 0, 0.16);
+  border-color: rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+.toolbar-btn:active {
+  transform: translateY(0);
 }
 
 .toolbar-btn.primary-solve {
   background: #09090b;
   color: #ffffff;
   border-color: #09090b;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
 }
 
 .toolbar-btn.primary-solve:hover {
   background: #27272a;
   border-color: #27272a;
-}
-
-.btn-bolt {
-  font-size: 12px;
+  color: #ffffff;
 }
 
 .toolbar-btn.btn-clear-icon {
   margin-left: auto;
-  padding: 5px 7px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
   color: var(--text-muted);
+  flex: 0 0 auto;
 }
 
 .toolbar-btn.btn-clear-icon:hover {
@@ -1129,4 +1210,70 @@ textarea::placeholder {
 
 .btn-primary:hover {
   background: #27272a;
+}
+
+/* ─── DOCS MODAL ─── */
+.docs-card {
+  max-width: 400px;
+}
+
+.docs-body {
+  max-height: 420px;
+  gap: 14px;
+}
+
+.docs-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.docs-section h4 {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #09090b;
+  margin-bottom: 2px;
+}
+
+.docs-term {
+  background: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.docs-term strong {
+  font-size: 11.5px;
+  color: #09090b;
+  font-weight: 600;
+}
+
+.docs-term p {
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.docs-term code {
+  font-size: 10px;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.docs-link {
+  font-size: 11.5px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.15s ease;
+}
+
+.docs-link:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
 }

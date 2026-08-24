@@ -9,15 +9,18 @@
     "build": "npm run build:main && npm run build:renderer",
     "start": "npm run build && electron .",
     "dev": "npm run build && electron .",
-    "dist": "npm run build && electron-builder --win",
-    "dist:portable": "npm run build && electron-builder --win portable",
-    "dist:dir": "npm run build && electron-builder --win --dir",
+    "build:encrypt": "electron scripts/compile-bytecode.js",
+    "icon:generate": "electron scripts/generate-icon.js",
+    "dist": "npm run build && npm run build:encrypt && npm run icon:generate && electron-builder --win",
+    "dist:portable": "npm run build && npm run build:encrypt && npm run icon:generate && electron-builder --win portable",
+    "dist:dir": "npm run build && npm run build:encrypt && npm run icon:generate && electron-builder --win --dir",
     "seo": "node scripts/seo-automation.js",
     "deploy": "npx -y netlify-cli deploy --prod --dir=landing --site=53ecc453-6a0c-4ab4-832f-07a33fd81478"
   },
   "build": {
     "appId": "com.clovi.assistant",
     "productName": "Clovi",
+    "icon": "build/icon.png",
     "directories": {
       "output": "release"
     },
@@ -28,6 +31,7 @@
       "package.json"
     ],
     "win": {
+      "icon": "build/icon.png",
       "target": [
         "portable",
         "nsis"
@@ -57,12 +61,14 @@
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
+    "bytenode": "^1.6.0",
     "koffi": "^2.9.3"
   },
   "devDependencies": {
     "@types/node": "^22.13.4",
     "electron": "^34.2.0",
     "electron-builder": "^26.15.3",
+    "javascript-obfuscator": "^5.6.0",
     "typescript": "^5.7.3"
   }
 }

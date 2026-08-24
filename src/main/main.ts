@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain, globalShortcut, screen, Tray, Menu, nativeImage } from 'electron';
+import { app, BrowserWindow, ipcMain, globalShortcut, screen, Tray, Menu, nativeImage, clipboard } from 'electron';
 import * as path from 'path';
 import {
   loadConfig,
@@ -39,15 +39,18 @@ function createWindow() {
     y: normalY
   };
 
-  // Launch directly in compact Stealth Mode dock size (210 x 48)
-  const initialX = Math.round(normalX + normalWidth - STEALTH_BASE_WIDTH);
-  const initialY = Math.round(normalY);
+  // Guarantee initial window coordinates are strictly clamped inside the visible workArea of the primary display!
+  const clampX = (x: number, w: number) => Math.max(workArea.x + 10, Math.min(x, workArea.x + workArea.width - w - 10));
+  const clampY = (y: number, h: number) => Math.max(workArea.y + 10, Math.min(y, workArea.y + workArea.height - h - 10));
+
+  const initialX = clampX(normalX + normalWidth - STEALTH_BASE_WIDTH, STEALTH_BASE_WIDTH);
+  const initialY = clampY(normalY, STEALTH_BASE_HEIGHT);
 
   mainWindow = new BrowserWindow({
     width: STEALTH_BASE_WIDTH,
     height: STEALTH_BASE_HEIGHT,
-    x: Math.max(0, initialX),
-    y: Math.max(0, initialY),
+    x: initialX,
+    y: initialY,
     minWidth: 50,
     minHeight: 40,
     frame: false,
@@ -55,7 +58,7 @@ function createWindow() {
     backgroundColor: '#00000000',
     alwaysOnTop: config.alwaysOnTop,
     skipTaskbar: true, // NEVER show in taskbar
-    focusable: true,   // Allows full clicking, typing in input boxes and window dragging
+    focusable: false,  // Non-activating overlay: clicking buttons & dragging NEVER steals focus from Chrome/Exam!
     hasShadow: false,  // Disables Windows OS DWM native shadow rectangle/drag outline on screen shares
     thickFrame: false, // Disables OS resizing border frame
     resizable: true,
@@ -88,11 +91,17 @@ function createWindow() {
     mainWindow?.showInactive();
     if (mainWindow) {
       applyAlwaysOnTop(mainWindow, config.alwaysOnTop);
+      applyNoActivate(mainWindow);
       startForegroundTracker(mainWindow);
       if (config.privacyMode) {
         setCaptureExclusion(mainWindow, true);
       }
     }
+  });
+
+  // When Clovi receives focus, instantly yield active status back to background application (Chrome/Exam)
+  mainWindow.on('focus', () => {
+    restoreForegroundWindow();
   });
 
   // Track window position/size changes (only preserve full window dimensions)
@@ -141,55 +150,109 @@ function registerGlobalShortcuts() {
     console.error('Failed to register shortcut Ctrl+Shift+Space:', err);
   }
 
-  // 2. Instant Screen Capture Hotkey: Ctrl + Alt + S
-  try {
-    globalShortcut.register('CommandOrControl+Alt+S', async () => {
-      if (!mainWindow || mainWindow.isDestroyed()) return;
-      try {
-        recordForegroundWindow();
-        const screenshot = await takeCleanScreenshot();
-        if (!mainWindow.isVisible()) {
-          mainWindow.showInactive();
+  // 2. Instant Screen Capture Hotkeys: Ctrl + Alt + S / F8
+  const registerSnapHandler = (accelerator: string) => {
+    try {
+      globalShortcut.register(accelerator, async () => {
+        if (!mainWindow || mainWindow.isDestroyed()) return;
+        try {
+          recordForegroundWindow();
+          const screenshot = await takeCleanScreenshot();
+          if (!mainWindow.isVisible()) {
+            mainWindow.showInactive();
+          }
+          mainWindow.webContents.send('overlay:global-snap', screenshot);
+          restoreForegroundWindow();
+        } catch (err) {
+          console.error(`Global screen capture ${accelerator} failed:`, err);
         }
-        mainWindow.webContents.send('overlay:global-snap', screenshot);
-        restoreForegroundWindow();
-      } catch (err) {
-        console.error('Global screen capture failed:', err);
-      }
-    });
-  } catch (err) {
-    console.error('Failed to register shortcut Ctrl+Alt+S:', err);
-  }
+      });
+    } catch (err) {
+      console.error(`Failed to register shortcut ${accelerator}:`, err);
+    }
+  };
+  registerSnapHandler('CommandOrControl+Alt+S');
+  registerSnapHandler('F8');
 
-  // 3. Instant Snap & Solve: Ctrl + Shift + S
-  try {
-    globalShortcut.register('CommandOrControl+Shift+S', async () => {
-      if (!mainWindow || mainWindow.isDestroyed()) return;
-      try {
-        recordForegroundWindow();
-        const screenshot = await takeCleanScreenshot();
-        if (!mainWindow.isVisible()) {
-          mainWindow.showInactive();
+  // Helper for Zero-Focus-Loss Hotkey Macro Solvers
+  const registerSolveMacro = (accelerator: string, directivePrompt?: string) => {
+    try {
+      globalShortcut.register(accelerator, async () => {
+        if (!mainWindow || mainWindow.isDestroyed()) return;
+        try {
+          recordForegroundWindow();
+          const screenshot = await takeCleanScreenshot();
+          if (!mainWindow.isVisible()) {
+            mainWindow.showInactive();
+          }
+
+          let finalPrompt = directivePrompt;
+          // Auto-Clipboard Injection: If user copied text in Chrome, auto-merge it into prompt
+          if (!finalPrompt) {
+            try {
+              const clipText = clipboard.readText().trim();
+              if (clipText && clipText.length > 0 && clipText.length < 3000) {
+                finalPrompt = `Solve the problem in the screenshot.\nAdditional instruction/context from user clipboard: "${clipText}"`;
+              }
+            } catch (e) {}
+          }
+
+          mainWindow.webContents.send('overlay:global-solve', {
+            screenshot,
+            customPrompt: finalPrompt
+          });
+          restoreForegroundWindow();
+        } catch (err) {
+          console.error(`Global shortcut ${accelerator} failed:`, err);
         }
-        mainWindow.webContents.send('overlay:global-solve', screenshot);
-        restoreForegroundWindow();
-      } catch (err) {
-        console.error('Global snap & solve failed:', err);
-      }
-    });
-  } catch (err) {
-    console.error('Failed to register shortcut Ctrl+Shift+S:', err);
-  }
+      });
+    } catch (err) {
+      console.error(`Failed to register shortcut ${accelerator}:`, err);
+    }
+  };
 
-  // 4. Ghost / Stealth Mode: Ctrl + Shift + G
-  try {
-    globalShortcut.register('CommandOrControl+Shift+G', () => {
-      if (!mainWindow || mainWindow.isDestroyed()) return;
-      mainWindow.webContents.send('overlay:toggle-ghost-mode');
-    });
-  } catch (err) {
-    console.error('Failed to register shortcut Ctrl+Shift+G:', err);
-  }
+  // 3. Instant Snap & Solve: F9 (100% Undetectable by browser key listeners) & Ctrl + Shift + S
+  registerSolveMacro('F9');
+  registerSolveMacro('CommandOrControl+Shift+S');
+
+  // Macro 1: MCQ Instant Solver (Ctrl + Shift + 1 & Alt + 1)
+  const MCQ_PROMPT = 'Identify the correct option (A, B, C, or D) directly. State the chosen option clearly at the very top, followed by a concise 1-2 sentence explanation.';
+  registerSolveMacro('CommandOrControl+Shift+1', MCQ_PROMPT);
+  registerSolveMacro('Alt+1', MCQ_PROMPT);
+
+  // Macro 2: Python 3 Code Solution (Ctrl + Shift + 2 & Alt + 2)
+  const PY_PROMPT = 'Provide the optimal Python 3 code solution with clean time and space complexity analysis (prefer O(1) or O(N)). Make it clean, runnable, and robust against all edge cases.';
+  registerSolveMacro('CommandOrControl+Shift+2', PY_PROMPT);
+  registerSolveMacro('Alt+2', PY_PROMPT);
+
+  // Macro 3: Java & C++ Solution (Ctrl + Shift + 3 & Alt + 3)
+  const CPP_PROMPT = 'Provide the optimal, production-ready C++ and Java solution to the problem in the screenshot with time and space complexity.';
+  registerSolveMacro('CommandOrControl+Shift+3', CPP_PROMPT);
+  registerSolveMacro('Alt+3', CPP_PROMPT);
+
+  // Macro 4: Math / STEM Step-by-Step Derivation (Ctrl + Shift + 4 & Alt + 4)
+  const MATH_PROMPT = 'Provide the exact step-by-step mathematical / physics / STEM derivation and clear final numeric or symbolic answer.';
+  registerSolveMacro('CommandOrControl+Shift+4', MATH_PROMPT);
+  registerSolveMacro('Alt+4', MATH_PROMPT);
+
+  // Macro 5: Bug Finder & Edge Cases (Ctrl + Shift + 5 & Alt + 5)
+  const BUG_PROMPT = 'Examine the code in the screenshot, pinpoint the exact bug / logical flaw / edge case failure, and provide the clean corrected code.';
+  registerSolveMacro('CommandOrControl+Shift+5', BUG_PROMPT);
+  registerSolveMacro('Alt+5', BUG_PROMPT);
+
+  // 4. Ghost / Stealth Mode: Ctrl + Shift + G & F7
+  const registerGhostToggle = (accelerator: string) => {
+    try {
+      globalShortcut.register(accelerator, () => {
+        if (!mainWindow || mainWindow.isDestroyed()) return;
+        mainWindow.webContents.send('overlay:toggle-ghost-mode');
+      });
+    } catch (err) {
+      console.error(`Failed to register shortcut ${accelerator}:`, err);
+    }
+  };
+  registerGhostToggle('CommandOrControl+Shift+G');
+  registerGhostToggle('F7');
 }
 
 // IPC Handlers
@@ -199,14 +262,17 @@ function setupIpcHandlers() {
     if (!mainWindow || mainWindow.isDestroyed()) return;
     const [x, y] = mainWindow.getPosition();
     mainWindow.setPosition(Math.round(x + dx), Math.round(y + dy));
+    restoreForegroundWindow();
   });
 
-  // Toggle Focusable state on demand (safe no-op to prevent taskbar icon flickering and focus stealing)
-  ipcMain.handle('overlay:set-focusable', () => {});
-
-let lastNormalBounds = { width: 440, height: 620, x: 0, y: 0 };
-const STEALTH_BASE_WIDTH = 210;
-const STEALTH_BASE_HEIGHT = 48;
+  // Toggle Focusable state dynamically (allows typing when needed, disables focus to stay 100% undetected)
+  ipcMain.handle('overlay:set-focusable', (_, enable: boolean) => {
+    if (!mainWindow || mainWindow.isDestroyed()) return;
+    mainWindow.setFocusable(enable);
+    if (!enable) {
+      restoreForegroundWindow();
+    }
+  });
 
   // Ghost mode window resize/reposition to capsule dock size
   ipcMain.handle('overlay:set-ghost-mode', (_, isGhost: boolean) => {
@@ -238,32 +304,42 @@ const STEALTH_BASE_HEIGHT = 48;
     }
     // Reassert topmost Z-order so stealth mode stays above all opened apps
     applyAlwaysOnTop(mainWindow, true);
-    mainWindow.moveTop();
+    applyNoActivate(mainWindow);
+    restoreForegroundWindow();
   });
 
   // Dynamic resize in stealth mode for popups (mini input bar or response bubble)
-  ipcMain.handle('overlay:resize-stealth', (_, { width, height, alignBottom }: { width: number; height: number; alignBottom?: boolean }) => {
+  ipcMain.handle('overlay:resize-stealth', (_, { width, height }: { width: number; height: number }) => {
     if (!mainWindow || mainWindow.isDestroyed()) return;
     const current = mainWindow.getBounds();
+    const primaryDisplay = screen.getPrimaryDisplay();
+    const workArea = primaryDisplay.workArea;
+
     const w = Math.round(width);
     const h = Math.round(height);
-    let newX = current.x;
-    let newY = current.y;
 
-    if (alignBottom) {
-      // When expanding upward (e.g. response bubble above capsule), adjust Y and X
-      newY = current.y + current.height - h;
-      newX = current.x + current.width - w;
+    // Keep right edge aligned so dock doesn't jump horizontally
+    let newX = current.x + current.width - w;
+    newX = Math.max(workArea.x, Math.min(newX, workArea.x + workArea.width - w));
+
+    // Anchor at current top Y so top is NEVER cut off!
+    let newY = current.y;
+    // If expanding exceeds bottom screen limit, gently pull up just enough to fit
+    if (newY + h > workArea.y + workArea.height) {
+      newY = workArea.y + workArea.height - h;
     }
+    // Absolute protection against top cutoff
+    newY = Math.max(workArea.y + 4, newY);
 
     mainWindow.setBounds({
-      x: Math.max(0, newX),
-      y: Math.max(0, newY),
+      x: Math.round(newX),
+      y: Math.round(newY),
       width: w,
       height: h
     });
     applyAlwaysOnTop(mainWindow, true);
-    mainWindow.moveTop();
+    applyNoActivate(mainWindow);
+    restoreForegroundWindow();
   });
 
   // Capture screen (clean unblocked capture)

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,32 +8,19 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gloock&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gloock&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet">
 </head>
+
 <body>
   <div class="overlay-container ghost-active" id="overlayContainer">
     <!-- Stealth Mode Floating Suite -->
     <div class="stealth-container" id="stealthContainer">
-      <!-- Floating Micro Solution Bubble (Above Dock) -->
-      <div class="stealth-response-bubble" id="stealthResponseBubble" style="display: none;">
-        <div class="stealth-bubble-topbar">
-          <div class="stealth-bubble-title">
-            <span class="stealth-status-dot"></span>
-            <span>Clovi Solution</span>
-          </div>
-          <div class="stealth-bubble-actions">
-            <button class="stealth-copy-btn" id="btnStealthExpandInline" title="Expand to Full Window">⤢ Full View</button>
-            <button class="stealth-copy-btn" id="btnStealthCopyInline" title="Copy response">📋 Copy</button>
-            <button class="stealth-copy-btn btn-close-stealth" id="btnStealthCloseInline" title="Dismiss bubble">✕</button>
-          </div>
-        </div>
-        <div class="stealth-response-content" id="stealthResponseContent"></div>
-      </div>
-
-      <!-- Compact Horizontal Capsule Dock -->
+      <!-- Compact Horizontal Capsule Dock (Top Anchored) -->
       <div class="stealth-dock" id="stealthDock">
         <div class="stealth-drag-handle" id="stealthDragHandle" title="Drag to move">⋮⋮</div>
-        
+
         <button class="stealth-btn highlight-solve" id="btnStealthSolve" title="⚡ Snap Screen & Solve (Ctrl+Shift+S)">
           <span class="stealth-btn-icon" id="stealthSolveIcon">⚡</span>
           <span class="stealth-spinner" id="stealthSolveSpinner" style="display: none;"></span>
@@ -43,7 +31,7 @@
           <span class="stealth-badge" id="stealthSnapBadge" style="display: none;">0</span>
         </button>
 
-        <button class="stealth-btn" id="btnStealthPrompt" title="💬 Quick Prompt / Input">
+        <button class="stealth-btn" id="btnStealthPrompt" title="💬 Quick Prompt & Directives">
           <span class="stealth-btn-icon">💬</span>
         </button>
 
@@ -52,16 +40,54 @@
         </button>
       </div>
 
-      <!-- Mini Floating Slide-down Input Bar (Below Dock) -->
+      <!-- Mini Floating Slide-down Input Bar with Directive Chips (Below Dock) -->
       <div class="stealth-input-bar" id="stealthInputBar" style="display: none;">
-        <textarea
-          id="stealthInputText"
-          placeholder="Type prompt or press Enter for direct answer..."
-          rows="1"
-        ></textarea>
-        <button class="stealth-send-btn" id="btnStealthSend" title="Send Request (Enter)">
-          ➤
-        </button>
+        <div class="stealth-directive-chips">
+          <button class="stealth-chip-btn"
+            data-prompt="Identify the correct option (A, B, C, or D) directly with concise 1-2 sentence explanation."
+            title="MCQ (Alt+1 / Ctrl+Shift+1)">🎯 MCQ</button>
+          <button class="stealth-chip-btn"
+            data-prompt="Provide the optimal Python 3 code solution with clean time and space complexity."
+            title="Python (Alt+2 / Ctrl+Shift+2)">🐍 Python</button>
+          <button class="stealth-chip-btn"
+            data-prompt="Provide the optimal, production-ready C++ and Java solution with time and space complexity."
+            title="Java/C++ (Alt+3 / Ctrl+Shift+3)">☕ C++/Java</button>
+          <button class="stealth-chip-btn"
+            data-prompt="Provide the exact step-by-step mathematical / STEM derivation and final answer."
+            title="Math (Alt+4 / Ctrl+Shift+4)">📐 Math</button>
+          <button class="stealth-chip-btn"
+            data-prompt="Examine the code in the screenshot, pinpoint the exact bug, and provide the corrected code."
+            title="Bug Fix (Alt+5 / Ctrl+Shift+5)">🐞 Bug</button>
+        </div>
+        <div class="stealth-directive-chips" style="margin-top: 2px;">
+          <button class="stealth-chip-btn chip-clipboard" id="btnStealthClipPrompt"
+            title="Auto-Inject Clipboard Text (Zero Focus Loss)">📋 From Clipboard</button>
+          <button class="stealth-chip-btn"
+            data-prompt="Provide clean code with O(1) auxiliary space and optimal time complexity." title="O(1) Space">⚡
+            O(1) Space</button>
+          <button class="stealth-chip-btn" data-prompt="Explain the core intuition and step-by-step logic concisely."
+            title="Explain">📝 Explain</button>
+          <button class="stealth-chip-btn" data-prompt="List all edge cases and boundary conditions for this problem."
+            title="Edge Cases">🧪 Edge Cases</button>
+        </div>
+      </div>
+
+      <!-- Floating Solution Bubble (Below Dock/Input) -->
+      <div class="stealth-response-bubble" id="stealthResponseBubble" style="display: none;">
+        <div class="stealth-bubble-topbar">
+          <div class="stealth-bubble-title">
+            <span class="stealth-status-dot"></span>
+            <span>Clovi Solution</span>
+          </div>
+          <div class="stealth-bubble-actions">
+            <button class="stealth-copy-btn" id="btnStealthExpandInline" title="Expand to Full Window">⤢ Full
+              View</button>
+            <button class="stealth-copy-btn" id="btnStealthCopyInline" title="Copy response">📋 Copy</button>
+            <button class="stealth-copy-btn btn-close-stealth" id="btnStealthCloseInline"
+              title="Dismiss bubble">✕</button>
+          </div>
+        </div>
+        <div class="stealth-response-content" id="stealthResponseContent"></div>
       </div>
     </div>
 
@@ -72,25 +98,33 @@
     <header class="titlebar" id="titlebar">
       <div class="brand">
         <span class="brand-logo">Clovi</span>
-        <span class="brand-badge">Stealth Active</span>
       </div>
 
       <div class="window-controls no-drag">
+        <button class="icon-btn" id="btnDocs" title="Documentation & Features Guide">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+            <line x1="9" y1="7" x2="16" y2="7" />
+            <line x1="9" y1="11" x2="14" y2="11" />
+          </svg>
+        </button>
         <button class="icon-btn" id="btnSettings" title="Settings & Shortcuts">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z"/>
-            <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
+            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+            <path
+              d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" />
           </svg>
         </button>
         <button class="icon-btn" id="btnMinimize" title="Minimize">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="5" y1="12" x2="19" y2="12"/>
+            <line x1="5" y1="12" x2="19" y2="12" />
           </svg>
         </button>
         <button class="icon-btn btn-close" id="btnClose" title="Close">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
           </svg>
         </button>
       </div>
@@ -105,8 +139,8 @@
 
       <button class="toolbar-btn" id="btnSnapScreen" title="Capture screen & attach (Ctrl+Alt+S)">
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
-          <circle cx="12" cy="13" r="4"/>
+          <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z" />
+          <circle cx="12" cy="13" r="4" />
         </svg>
         <span>Snap</span>
       </button>
@@ -118,16 +152,16 @@
 
       <button class="toolbar-btn" id="btnPasteClipboard" title="Paste Image/Text (Ctrl+V)">
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/>
-          <rect x="8" y="2" width="8" height="4" rx="1" ry="1"/>
+          <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2" />
+          <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
         </svg>
         <span>Paste</span>
       </button>
 
       <button class="toolbar-btn btn-clear-icon" id="btnClearChat" title="Clear Chat History">
         <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
-          <polyline points="3 6 5 6 21 6"/>
-          <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/>
+          <polyline points="3 6 5 6 21 6" />
+          <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
         </svg>
       </button>
     </div>
@@ -147,7 +181,8 @@
     <div class="attachment-preview" id="attachmentPreview" style="display: none;">
       <div class="attachment-header">
         <span class="attachment-label" id="attachmentLabel">📸 Attached Screenshots (0/5)</span>
-        <button class="btn-clear-attachments" id="btnClearAllAttachments" title="Clear all attachments">Clear all</button>
+        <button class="btn-clear-attachments" id="btnClearAllAttachments" title="Clear all attachments">Clear
+          all</button>
       </div>
       <div class="thumb-list" id="thumbList"></div>
     </div>
@@ -155,14 +190,10 @@
     <!-- Chat Input Area -->
     <footer class="input-container">
       <div class="input-box">
-        <textarea
-          id="promptInput"
-          placeholder="Ask Clovi or paste screenshot (Ctrl+V)..."
-          rows="1"
-        ></textarea>
+        <textarea id="promptInput" placeholder="Ask Clovi or paste screenshot (Ctrl+V)..." rows="1"></textarea>
         <button class="send-btn" id="btnSend" title="Send (Enter)">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
           </svg>
         </button>
       </div>
@@ -231,8 +262,86 @@
         </div>
       </div>
     </div>
+
+    <!-- Docs & Features Guide Modal -->
+    <div class="settings-modal" id="docsModal" style="display: none;">
+      <div class="modal-backdrop" id="docsBackdrop"></div>
+      <div class="modal-card docs-card">
+        <div class="modal-header">
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 15px;">📖</span>
+            <h3>Clovi Docs & Guide</h3>
+          </div>
+          <button class="icon-btn" id="btnCloseDocs">✕</button>
+        </div>
+        <div class="modal-body docs-body">
+          <div class="docs-section">
+            <h4>⚡ Zero-Detection Shortcuts</h4>
+            <div class="shortcuts-list">
+              <div class="shortcut-item">
+                <span>🎯 Instant Snap & Solve</span>
+                <kbd>F9</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span>📸 Queue Screenshot</span>
+                <kbd>F8</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span>👻 Toggle Stealth Capsule</span>
+                <kbd>F7</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span>🎯 MCQ Direct Answer</span>
+                <kbd>Alt + 1</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span>🐍 Python 3 Solution</span>
+                <kbd>Alt + 2</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span>☕ Java & C++ Solution</span>
+                <kbd>Alt + 3</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span>📐 Math / STEM Derivation</span>
+                <kbd>Alt + 4</kbd>
+              </div>
+              <div class="shortcut-item">
+                <span>🐞 Bug Finder & Fix</span>
+                <kbd>Alt + 5</kbd>
+              </div>
+            </div>
+          </div>
+
+          <div class="docs-section">
+            <h4>🛡️ Key Concepts & Terminologies</h4>
+            <div class="docs-term">
+              <strong>Stealth Capsule</strong>
+              <p>Compact, shadowless floating pill dock that stays persistently on top without being detected or blocking screen content.</p>
+            </div>
+            <div class="docs-term">
+              <strong>Zero-Focus-Loss Architecture</strong>
+              <p>Clovi uses native <code>WS_EX_NOACTIVATE</code> and <code>focusable: false</code>. Background browsers (Chrome/Edge) remain 100% active; window.onblur and visibilitychange never fire.</p>
+            </div>
+            <div class="docs-term">
+              <strong>Invisible Screen Share</strong>
+              <p>Using Windows DWM <code>WDA_EXCLUDEFROMCAPTURE</code>, Clovi is rendered invisible to Zoom, Teams, Meet, Discord, and browser tab captures.</p>
+            </div>
+            <div class="docs-term">
+              <strong>Auto-Clipboard Injection</strong>
+              <p>Copy any text (Ctrl+C) and press <code>F9</code> or click <code>[📋 From Clipboard]</code> to automatically append instructions without typing.</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer" style="display: flex; justify-content: space-between; align-items: center;">
+          <a href="https://clovi.netlify.app" target="_blank" class="docs-link" id="btnOpenWebDocs">🌐 Open Full Web Docs ↗</a>
+          <button class="btn-primary" id="btnDoneDocs">Got it</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script type="module" src="../../dist/renderer/renderer.js"></script>
 </body>
+
 </html>

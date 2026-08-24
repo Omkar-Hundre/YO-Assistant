@@ -47,15 +47,19 @@
 
 ---
 
-## ⌨️ Global Keyboard Shortcuts
+## ⌨️ Global Keyboard Shortcuts & Zero-Focus Macros
 
-| Action | Shortcut | Description |
-|---|---|---|
-| ⚡ **Instant Snap & Solve** | `Ctrl + Shift + S` | Snaps active screen and auto-solves via Gemini Vision |
-| 👻 **Toggle Stealth Mode** | `Ctrl + Shift + G` | Smoothly collapses/expands between Stealth Dock & Normal Window |
-| 📸 **Queue Screen Capture** | `Ctrl + Alt + S` | Captures screen and queues image without sending immediately |
-| 👁️ **Show / Hide Clovi** | `Ctrl + Shift + Space` | Instantly toggles Clovi overlay visibility |
-| 📋 **Paste from Clipboard** | `Ctrl + V` | Pastes images or text snippets directly into Clovi |
+| Action | Shortcut | Description | Focus Loss in Chrome |
+|---|---|---|:---:|
+| ⚡ **Instant Snap & Solve** | `Ctrl + Shift + S` | Snaps screen and auto-solves (auto-attaches clipboard if copied) | **0 ms (None)** |
+| 🎯 **MCQ Instant Answer** | `Ctrl + Shift + 1` | Solves screen with direct Option A/B/C/D + concise proof | **0 ms (None)** |
+| 🐍 **Optimal Python 3 Code** | `Ctrl + Shift + 2` | Generates optimal Python solution with O(1)/O(N) analysis | **0 ms (None)** |
+| ☕ **Java & C++ Solution** | `Ctrl + Shift + 3` | Generates production-ready Java and C++ solutions | **0 ms (None)** |
+| 📐 **Math & STEM Derivation** | `Ctrl + Shift + 4` | Solves formulas, calculus, and physics step-by-step | **0 ms (None)** |
+| 🐞 **Bug Finder & Fix** | `Ctrl + Shift + 5` | Identifies exact logic flaw/edge case and provides fix | **0 ms (None)** |
+| 📸 **Queue Screen Capture** | `Ctrl + Alt + S` | Captures screen and queues image without sending | **0 ms (None)** |
+| 👻 **Toggle Stealth Mode** | `Ctrl + Shift + G` | Smoothly transitions between Stealth Dock & Normal Window | **0 ms (None)** |
+| 👁️ **Show / Hide Clovi** | `Ctrl + Shift + Space` | Instantly toggles Clovi overlay visibility | **0 ms (None)** |
 
 ---
 

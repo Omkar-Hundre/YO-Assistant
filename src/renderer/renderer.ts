@@ -59,6 +59,7 @@ const stealthResponseBubble = document.getElementById('stealthResponseBubble') a
 const stealthResponseContent = document.getElementById('stealthResponseContent') as HTMLElement;
 
 // Window Controls
+const btnDocs = document.getElementById('btnDocs') as HTMLButtonElement;
 const btnSettings = document.getElementById('btnSettings') as HTMLButtonElement;
 const btnMinimize = document.getElementById('btnMinimize') as HTMLButtonElement;
 const btnClose = document.getElementById('btnClose') as HTMLButtonElement;
@@ -74,6 +75,12 @@ const rangeOpacity = document.getElementById('rangeOpacity') as HTMLInputElement
 const opacityVal = document.getElementById('opacityVal') as HTMLElement;
 const chkAlwaysOnTop = document.getElementById('chkAlwaysOnTop') as HTMLInputElement;
 const chkPrivacyMode = document.getElementById('chkPrivacyMode') as HTMLInputElement;
+
+// Docs Modal
+const docsModal = document.getElementById('docsModal') as HTMLElement;
+const docsBackdrop = document.getElementById('docsBackdrop') as HTMLElement;
+const btnCloseDocs = document.getElementById('btnCloseDocs') as HTMLButtonElement;
+const btnDoneDocs = document.getElementById('btnDoneDocs') as HTMLButtonElement;
 
 // State
 let attachedImages: AttachedImage[] = [];
@@ -180,25 +187,63 @@ function setupEventListeners() {
     btnStealthSend.addEventListener('click', (e) => {
       e.stopPropagation();
       sendStealthPrompt();
+      window.electronAPI.restoreFocus();
+    });
+  }
+
+  // Quick Directive Chips (MCQ, Python, Java, Math, Bug Fix)
+  document.querySelectorAll('.stealth-chip-btn').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      const chipPrompt = (btn as HTMLElement).getAttribute('data-prompt');
+      if (chipPrompt) {
+        if (stealthInputBar) stealthInputBar.style.display = 'none';
+        adjustStealthBounds();
+        await solveFromStealth(chipPrompt);
+        window.electronAPI.restoreFocus();
+      }
+    });
+  });
+
+  // From Clipboard Chip Handler (Auto-Inject custom text without typing or losing focus)
+  const btnStealthClipPrompt = document.getElementById('btnStealthClipPrompt');
+  if (btnStealthClipPrompt) {
+    btnStealthClipPrompt.addEventListener('click', async (e) => {
+      e.stopPropagation();
+      let promptToSend = DEFAULT_SOLVE_PROMPT;
+      try {
+        const text = await navigator.clipboard.readText();
+        if (text && text.trim().length > 0) {
+          promptToSend = `Solve the problem in the screenshot.\nAdditional instruction/context from user: "${text.trim()}"`;
+        }
+      } catch (err) {}
+      if (stealthInputBar) stealthInputBar.style.display = 'none';
+      adjustStealthBounds();
+      await solveFromStealth(promptToSend);
+      window.electronAPI.restoreFocus();
     });
   }
 
   if (stealthInputText) {
     stealthInputText.addEventListener('pointerdown', (e) => {
       e.stopPropagation();
+      window.electronAPI.setFocusable(true);
       stealthInputText.focus();
     });
     stealthInputText.addEventListener('click', (e) => {
       e.stopPropagation();
+      window.electronAPI.setFocusable(true);
       stealthInputText.focus();
     });
     stealthInputText.addEventListener('blur', () => {
+      window.electronAPI.setFocusable(false);
       window.electronAPI.restoreFocus();
     });
     stealthInputText.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         sendStealthPrompt();
+        window.electronAPI.setFocusable(false);
         window.electronAPI.restoreFocus();
       }
     });
@@ -214,6 +259,7 @@ function setupEventListeners() {
         btnStealthCopyInline.innerText = '✅ Copied!';
         setTimeout(() => { btnStealthCopyInline.innerText = '📋 Copy'; }, 1500);
       }
+      window.electronAPI.restoreFocus();
     });
   }
 
@@ -233,6 +279,7 @@ function setupEventListeners() {
       e.stopPropagation();
       stealthResponseBubble.style.display = 'none';
       adjustStealthBounds();
+      window.electronAPI.restoreFocus();
     });
   }
 
@@ -242,6 +289,7 @@ function setupEventListeners() {
       e.stopPropagation();
       stealthResponseBubble.style.display = 'none';
       adjustStealthBounds();
+      window.electronAPI.restoreFocus();
     });
   }
 
@@ -255,6 +303,7 @@ function setupEventListeners() {
     dockStartX = e.screenX;
     dockStartY = e.screenY;
     (e.currentTarget as HTMLElement).setPointerCapture(e.pointerId);
+    window.electronAPI.restoreFocus();
   };
 
   const doDrag = (e: PointerEvent) => {
@@ -274,6 +323,7 @@ function setupEventListeners() {
       try {
         (e.currentTarget as HTMLElement).releasePointerCapture(e.pointerId);
       } catch (err) {}
+      window.electronAPI.restoreFocus();
     }
   };
 
@@ -284,6 +334,9 @@ function setupEventListeners() {
   }
 
   if (stealthDock) {
+    stealthDock.addEventListener('pointerdown', () => {
+      window.electronAPI.restoreFocus();
+    });
     stealthDock.addEventListener('dblclick', () => {
       toggleGhostMode(false);
     });
@@ -407,6 +460,28 @@ function setupEventListeners() {
     window.electronAPI.closeWindow();
   });
 
+  // Docs Modal Controls
+  if (btnDocs) {
+    btnDocs.addEventListener('click', () => {
+      docsModal.style.display = 'flex';
+    });
+  }
+  if (btnCloseDocs) {
+    btnCloseDocs.addEventListener('click', () => {
+      docsModal.style.display = 'none';
+    });
+  }
+  if (btnDoneDocs) {
+    btnDoneDocs.addEventListener('click', () => {
+      docsModal.style.display = 'none';
+    });
+  }
+  if (docsBackdrop) {
+    docsBackdrop.addEventListener('click', () => {
+      docsModal.style.display = 'none';
+    });
+  }
+
   // Settings Modal Controls
   btnSettings.addEventListener('click', () => {
     settingsModal.style.display = 'flex';
@@ -527,7 +602,10 @@ function setupIpcListeners() {
   });
 
   // Global Snap & Auto-Solve shortcut handler
-  window.electronAPI.onGlobalSolve((screenshot: any) => {
+  window.electronAPI.onGlobalSolve((payload: any) => {
+    const screenshot = payload?.screenshot || payload;
+    const customPrompt = payload?.customPrompt;
+
     if (screenshot && screenshot.dataUrl) {
       clearAllAttachments();
       addAttachment({
@@ -535,10 +613,11 @@ function setupIpcListeners() {
         mimeType: screenshot.mimeType,
         dataUrl: screenshot.dataUrl
       });
+      const promptToUse = customPrompt || DEFAULT_SOLVE_PROMPT;
       if (isGhostMode) {
-        sendStealthPrompt(DEFAULT_SOLVE_PROMPT);
+        sendStealthPrompt(promptToUse);
       } else {
-        promptInput.value = DEFAULT_SOLVE_PROMPT;
+        promptInput.value = promptToUse;
         handleSend();
       }
     }
@@ -605,22 +684,33 @@ function adjustStealthBounds() {
   const hasBubble = stealthResponseBubble && stealthResponseBubble.style.display !== 'none';
   const hasInput = stealthInputBar && stealthInputBar.style.display !== 'none';
 
-  if (hasBubble) {
-    window.electronAPI.resizeStealth(380, hasInput ? 310 : 250, true);
+  let targetWidth = 210;
+  let targetHeight = 48;
+
+  if (hasBubble && hasInput) {
+    targetWidth = 380;
+    targetHeight = 360;
+  } else if (hasBubble) {
+    targetWidth = 380;
+    targetHeight = 300;
   } else if (hasInput) {
-    window.electronAPI.resizeStealth(260, 92, true);
+    targetWidth = 340;
+    targetHeight = 124; // Generous height for dock (44px) + gap (6px) + chips & textarea (68px) + padding (6px)
   } else {
-    window.electronAPI.resizeStealth(210, 48, true);
+    targetWidth = 210;
+    targetHeight = 48;
   }
+
+  window.electronAPI.resizeStealth(targetWidth, targetHeight);
 }
 
-async function solveFromStealth() {
+async function solveFromStealth(promptOverride?: string) {
   try {
     const screenshot = await window.electronAPI.captureScreen();
     if (screenshot) {
       clearAllAttachments();
       addAttachment(screenshot);
-      await sendStealthPrompt(DEFAULT_SOLVE_PROMPT);
+      await sendStealthPrompt(promptOverride || DEFAULT_SOLVE_PROMPT);
     }
   } catch (err) {
     console.error('Stealth solve failed:', err);

@@ -1,13 +1,13 @@
-functionsDirectory = "D:\\Yo\\netlify\\functions"
+functionsDirectory = "D:\\Clovi\\netlify\\functions"
 functionsDirectoryOrigin = "config-v1"
 headersOrigin = "config"
 plugins = []
 redirects = []
 
 [build]
-publish = "D:\\Yo\\landing"
+publish = "D:\\Clovi\\landing"
 publishOrigin = "config"
-functions = "D:\\Yo\\netlify\\functions"
+functions = "D:\\Clovi\\netlify\\functions"
 
 [build.environment]
 

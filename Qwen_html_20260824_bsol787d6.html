@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Exam Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4 select-none">
+
+    <!-- Start Screen -->
+    <div id="start-screen" class="text-center max-w-md">
+        <h1 class="text-3xl font-bold mb-2">Secure Exam Game</h1>
+        <p class="text-gray-400 mb-6">Don't switch tabs, lose focus, or use shortcuts. Fullscreen is required.</p>
+        <button onclick="startExam()" class="px-8 py-3 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700 transition">Start Exam</button>
+    </div>
+
+    <!-- Exam Screen -->
+    <div id="exam-screen" class="hidden w-full max-w-2xl bg-gray-800 p-6 rounded-xl shadow-2xl">
+        <div class="flex justify-between items-center mb-6 text-sm">
+            <span class="text-gray-400">Question <span id="q-num">1</span>/3</span>
+            <span class="px-3 py-1 bg-green-900 text-green-400 rounded-full text-xs font-bold">SECURE</span>
+        </div>
+        <div id="question-container" class="mb-6"></div>
+        <button id="next-btn" onclick="nextQuestion()" class="w-full py-3 bg-green-600 rounded-lg font-semibold hover:bg-green-700 transition">Next</button>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="hidden text-center max-w-md">
+        <h1 id="result-title" class="text-5xl font-bold mb-4"></h1>
+        <p id="result-msg" class="text-gray-400 mb-8 text-lg"></p>
+        <button onclick="location.reload()" class="px-8 py-3 bg-blue-600 rounded-lg font-semibold hover:bg-blue-700 transition">Restart</button>
+    </div>
+
+    <script>
+        let failed = false;
+        let currentQ = 0;
+        const questions = [
+            { type: 'mcq', q: 'What is 2 + 2?', options: ['3', '4', '5', '6'], ans: '4' },
+            { type: 'text', q: 'What is the capital of France?', ans: 'paris' },
+            { type: 'code', q: 'Write a JS function `reverseStr(s)` to reverse a string.', ans: 'function' }
+        ];
+
+        // --- SECURITY SYSTEMS ---
+        const triggerFail = (reason) => {
+            if (failed) return;
+            failed = true;
+            showResult(false, reason);
+        };
+
+        // 1. Tab switch / Minimize detector
+        document.addEventListener('visibilitychange', () => { if (document.hidden) triggerFail('Tab switched or minimized'); });
+        
+        // 2. Application switch / Focus loss detector
+        window.addEventListener('blur', () => triggerFail('Window lost focus (Alt-Tab/Clicked outside)'));
+        
+        // 3. Fullscreen exit detector
+        document.addEventListener('fullscreenchange', () => { if (!document.fullscreenElement && !failed) triggerFail('Exited fullscreen mode'); });
+        
+        // 4. Right-click disable
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // 5. DevTools & Copy/Paste shortcuts disable
+        document.addEventListener('keydown', e => {
+            const isDevTool = e.key === 'F12' || (e.ctrlKey && e.shiftKey && ['I', 'J', 'C'].includes(e.key));
+            const isShortcut = e.ctrlKey && ['u', 's', 'p', 'a', 'c', 'v'].includes(e.key.toLowerCase());
+            if (isDevTool || isShortcut) {
+                e.preventDefault();
+                triggerFail('Developer tools or restricted shortcuts detected');
+            }
+        });
+
+        // --- EXAM LOGIC ---
+        function startExam() {
+            document.documentElement.requestFullscreen().then(() => {
+                document.getElementById('start-screen').classList.add('hidden');
+                document.getElementById('exam-screen').classList.remove('hidden');
+                renderQuestion();
+            }).catch(() => alert('Fullscreen permission is required to start.'));
+        }
+
+        function renderQuestion() {
+            const q = questions[currentQ];
+            document.getElementById('q-num').innerText = currentQ + 1;
+            const container = document.getElementById('question-container');
+            let html = `<h2 class="text-xl font-semibold mb-4">${q.q}</h2>`;
+
+            if (q.type === 'mcq') {
+                html += q.options.map(opt => `
+                    <label class="block p-3 mb-2 bg-gray-700 rounded-lg cursor-pointer hover:bg-gray-600 transition">
+                        <input type="radio" name="mcq" value="${opt}" class="mr-3 accent-blue-500"> ${opt}
+                    </label>`).join('');
+            } else if (q.type === 'text') {
+                html += `<input type="text" id="answer" class="w-full p-3 bg-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Type your answer">`;
+            } else {
+                html += `<textarea id="answer" class="w-full h-40 p-3 bg-gray-700 rounded-lg font-mono text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="// Write your code here..."></textarea>`;
+            }
+            container.innerHTML = html;
+            document.getElementById('next-btn').innerText = currentQ === questions.length - 1 ? 'Submit & Finish' : 'Next';
+        }
+
+        function nextQuestion() {
+            const q = questions[currentQ];
+            let userAns = '';
+
+            if (q.type === 'mcq') {
+                const selected = document.querySelector('input[name="mcq"]:checked');
+                if (!selected) return alert('Please select an option.');
+                userAns = selected.value;
+            } else {
+                userAns = document.getElementById('answer').value.trim();
+                if (!userAns) return alert('Please provide an answer.');
+            }
+
+            currentQ++;
+            if (currentQ >= questions.length) {
+                showResult(true, 'You completed the exam without triggering any security alerts!');
+            } else {
+                renderQuestion();
+            }
+        }
+
+        function showResult(won, msg) {
+            ['start-screen', 'exam-screen'].forEach(id => document.getElementById(id).classList.add('hidden'));
+            const resultScreen = document.getElementById('result-screen');
+            resultScreen.classList.remove('hidden');
+
+            const title = document.getElementById('result-title');
+            title.innerText = won ? '🏆 YOU WON!' : '💀 YOU FAILED!';
+            title.className = `text-5xl font-bold mb-4 ${won ? 'text-green-400' : 'text-red-500'}`;
+            document.getElementById('result-msg').innerText = msg;
+
+            if (document.fullscreenElement) document.exitFullscreen();
+        }
+    </script>
+</body>
+</html>

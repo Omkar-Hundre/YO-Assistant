@@ -1,11 +1,11 @@
-import { BrowserWindow, app } from 'electron';
+﻿import { BrowserWindow, app } from 'electron';
 import * as path from 'path';
 import * as fs from 'fs';
 
 // Constants for Windows Display Affinity & Window Styles
 const WDA_NONE = 0x00000000;
 const WDA_MONITOR = 0x00000001;
-const WDA_EXCLUDEFROMCAPTURE = 0x00000011; // 17: Excludes window completely from screen share / capture
+const WDA_EXCLUDEFROMCAPTURE = 0x00000011; // Excludes window completely from screen share / capture
 
 const GWL_EXSTYLE = -20;
 const WS_EX_NOACTIVATE = 0x08000000;
@@ -18,10 +18,11 @@ const SWP_NOMOVE = 0x0002;
 const SWP_NOACTIVATE = 0x0010;
 const SWP_FRAMECHANGED = 0x0020;
 const SWP_SHOWWINDOW = 0x0040;
-const TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_SHOWWINDOW | SWP_FRAMECHANGED; // 0x0073
+const TOPMOST_FLAGS = SWP_NOMOVE | SWP_NOSIZE | SWP_NOACTIVATE | SWP_SHOWWINDOW | SWP_FRAMECHANGED;
 
 let user32: any = null;
 let lastForegroundHwnd: any = null;
+let overlayHwnds = new Set<any>();
 
 try {
   const koffi = require('koffi');
@@ -30,6 +31,8 @@ try {
   user32.SetWindowDisplayAffinity = user32.func('bool __stdcall SetWindowDisplayAffinity(uintptr_t hWnd, uint32_t dwAffinity)');
   user32.GetForegroundWindow = user32.func('uintptr_t __stdcall GetForegroundWindow()');
   user32.SetForegroundWindow = user32.func('bool __stdcall SetForegroundWindow(uintptr_t hWnd)');
+  user32.SetActiveWindow = user32.func('uintptr_t __stdcall SetActiveWindow(uintptr_t hWnd)');
+  user32.BringWindowToTop = user32.func('bool __stdcall BringWindowToTop(uintptr_t hWnd)');
   user32.GetWindowLongPtrW = user32.func('intptr_t __stdcall GetWindowLongPtrW(uintptr_t hWnd, int nIndex)');
   user32.SetWindowLongPtrW = user32.func('intptr_t __stdcall SetWindowLongPtrW(uintptr_t hWnd, int nIndex, intptr_t dwNewLong)');
   user32.SetWindowPos = user32.func('bool __stdcall SetWindowPos(uintptr_t hWnd, intptr_t hWndInsertAfter, int X, int Y, int cx, int cy, uint32_t uFlags)');
@@ -100,18 +103,31 @@ export function saveConfig(config: Partial<WindowConfig>) {
   }
 }
 
-let overlayHwnds = new Set<any>();
-
 export function registerOverlayHwnd(win: BrowserWindow) {
   const h = getHwndNumber(win);
-  if (h) overlayHwnds.add(h);
+  if (h) {
+    overlayHwnds.add(h);
+    if (user32 && user32.EnumChildWindows && user32._EnumChildProc && user32._koffi) {
+      try {
+        const childCallback = user32._koffi.register((childHwnd: any) => {
+          overlayHwnds.add(childHwnd);
+          return true;
+        }, user32._koffi.pointer(user32._EnumChildProc));
+        user32.EnumChildWindows(h, childCallback, 0);
+        user32._koffi.unregister(childCallback);
+      } catch (e) {}
+    }
+  }
 }
 
 /**
  * Continuously track the active background application window (e.g. Chrome / Exam / IDE)
+ * and enforce Always-On-Top watchdog so Clovi never drops behind background apps.
  */
 export function startForegroundTracker(win: BrowserWindow) {
   registerOverlayHwnd(win);
+
+  // Poll foreground active application (every 100ms)
   setInterval(() => {
     if (user32 && user32.GetForegroundWindow) {
       try {
@@ -122,6 +138,13 @@ export function startForegroundTracker(win: BrowserWindow) {
       } catch (e) {}
     }
   }, 100);
+
+  // Watchdog: reassert HWND_TOPMOST periodically so full-screen apps or Chrome never push Clovi back
+  setInterval(() => {
+    if (win && !win.isDestroyed() && win.isVisible()) {
+      applyAlwaysOnTop(win, true);
+    }
+  }, 1000);
 }
 
 /**
@@ -142,12 +165,14 @@ export function recordForegroundWindow(win?: BrowserWindow) {
 }
 
 /**
- * Restore focus to the previous active application window (e.g. Chrome / Exam)
+ * Restore focus to the background application (Chrome / Exam Portal)
  */
 export function restoreForegroundWindow() {
   if (user32 && user32.SetForegroundWindow && lastForegroundHwnd) {
     try {
-      user32.SetForegroundWindow(lastForegroundHwnd);
+      if (!overlayHwnds.has(lastForegroundHwnd)) {
+        user32.SetForegroundWindow(lastForegroundHwnd);
+      }
     } catch (e) {
       // Ignore
     }
@@ -156,31 +181,26 @@ export function restoreForegroundWindow() {
 
 /**
  * Set Windows capture exclusion (WDA_EXCLUDEFROMCAPTURE = 0x11)
- * Completely excludes the window from all Windows screen sharing (Teams, Zoom, Meet, OBS, Browser Share)
  */
 export function setCaptureExclusion(win: BrowserWindow, enable: boolean): { success: boolean; error?: string } {
   try {
-    // Pure Win32 SetWindowDisplayAffinity (WDA_EXCLUDEFROMCAPTURE = 0x11)
-    // Note: We avoid win.setContentProtection(true) because Chromium's built-in implementation
-    // forces WDA_MONITOR (0x01), which causes Windows DWM to paint a solid black box on screen shares.
     if (user32 && user32.SetWindowDisplayAffinity) {
       const hwndNum = getHwndNumber(win);
       if (hwndNum) {
         const affinity = enable ? WDA_EXCLUDEFROMCAPTURE : WDA_NONE;
         const res = user32.SetWindowDisplayAffinity(hwndNum, affinity);
 
-        // Also apply display affinity to child rendering HWNDs for total screen share invisibility
         if (user32.EnumChildWindows && user32._EnumChildProc && user32._koffi) {
           try {
-            const childCallback = user32._koffi.register((childHwnd: any, _lParam: any) => {
+            const childCallback = user32._koffi.register((childHwnd: any) => {
               try {
                 user32.SetWindowDisplayAffinity(childHwnd, affinity);
-              } catch (e) { }
+              } catch (e) {}
               return true;
             }, user32._koffi.pointer(user32._EnumChildProc));
             user32.EnumChildWindows(hwndNum, childCallback, 0);
             user32._koffi.unregister(childCallback);
-          } catch (e) { }
+          } catch (e) {}
         }
 
         console.log(`[WindowsOverlay] SetWindowDisplayAffinity(0x${affinity.toString(16)}) -> result: ${res}`);
@@ -202,14 +222,13 @@ export function applyAlwaysOnTop(win: BrowserWindow, enable: boolean) {
 
   try {
     if (enable) {
-      win.setAlwaysOnTop(true, 'screen-saver', 1);
+      win.setAlwaysOnTop(true, 'screen-saver', 9999);
       win.setVisibleOnAllWorkspaces(true, { visibleOnFullScreen: true });
     } else {
       win.setAlwaysOnTop(false);
       win.setVisibleOnAllWorkspaces(false);
     }
 
-    // Direct Win32 SetWindowPos enforcement
     if (user32 && user32.SetWindowPos) {
       const hwndNum = getHwndNumber(win);
       if (hwndNum) {
@@ -223,6 +242,21 @@ export function applyAlwaysOnTop(win: BrowserWindow, enable: boolean) {
             : BigInt(WS_EX_NOACTIVATE);
           user32.SetWindowLongPtrW(hwndNum, GWL_EXSTYLE, currentEx | flagsToAdd);
         }
+
+        if (user32.EnumChildWindows && user32._EnumChildProc && user32._koffi) {
+          try {
+            const childCallback = user32._koffi.register((childHwnd: any) => {
+              try {
+                user32.SetWindowPos(childHwnd, insertAfter, 0, 0, 0, 0, TOPMOST_FLAGS);
+                const childEx = BigInt(user32.GetWindowLongPtrW(childHwnd, GWL_EXSTYLE));
+                user32.SetWindowLongPtrW(childHwnd, GWL_EXSTYLE, childEx | BigInt(WS_EX_NOACTIVATE));
+              } catch (e) {}
+              return true;
+            }, user32._koffi.pointer(user32._EnumChildProc));
+            user32.EnumChildWindows(hwndNum, childCallback, 0);
+            user32._koffi.unregister(childCallback);
+          } catch (e) {}
+        }
       }
     }
   } catch (err) {
@@ -231,7 +265,7 @@ export function applyAlwaysOnTop(win: BrowserWindow, enable: boolean) {
 }
 
 /**
- * Configure WS_EX_NOACTIVATE on the top-level window so clicks never deactivate Chrome/Exam
+ * Configure WS_EX_NOACTIVATE on the window so clicks never deactivate Chrome/Exam
  */
 export function applyNoActivate(win: BrowserWindow) {
   if (!win || win.isDestroyed()) return;
@@ -242,6 +276,20 @@ export function applyNoActivate(win: BrowserWindow) {
       if (hwndNum) {
         const currentEx = BigInt(user32.GetWindowLongPtrW(hwndNum, GWL_EXSTYLE));
         user32.SetWindowLongPtrW(hwndNum, GWL_EXSTYLE, currentEx | BigInt(WS_EX_NOACTIVATE));
+
+        if (user32.EnumChildWindows && user32._EnumChildProc && user32._koffi) {
+          try {
+            const childCallback = user32._koffi.register((childHwnd: any) => {
+              try {
+                const childEx = BigInt(user32.GetWindowLongPtrW(childHwnd, GWL_EXSTYLE));
+                user32.SetWindowLongPtrW(childHwnd, GWL_EXSTYLE, childEx | BigInt(WS_EX_NOACTIVATE));
+              } catch (e) {}
+              return true;
+            }, user32._koffi.pointer(user32._EnumChildProc));
+            user32.EnumChildWindows(hwndNum, childCallback, 0);
+            user32._koffi.unregister(childCallback);
+          } catch (e) {}
+        }
       }
     } catch (e) {
       console.warn('[WindowsOverlay] Failed to apply WS_EX_NOACTIVATE:', e);
