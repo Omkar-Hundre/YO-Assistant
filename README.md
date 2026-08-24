@@ -10,7 +10,7 @@
 
 <p align="center">
   <a href="https://clovi.netlify.app"><img src="https://img.shields.io/badge/Website-clovi.netlify.app-blue?style=for-the-badge" alt="Website"/></a>
-  <a href="https://github.com/Omkar-Hundre/Clovi/releases/download/v1.0.1/Clovi-Portable.exe"><img src="https://img.shields.io/badge/Download-Portable_v1.0.1-blue?style=for-the-badge&logo=windows" alt="Download Portable Exe"/></a>
+  <a href="https://github.com/Omkar-Hundre/Clovi/releases/download/v1.0.2/Clovi-Portable_v1.0.2.exe"><img src="https://img.shields.io/badge/Download-Portable_v1.0.2-blue?style=for-the-badge&logo=windows" alt="Download Portable Exe"/></a>
   <a href="https://github.com/Omkar-Hundre/Clovi/stargazers"><img src="https://img.shields.io/github/stars/Omkar-Hundre/Clovi?style=for-the-badge&color=yellow" alt="GitHub Stars"/></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License"/></a>
 </p>
@@ -65,7 +65,7 @@
 
 ## 🚀 Quick Start (Portable Executable)
 
-1. **Download**: Grab the latest **[`Clovi-Portable.exe`](https://github.com/Omkar-Hundre/Clovi/releases/download/v1.0.1/Clovi-Portable.exe)** from GitHub Releases.
+1. **Download**: Grab the latest **[`Clovi-Portable.exe`](https://github.com/Omkar-Hundre/Clovi/releases/download/v1.0.2/Clovi-Portable_v1.0.2.exe)** from GitHub Releases.
 2. **Run**: Double click `Clovi-Portable.exe` — **No installation or setup required!**
 3. **Configure API Key**: Enter your free [Google Gemini API Key](https://aistudio.google.com/app/apikey) on first launch (stored securely in your local `%APPDATA%`).
 4. **Solve Anywhere**: Press `Ctrl + Shift + S` on any screen to solve problems instantly.
